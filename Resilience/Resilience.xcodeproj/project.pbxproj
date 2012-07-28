@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FBB1CDBD15C3F3E4000D168E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
+		FBB1CDBF15C3F3E4000D168E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBE15C3F3E4000D168E /* Foundation.framework */; };
+		FBB1CDC115C3F3E4000D168E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */; };
+		FBB1CDC715C3F3E4000D168E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDC515C3F3E4000D168E /* InfoPlist.strings */; };
+		FBB1CDC915C3F3E4000D168E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDC815C3F3E4000D168E /* main.m */; };
+		FBB1CDCD15C3F3E4000D168E /* RHoKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDCC15C3F3E4000D168E /* RHoKAppDelegate.m */; };
+		FBB1CDD015C3F3E4000D168E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDCE15C3F3E4000D168E /* MainStoryboard_iPhone.storyboard */; };
+		FBB1CDD315C3F3E4000D168E /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDD115C3F3E4000D168E /* MainStoryboard_iPad.storyboard */; };
+		FBB1CDD615C3F3E4000D168E /* RHoKFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDD515C3F3E4000D168E /* RHoKFirstViewController.m */; };
+		FBB1CDD815C3F3E4000D168E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDD715C3F3E4000D168E /* first.png */; };
+		FBB1CDDA15C3F3E4000D168E /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDD915C3F3E4000D168E /* first@2x.png */; };
+		FBB1CDDD15C3F3E4000D168E /* RHoKSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDDC15C3F3E4000D168E /* RHoKSecondViewController.m */; };
+		FBB1CDDF15C3F3E4000D168E /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDDE15C3F3E4000D168E /* second.png */; };
+		FBB1CDE115C3F3E4000D168E /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDE015C3F3E4000D168E /* second@2x.png */; };
+		FBB1CDE915C3F3E4000D168E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */; };
+		FBB1CDEA15C3F3E4000D168E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
+		FBB1CDEB15C3F3E4000D168E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBE15C3F3E4000D168E /* Foundation.framework */; };
+		FBB1CDF315C3F3E5000D168E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDF115C3F3E5000D168E /* InfoPlist.strings */; };
+		FBB1CDF615C3F3E5000D168E /* ResilienceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDF515C3F3E5000D168E /* ResilienceTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FBB1CDEC15C3F3E4000D168E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBB1CDAF15C3F3E4000D168E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBB1CDB715C3F3E4000D168E;
+			remoteInfo = Resilience;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FBB1CDB815C3F3E4000D168E /* Resilience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resilience.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBB1CDBC15C3F3E4000D168E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FBB1CDBE15C3F3E4000D168E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FBB1CDC415C3F3E4000D168E /* Resilience-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Resilience-Info.plist"; sourceTree = "<group>"; };
+		FBB1CDC615C3F3E4000D168E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FBB1CDC815C3F3E4000D168E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FBB1CDCA15C3F3E4000D168E /* Resilience-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Resilience-Prefix.pch"; sourceTree = "<group>"; };
+		FBB1CDCB15C3F3E4000D168E /* RHoKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RHoKAppDelegate.h; sourceTree = "<group>"; };
+		FBB1CDCC15C3F3E4000D168E /* RHoKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHoKAppDelegate.m; sourceTree = "<group>"; };
+		FBB1CDCF15C3F3E4000D168E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		FBB1CDD215C3F3E4000D168E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		FBB1CDD415C3F3E4000D168E /* RHoKFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RHoKFirstViewController.h; sourceTree = "<group>"; };
+		FBB1CDD515C3F3E4000D168E /* RHoKFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHoKFirstViewController.m; sourceTree = "<group>"; };
+		FBB1CDD715C3F3E4000D168E /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		FBB1CDD915C3F3E4000D168E /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		FBB1CDDB15C3F3E4000D168E /* RHoKSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RHoKSecondViewController.h; sourceTree = "<group>"; };
+		FBB1CDDC15C3F3E4000D168E /* RHoKSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHoKSecondViewController.m; sourceTree = "<group>"; };
+		FBB1CDDE15C3F3E4000D168E /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		FBB1CDE015C3F3E4000D168E /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		FBB1CDE715C3F3E4000D168E /* ResilienceTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResilienceTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		FBB1CDF015C3F3E4000D168E /* ResilienceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ResilienceTests-Info.plist"; sourceTree = "<group>"; };
+		FBB1CDF215C3F3E5000D168E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FBB1CDF415C3F3E5000D168E /* ResilienceTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResilienceTests.h; sourceTree = "<group>"; };
+		FBB1CDF515C3F3E5000D168E /* ResilienceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResilienceTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FBB1CDB515C3F3E4000D168E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBB1CDBD15C3F3E4000D168E /* UIKit.framework in Frameworks */,
+				FBB1CDBF15C3F3E4000D168E /* Foundation.framework in Frameworks */,
+				FBB1CDC115C3F3E4000D168E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBB1CDE315C3F3E4000D168E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBB1CDE915C3F3E4000D168E /* SenTestingKit.framework in Frameworks */,
+				FBB1CDEA15C3F3E4000D168E /* UIKit.framework in Frameworks */,
+				FBB1CDEB15C3F3E4000D168E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FBB1CDAD15C3F3E4000D168E = {
+			isa = PBXGroup;
+			children = (
+				FBB1CDC215C3F3E4000D168E /* Resilience */,
+				FBB1CDEE15C3F3E4000D168E /* ResilienceTests */,
+				FBB1CDBB15C3F3E4000D168E /* Frameworks */,
+				FBB1CDB915C3F3E4000D168E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FBB1CDB915C3F3E4000D168E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FBB1CDB815C3F3E4000D168E /* Resilience.app */,
+				FBB1CDE715C3F3E4000D168E /* ResilienceTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FBB1CDBB15C3F3E4000D168E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FBB1CDBC15C3F3E4000D168E /* UIKit.framework */,
+				FBB1CDBE15C3F3E4000D168E /* Foundation.framework */,
+				FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */,
+				FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FBB1CDC215C3F3E4000D168E /* Resilience */ = {
+			isa = PBXGroup;
+			children = (
+				FBB1CDCB15C3F3E4000D168E /* RHoKAppDelegate.h */,
+				FBB1CDCC15C3F3E4000D168E /* RHoKAppDelegate.m */,
+				FBB1CDCE15C3F3E4000D168E /* MainStoryboard_iPhone.storyboard */,
+				FBB1CDD115C3F3E4000D168E /* MainStoryboard_iPad.storyboard */,
+				FBB1CDD415C3F3E4000D168E /* RHoKFirstViewController.h */,
+				FBB1CDD515C3F3E4000D168E /* RHoKFirstViewController.m */,
+				FBB1CDD715C3F3E4000D168E /* first.png */,
+				FBB1CDD915C3F3E4000D168E /* first@2x.png */,
+				FBB1CDDB15C3F3E4000D168E /* RHoKSecondViewController.h */,
+				FBB1CDDC15C3F3E4000D168E /* RHoKSecondViewController.m */,
+				FBB1CDDE15C3F3E4000D168E /* second.png */,
+				FBB1CDE015C3F3E4000D168E /* second@2x.png */,
+				FBB1CDC315C3F3E4000D168E /* Supporting Files */,
+			);
+			path = Resilience;
+			sourceTree = "<group>";
+		};
+		FBB1CDC315C3F3E4000D168E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBB1CDC415C3F3E4000D168E /* Resilience-Info.plist */,
+				FBB1CDC515C3F3E4000D168E /* InfoPlist.strings */,
+				FBB1CDC815C3F3E4000D168E /* main.m */,
+				FBB1CDCA15C3F3E4000D168E /* Resilience-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FBB1CDEE15C3F3E4000D168E /* ResilienceTests */ = {
+			isa = PBXGroup;
+			children = (
+				FBB1CDF415C3F3E5000D168E /* ResilienceTests.h */,
+				FBB1CDF515C3F3E5000D168E /* ResilienceTests.m */,
+				FBB1CDEF15C3F3E4000D168E /* Supporting Files */,
+			);
+			path = ResilienceTests;
+			sourceTree = "<group>";
+		};
+		FBB1CDEF15C3F3E4000D168E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBB1CDF015C3F3E4000D168E /* ResilienceTests-Info.plist */,
+				FBB1CDF115C3F3E5000D168E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FBB1CDB715C3F3E4000D168E /* Resilience */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBB1CDF915C3F3E5000D168E /* Build configuration list for PBXNativeTarget "Resilience" */;
+			buildPhases = (
+				FBB1CDB415C3F3E4000D168E /* Sources */,
+				FBB1CDB515C3F3E4000D168E /* Frameworks */,
+				FBB1CDB615C3F3E4000D168E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Resilience;
+			productName = Resilience;
+			productReference = FBB1CDB815C3F3E4000D168E /* Resilience.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FBB1CDE615C3F3E4000D168E /* ResilienceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBB1CDFC15C3F3E5000D168E /* Build configuration list for PBXNativeTarget "ResilienceTests" */;
+			buildPhases = (
+				FBB1CDE215C3F3E4000D168E /* Sources */,
+				FBB1CDE315C3F3E4000D168E /* Frameworks */,
+				FBB1CDE415C3F3E4000D168E /* Resources */,
+				FBB1CDE515C3F3E4000D168E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FBB1CDED15C3F3E4000D168E /* PBXTargetDependency */,
+			);
+			name = ResilienceTests;
+			productName = ResilienceTests;
+			productReference = FBB1CDE715C3F3E4000D168E /* ResilienceTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FBB1CDAF15C3F3E4000D168E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = RHoK;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = RHoK;
+			};
+			buildConfigurationList = FBB1CDB215C3F3E4000D168E /* Build configuration list for PBXProject "Resilience" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FBB1CDAD15C3F3E4000D168E;
+			productRefGroup = FBB1CDB915C3F3E4000D168E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FBB1CDB715C3F3E4000D168E /* Resilience */,
+				FBB1CDE615C3F3E4000D168E /* ResilienceTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FBB1CDB615C3F3E4000D168E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBB1CDC715C3F3E4000D168E /* InfoPlist.strings in Resources */,
+				FBB1CDD015C3F3E4000D168E /* MainStoryboard_iPhone.storyboard in Resources */,
+				FBB1CDD315C3F3E4000D168E /* MainStoryboard_iPad.storyboard in Resources */,
+				FBB1CDD815C3F3E4000D168E /* first.png in Resources */,
+				FBB1CDDA15C3F3E4000D168E /* first@2x.png in Resources */,
+				FBB1CDDF15C3F3E4000D168E /* second.png in Resources */,
+				FBB1CDE115C3F3E4000D168E /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBB1CDE415C3F3E4000D168E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBB1CDF315C3F3E5000D168E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FBB1CDE515C3F3E4000D168E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FBB1CDB415C3F3E4000D168E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBB1CDC915C3F3E4000D168E /* main.m in Sources */,
+				FBB1CDCD15C3F3E4000D168E /* RHoKAppDelegate.m in Sources */,
+				FBB1CDD615C3F3E4000D168E /* RHoKFirstViewController.m in Sources */,
+				FBB1CDDD15C3F3E4000D168E /* RHoKSecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBB1CDE215C3F3E4000D168E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBB1CDF615C3F3E5000D168E /* ResilienceTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FBB1CDED15C3F3E4000D168E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBB1CDB715C3F3E4000D168E /* Resilience */;
+			targetProxy = FBB1CDEC15C3F3E4000D168E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FBB1CDC515C3F3E4000D168E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBB1CDC615C3F3E4000D168E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FBB1CDCE15C3F3E4000D168E /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBB1CDCF15C3F3E4000D168E /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		FBB1CDD115C3F3E4000D168E /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBB1CDD215C3F3E4000D168E /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		FBB1CDF115C3F3E5000D168E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBB1CDF215C3F3E5000D168E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FBB1CDF715C3F3E5000D168E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FBB1CDF815C3F3E5000D168E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FBB1CDFA15C3F3E5000D168E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
+				INFOPLIST_FILE = "Resilience/Resilience-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FBB1CDFB15C3F3E5000D168E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
+				INFOPLIST_FILE = "Resilience/Resilience-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FBB1CDFD15C3F3E5000D168E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Resilience.app/Resilience";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
+				INFOPLIST_FILE = "ResilienceTests/ResilienceTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		FBB1CDFE15C3F3E5000D168E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Resilience.app/Resilience";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
+				INFOPLIST_FILE = "ResilienceTests/ResilienceTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FBB1CDB215C3F3E4000D168E /* Build configuration list for PBXProject "Resilience" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBB1CDF715C3F3E5000D168E /* Debug */,
+				FBB1CDF815C3F3E5000D168E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBB1CDF915C3F3E5000D168E /* Build configuration list for PBXNativeTarget "Resilience" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBB1CDFA15C3F3E5000D168E /* Debug */,
+				FBB1CDFB15C3F3E5000D168E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FBB1CDFC15C3F3E5000D168E /* Build configuration list for PBXNativeTarget "ResilienceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBB1CDFD15C3F3E5000D168E /* Debug */,
+				FBB1CDFE15C3F3E5000D168E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FBB1CDAF15C3F3E4000D168E /* Project object */;
+}
