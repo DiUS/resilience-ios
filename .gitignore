@@ -1,5 +1,5 @@
 # Xcode
-build/*
+Resilience/build/*
 *.pbxuser
 !default.pbxuser
 *.mode*v3
