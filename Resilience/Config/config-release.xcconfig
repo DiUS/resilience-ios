@@ -1,0 +1,6 @@
+
+#include "config-common.xcconfig"
+
+VALIDATE_PRODUCT = YES
+OTHER_CFLAGS = -DNS_BLOCK_ASSERTIONS=1
+CODE_SIGN_IDENTITY = iPhone Distribution

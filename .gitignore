@@ -2,14 +2,27 @@
 build/*
 *.pbxuser
 !default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
+*.mode*v3
+!default.mode*v3
 *.perspectivev3
 !default.perspectivev3
 *.xcworkspace
 !default.xcworkspace
+!project.xcworkspace
 xcuserdata
-profile
 *.moved-aside
+test-reports
+oclint-report.html
+# Artifacts
+*.ipa
+*.tar.gz
+*.dSYM.zip
+# AppCode
+.idea/*
+Resilience/.idea/*
+# Finder
+.DS_Store
+# Testing Temp
+xcodebuild_*.txt
+#CocoaPods
+Resilience/Pods/*

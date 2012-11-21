@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A86D59268EF4D8C8A67442B /* libPods-KiwiUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */; };
+		A1044B14165CCB71002DC3E1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */; };
+		A1044B15165CCB71002DC3E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
+		A1044B16165CCB71002DC3E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBE15C3F3E4000D168E /* Foundation.framework */; };
+		A1044B1C165CCB71002DC3E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1044B1A165CCB71002DC3E1 /* InfoPlist.strings */; };
+		A1044B34165CD18D002DC3E1 /* config-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A1044B31165CD18C002DC3E1 /* config-release.xcconfig */; };
+		A1044B35165CD18D002DC3E1 /* config-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */; };
+		A1044B36165CD18D002DC3E1 /* config-common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A1044B33165CD18D002DC3E1 /* config-common.xcconfig */; };
+		A1044B85165CDA42002DC3E1 /* ResillienceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A1044B84165CDA42002DC3E1 /* ResillienceSpec.m */; };
 		FBB1CDBD15C3F3E4000D168E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
 		FBB1CDBF15C3F3E4000D168E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBE15C3F3E4000D168E /* Foundation.framework */; };
 		FBB1CDC115C3F3E4000D168E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */; };
@@ -21,27 +30,22 @@
 		FBB1CDDD15C3F3E4000D168E /* RHoKSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDDC15C3F3E4000D168E /* RHoKSecondViewController.m */; };
 		FBB1CDDF15C3F3E4000D168E /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDDE15C3F3E4000D168E /* second.png */; };
 		FBB1CDE115C3F3E4000D168E /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDE015C3F3E4000D168E /* second@2x.png */; };
-		FBB1CDE915C3F3E4000D168E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */; };
-		FBB1CDEA15C3F3E4000D168E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
-		FBB1CDEB15C3F3E4000D168E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBE15C3F3E4000D168E /* Foundation.framework */; };
-		FBB1CDF315C3F3E5000D168E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDF115C3F3E5000D168E /* InfoPlist.strings */; };
-		FBB1CDF615C3F3E5000D168E /* ResilienceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDF515C3F3E5000D168E /* ResilienceTests.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FBB1CDEC15C3F3E4000D168E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FBB1CDAF15C3F3E4000D168E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FBB1CDB715C3F3E4000D168E;
-			remoteInfo = Resilience;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		98F56E13E3194D75BD49CDDC /* Pods-KiwiUnitTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiwiUnitTest.xcconfig"; path = "Pods/Pods-KiwiUnitTest.xcconfig"; sourceTree = SOURCE_ROOT; };
+		A1044B13165CCB70002DC3E1 /* KiwiUnitTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiwiUnitTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1044B19165CCB71002DC3E1 /* KiwiUnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KiwiUnitTest-Info.plist"; sourceTree = "<group>"; };
+		A1044B1B165CCB71002DC3E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A1044B20165CCB71002DC3E1 /* KiwiUnitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KiwiUnitTest-Prefix.pch"; sourceTree = "<group>"; };
+		A1044B31165CD18C002DC3E1 /* config-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "config-release.xcconfig"; path = "Config/config-release.xcconfig"; sourceTree = "<group>"; };
+		A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "config-debug.xcconfig"; path = "Config/config-debug.xcconfig"; sourceTree = "<group>"; };
+		A1044B33165CD18D002DC3E1 /* config-common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "config-common.xcconfig"; path = "Config/config-common.xcconfig"; sourceTree = "<group>"; };
+		A1044B84165CDA42002DC3E1 /* ResillienceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResillienceSpec.m; sourceTree = "<group>"; };
+		DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KiwiUnitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB1CDB815C3F3E4000D168E /* Resilience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resilience.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FBB1CDBC15C3F3E4000D168E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		FBB1CDBE15C3F3E4000D168E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FBB1CDBC15C3F3E4000D168E /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FBB1CDBE15C3F3E4000D168E /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FBB1CDC415C3F3E4000D168E /* Resilience-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Resilience-Info.plist"; sourceTree = "<group>"; };
 		FBB1CDC615C3F3E4000D168E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -59,15 +63,21 @@
 		FBB1CDDC15C3F3E4000D168E /* RHoKSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHoKSecondViewController.m; sourceTree = "<group>"; };
 		FBB1CDDE15C3F3E4000D168E /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		FBB1CDE015C3F3E4000D168E /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		FBB1CDE715C3F3E4000D168E /* ResilienceTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResilienceTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		FBB1CDF015C3F3E4000D168E /* ResilienceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ResilienceTests-Info.plist"; sourceTree = "<group>"; };
-		FBB1CDF215C3F3E5000D168E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FBB1CDF415C3F3E5000D168E /* ResilienceTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResilienceTests.h; sourceTree = "<group>"; };
-		FBB1CDF515C3F3E5000D168E /* ResilienceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResilienceTests.m; sourceTree = "<group>"; };
+		FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A1044B0F165CCB70002DC3E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1044B14165CCB71002DC3E1 /* SenTestingKit.framework in Frameworks */,
+				A1044B15165CCB71002DC3E1 /* UIKit.framework in Frameworks */,
+				A1044B16165CCB71002DC3E1 /* Foundation.framework in Frameworks */,
+				1A86D59268EF4D8C8A67442B /* libPods-KiwiUnitTest.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FBB1CDB515C3F3E4000D168E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,24 +88,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FBB1CDE315C3F3E4000D168E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FBB1CDE915C3F3E4000D168E /* SenTestingKit.framework in Frameworks */,
-				FBB1CDEA15C3F3E4000D168E /* UIKit.framework in Frameworks */,
-				FBB1CDEB15C3F3E4000D168E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1044B17165CCB71002DC3E1 /* KiwiUnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				A1044B84165CDA42002DC3E1 /* ResillienceSpec.m */,
+				A1044B18165CCB71002DC3E1 /* Supporting Files */,
+			);
+			path = KiwiUnitTest;
+			sourceTree = "<group>";
+		};
+		A1044B18165CCB71002DC3E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A1044B19165CCB71002DC3E1 /* KiwiUnitTest-Info.plist */,
+				A1044B1A165CCB71002DC3E1 /* InfoPlist.strings */,
+				A1044B20165CCB71002DC3E1 /* KiwiUnitTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A1044B30165CCD82002DC3E1 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				A1044B31165CD18C002DC3E1 /* config-release.xcconfig */,
+				A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */,
+				A1044B33165CD18D002DC3E1 /* config-common.xcconfig */,
+				98F56E13E3194D75BD49CDDC /* Pods-KiwiUnitTest.xcconfig */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
 		FBB1CDAD15C3F3E4000D168E = {
 			isa = PBXGroup;
 			children = (
+				A1044B30165CCD82002DC3E1 /* Configs */,
 				FBB1CDC215C3F3E4000D168E /* Resilience */,
-				FBB1CDEE15C3F3E4000D168E /* ResilienceTests */,
+				A1044B17165CCB71002DC3E1 /* KiwiUnitTest */,
 				FBB1CDBB15C3F3E4000D168E /* Frameworks */,
 				FBB1CDB915C3F3E4000D168E /* Products */,
 			);
@@ -105,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				FBB1CDB815C3F3E4000D168E /* Resilience.app */,
-				FBB1CDE715C3F3E4000D168E /* ResilienceTests.octest */,
+				A1044B13165CCB70002DC3E1 /* KiwiUnitTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +148,7 @@
 				FBB1CDBE15C3F3E4000D168E /* Foundation.framework */,
 				FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */,
 				FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */,
+				DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,28 +184,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FBB1CDEE15C3F3E4000D168E /* ResilienceTests */ = {
-			isa = PBXGroup;
-			children = (
-				FBB1CDF415C3F3E5000D168E /* ResilienceTests.h */,
-				FBB1CDF515C3F3E5000D168E /* ResilienceTests.m */,
-				FBB1CDEF15C3F3E4000D168E /* Supporting Files */,
-			);
-			path = ResilienceTests;
-			sourceTree = "<group>";
-		};
-		FBB1CDEF15C3F3E4000D168E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				FBB1CDF015C3F3E4000D168E /* ResilienceTests-Info.plist */,
-				FBB1CDF115C3F3E5000D168E /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A1044B12165CCB70002DC3E1 /* KiwiUnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1044B21165CCB71002DC3E1 /* Build configuration list for PBXNativeTarget "KiwiUnitTest" */;
+			buildPhases = (
+				A1044B0E165CCB70002DC3E1 /* Sources */,
+				A1044B0F165CCB70002DC3E1 /* Frameworks */,
+				A1044B10165CCB70002DC3E1 /* Resources */,
+				A1044B11165CCB70002DC3E1 /* ShellScript */,
+				D8EA6BB4D187471B91AFD7E3 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KiwiUnitTest;
+			productName = KiwiUnitTest;
+			productReference = A1044B13165CCB70002DC3E1 /* KiwiUnitTest.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		FBB1CDB715C3F3E4000D168E /* Resilience */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FBB1CDF915C3F3E5000D168E /* Build configuration list for PBXNativeTarget "Resilience" */;
@@ -191,32 +223,13 @@
 			productReference = FBB1CDB815C3F3E4000D168E /* Resilience.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FBB1CDE615C3F3E4000D168E /* ResilienceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FBB1CDFC15C3F3E5000D168E /* Build configuration list for PBXNativeTarget "ResilienceTests" */;
-			buildPhases = (
-				FBB1CDE215C3F3E4000D168E /* Sources */,
-				FBB1CDE315C3F3E4000D168E /* Frameworks */,
-				FBB1CDE415C3F3E4000D168E /* Resources */,
-				FBB1CDE515C3F3E4000D168E /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FBB1CDED15C3F3E4000D168E /* PBXTargetDependency */,
-			);
-			name = ResilienceTests;
-			productName = ResilienceTests;
-			productReference = FBB1CDE715C3F3E4000D168E /* ResilienceTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		FBB1CDAF15C3F3E4000D168E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = RHoK;
+				CLASSPREFIX = "";
 				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = RHoK;
 			};
@@ -233,12 +246,20 @@
 			projectRoot = "";
 			targets = (
 				FBB1CDB715C3F3E4000D168E /* Resilience */,
-				FBB1CDE615C3F3E4000D168E /* ResilienceTests */,
+				A1044B12165CCB70002DC3E1 /* KiwiUnitTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A1044B10165CCB70002DC3E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1044B1C165CCB71002DC3E1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FBB1CDB615C3F3E4000D168E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,21 +271,16 @@
 				FBB1CDDA15C3F3E4000D168E /* first@2x.png in Resources */,
 				FBB1CDDF15C3F3E4000D168E /* second.png in Resources */,
 				FBB1CDE115C3F3E4000D168E /* second@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FBB1CDE415C3F3E4000D168E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FBB1CDF315C3F3E5000D168E /* InfoPlist.strings in Resources */,
+				A1044B34165CD18D002DC3E1 /* config-release.xcconfig in Resources */,
+				A1044B35165CD18D002DC3E1 /* config-debug.xcconfig in Resources */,
+				A1044B36165CD18D002DC3E1 /* config-common.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FBB1CDE515C3F3E4000D168E /* ShellScript */ = {
+		A1044B11165CCB70002DC3E1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -277,9 +293,31 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		D8EA6BB4D187471B91AFD7E3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-KiwiUnitTest-resources.sh\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A1044B0E165CCB70002DC3E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1044B85165CDA42002DC3E1 /* ResillienceSpec.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FBB1CDB415C3F3E4000D168E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -291,25 +329,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FBB1CDE215C3F3E4000D168E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FBB1CDF615C3F3E5000D168E /* ResilienceTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		FBB1CDED15C3F3E4000D168E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FBB1CDB715C3F3E4000D168E /* Resilience */;
-			targetProxy = FBB1CDEC15C3F3E4000D168E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
+		A1044B1A165CCB71002DC3E1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1044B1B165CCB71002DC3E1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		FBB1CDC515C3F3E4000D168E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -334,17 +364,46 @@
 			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
-		FBB1CDF115C3F3E5000D168E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FBB1CDF215C3F3E5000D168E /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A1044B22165CCB71002DC3E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98F56E13E3194D75BD49CDDC /* Pods-KiwiUnitTest.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KiwiUnitTest/KiwiUnitTest-Prefix.pch";
+				INFOPLIST_FILE = "KiwiUnitTest/KiwiUnitTest-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		A1044B23165CCB71002DC3E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98F56E13E3194D75BD49CDDC /* Pods-KiwiUnitTest.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KiwiUnitTest/KiwiUnitTest-Prefix.pch";
+				INFOPLIST_FILE = "KiwiUnitTest/KiwiUnitTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		FBB1CDF715C3F3E5000D168E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -367,7 +426,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -388,7 +447,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -398,6 +457,7 @@
 		};
 		FBB1CDFA15C3F3E5000D168E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
@@ -409,6 +469,7 @@
 		};
 		FBB1CDFB15C3F3E5000D168E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1044B31165CD18C002DC3E1 /* config-release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
@@ -418,43 +479,18 @@
 			};
 			name = Release;
 		};
-		FBB1CDFD15C3F3E5000D168E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Resilience.app/Resilience";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
-				INFOPLIST_FILE = "ResilienceTests/ResilienceTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		FBB1CDFE15C3F3E5000D168E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Resilience.app/Resilience";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
-				INFOPLIST_FILE = "ResilienceTests/ResilienceTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A1044B21165CCB71002DC3E1 /* Build configuration list for PBXNativeTarget "KiwiUnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1044B22165CCB71002DC3E1 /* Debug */,
+				A1044B23165CCB71002DC3E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FBB1CDB215C3F3E4000D168E /* Build configuration list for PBXProject "Resilience" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -471,14 +507,7 @@
 				FBB1CDFB15C3F3E5000D168E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		FBB1CDFC15C3F3E5000D168E /* Build configuration list for PBXNativeTarget "ResilienceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FBB1CDFD15C3F3E5000D168E /* Debug */,
-				FBB1CDFE15C3F3E5000D168E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

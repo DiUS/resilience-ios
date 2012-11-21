@@ -1,0 +1,14 @@
+
+#include "config-common.xcconfig"
+
+COPY_PHASE_STRIP = NO
+GCC_OPTIMIZATION_LEVEL = 0
+GCC_PREPROCESSOR_DEFINITIONS = DEBUG=1 $(inherited)
+
+INFOPLIST_FILE = app/hawaii-Info.plist
+PRODUCT_DISPLAY_NAME=$(PRODUCT_NAME) Debug
+//WRAPPER_EXTENSION = app
+GCC_PRECOMPILE_PREFIX_HEADER = YES
+GCC_PREFIX_HEADER = Resilience/Resilience-Prefix.pch
+
+OTHER_LDFLAGS = $(inherited) $(XCODE_TEST_LDFLAGS)
