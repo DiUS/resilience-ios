@@ -1,5 +1,5 @@
 //
-//  RHoKAppDelegate.h
+//  AppDelegate.h
 //  Resilience
 //
 //  Created by Daryl on 28/07/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RHoKAppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

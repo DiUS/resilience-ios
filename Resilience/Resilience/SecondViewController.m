@@ -1,18 +1,18 @@
 //
-//  RHoKFirstViewController.m
+//  SecondViewController.m
 //  Resilience
 //
 //  Created by Daryl on 28/07/12.
 //  Copyright (c) 2012 RHoK. All rights reserved.
 //
 
-#import "RHoKFirstViewController.h"
+#import "SecondViewController.h"
 
-@interface RHoKFirstViewController ()
+@interface SecondViewController ()
 
 @end
 
-@implementation RHoKFirstViewController
+@implementation SecondViewController
 
 - (void)viewDidLoad
 {
@@ -25,6 +25,5 @@
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
-
 
 @end

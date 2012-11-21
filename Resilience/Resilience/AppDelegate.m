@@ -1,14 +1,14 @@
 //
-//  RHoKAppDelegate.m
+//  AppDelegate.m
 //  Resilience
 //
 //  Created by Daryl on 28/07/12.
 //  Copyright (c) 2012 RHoK. All rights reserved.
 //
 
-#import "RHoKAppDelegate.h"
+#import "AppDelegate.h"
 
-@implementation RHoKAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

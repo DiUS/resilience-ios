@@ -22,13 +22,13 @@
 		FBB1CDC115C3F3E4000D168E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */; };
 		FBB1CDC715C3F3E4000D168E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDC515C3F3E4000D168E /* InfoPlist.strings */; };
 		FBB1CDC915C3F3E4000D168E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDC815C3F3E4000D168E /* main.m */; };
-		FBB1CDCD15C3F3E4000D168E /* RHoKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDCC15C3F3E4000D168E /* RHoKAppDelegate.m */; };
+		FBB1CDCD15C3F3E4000D168E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDCC15C3F3E4000D168E /* AppDelegate.m */; };
 		FBB1CDD015C3F3E4000D168E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDCE15C3F3E4000D168E /* MainStoryboard_iPhone.storyboard */; };
 		FBB1CDD315C3F3E4000D168E /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDD115C3F3E4000D168E /* MainStoryboard_iPad.storyboard */; };
-		FBB1CDD615C3F3E4000D168E /* RHoKFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDD515C3F3E4000D168E /* RHoKFirstViewController.m */; };
+		FBB1CDD615C3F3E4000D168E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDD515C3F3E4000D168E /* FirstViewController.m */; };
 		FBB1CDD815C3F3E4000D168E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDD715C3F3E4000D168E /* first.png */; };
 		FBB1CDDA15C3F3E4000D168E /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDD915C3F3E4000D168E /* first@2x.png */; };
-		FBB1CDDD15C3F3E4000D168E /* RHoKSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDDC15C3F3E4000D168E /* RHoKSecondViewController.m */; };
+		FBB1CDDD15C3F3E4000D168E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDDC15C3F3E4000D168E /* SecondViewController.m */; };
 		FBB1CDDF15C3F3E4000D168E /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDDE15C3F3E4000D168E /* second.png */; };
 		FBB1CDE115C3F3E4000D168E /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDE015C3F3E4000D168E /* second@2x.png */; };
 /* End PBXBuildFile section */
@@ -54,16 +54,16 @@
 		FBB1CDC615C3F3E4000D168E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FBB1CDC815C3F3E4000D168E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FBB1CDCA15C3F3E4000D168E /* Resilience-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Resilience-Prefix.pch"; sourceTree = "<group>"; };
-		FBB1CDCB15C3F3E4000D168E /* RHoKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RHoKAppDelegate.h; sourceTree = "<group>"; };
-		FBB1CDCC15C3F3E4000D168E /* RHoKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHoKAppDelegate.m; sourceTree = "<group>"; };
+		FBB1CDCB15C3F3E4000D168E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FBB1CDCC15C3F3E4000D168E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FBB1CDCF15C3F3E4000D168E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		FBB1CDD215C3F3E4000D168E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		FBB1CDD415C3F3E4000D168E /* RHoKFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RHoKFirstViewController.h; sourceTree = "<group>"; };
-		FBB1CDD515C3F3E4000D168E /* RHoKFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHoKFirstViewController.m; sourceTree = "<group>"; };
+		FBB1CDD415C3F3E4000D168E /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		FBB1CDD515C3F3E4000D168E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		FBB1CDD715C3F3E4000D168E /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		FBB1CDD915C3F3E4000D168E /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		FBB1CDDB15C3F3E4000D168E /* RHoKSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RHoKSecondViewController.h; sourceTree = "<group>"; };
-		FBB1CDDC15C3F3E4000D168E /* RHoKSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RHoKSecondViewController.m; sourceTree = "<group>"; };
+		FBB1CDDB15C3F3E4000D168E /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		FBB1CDDC15C3F3E4000D168E /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		FBB1CDDE15C3F3E4000D168E /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		FBB1CDE015C3F3E4000D168E /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -162,16 +162,16 @@
 		FBB1CDC215C3F3E4000D168E /* Resilience */ = {
 			isa = PBXGroup;
 			children = (
-				FBB1CDCB15C3F3E4000D168E /* RHoKAppDelegate.h */,
-				FBB1CDCC15C3F3E4000D168E /* RHoKAppDelegate.m */,
+				FBB1CDCB15C3F3E4000D168E /* AppDelegate.h */,
+				FBB1CDCC15C3F3E4000D168E /* AppDelegate.m */,
 				FBB1CDCE15C3F3E4000D168E /* MainStoryboard_iPhone.storyboard */,
 				FBB1CDD115C3F3E4000D168E /* MainStoryboard_iPad.storyboard */,
-				FBB1CDD415C3F3E4000D168E /* RHoKFirstViewController.h */,
-				FBB1CDD515C3F3E4000D168E /* RHoKFirstViewController.m */,
+				FBB1CDD415C3F3E4000D168E /* FirstViewController.h */,
+				FBB1CDD515C3F3E4000D168E /* FirstViewController.m */,
 				FBB1CDD715C3F3E4000D168E /* first.png */,
 				FBB1CDD915C3F3E4000D168E /* first@2x.png */,
-				FBB1CDDB15C3F3E4000D168E /* RHoKSecondViewController.h */,
-				FBB1CDDC15C3F3E4000D168E /* RHoKSecondViewController.m */,
+				FBB1CDDB15C3F3E4000D168E /* SecondViewController.h */,
+				FBB1CDDC15C3F3E4000D168E /* SecondViewController.m */,
 				FBB1CDDE15C3F3E4000D168E /* second.png */,
 				FBB1CDE015C3F3E4000D168E /* second@2x.png */,
 				FBB1CDC315C3F3E4000D168E /* Supporting Files */,
@@ -344,9 +344,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBB1CDC915C3F3E4000D168E /* main.m in Sources */,
-				FBB1CDCD15C3F3E4000D168E /* RHoKAppDelegate.m in Sources */,
-				FBB1CDD615C3F3E4000D168E /* RHoKFirstViewController.m in Sources */,
-				FBB1CDDD15C3F3E4000D168E /* RHoKSecondViewController.m in Sources */,
+				FBB1CDCD15C3F3E4000D168E /* AppDelegate.m in Sources */,
+				FBB1CDD615C3F3E4000D168E /* FirstViewController.m in Sources */,
+				FBB1CDDD15C3F3E4000D168E /* SecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
