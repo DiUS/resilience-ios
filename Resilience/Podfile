@@ -1,4 +1,7 @@
-platform :ios
+platform :ios, '6.0'
+
+pod 'BlocksKit'
+pod 'TestFlightSDK'
 
 target :KiwiUnitTest, :exclusive => true do
   pod 'Kiwi'

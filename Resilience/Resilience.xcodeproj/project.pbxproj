@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A86D59268EF4D8C8A67442B /* libPods-KiwiUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */; };
+		36006BB38007457FAB707F62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC1857335340F486B2BB90 /* libPods.a */; };
 		A1044B14165CCB71002DC3E1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */; };
 		A1044B15165CCB71002DC3E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
 		A1044B16165CCB71002DC3E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBE15C3F3E4000D168E /* Foundation.framework */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4FC03149DC7F41B78235D0EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		98F56E13E3194D75BD49CDDC /* Pods-KiwiUnitTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiwiUnitTest.xcconfig"; path = "Pods/Pods-KiwiUnitTest.xcconfig"; sourceTree = SOURCE_ROOT; };
 		A1044B13165CCB70002DC3E1 /* KiwiUnitTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiwiUnitTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1044B19165CCB71002DC3E1 /* KiwiUnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KiwiUnitTest-Info.plist"; sourceTree = "<group>"; };
@@ -42,11 +44,12 @@
 		A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "config-debug.xcconfig"; path = "Config/config-debug.xcconfig"; sourceTree = "<group>"; };
 		A1044B33165CD18D002DC3E1 /* config-common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "config-common.xcconfig"; path = "Config/config-common.xcconfig"; sourceTree = "<group>"; };
 		A1044B84165CDA42002DC3E1 /* ResillienceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResillienceSpec.m; sourceTree = "<group>"; };
+		C1FC1857335340F486B2BB90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KiwiUnitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB1CDB815C3F3E4000D168E /* Resilience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resilience.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB1CDBC15C3F3E4000D168E /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FBB1CDBE15C3F3E4000D168E /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FBB1CDC415C3F3E4000D168E /* Resilience-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Resilience-Info.plist"; sourceTree = "<group>"; };
 		FBB1CDC615C3F3E4000D168E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FBB1CDC815C3F3E4000D168E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 				FBB1CDBD15C3F3E4000D168E /* UIKit.framework in Frameworks */,
 				FBB1CDBF15C3F3E4000D168E /* Foundation.framework in Frameworks */,
 				FBB1CDC115C3F3E4000D168E /* CoreGraphics.framework in Frameworks */,
+				36006BB38007457FAB707F62 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +120,7 @@
 				A1044B31165CD18C002DC3E1 /* config-release.xcconfig */,
 				A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */,
 				A1044B33165CD18D002DC3E1 /* config-common.xcconfig */,
+				4FC03149DC7F41B78235D0EC /* Pods.xcconfig */,
 				98F56E13E3194D75BD49CDDC /* Pods-KiwiUnitTest.xcconfig */,
 			);
 			name = Configs;
@@ -149,6 +154,7 @@
 				FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */,
 				FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */,
 				DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */,
+				C1FC1857335340F486B2BB90 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -213,6 +219,7 @@
 				FBB1CDB415C3F3E4000D168E /* Sources */,
 				FBB1CDB515C3F3E4000D168E /* Frameworks */,
 				FBB1CDB615C3F3E4000D168E /* Resources */,
+				24FE5AB0E662423BB299FAB1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -280,6 +287,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		24FE5AB0E662423BB299FAB1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 		A1044B11165CCB70002DC3E1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -457,7 +478,7 @@
 		};
 		FBB1CDFA15C3F3E5000D168E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */;
+			baseConfigurationReference = 4FC03149DC7F41B78235D0EC /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
@@ -469,7 +490,7 @@
 		};
 		FBB1CDFB15C3F3E5000D168E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1044B31165CD18C002DC3E1 /* config-release.xcconfig */;
+			baseConfigurationReference = 4FC03149DC7F41B78235D0EC /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
