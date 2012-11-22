@@ -10,7 +10,8 @@ Bundler.require
                       }
 TESTFLIGHT_API_TOKEN  = ''
 TESTFLIGHT_TEAM_TOKEN = ''
-TARGET                = Xcode.workspace(:Resilience).project(:Resilience).target(:Resilience)
+MAIN_TARGET                = Xcode.workspace(:Resilience).project(:Resilience).target(:Resilience)
+PODS_TARGET                = Xcode.workspace(:Resilience).project(:Pods).target(:Pods)
 # KEYCHAIN_PATH         = 'Provisioning/Hood.keychain'
 # KEYCHAIN_PASSWORD     = 'hoodapp'
 
@@ -23,19 +24,21 @@ task :ci => ['adhoc:testflight', 'release:package']
 CONFIGS.keys.each do |config_name|
   puts config_name
   namespace config_name.downcase do
-    config = TARGET.config(config_name)
+    config = MAIN_TARGET.config(config_name)
 
     # keychain = Xcode::Keychain.new KEYCHAIN_PATH
     # keychain.unlock KEYCHAIN_PASSWORD
 
-    builder = config.builder
-    # builder.profile   = CONFIGS[config_name]
-    # builder.identity  = 'iPhone Distribution: A Cretu-Barbul'
-    # builder.keychain  = keychain
+    pods_builder = PODS_TARGET.config(config_name).builder
+    main_builder = config.builder
+    # main_builder.profile   = CONFIGS[config_name]
+    # main_builder.identity  = 'iPhone Distribution: A Cretu-Barbul'
+    # main_builder.keychain  = keychain
 
     desc "Clean the #{config_name} config"
     task :clean do
-      builder.clean
+      pods_builder.clean
+      main_builder.clean
     end
 
     desc "Build the #{config_name} config"
@@ -44,19 +47,20 @@ CONFIGS.keys.each do |config_name|
         info.version = ENV['BUILD_NUMBER']||"#{Socket.gethostname}-SNAPSHOT"
         info.save
       end
-      builder.build
+      pods_builder.build
+      main_builder.build
     end
 
 
     desc "Package (.ipa & .dSYM.zip) the #{config_name} config"
     task :package => [:build] do
-      builder.package
+      main_builder.package
     end
 
     unless config_name==:Release
       desc "Upload the #{config_name} config to testflight"
       task :testflight  => [:package] do
-        response = builder.testflight TESTFLIGHT_API_TOKEN, TESTFLIGHT_TEAM_TOKEN do |tf|
+        response = main_builder.testflight TESTFLIGHT_API_TOKEN, TESTFLIGHT_TEAM_TOKEN do |tf|
           tf.notify = true
           tf.lists  << "Internal"
           tf.notes  = `git log -n 1`
