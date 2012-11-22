@@ -3,6 +3,7 @@ resilience-ios
 
 Installation
 ------------
+The resilience build requires XCode 4.5+ and ruby 1.9.x with bundler.
 ````
 gem install xcoder
 gem install cocoapods
