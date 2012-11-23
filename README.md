@@ -7,6 +7,7 @@ The resilience build requires XCode 4.5+ and ruby 1.9.x with bundler.
 ````
 bundle install
 cd Resilience
+pod setup
 pod install
 ````
 Building

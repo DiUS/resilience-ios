@@ -1,4 +1,4 @@
-
+#include "Pods.xcconfig"
 GCC_VERSION = com.apple.compilers.llvm.clang.1_0
 SDKROOT = iphoneos
 TARGETED_DEVICE_FAMILY = 1,2

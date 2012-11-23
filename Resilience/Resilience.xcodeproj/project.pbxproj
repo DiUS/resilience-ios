@@ -478,7 +478,7 @@
 		};
 		FBB1CDFA15C3F3E5000D168E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FC03149DC7F41B78235D0EC /* Pods.xcconfig */;
+			baseConfigurationReference = A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
@@ -490,7 +490,7 @@
 		};
 		FBB1CDFB15C3F3E5000D168E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FC03149DC7F41B78235D0EC /* Pods.xcconfig */;
+			baseConfigurationReference = A1044B31165CD18C002DC3E1 /* config-release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
