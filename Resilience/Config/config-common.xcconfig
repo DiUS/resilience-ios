@@ -20,8 +20,10 @@ IPHONEOS_DEPLOYMENT_TARGET = 6.0
 
 // SDK
 SUPPORTED_PLATFORMS = iphonesimulator iphoneos
+ARCHS = $(ARCHS_STANDARD_32_BIT)
 
-//Libraries Included. 
+//Libraries Included.
+LIBRARY_SEARCH_PATHS = "$SRCROOT/Pods/build/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME"
 
 // Compiler warnings
 GCC_WARN_SHADOW = YES

@@ -1,0 +1,3 @@
+
+#include "config-debug.xcconfig"
+#include "../Pods/Pods-KiwiUnitTest.xcconfig"

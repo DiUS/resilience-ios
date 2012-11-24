@@ -44,6 +44,7 @@
 		A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "config-debug.xcconfig"; path = "Config/config-debug.xcconfig"; sourceTree = "<group>"; };
 		A1044B33165CD18D002DC3E1 /* config-common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "config-common.xcconfig"; path = "Config/config-common.xcconfig"; sourceTree = "<group>"; };
 		A1044B84165CDA42002DC3E1 /* ResillienceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResillienceSpec.m; sourceTree = "<group>"; };
+		A1044BA01660889B002DC3E1 /* config-test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "config-test.xcconfig"; path = "Config/config-test.xcconfig"; sourceTree = "<group>"; };
 		C1FC1857335340F486B2BB90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KiwiUnitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB1CDB815C3F3E4000D168E /* Resilience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resilience.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +118,7 @@
 		A1044B30165CCD82002DC3E1 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
+				A1044BA01660889B002DC3E1 /* config-test.xcconfig */,
 				A1044B31165CD18C002DC3E1 /* config-release.xcconfig */,
 				A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */,
 				A1044B33165CD18D002DC3E1 /* config-common.xcconfig */,
@@ -390,7 +392,7 @@
 /* Begin XCBuildConfiguration section */
 		A1044B22165CCB71002DC3E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98F56E13E3194D75BD49CDDC /* Pods-KiwiUnitTest.xcconfig */;
+			baseConfigurationReference = A1044BA01660889B002DC3E1 /* config-test.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -409,7 +411,7 @@
 		};
 		A1044B23165CCB71002DC3E1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98F56E13E3194D75BD49CDDC /* Pods-KiwiUnitTest.xcconfig */;
+			baseConfigurationReference = A1044BA01660889B002DC3E1 /* config-test.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;

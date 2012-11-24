@@ -13,9 +13,13 @@ pod install
 Building
 --------
 
-### To build and run unit tests:
+### To build:
 ````
 rake debug:build
+````
+### To run unit tests:
+````
+rake debug:test
 ````
 ### To upload to testflight:
 ````
