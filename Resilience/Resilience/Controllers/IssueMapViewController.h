@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  IssueMapViewController.h
 //  Resilience
 //
 //  Created by Daryl on 28/07/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface IssueMapViewController : UIViewController
 
 @end

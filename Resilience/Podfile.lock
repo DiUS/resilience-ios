@@ -3,16 +3,19 @@ PODS:
 - BlocksKit (1.8.0):
   - libffi
 - Kiwi (1.1.1)
+- Parse (1.1.10)
 - TestFlightSDK (1.2.beta2)
 - libffi (3.0.11)
 
 DEPENDENCIES:
 - BlocksKit
 - Kiwi
+- Parse
 - TestFlightSDK
 
 SPEC CHECKSUMS:
   BlocksKit: 4b6039288115dda2240526e6d1e45bfe28003ef1
+  Parse: 7562edd0ccab08d69e0e96dbcaca303a7c250725
   TestFlightSDK: 964167fdbf681a26e4452d087b779cafcba756ae
   libffi: 8a1d9ba43c0c84b546b42c6f742714e73aa07ae1
   Kiwi: 06407ae4d33a33310aed1202113d002eda1d56eb
