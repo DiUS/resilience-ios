@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A86D59268EF4D8C8A67442B /* libPods-KiwiUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */; };
+		2DC18258FD9DDF558C3C3F91 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D5AE40EEA58FF035E16 /* RootViewController.m */; };
 		36006BB38007457FAB707F62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC1857335340F486B2BB90 /* libPods.a */; };
 		A1044B14165CCB71002DC3E1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */; };
 		A1044B15165CCB71002DC3E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
@@ -60,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DC18D5AE40EEA58FF035E16 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		4FC03149DC7F41B78235D0EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		98F56E13E3194D75BD49CDDC /* Pods-KiwiUnitTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiwiUnitTest.xcconfig"; path = "Pods/Pods-KiwiUnitTest.xcconfig"; sourceTree = SOURCE_ROOT; };
 		A1044B13165CCB70002DC3E1 /* KiwiUnitTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiwiUnitTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +190,8 @@
 				A1DDA47A16661980003A21C0 /* IssueMapViewController.m */,
 				A1DDA47B16661980003A21C0 /* IssueListViewController.h */,
 				A1DDA47C16661980003A21C0 /* IssueListViewController.m */,
+				2DC18D5AE40EEA58FF035E16 /* RootViewController.m */,
+				2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				FBB1CDCD15C3F3E4000D168E /* AppDelegate.m in Sources */,
 				A1DDA47D16661980003A21C0 /* IssueMapViewController.m in Sources */,
 				A1DDA47E16661980003A21C0 /* IssueListViewController.m in Sources */,
+				2DC18258FD9DDF558C3C3F91 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

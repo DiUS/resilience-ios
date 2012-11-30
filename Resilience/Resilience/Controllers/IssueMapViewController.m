@@ -8,14 +8,9 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-//  self.title = @"Issue Maps";
-//  UIImage *selectedImage = [UIImage imageNamed:@"TabBar-IssueMapSelected"];
-//  UIImage *unselectedImage = [UIImage imageNamed:@"TabBarSelection"];
 
-  self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Issue Maps" image:[UIImage imageNamed:@"TabBar-IssueMap"] tag:0];
-//  [self.tabBarItem setFinishedSelectedImage:selectedImage withFinishedUnselectedImage:unselectedImage];
+  self.view.backgroundColor = [UIColor blueColor];
 
-  // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {

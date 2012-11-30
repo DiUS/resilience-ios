@@ -1,20 +1,21 @@
 #import "AppDelegate.h"
 #import "IssueMapViewController.h"
 #import "IssueListViewController.h"
+#import "RootViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   // Override point for customization after application launch.
-  UIViewController *viewController1, *viewController2;
+  RootViewController *rootViewController = [[RootViewController alloc] init];
+  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
 
-  viewController1 = [[IssueMapViewController alloc] init];
-  viewController2 = [[IssueListViewController alloc] init];
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController1];
-  self.tabBarController = [[UITabBarController alloc] init];
-  self.tabBarController.viewControllers = @[navigationController, viewController2];
-  self.window.rootViewController = self.tabBarController;
+  UIImage *navBarImage = [UIImage imageNamed:@"TitleBar"];
+  [[UINavigationBar appearance] setBackgroundImage:[navBarImage resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)] forBarMetrics:UIBarMetricsDefault];
+
+  self.window.rootViewController = navigationController;
+
   [self.window makeKeyAndVisible];
   return YES;
 }

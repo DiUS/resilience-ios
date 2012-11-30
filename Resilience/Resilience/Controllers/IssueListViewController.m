@@ -9,7 +9,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Issue List" image:[UIImage imageNamed:@"TabBar-IssueList"] tag:0];
+  self.view.backgroundColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning {
