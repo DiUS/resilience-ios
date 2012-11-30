@@ -14,6 +14,7 @@ Building
 --------
 
 ### To build:
+Edit the Rakefile to change the value of 'main_builder.identity' to be the name of the developer certificate you downloaded from the iOS Provisioning Portal. The easy way to do this is find the certificate in your Keychain (hint: it will begin with "iPhone Developer: <your name> (<some string ID>)"), ctrl-click Get Info, and copy the common name.
 ````
 rake debug:build
 ````
