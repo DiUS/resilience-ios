@@ -28,12 +28,10 @@
 
   self.listButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
   [self.listButton setTitle:@"List" forState:UIControlStateNormal];
-  self.listButton.backgroundColor = [UIColor yellowColor];
   [self.listButton addTarget:self action:@selector(showListView) forControlEvents:UIControlEventTouchUpInside];
 
   self.mapButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
   [self.mapButton setTitle:@"Map" forState:UIControlStateNormal];
-  self.mapButton.backgroundColor = [UIColor blueColor];
   [self.mapButton addTarget:self action:@selector(showMapView) forControlEvents:UIControlEventTouchUpInside];
 
   self.mapButton.frame = CGRectMake(140, 340, 100, 50);
@@ -54,7 +52,6 @@
 
 - (void) addIssue {
   AddIncidentViewController *incidentViewController = [[AddIncidentViewController alloc] init];
-  incidentViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(dismissAddIssue)];
 
   UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:incidentViewController];
   navController.modalTransitionStyle = incidentViewController.modalTransitionStyle;
@@ -62,9 +59,7 @@
   [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (void)dismissAddIssue {
-  [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 
 - (void) showListView {
  [self swapView:self.issueMapViewController with:self.issueListViewController];
