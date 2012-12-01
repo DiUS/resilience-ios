@@ -11,7 +11,7 @@
 @property (nonatomic, strong) NSString *subCategory;
 @property (nonatomic, strong) CLLocation *location;
 
-- (id)initWithName:(NSString *)name andLocation:(CLLocation *)location andCategory:(NSString *)category andDate:(NSDate *)updatedDate;
+- (id)initWithName:(NSString *)name andLocation:(CLLocation *)location andCategory:(NSString *)category andDate:(NSDate *)updatedDate andID:(NSString *)id;
 - (NSString *)updatedDateAsString;
 
 //        private Impact scale;

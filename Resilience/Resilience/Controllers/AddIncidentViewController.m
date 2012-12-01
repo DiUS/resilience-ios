@@ -53,7 +53,7 @@
   [[ParseClient sharedClient] updloadImage:self.photo andIncident:[
           [Incident alloc] initWithName:self.nameTextField.text
                             andLocation:self.locationManager.location
-                            andCategory:@"Water" andDate:[NSDate date]]];
+                            andCategory:@"Water" andDate:[NSDate date] andID:nil]];
 
   [self dismissViewControllerAnimated:YES completion:nil];
 }

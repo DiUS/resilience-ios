@@ -37,6 +37,7 @@
       }
       pointAnnotation.title = incident.name;
       pointAnnotation.subtitle = [incident updatedDateAsString];
+      pointAnnotation.ID = incident.id;
       [self.mapView addAnnotation:pointAnnotation];
     }
     // Zoom to fit everything we found
@@ -53,6 +54,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  // Set up the map view
   self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
   [self.view addSubview:self.mapView];
   self.mapView.delegate = self;
@@ -80,7 +82,7 @@
     if (nil == view) {
       view = [[MKPinAnnotationView alloc]
               initWithAnnotation:annotation reuseIdentifier:@"identifier"];
-      //            view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+      view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
     WaypointAnnotation *marker = annotation;
     switch (marker.markerType) {
@@ -98,6 +100,12 @@
     [view setAnimatesDrop:NO];
   }
   return view;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+  WaypointAnnotation *annotation = view.annotation;
+  NSLog(@"calloutAccessoryControlTapped: %@, %@", annotation.title, annotation.ID);
+//  [self.navigationController pushViewController:self.detailsThemes animated:YES];
 }
 
 - (void)zoomToFitMapAnnotations:(MKMapView *)mapView {

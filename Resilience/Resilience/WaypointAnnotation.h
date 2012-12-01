@@ -17,6 +17,7 @@ typedef enum {kFireMarker, kWindMarker, kWaterMarker} MarkerType;
     NSString *_title;
     NSString *_subtitle;
     MarkerType _markerType;
+    NSString *_ID;
 }
 
 + (id)annotationWithCoordinate:(CLLocationCoordinate2D)coordinate;
@@ -26,5 +27,6 @@ typedef enum {kFireMarker, kWindMarker, kWaterMarker} MarkerType;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, assign) MarkerType markerType;
+@property (nonatomic, copy) NSString *ID;
 
 @end
