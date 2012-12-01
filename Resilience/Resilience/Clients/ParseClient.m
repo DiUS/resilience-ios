@@ -8,11 +8,15 @@
 
 @implementation ParseClient
 
++ (NSURL *)serverURL {
+  return [NSURL URLWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"ServerURL"]];
+}
+
 + (ParseClient *)sharedClient {
   static ParseClient *_sharedClient = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    _sharedClient = [[ParseClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.parse.com"]];
+    _sharedClient = [[ParseClient alloc] initWithBaseURL:[ParseClient serverURL]];
   });
 
   return _sharedClient;
@@ -25,20 +29,24 @@
   }
 
   [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-
+  self.parameterEncoding = AFJSONParameterEncoding;
   [self setDefaultHeader:@"Accept" value:@"application/json"];
   [self setDefaultHeader:@"Content-Type" value:@"application/json"];
-  [self setDefaultHeader:@"X-Parse-Application-Id" value:@"8NMa9Rsekvkh8k1DNI0g1ehyVLkiTFDV7Mnn2a6i"];
-  [self setDefaultHeader:@"X-Parse-REST-API-Key" value:@"eOBxve3CJq7QBms7BRwKPK3g1hwBH4ccfqpKgvVt"];
+  [self setAPIHeaders:self];
 
   return self;
+}
+
+- (void)setAPIHeaders:(AFHTTPClient *) client{
+  [client setDefaultHeader:@"X-Parse-Application-Id" value:@"8NMa9Rsekvkh8k1DNI0g1ehyVLkiTFDV7Mnn2a6i"];
+  [client setDefaultHeader:@"X-Parse-REST-API-Key" value:@"eOBxve3CJq7QBms7BRwKPK3g1hwBH4ccfqpKgvVt"];
 }
 
 - (void)fetchIncidents:(IncidentSuccessBlock)success failure:(ClientFailureBlock)failure
 {
   [self getPath:@"1/classes/incident" parameters:@{@"order" : @"-createdAt"} success:^(AFHTTPRequestOperation *operation, id JSON) {
 
-    NSLog(@"App.net Global Stream: %@", JSON);
+    NSLog(@"Incidents: %@", JSON);
     NSArray *incidentsRaw = [[NSArray alloc] initWithArray:[JSON objectForKey:@"results"]];
 //    NSArray *incidents = [incidentsRaw map:^id(id obj) {
 //      return [[Incident alloc] initWithName:[obj objectForKey:@"name"]];
@@ -60,5 +68,40 @@
   }];
 }
 
+- (void)updloadImage:(UIImage *)image andIncident:(Incident *)incident {
+  // TODO specify compression
+  NSData *jpegData = UIImageJPEGRepresentation(image, 0.75);
+
+  // TODO - inline client for uploading
+  AFHTTPClient *client= [AFHTTPClient clientWithBaseURL:[ParseClient serverURL]];
+  [client setDefaultHeader:@"Accept" value:@"application/json"];
+  [self setAPIHeaders:client];
+
+  NSMutableURLRequest *urlRequest = [client multipartFormRequestWithMethod:@"POST" path:@"1/files/parseincident.jpeg" parameters:nil constructingBodyWithBlock:^(id <AFMultipartFormData> formData) {
+    [formData appendPartWithFileData:jpegData name:@"parseincident" fileName:@"parseincident.jpeg" mimeType:@"image/jpeg"];
+  }];
+
+  AFJSONRequestOperation *requestOperation =
+          [AFJSONRequestOperation JSONRequestOperationWithRequest:urlRequest
+                                                          success:^(NSURLRequest *request1, NSHTTPURLResponse *response, id JSON) {
+    NSDictionary *parameters = @{
+            @"name": incident.name,
+            @"note": @"iOS - default note",
+            @"impact": @"LOW",
+            @"category": incident.category,
+            @"photo": @{@"url" : JSON[@"url"],
+                        @"name": JSON[@"name"],
+                        @"__type": @"File"} };
+
+    [self postPath:@"1/classes/incident" parameters:parameters success:^(AFHTTPRequestOperation *op2, id responseObject2) {
+      NSLog(@"Upload incident: %@", responseObject2);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+      NSLog(@"error: %@", [error localizedDescription]);
+    }];
+  } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    NSLog(@"error: %@", [error localizedDescription]);
+  }];
+  [requestOperation start];
+}
 
 @end

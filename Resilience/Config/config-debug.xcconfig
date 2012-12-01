@@ -12,3 +12,5 @@ GCC_PRECOMPILE_PREFIX_HEADER = YES
 GCC_PREFIX_HEADER = Resilience/Resilience-Prefix.pch
 
 OTHER_LDFLAGS = $(inherited) $(XCODE_TEST_LDFLAGS)
+
+SERVER_URL=api.parse.com

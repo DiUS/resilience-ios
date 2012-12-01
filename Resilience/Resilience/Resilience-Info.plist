@@ -22,6 +22,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>Daryls-MacBook-Pro-2.local-SNAPSHOT</string>
+  <key>ServerURL</key>
+  <string>https://${SERVER_URL}</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -1,5 +1,7 @@
 
 #import "AddIncidentViewController.h"
+#import "ParseClient.h"
+#import "Incident.h"
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
@@ -10,6 +12,7 @@
 @property (nonatomic, strong) UITextField *categoryTextField;
 @property (nonatomic, strong) UITextField *subcategoryTextField;
 @property (nonatomic, strong) UITextField *notesTextField;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
 
@@ -39,10 +42,18 @@
 
   [self.view addSubview:self.cameraButton];
   [self.view addSubview:self.nameTextField];
+
+  self.locationManager = [[CLLocationManager alloc] init];
+  self.locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
+  self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters; // 100 m
+  [self.locationManager startUpdatingLocation];
 }
 
 - (void)saveIssueAndDismiss {
-  
+  [[ParseClient sharedClient] updloadImage:self.photo andIncident:[
+          [Incident alloc] initWithName:self.nameTextField.text
+                            andLocation:self.locationManager.location
+                            andCategory:@"Water" andDate:[NSDate date]]];
 
   [self dismissViewControllerAnimated:YES completion:nil];
 }

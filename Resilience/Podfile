@@ -5,6 +5,7 @@ pod 'TestFlightSDK'
 #pod 'Parse'
 pod 'DCIntrospect'
 pod 'AFNetworking'
+pod 'AFHTTPRequestOperationLogger'
 
 target :KiwiUnitTest, :exclusive => true do
   pod 'Kiwi'

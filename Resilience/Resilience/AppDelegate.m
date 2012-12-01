@@ -3,10 +3,13 @@
 #import "IssueListViewController.h"
 #import "RootViewController.h"
 #import "DCIntrospect.h"
+#import "AFHTTPRequestOperationLogger.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
+
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   // Override point for customization after application launch.
   RootViewController *rootViewController = [[RootViewController alloc] init];

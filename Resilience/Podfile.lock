@@ -1,5 +1,7 @@
 
 PODS:
+- AFHTTPRequestOperationLogger (0.9.0):
+  - AFNetworking (>= 0.9.0)
 - AFNetworking (1.0.1)
 - BlocksKit (1.8.0):
   - libffi
@@ -9,6 +11,7 @@ PODS:
 - libffi (3.0.11)
 
 DEPENDENCIES:
+- AFHTTPRequestOperationLogger
 - AFNetworking
 - BlocksKit
 - DCIntrospect
@@ -16,6 +19,7 @@ DEPENDENCIES:
 - TestFlightSDK
 
 SPEC CHECKSUMS:
+  AFHTTPRequestOperationLogger: ed62e8c2c4c307c3f4b530c2a18464747aab5977
   AFNetworking: 4c11f857c9a18d65f4257c90a1e74ac49f0ac422
   BlocksKit: 4b6039288115dda2240526e6d1e45bfe28003ef1
   DCIntrospect: 2f5cab0b58b170459ebcb200f59042306fcb0c0d
