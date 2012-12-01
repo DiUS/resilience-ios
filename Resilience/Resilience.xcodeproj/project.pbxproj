@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A86D59268EF4D8C8A67442B /* libPods-KiwiUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */; };
 		2DC18258FD9DDF558C3C3F91 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D5AE40EEA58FF035E16 /* RootViewController.m */; };
+		2DC184F50FA121D494252633 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1807D58B75EBE487FA664 /* ParseClient.m */; };
 		2DC18959D9F57F94AF1540A4 /* Incident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F94C37BC75BD6209AA1 /* Incident.m */; };
 		36006BB38007457FAB707F62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC1857335340F486B2BB90 /* libPods.a */; };
 		A1044B14165CCB71002DC3E1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */; };
@@ -50,6 +51,8 @@
 		A1DDA4EF16661F34003A21C0 /* TitleBarOverlap.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DDA4D316661F34003A21C0 /* TitleBarOverlap.png */; };
 		A1DDA4F016661F34003A21C0 /* TitleBarOverlap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DDA4D416661F34003A21C0 /* TitleBarOverlap@2x.png */; };
 		A1DDA5771668DDFE003A21C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */; };
+		A1DDA5A21669C45F003A21C0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */; };
+		A1DDA5A41669C591003A21C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */; };
 		FBB1CDBD15C3F3E4000D168E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
 		FBB1CDBF15C3F3E4000D168E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBE15C3F3E4000D168E /* Foundation.framework */; };
 		FBB1CDC115C3F3E4000D168E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */; };
@@ -63,7 +66,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DC1807D58B75EBE487FA664 /* ParseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClient.m; sourceTree = "<group>"; };
 		2DC1834ADA9D6FA0D8F84BD6 /* Incident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Incident.h; sourceTree = "<group>"; };
+		2DC186B3B33F3F312A621DE4 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
 		2DC18D5AE40EEA58FF035E16 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2DC18F94C37BC75BD6209AA1 /* Incident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Incident.m; sourceTree = "<group>"; };
 		2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -111,6 +116,8 @@
 		A1DDA4D316661F34003A21C0 /* TitleBarOverlap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TitleBarOverlap.png; sourceTree = "<group>"; };
 		A1DDA4D416661F34003A21C0 /* TitleBarOverlap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TitleBarOverlap@2x.png"; sourceTree = "<group>"; };
 		A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C1FC1857335340F486B2BB90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KiwiUnitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB1CDB815C3F3E4000D168E /* Resilience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resilience.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +153,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1DDA5A41669C591003A21C0 /* MobileCoreServices.framework in Frameworks */,
+				A1DDA5A21669C45F003A21C0 /* SystemConfiguration.framework in Frameworks */,
 				A1DDA5771668DDFE003A21C0 /* QuartzCore.framework in Frameworks */,
 				FBB1CDBD15C3F3E4000D168E /* UIKit.framework in Frameworks */,
 				FBB1CDBF15C3F3E4000D168E /* Foundation.framework in Frameworks */,
@@ -157,6 +166,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DC1816390D85C804900DC13 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				2DC186B3B33F3F312A621DE4 /* ParseClient.h */,
+				2DC1807D58B75EBE487FA664 /* ParseClient.m */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
 		2DC18D0F0EB804C787291455 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,7 +267,7 @@
 		FBB1CDAD15C3F3E4000D168E = {
 			isa = PBXGroup;
 			children = (
-				A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */,
+				A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */,
 				A1044B30165CCD82002DC3E1 /* Configs */,
 				FBB1CDC215C3F3E4000D168E /* Resilience */,
 				A1044B17165CCB71002DC3E1 /* KiwiUnitTest */,
@@ -270,6 +288,8 @@
 		FBB1CDBB15C3F3E4000D168E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */,
+				A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */,
 				FBB1CDBC15C3F3E4000D168E /* UIKit.framework */,
 				FBB1CDBE15C3F3E4000D168E /* Foundation.framework */,
 				FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */,
@@ -293,6 +313,7 @@
 				FBB1CDE015C3F3E4000D168E /* second@2x.png */,
 				FBB1CDC315C3F3E4000D168E /* Supporting Files */,
 				2DC18D0F0EB804C787291455 /* Models */,
+				2DC1816390D85C804900DC13 /* Clients */,
 			);
 			path = Resilience;
 			sourceTree = "<group>";
@@ -493,6 +514,7 @@
 				A1DDA47E16661980003A21C0 /* IssueListViewController.m in Sources */,
 				2DC18258FD9DDF558C3C3F91 /* RootViewController.m in Sources */,
 				2DC18959D9F57F94AF1540A4 /* Incident.m in Sources */,
+				2DC184F50FA121D494252633 /* ParseClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,7 @@
 
 #import "IssueListViewController.h"
 #import "Incident.h"
+#import "ParseClient.h"
 
 @interface IssueListViewController ()
 
@@ -13,7 +14,14 @@
 - (id)init
 {
   if(self = [super initWithStyle:UITableViewStylePlain]) {
-    self.issues = @[[[Incident alloc] initWithName:@"mike needs an aws key"], [[Incident alloc] initWithName:@"Zerobot fail"]];
+    self.issues = [[NSArray alloc] init];
+
+    [[ParseClient sharedClient] fetchIncidents:^(NSArray *notifications) {
+      self.issues = notifications;
+      [self.tableView reloadData];
+    } failure:^(NSError *error) {
+
+    }];
   }
   return self;
 }
