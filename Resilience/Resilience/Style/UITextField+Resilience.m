@@ -7,8 +7,7 @@
 + (UITextField *)styledTextField {
   UITextField *textField = [[UITextField alloc] initWithFrame:CGRectZero];
   textField.backgroundColor = [UIColor clearColor];
-  textField.borderStyle = UITextBorderStyleLine;
-  textField.layer.cornerRadius = 10;
+  textField.borderStyle = UITextBorderStyleRoundedRect;
   return textField;
 }
 

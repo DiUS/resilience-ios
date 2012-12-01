@@ -4,6 +4,7 @@
 #import "IssueListViewController.h"
 #import "IssueMapViewController.h"
 #import "AddIncidentViewController.h"
+#import "UIColor+Resilience.h"
 
 @interface RootViewController()
 
@@ -46,7 +47,7 @@
 
   self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
   [self.mapButton setTitle:@" Map" forState:UIControlStateNormal];
-  [self.mapButton setTitleColor:[UIColor colorWithRed:(89.f/255.f) green:(89.f/255.f) blue:(89.f/255.f) alpha:1] forState:UIControlStateNormal];
+  [self.mapButton setTitleColor:[UIColor defaultTextColor] forState:UIControlStateNormal];
   [self.mapButton addTarget:self action:@selector(showMapView) forControlEvents:UIControlEventTouchUpInside];
   [self.mapButton setImage:[UIImage imageNamed:@"TabBar-IssueMap"] forState:UIControlStateNormal];
   self.mapButton.backgroundColor = [UIColor clearColor];
@@ -56,10 +57,7 @@
   self.listButton.frame = CGRectMake(0, 0, tabBar.frame.size.width / 2, tabBar.frame.size.height);
 
   self.issueListViewController = [[IssueListViewController alloc] init];
-  self.issueListViewController.view.frame = CGRectMake(0, 0, 320, 310);
-
   self.issueMapViewController = [[IssueMapViewController alloc] init];
-  self.issueMapViewController.view.frame = CGRectMake(0, 0, 320, 310);
 
   [tabBar addSubview:self.mapButton];
   [tabBar addSubview:self.listButton];
@@ -67,6 +65,11 @@
 
   [self showListView];
   self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)viewWillLayoutSubviews {
+  self.issueListViewController.view.frame = CGRectMake(0, 0, 320, 356);
+  self.issueMapViewController.view.frame = CGRectMake(0, 0, 320, 356);
 }
 
 - (void) addIssue {
@@ -77,8 +80,6 @@
 
   [self presentViewController:navController animated:YES completion:nil];
 }
-
-
 
 - (void) showListView {
   [self swapView:self.issueMapViewController with:self.issueListViewController];

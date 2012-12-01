@@ -38,7 +38,7 @@
   self.cameraButton.frame = CGRectMake(10, 10, 100, 100);
 
   self.nameTextField = [UITextField styledTextField];
-  self.nameTextField.frame = CGRectMake(120, 30, 190, 44);
+  self.nameTextField.frame = CGRectMake(120, 30, 190, 30);
   self.nameTextField.placeholder = @"Incident description";
   [self.nameTextField addTarget:self action:@selector(enableDoneButton) forControlEvents:UIControlEventEditingChanged];
 

@@ -1,7 +1,8 @@
-
+#import <CoreLocation/CoreLocation.h>
 #import "IssueListViewController.h"
 #import "Incident.h"
 #import "ParseClient.h"
+#import "IncidentCell.h"
 
 @interface IssueListViewController ()
 
@@ -14,6 +15,8 @@
 - (id)init {
   if (self = [super initWithStyle:UITableViewStylePlain]) {
     self.incidents = [[NSArray alloc] init];
+    self.tableView.separatorColor = [UIColor whiteColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   }
   return self;
 }
@@ -47,14 +50,21 @@
   Incident *incident = [self.incidents objectAtIndex:(NSUInteger) indexPath.row];
 
   static NSString *CellIdentifier = @"IssueCell";
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  IncidentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if(!cell)
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    cell = [[IncidentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 
-  cell.detailTextLabel.text = incident.name;
-  cell.backgroundColor = [UIColor whiteColor];
-  [cell.detailTextLabel sizeToFit];
+  cell.nameLabel.text = incident.name;
+  cell.locationLabel.text = [NSString stringWithFormat:@"near: %f, %f", incident.location.coordinate.longitude, incident.location.coordinate.latitude];
+
+  NSDateFormatter *format = [[NSDateFormatter alloc] init];
+  [format setDateFormat:@"HH:mm, dd MMM yyyy"];
+  cell.timeLabel.text = [NSString stringWithFormat:@"Reported on %@", [format stringFromDate:incident.updatedDate]];
   return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 70.;
 }
 
 @end
