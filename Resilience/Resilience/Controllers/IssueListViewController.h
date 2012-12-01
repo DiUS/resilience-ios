@@ -1,6 +1,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IssueListViewController : UIViewController
+@interface IssueListViewController : UITableViewController
 
 @end

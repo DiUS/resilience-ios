@@ -17,11 +17,11 @@
 
 - (void)viewDidLoad {
   // TODO: Use Autolayout
-  UIButton *uiButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  uiButton.frame = CGRectMake(0, 0, 55, 51);
+  UIButton *addIssueButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  addIssueButton.frame = CGRectMake(0, 0, 55, 51);
   UIImage *buttonImage = [UIImage imageNamed:@"AddButton"];
-  [uiButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-  UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:uiButton];
+  [addIssueButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+  UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:addIssueButton];
   self.navigationItem.rightBarButtonItem = item;
 
   self.listButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -38,15 +38,15 @@
   self.listButton.frame = CGRectMake(20, 340, 100, 50);
 
   self.issueListViewController = [[IssueListViewController alloc] init];
-  self.issueListViewController.view.frame = CGRectMake(0, 0, 320, 350);
+  self.issueListViewController.view.frame = CGRectMake(0, 0, 320, 310);
 
   self.issueMapViewController = [[IssueMapViewController alloc] init];
-  self.issueMapViewController.view.frame = CGRectMake(0, 0, 320, 350);
+  self.issueMapViewController.view.frame = CGRectMake(0, 0, 320, 310);
 
   [self.view addSubview:self.mapButton];
   [self.view addSubview:self.listButton];
 
-  [self showMapView];
+  [self showListView];
   self.view.backgroundColor = [UIColor whiteColor];
 }
 

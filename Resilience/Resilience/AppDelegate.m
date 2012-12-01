@@ -2,6 +2,7 @@
 #import "IssueMapViewController.h"
 #import "IssueListViewController.h"
 #import "RootViewController.h"
+#import "DCIntrospect.h"
 
 @implementation AppDelegate
 
@@ -17,6 +18,10 @@
   self.window.rootViewController = navigationController;
 
   [self.window makeKeyAndVisible];
+
+#if TARGET_IPHONE_SIMULATOR
+  [[DCIntrospect sharedIntrospector] start];
+#endif
   return YES;
 }
 

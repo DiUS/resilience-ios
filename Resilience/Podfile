@@ -3,6 +3,7 @@ platform :ios, '6.0'
 pod 'BlocksKit'
 pod 'TestFlightSDK'
 pod 'Parse'
+pod 'DCIntrospect'
 
 target :KiwiUnitTest, :exclusive => true do
   pod 'Kiwi'
