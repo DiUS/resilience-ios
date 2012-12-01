@@ -1,4 +1,4 @@
-
+#import <CoreLocation/CoreLocation.h>
 #import "ParseClient.h"
 #import "AFHTTPClient.h"
 #import "AFNetworking.h"
@@ -88,6 +88,9 @@
             @"name": incident.name,
             @"note": @"iOS - default note",
             @"impact": @"LOW",
+            @"location": @{ @"__type": @"GeoPoint",
+                            @"latitude": [NSNumber numberWithDouble:incident.location.coordinate.latitude],
+                            @"longitude": [NSNumber numberWithDouble:incident.location.coordinate.longitude]},
             @"category": incident.category,
             @"photo": @{@"url" : JSON[@"url"],
                         @"name": JSON[@"name"],
