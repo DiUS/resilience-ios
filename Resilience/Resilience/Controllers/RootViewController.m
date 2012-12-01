@@ -2,6 +2,7 @@
 #import "UIBarButtonItem+BlocksKit.h"
 #import "IssueListViewController.h"
 #import "IssueMapViewController.h"
+#import "AddIncidentViewController.h"
 
 @interface RootViewController()
 
@@ -23,6 +24,7 @@
   [addIssueButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
   UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:addIssueButton];
   self.navigationItem.rightBarButtonItem = item;
+  [addIssueButton addTarget:self action:@selector(addIssue) forControlEvents:UIControlEventTouchUpInside];
 
   self.listButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
   [self.listButton setTitle:@"List" forState:UIControlStateNormal];
@@ -51,7 +53,17 @@
 }
 
 - (void) addIssue {
+  AddIncidentViewController *incidentViewController = [[AddIncidentViewController alloc] init];
+  incidentViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(dismissAddIssue)];
 
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:incidentViewController];
+  navController.modalTransitionStyle = incidentViewController.modalTransitionStyle;
+
+  [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)dismissAddIssue {
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) showListView {
@@ -71,7 +83,7 @@
   [self addChildViewController:secondController];
   [[self view] addSubview:secondController.view];
 
-  [UIView animateWithDuration:1. delay:0 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+  [UIView animateWithDuration:.25 delay:0 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
     secondController.view.alpha = 1.;
   } completion:^(BOOL finished) {
     [secondController didMoveToParentViewController:self];

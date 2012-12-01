@@ -11,6 +11,7 @@
 		2DC18258FD9DDF558C3C3F91 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D5AE40EEA58FF035E16 /* RootViewController.m */; };
 		2DC184F50FA121D494252633 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1807D58B75EBE487FA664 /* ParseClient.m */; };
 		2DC18959D9F57F94AF1540A4 /* Incident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F94C37BC75BD6209AA1 /* Incident.m */; };
+		2DC18E1F69BEE156C4E9ADE3 /* AddIncidentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */; };
 		36006BB38007457FAB707F62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC1857335340F486B2BB90 /* libPods.a */; };
 		A1044B14165CCB71002DC3E1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */; };
 		A1044B15165CCB71002DC3E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
@@ -69,7 +70,9 @@
 		2DC1807D58B75EBE487FA664 /* ParseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClient.m; sourceTree = "<group>"; };
 		2DC1834ADA9D6FA0D8F84BD6 /* Incident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Incident.h; sourceTree = "<group>"; };
 		2DC186B3B33F3F312A621DE4 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
+		2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIncidentViewController.m; sourceTree = "<group>"; };
 		2DC18D5AE40EEA58FF035E16 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		2DC18F9380670437838A556E /* AddIncidentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIncidentViewController.h; sourceTree = "<group>"; };
 		2DC18F94C37BC75BD6209AA1 /* Incident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Incident.m; sourceTree = "<group>"; };
 		2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		4FC03149DC7F41B78235D0EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -225,6 +228,8 @@
 				A1DDA47C16661980003A21C0 /* IssueListViewController.m */,
 				2DC18D5AE40EEA58FF035E16 /* RootViewController.m */,
 				2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */,
+				2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */,
+				2DC18F9380670437838A556E /* AddIncidentViewController.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -267,7 +272,6 @@
 		FBB1CDAD15C3F3E4000D168E = {
 			isa = PBXGroup;
 			children = (
-				A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */,
 				A1044B30165CCD82002DC3E1 /* Configs */,
 				FBB1CDC215C3F3E4000D168E /* Resilience */,
 				A1044B17165CCB71002DC3E1 /* KiwiUnitTest */,
@@ -288,6 +292,7 @@
 		FBB1CDBB15C3F3E4000D168E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */,
 				A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */,
 				A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */,
 				FBB1CDBC15C3F3E4000D168E /* UIKit.framework */,
@@ -515,6 +520,7 @@
 				2DC18258FD9DDF558C3C3F91 /* RootViewController.m in Sources */,
 				2DC18959D9F57F94AF1540A4 /* Incident.m in Sources */,
 				2DC184F50FA121D494252633 /* ParseClient.m in Sources */,
+				2DC18E1F69BEE156C4E9ADE3 /* AddIncidentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
