@@ -45,7 +45,9 @@
 //    }];
     NSMutableArray *incidents = [[NSMutableArray alloc] init];
     for (NSDictionary * incident in incidentsRaw) {
-      [incidents addObject:[[Incident alloc] initWithName:[incident objectForKey:@"name"]]];
+      NSDictionary *locationDictionary = [incident objectForKey:@"location"];
+      CLLocation *location = [[CLLocation alloc] initWithLatitude:[[locationDictionary valueForKey:@"latitude"] doubleValue] longitude:[[locationDictionary valueForKey:@"longitude"] doubleValue]];
+      [incidents addObject:[[Incident alloc] initWithName:[incident objectForKey:@"name"] andLocation:location]];
     }
 
     success(incidents);

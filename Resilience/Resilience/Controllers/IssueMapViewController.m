@@ -1,8 +1,13 @@
 #import "IssueMapViewController.h"
 #import "WaypointAnnotation.h"
 #import "ZSPinAnnotation.h"
+#import "ParseClient.h"
+#import "Incident.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface IssueMapViewController ()
+
+@property (nonatomic, strong) NSArray *incidents;
 
 @end
 
@@ -10,6 +15,27 @@
 
 
 #pragma mark - view lifecycle
+
+- (void)viewWillAppear:(BOOL)animated {
+  // Display the incident markers
+  [[ParseClient sharedClient] fetchIncidents:^(NSArray *incidents) {
+    self.incidents = incidents;
+    for (unsigned int i=0; i<[self.incidents count]; i++) {
+      Incident *incident = [self.incidents objectAtIndex:i];
+      CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;
+      WaypointAnnotation *pointAnnotation = [WaypointAnnotation annotationWithCoordinate:pointCoordinate];
+      pointAnnotation.markerType = kFireMarker;
+      pointAnnotation.title = incident.name;
+//      [mapView addAnnotation:pointAnnotation];
+    }
+  } failure:^(NSError *error) {
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Whoa...!"
+                                                      message:[error localizedDescription]
+                                                     delegate:nil cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    [message show];
+  }];
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];

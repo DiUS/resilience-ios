@@ -54,6 +54,18 @@
 		A1DDA5771668DDFE003A21C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */; };
 		A1DDA5A21669C45F003A21C0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */; };
 		A1DDA5A41669C591003A21C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */; };
+		FB1EA1221669E2F7002B93EF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1EA1211669E2F6002B93EF /* MapKit.framework */; };
+		FB1EA1271669E38D002B93EF /* WaypointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1EA1261669E38D002B93EF /* WaypointAnnotation.m */; };
+		FB1EA1341669E39B002B93EF /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1EA12A1669E39B002B93EF /* Annotation.m */; };
+		FB1EA1351669E39B002B93EF /* color.png in Resources */ = {isa = PBXBuildFile; fileRef = FB1EA12B1669E39B002B93EF /* color.png */; };
+		FB1EA1361669E39B002B93EF /* color@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB1EA12C1669E39B002B93EF /* color@2x.png */; };
+		FB1EA1371669E39B002B93EF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FB1EA12D1669E39B002B93EF /* README.md */; };
+		FB1EA1381669E39B002B93EF /* shading.png in Resources */ = {isa = PBXBuildFile; fileRef = FB1EA12E1669E39B002B93EF /* shading.png */; };
+		FB1EA1391669E39B002B93EF /* shading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB1EA12F1669E39B002B93EF /* shading@2x.png */; };
+		FB1EA13A1669E39B002B93EF /* stick.png in Resources */ = {isa = PBXBuildFile; fileRef = FB1EA1301669E39B002B93EF /* stick.png */; };
+		FB1EA13B1669E39B002B93EF /* stick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB1EA1311669E39B002B93EF /* stick@2x.png */; };
+		FB1EA13C1669E39B002B93EF /* ZSPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1EA1331669E39B002B93EF /* ZSPinAnnotation.m */; };
+		FB1EA13E1669F8D4002B93EF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1EA13D1669F8D4002B93EF /* CoreLocation.framework */; };
 		FBB1CDBD15C3F3E4000D168E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
 		FBB1CDBF15C3F3E4000D168E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBE15C3F3E4000D168E /* Foundation.framework */; };
 		FBB1CDC115C3F3E4000D168E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDC015C3F3E4000D168E /* CoreGraphics.framework */; };
@@ -123,6 +135,21 @@
 		A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C1FC1857335340F486B2BB90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KiwiUnitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB1EA1211669E2F6002B93EF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FB1EA1251669E38D002B93EF /* WaypointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaypointAnnotation.h; sourceTree = "<group>"; };
+		FB1EA1261669E38D002B93EF /* WaypointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaypointAnnotation.m; sourceTree = "<group>"; };
+		FB1EA1291669E39B002B93EF /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		FB1EA12A1669E39B002B93EF /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
+		FB1EA12B1669E39B002B93EF /* color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = color.png; sourceTree = "<group>"; };
+		FB1EA12C1669E39B002B93EF /* color@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color@2x.png"; sourceTree = "<group>"; };
+		FB1EA12D1669E39B002B93EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		FB1EA12E1669E39B002B93EF /* shading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shading.png; sourceTree = "<group>"; };
+		FB1EA12F1669E39B002B93EF /* shading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shading@2x.png"; sourceTree = "<group>"; };
+		FB1EA1301669E39B002B93EF /* stick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stick.png; sourceTree = "<group>"; };
+		FB1EA1311669E39B002B93EF /* stick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick@2x.png"; sourceTree = "<group>"; };
+		FB1EA1321669E39B002B93EF /* ZSPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSPinAnnotation.h; sourceTree = "<group>"; };
+		FB1EA1331669E39B002B93EF /* ZSPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSPinAnnotation.m; sourceTree = "<group>"; };
+		FB1EA13D1669F8D4002B93EF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FBB1CDB815C3F3E4000D168E /* Resilience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Resilience.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB1CDBC15C3F3E4000D168E /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FBB1CDBE15C3F3E4000D168E /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -156,6 +183,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB1EA13E1669F8D4002B93EF /* CoreLocation.framework in Frameworks */,
+				FB1EA1221669E2F7002B93EF /* MapKit.framework in Frameworks */,
 				A1DDA5A41669C591003A21C0 /* MobileCoreServices.framework in Frameworks */,
 				A1DDA5A21669C45F003A21C0 /* SystemConfiguration.framework in Frameworks */,
 				A1DDA5771668DDFE003A21C0 /* QuartzCore.framework in Frameworks */,
@@ -269,6 +298,34 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		FB1EA1241669E31F002B93EF /* Markers */ = {
+			isa = PBXGroup;
+			children = (
+				FB1EA1281669E39B002B93EF /* ZSPinAnnotation */,
+				FB1EA1251669E38D002B93EF /* WaypointAnnotation.h */,
+				FB1EA1261669E38D002B93EF /* WaypointAnnotation.m */,
+			);
+			name = Markers;
+			sourceTree = "<group>";
+		};
+		FB1EA1281669E39B002B93EF /* ZSPinAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				FB1EA1291669E39B002B93EF /* Annotation.h */,
+				FB1EA12A1669E39B002B93EF /* Annotation.m */,
+				FB1EA12B1669E39B002B93EF /* color.png */,
+				FB1EA12C1669E39B002B93EF /* color@2x.png */,
+				FB1EA12D1669E39B002B93EF /* README.md */,
+				FB1EA12E1669E39B002B93EF /* shading.png */,
+				FB1EA12F1669E39B002B93EF /* shading@2x.png */,
+				FB1EA1301669E39B002B93EF /* stick.png */,
+				FB1EA1311669E39B002B93EF /* stick@2x.png */,
+				FB1EA1321669E39B002B93EF /* ZSPinAnnotation.h */,
+				FB1EA1331669E39B002B93EF /* ZSPinAnnotation.m */,
+			);
+			path = ZSPinAnnotation;
+			sourceTree = "<group>";
+		};
 		FBB1CDAD15C3F3E4000D168E = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +349,8 @@
 		FBB1CDBB15C3F3E4000D168E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB1EA13D1669F8D4002B93EF /* CoreLocation.framework */,
+				FB1EA1211669E2F6002B93EF /* MapKit.framework */,
 				A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */,
 				A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */,
 				A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */,
@@ -308,6 +367,7 @@
 		FBB1CDC215C3F3E4000D168E /* Resilience */ = {
 			isa = PBXGroup;
 			children = (
+				FB1EA1241669E31F002B93EF /* Markers */,
 				A1DDA4B816661F34003A21C0 /* Assets */,
 				A1DDA47816661980003A21C0 /* Controllers */,
 				FBB1CDCB15C3F3E4000D168E /* AppDelegate.h */,
@@ -451,6 +511,13 @@
 				A1DDA4EE16661F34003A21C0 /* TitleBar@2x.png in Resources */,
 				A1DDA4EF16661F34003A21C0 /* TitleBarOverlap.png in Resources */,
 				A1DDA4F016661F34003A21C0 /* TitleBarOverlap@2x.png in Resources */,
+				FB1EA1351669E39B002B93EF /* color.png in Resources */,
+				FB1EA1361669E39B002B93EF /* color@2x.png in Resources */,
+				FB1EA1371669E39B002B93EF /* README.md in Resources */,
+				FB1EA1381669E39B002B93EF /* shading.png in Resources */,
+				FB1EA1391669E39B002B93EF /* shading@2x.png in Resources */,
+				FB1EA13A1669E39B002B93EF /* stick.png in Resources */,
+				FB1EA13B1669E39B002B93EF /* stick@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +588,9 @@
 				2DC18959D9F57F94AF1540A4 /* Incident.m in Sources */,
 				2DC184F50FA121D494252633 /* ParseClient.m in Sources */,
 				2DC18E1F69BEE156C4E9ADE3 /* AddIncidentViewController.m in Sources */,
+				FB1EA1271669E38D002B93EF /* WaypointAnnotation.m in Sources */,
+				FB1EA1341669E39B002B93EF /* Annotation.m in Sources */,
+				FB1EA13C1669E39B002B93EF /* ZSPinAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
