@@ -10,6 +10,7 @@
 		1A86D59268EF4D8C8A67442B /* libPods-KiwiUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */; };
 		2DC18258FD9DDF558C3C3F91 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D5AE40EEA58FF035E16 /* RootViewController.m */; };
 		2DC184F50FA121D494252633 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1807D58B75EBE487FA664 /* ParseClient.m */; };
+		2DC187F17BC56D25002EA972 /* UITextField+Resilience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B2D4F1831DEEC671AFB /* UITextField+Resilience.m */; };
 		2DC18959D9F57F94AF1540A4 /* Incident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F94C37BC75BD6209AA1 /* Incident.m */; };
 		2DC18E1F69BEE156C4E9ADE3 /* AddIncidentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */; };
 		36006BB38007457FAB707F62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC1857335340F486B2BB90 /* libPods.a */; };
@@ -82,6 +83,8 @@
 		2DC1807D58B75EBE487FA664 /* ParseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClient.m; sourceTree = "<group>"; };
 		2DC1834ADA9D6FA0D8F84BD6 /* Incident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Incident.h; sourceTree = "<group>"; };
 		2DC186B3B33F3F312A621DE4 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
+		2DC188C66B7EEA2E54A8F67C /* UITextField+Resilience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Resilience.h"; sourceTree = "<group>"; };
+		2DC18B2D4F1831DEEC671AFB /* UITextField+Resilience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Resilience.m"; sourceTree = "<group>"; };
 		2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIncidentViewController.m; sourceTree = "<group>"; };
 		2DC18D5AE40EEA58FF035E16 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2DC18F9380670437838A556E /* AddIncidentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIncidentViewController.h; sourceTree = "<group>"; };
@@ -205,6 +208,15 @@
 				2DC1807D58B75EBE487FA664 /* ParseClient.m */,
 			);
 			path = Clients;
+			sourceTree = "<group>";
+		};
+		2DC18CD5D5E91A5CBC3C5A98 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				2DC18B2D4F1831DEEC671AFB /* UITextField+Resilience.m */,
+				2DC188C66B7EEA2E54A8F67C /* UITextField+Resilience.h */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		2DC18D0F0EB804C787291455 /* Models */ = {
@@ -379,6 +391,7 @@
 				FBB1CDC315C3F3E4000D168E /* Supporting Files */,
 				2DC18D0F0EB804C787291455 /* Models */,
 				2DC1816390D85C804900DC13 /* Clients */,
+				2DC18CD5D5E91A5CBC3C5A98 /* Style */,
 			);
 			path = Resilience;
 			sourceTree = "<group>";
@@ -591,6 +604,7 @@
 				FB1EA1271669E38D002B93EF /* WaypointAnnotation.m in Sources */,
 				FB1EA1341669E39B002B93EF /* Annotation.m in Sources */,
 				FB1EA13C1669E39B002B93EF /* ZSPinAnnotation.m in Sources */,
+				2DC187F17BC56D25002EA972 /* UITextField+Resilience.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

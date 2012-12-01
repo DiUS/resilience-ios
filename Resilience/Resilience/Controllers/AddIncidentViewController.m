@@ -2,6 +2,7 @@
 #import "AddIncidentViewController.h"
 #import "ParseClient.h"
 #import "Incident.h"
+#import "UITextField+Resilience.h"
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
@@ -36,7 +37,8 @@
 
   self.cameraButton.frame = CGRectMake(10, 10, 100, 100);
 
-  self.nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(120, 30, 190, 44)];
+  self.nameTextField = [UITextField styledTextField];
+  self.nameTextField.frame = CGRectMake(120, 30, 190, 44);
   self.nameTextField.placeholder = @"Incident description";
   [self.nameTextField addTarget:self action:@selector(enableDoneButton) forControlEvents:UIControlEventEditingChanged];
 
