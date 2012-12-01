@@ -26,8 +26,17 @@
       Incident *incident = [self.incidents objectAtIndex:i];
       CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;
       WaypointAnnotation *pointAnnotation = [WaypointAnnotation annotationWithCoordinate:pointCoordinate];
-      pointAnnotation.markerType = kFireMarker;
+      if ([incident.category isEqualToString:@"Wind"]) {
+        pointAnnotation.markerType = kWindMarker;
+      }
+      else if ([incident.category isEqualToString:@"Water"]) {
+        pointAnnotation.markerType = kWaterMarker;
+      }
+      else if ([incident.category isEqualToString:@"Fire"]) {
+        pointAnnotation.markerType = kFireMarker;
+      }
       pointAnnotation.title = incident.name;
+      pointAnnotation.subtitle = [incident updatedDateAsString];
       [self.mapView addAnnotation:pointAnnotation];
     }
     // Zoom to fit everything we found

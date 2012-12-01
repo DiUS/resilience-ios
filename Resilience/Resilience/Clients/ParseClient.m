@@ -47,7 +47,10 @@
     for (NSDictionary * incident in incidentsRaw) {
       NSDictionary *locationDictionary = [incident objectForKey:@"location"];
       CLLocation *location = [[CLLocation alloc] initWithLatitude:[[locationDictionary valueForKey:@"latitude"] doubleValue] longitude:[[locationDictionary valueForKey:@"longitude"] doubleValue]];
-      [incidents addObject:[[Incident alloc] initWithName:[incident objectForKey:@"name"] andLocation:location]];
+      NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+      [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"];
+      NSDate *date = [dateFormatter dateFromString:[incident objectForKey:@"updatedAt"]];
+      [incidents addObject:[[Incident alloc] initWithName:[incident objectForKey:@"name"] andLocation:location andCategory:[incident objectForKey:@"category"] andDate:date]];
     }
 
     success(incidents);
