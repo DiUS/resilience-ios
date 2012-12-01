@@ -5,25 +5,30 @@
 
 @interface IssueListViewController ()
 
-@property (nonatomic, strong) NSArray *issues;
+@property (nonatomic, strong) NSArray *incidents;
 
 @end
 
 @implementation IssueListViewController
 
-- (id)init
-{
-  if(self = [super initWithStyle:UITableViewStylePlain]) {
-    self.issues = [[NSArray alloc] init];
-
-    [[ParseClient sharedClient] fetchIncidents:^(NSArray *notifications) {
-      self.issues = notifications;
-      [self.tableView reloadData];
-    } failure:^(NSError *error) {
-
-    }];
+- (id)init {
+  if (self = [super initWithStyle:UITableViewStylePlain]) {
+    self.incidents = [[NSArray alloc] init];
   }
   return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [[ParseClient sharedClient] fetchIncidents:^(NSArray *incidents) {
+    self.incidents = incidents;
+    [self.tableView reloadData];
+  } failure:^(NSError *error) {
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Whoa...!"
+                                                      message:[error localizedDescription]
+                                                     delegate:nil cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    [message show];
+  }];
 }
 
 - (void)viewDidLoad {
@@ -35,11 +40,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return (NSInteger)self.issues.count;
+  return (NSInteger)self.incidents.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  Incident *incident = [self.issues objectAtIndex:(NSUInteger)indexPath.row];
+  Incident *incident = [self.incidents objectAtIndex:(NSUInteger) indexPath.row];
 
   static NSString *CellIdentifier = @"IssueCell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

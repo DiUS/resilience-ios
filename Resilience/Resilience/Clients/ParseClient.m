@@ -36,7 +36,7 @@
 
 - (void)fetchIncidents:(IncidentSuccessBlock)success failure:(ClientFailureBlock)failure
 {
-  [self getPath:@"1/classes/incident" parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+  [self getPath:@"1/classes/incident" parameters:@{@"order" : @"-createdAt"} success:^(AFHTTPRequestOperation *operation, id JSON) {
 
     NSLog(@"App.net Global Stream: %@", JSON);
     NSArray *incidentsRaw = [[NSArray alloc] initWithArray:[JSON objectForKey:@"results"]];
