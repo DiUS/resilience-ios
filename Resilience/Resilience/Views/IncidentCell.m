@@ -10,7 +10,7 @@
 
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 5, 250, 20)];
     self.nameLabel.backgroundColor = [UIColor clearColor];
-    self.nameLabel.textColor = [UIColor defaultTextColor];
+    self.nameLabel.textColor = [UIColor blackColor];
     self.nameLabel.font = [self.nameLabel.font fontWithSize:16.];
 
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 30, 250, 15)];
@@ -23,10 +23,13 @@
     self.locationLabel.textColor = [UIColor defaultTextColor];
     self.locationLabel.font = [self.locationLabel.font fontWithSize:12.];
 
-    self.contentView.backgroundColor = [UIColor colorWithRed:233./255. green:233./255. blue:233./255. alpha:1];
-    self.accessoryView.backgroundColor = [UIColor colorWithRed:233./255. green:233./255. blue:233./255. alpha:1];
-    self.backgroundColor = [UIColor colorWithRed:233./255. green:233./255. blue:233./255. alpha:1];
+    self.contentView.backgroundColor = [UIColor defaultCellBackgroundColor];
+    self.accessoryView.backgroundColor = [UIColor defaultCellBackgroundColor];
 
+    UIView* myBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+    myBackgroundView.backgroundColor = [UIColor defaultCellBackgroundColor];
+    self.backgroundView = myBackgroundView;
+      
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.timeLabel];
     [self.contentView addSubview:self.locationLabel];
