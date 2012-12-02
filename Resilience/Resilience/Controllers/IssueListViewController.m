@@ -3,6 +3,8 @@
 #import "Incident.h"
 #import "ParseClient.h"
 #import "IncidentCell.h"
+#import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface IssueListViewController ()
 
@@ -60,6 +62,7 @@
   NSDateFormatter *format = [[NSDateFormatter alloc] init];
   [format setDateFormat:@"HH:mm, dd MMM yyyy"];
   cell.timeLabel.text = [NSString stringWithFormat:@"Reported on %@", [format stringFromDate:incident.updatedDate]];
+  cell.photoImageView.image = [self imageForCategory:incident];
   return cell;
 }
 
@@ -71,6 +74,17 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (UIImage *)imageForCategory:(Incident *)incident {
+  if ([incident.category isEqualToString:@"Fire"]) {
+    return [UIImage imageNamed:@"fire"];
+  } else if ([incident.category isEqualToString:@"Water"]) {
+    return [UIImage imageNamed:@"water"];
+  } else if ([incident.category isEqualToString:@"Wind"]) {
+    return [UIImage imageNamed:@"air"];
+  }
+  return nil;
 }
 
 @end
