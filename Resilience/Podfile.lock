@@ -3,28 +3,28 @@ PODS:
 - AFHTTPRequestOperationLogger (0.9.0):
   - AFNetworking (>= 0.9.0)
 - AFNetworking (1.0.1)
-- BlocksKit (1.8.0):
-  - libffi
 - DCIntrospect (0.0.2)
 - Kiwi (1.1.1)
+- SDWebImage (2.7):
+  - SDWebImage/Main (= 2.7)
+- SDWebImage/Main (2.7)
 - TestFlightSDK (1.2.beta2)
-- libffi (3.0.11)
 
 DEPENDENCIES:
 - AFHTTPRequestOperationLogger
 - AFNetworking
-- BlocksKit
 - DCIntrospect
 - Kiwi
+- SDWebImage
 - TestFlightSDK
 
 SPEC CHECKSUMS:
   AFHTTPRequestOperationLogger: ed62e8c2c4c307c3f4b530c2a18464747aab5977
   AFNetworking: 4c11f857c9a18d65f4257c90a1e74ac49f0ac422
-  BlocksKit: 4b6039288115dda2240526e6d1e45bfe28003ef1
   DCIntrospect: 2f5cab0b58b170459ebcb200f59042306fcb0c0d
+  SDWebImage: 6be78ee398d329bdd22c85a0e11ee41bd1f52066
+  SDWebImage/Main: 6be78ee398d329bdd22c85a0e11ee41bd1f52066
   TestFlightSDK: 964167fdbf681a26e4452d087b779cafcba756ae
-  libffi: 8a1d9ba43c0c84b546b42c6f742714e73aa07ae1
   Kiwi: 06407ae4d33a33310aed1202113d002eda1d56eb
 
 COCOAPODS: 0.16.0

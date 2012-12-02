@@ -16,6 +16,8 @@
 		2DC18E1F69BEE156C4E9ADE3 /* AddIncidentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */; };
 		2DC18E45DB4B195DF781B617 /* UIColor+Resilience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18E4EE87A9F37816EE348 /* UIColor+Resilience.m */; };
 		36006BB38007457FAB707F62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FC1857335340F486B2BB90 /* libPods.a */; };
+		8927C79D166ADDC500D501B5 /* IssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8927C79C166ADDC500D501B5 /* IssueViewController.m */; };
+		8927C7B5166AE61800D501B5 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8927C7B4166AE61800D501B5 /* ImageIO.framework */; };
 		A1044B14165CCB71002DC3E1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */; };
 		A1044B15165CCB71002DC3E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBC15C3F3E4000D168E /* UIKit.framework */; };
 		A1044B16165CCB71002DC3E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB1CDBE15C3F3E4000D168E /* Foundation.framework */; };
@@ -103,6 +105,9 @@
 		2DC18F94C37BC75BD6209AA1 /* Incident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Incident.m; sourceTree = "<group>"; };
 		2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		4FC03149DC7F41B78235D0EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		8927C79B166ADDC500D501B5 /* IssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueViewController.h; sourceTree = "<group>"; };
+		8927C79C166ADDC500D501B5 /* IssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueViewController.m; sourceTree = "<group>"; };
+		8927C7B4166AE61800D501B5 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		98F56E13E3194D75BD49CDDC /* Pods-KiwiUnitTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiwiUnitTest.xcconfig"; path = "Pods/Pods-KiwiUnitTest.xcconfig"; sourceTree = SOURCE_ROOT; };
 		A1044B13165CCB70002DC3E1 /* KiwiUnitTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiwiUnitTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1044B19165CCB71002DC3E1 /* KiwiUnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KiwiUnitTest-Info.plist"; sourceTree = "<group>"; };
@@ -204,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8927C7B5166AE61800D501B5 /* ImageIO.framework in Frameworks */,
 				FB1EA13E1669F8D4002B93EF /* CoreLocation.framework in Frameworks */,
 				FB1EA1221669E2F7002B93EF /* MapKit.framework in Frameworks */,
 				A1DDA5A41669C591003A21C0 /* MobileCoreServices.framework in Frameworks */,
@@ -300,6 +306,8 @@
 				2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */,
 				2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */,
 				2DC18F9380670437838A556E /* AddIncidentViewController.h */,
+				8927C79B166ADDC500D501B5 /* IssueViewController.h */,
+				8927C79C166ADDC500D501B5 /* IssueViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -396,6 +404,7 @@
 		FBB1CDBB15C3F3E4000D168E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8927C7B4166AE61800D501B5 /* ImageIO.framework */,
 				FB1EA13D1669F8D4002B93EF /* CoreLocation.framework */,
 				FB1EA1211669E2F6002B93EF /* MapKit.framework */,
 				A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */,
@@ -649,6 +658,7 @@
 				2DC187F17BC56D25002EA972 /* UITextField+Resilience.m in Sources */,
 				2DC18A2B60EAB74BA3A4B91F /* IncidentCell.m in Sources */,
 				2DC18E45DB4B195DF781B617 /* UIColor+Resilience.m in Sources */,
+				8927C79D166ADDC500D501B5 /* IssueViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
