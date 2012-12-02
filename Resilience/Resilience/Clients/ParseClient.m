@@ -2,9 +2,9 @@
 #import "ParseClient.h"
 #import "AFHTTPClient.h"
 #import "AFNetworking.h"
-#import "NSDictionary+BlocksKit.h"
+//#import "NSDictionary+BlocksKit.h"
 #import "Incident.h"
-#import "NSArray+BlocksKit.h"
+//#import "NSArray+BlocksKit.h"
 
 @implementation ParseClient
 
@@ -58,7 +58,9 @@
       NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
       [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"];
       NSDate *date = [dateFormatter dateFromString:[incident objectForKey:@"updatedAt"]];
-      [incidents addObject:[[Incident alloc] initWithName:[incident objectForKey:@"name"] andLocation:location andCategory:[incident objectForKey:@"category"] andDate:date andID:[incident objectForKey:@"objectId"]]];
+      Incident *newIncident = [[Incident alloc] initWithName:[incident objectForKey:@"name"] andLocation:location andCategory:[incident objectForKey:@"category"] andDate:date andID:[incident objectForKey:@"objectId"]];
+      newIncident.imageUrl = incident[@"photo"][@"url"];
+      [incidents addObject:newIncident];
     }
 
     success(incidents);

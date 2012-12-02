@@ -24,6 +24,12 @@
 		A1044B35165CD18D002DC3E1 /* config-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */; };
 		A1044B36165CD18D002DC3E1 /* config-common.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A1044B33165CD18D002DC3E1 /* config-common.xcconfig */; };
 		A1044B85165CDA42002DC3E1 /* ResillienceSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A1044B84165CDA42002DC3E1 /* ResillienceSpec.m */; };
+		A19A78F3166AD88400A49071 /* air.png in Resources */ = {isa = PBXBuildFile; fileRef = A19A78EF166AD88400A49071 /* air.png */; };
+		A19A78F4166AD88400A49071 /* air@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A19A78F0166AD88400A49071 /* air@2x.png */; };
+		A19A78F5166AD88400A49071 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = A19A78F1166AD88400A49071 /* fire.png */; };
+		A19A78F6166AD88400A49071 /* fire@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A19A78F2166AD88400A49071 /* fire@2x.png */; };
+		A19A78F9166AD94800A49071 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = A19A78F7166AD94800A49071 /* water.png */; };
+		A19A78FA166AD94800A49071 /* water@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A19A78F8166AD94800A49071 /* water@2x.png */; };
 		A1DDA47D16661980003A21C0 /* IssueMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDA47A16661980003A21C0 /* IssueMapViewController.m */; };
 		A1DDA47E16661980003A21C0 /* IssueListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDA47C16661980003A21C0 /* IssueListViewController.m */; };
 		A1DDA4D516661F34003A21C0 /* AddButton.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DDA4B916661F34003A21C0 /* AddButton.png */; };
@@ -107,6 +113,12 @@
 		A1044B33165CD18D002DC3E1 /* config-common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "config-common.xcconfig"; path = "Config/config-common.xcconfig"; sourceTree = "<group>"; };
 		A1044B84165CDA42002DC3E1 /* ResillienceSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResillienceSpec.m; sourceTree = "<group>"; };
 		A1044BA01660889B002DC3E1 /* config-test.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "config-test.xcconfig"; path = "Config/config-test.xcconfig"; sourceTree = "<group>"; };
+		A19A78EF166AD88400A49071 /* air.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = air.png; sourceTree = "<group>"; };
+		A19A78F0166AD88400A49071 /* air@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "air@2x.png"; sourceTree = "<group>"; };
+		A19A78F1166AD88400A49071 /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
+		A19A78F2166AD88400A49071 /* fire@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fire@2x.png"; sourceTree = "<group>"; };
+		A19A78F7166AD94800A49071 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
+		A19A78F8166AD94800A49071 /* water@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "water@2x.png"; sourceTree = "<group>"; };
 		A1DDA47916661980003A21C0 /* IssueMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueMapViewController.h; sourceTree = "<group>"; };
 		A1DDA47A16661980003A21C0 /* IssueMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueMapViewController.m; sourceTree = "<group>"; };
 		A1DDA47B16661980003A21C0 /* IssueListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueListViewController.h; sourceTree = "<group>"; };
@@ -295,6 +307,12 @@
 		A1DDA4B816661F34003A21C0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A19A78F7166AD94800A49071 /* water.png */,
+				A19A78F8166AD94800A49071 /* water@2x.png */,
+				A19A78EF166AD88400A49071 /* air.png */,
+				A19A78F0166AD88400A49071 /* air@2x.png */,
+				A19A78F1166AD88400A49071 /* fire.png */,
+				A19A78F2166AD88400A49071 /* fire@2x.png */,
 				A1DDA4B916661F34003A21C0 /* AddButton.png */,
 				A1DDA4BA16661F34003A21C0 /* AddButton@2x.png */,
 				A1DDA4BB16661F34003A21C0 /* LeftControlDeselected.png */,
@@ -549,6 +567,12 @@
 				FB1EA1391669E39B002B93EF /* shading@2x.png in Resources */,
 				FB1EA13A1669E39B002B93EF /* stick.png in Resources */,
 				FB1EA13B1669E39B002B93EF /* stick@2x.png in Resources */,
+				A19A78F3166AD88400A49071 /* air.png in Resources */,
+				A19A78F4166AD88400A49071 /* air@2x.png in Resources */,
+				A19A78F5166AD88400A49071 /* fire.png in Resources */,
+				A19A78F6166AD88400A49071 /* fire@2x.png in Resources */,
+				A19A78F9166AD94800A49071 /* water.png in Resources */,
+				A19A78FA166AD94800A49071 /* water@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
