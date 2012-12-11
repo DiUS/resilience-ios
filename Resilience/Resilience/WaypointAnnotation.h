@@ -9,16 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "IncidentCategory.h"
 
-typedef enum {kFireMarker, kWindMarker, kWaterMarker} MarkerType;
-
-@interface WaypointAnnotation : NSObject <MKAnnotation> {
-    CLLocationCoordinate2D _coordinate;
-    NSString *_title;
-    NSString *_subtitle;
-    MarkerType _markerType;
-    NSString *_ID;
-}
+@interface WaypointAnnotation : NSObject <MKAnnotation>
 
 + (id)annotationWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
@@ -26,7 +19,7 @@ typedef enum {kFireMarker, kWindMarker, kWaterMarker} MarkerType;
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
-@property (nonatomic, assign) MarkerType markerType;
 @property (nonatomic, copy) NSString *ID;
+@property (nonatomic, strong) IncidentCategory *category;
 
 @end

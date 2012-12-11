@@ -6,11 +6,12 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "IssueViewController.h"
+#import "IncidentCategory.h"
+#import "IncidentCategory+Image.h"
 
 @interface IssueListViewController ()
 
 @property (nonatomic, strong) NSArray *incidents;
-@property (nonatomic,strong) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -61,8 +62,8 @@
   cell.nameLabel.text = incident.name;
   cell.locationLabel.text = [NSString stringWithFormat:@"near: %f, %f", incident.location.coordinate.longitude, incident.location.coordinate.latitude];
 
-  cell.timeLabel.text = [NSString stringWithFormat:@"Reported on %@", [self.dateFormatter stringFromDate:incident.updatedDate]];
-  cell.photoImageView.image = [self imageForCategory:incident];
+  cell.timeLabel.text = [NSString stringWithFormat:@"Reported on %@", [incident updatedDateAsString]];
+  cell.photoImageView.image = [incident.category imageForCategory];
   return cell;
 }
 
@@ -81,24 +82,4 @@
 
 }
 
-- (UIImage *)imageForCategory:(Incident *)incident {
-  if ([incident.category isEqualToString:@"Fire"]) {
-    return [UIImage imageNamed:@"fire"];
-  } else if ([incident.category isEqualToString:@"Water"]) {
-    return [UIImage imageNamed:@"water"];
-  } else if ([incident.category isEqualToString:@"Wind"]) {
-    return [UIImage imageNamed:@"air"];
-  }
-  return nil;
-}
-
--(NSDateFormatter*)dateFormatter
-{
-    if (_dateFormatter) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
-        [_dateFormatter setDateFormat:@"HH:mm, dd MMM yyyy"];
-
-    }
-    return _dateFormatter;
-}
 @end

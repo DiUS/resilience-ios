@@ -3,6 +3,8 @@
 #import "ZSPinAnnotation.h"
 #import "ParseClient.h"
 #import "Incident.h"
+#import "IncidentCategory.h"
+#import "IncidentCategory+Waypoint.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface IssueMapViewController ()
@@ -26,18 +28,10 @@
       Incident *incident = [self.incidents objectAtIndex:i];
       CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;
       WaypointAnnotation *pointAnnotation = [WaypointAnnotation annotationWithCoordinate:pointCoordinate];
-      if ([incident.category isEqualToString:@"Wind"]) {
-        pointAnnotation.markerType = kWindMarker;
-      }
-      else if ([incident.category isEqualToString:@"Water"]) {
-        pointAnnotation.markerType = kWaterMarker;
-      }
-      else if ([incident.category isEqualToString:@"Fire"]) {
-        pointAnnotation.markerType = kFireMarker;
-      }
       pointAnnotation.title = incident.name;
       pointAnnotation.subtitle = [incident updatedDateAsString];
       pointAnnotation.ID = incident.id;
+      pointAnnotation.category = incident.category;
       [self.mapView addAnnotation:pointAnnotation];
     }
     // Zoom to fit everything we found
@@ -78,24 +72,14 @@
             viewForAnnotation:(id <MKAnnotation>)annotation {
   MKPinAnnotationView *view = nil;
   if ([annotation isKindOfClass:[WaypointAnnotation class]]) {
+    WaypointAnnotation *waypoint = (WaypointAnnotation *)annotation;
     view = (MKPinAnnotationView *)[theMapView dequeueReusableAnnotationViewWithIdentifier:@"identifier"];
     if (nil == view) {
       view = [[MKPinAnnotationView alloc]
               initWithAnnotation:annotation reuseIdentifier:@"identifier"];
       view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
-    WaypointAnnotation *marker = annotation;
-    switch (marker.markerType) {
-      case kFireMarker:
-        view.image = [ZSPinAnnotation pinAnnotationWithColor:[UIColor greenColor]];
-        break;
-      case kWindMarker:
-        view.image = [ZSPinAnnotation pinAnnotationWithColor:[UIColor redColor]];
-        break;
-      case kWaterMarker:
-        view.image = [ZSPinAnnotation pinAnnotationWithColor:[UIColor orangeColor]];
-        break;
-    }
+    view.image = [waypoint.category annotationImage];
     [view setCanShowCallout:YES];
     [view setAnimatesDrop:NO];
   }

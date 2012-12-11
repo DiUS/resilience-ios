@@ -1,5 +1,6 @@
 
 #import "Incident.h"
+#import "IncidentCategory.h"
 
 @implementation Incident
 
@@ -8,7 +9,7 @@
   if (self) {
     self.name = name;
     self.location = location;
-    self.category = category;
+    self.category = [IncidentCategory categoryFromString:category];
     self.updatedDate = updatedDate;
     self.id = id;
   }

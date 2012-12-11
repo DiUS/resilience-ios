@@ -1,5 +1,7 @@
 #import <CoreLocation/CoreLocation.h>
 
+@class IncidentCategory;
+
 @interface Incident : NSObject
 
 @property (nonatomic, strong) NSString *id;
@@ -7,7 +9,7 @@
 @property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic, strong) NSDate *updatedDate;
 @property (nonatomic, strong) NSString *note;
-@property (nonatomic, strong) NSString *category;
+@property (nonatomic, strong) IncidentCategory *category;
 @property (nonatomic, strong) NSString *subCategory;
 @property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) CLLocation *location;

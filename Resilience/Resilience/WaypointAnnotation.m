@@ -11,12 +11,6 @@
 
 @implementation WaypointAnnotation
 
-@synthesize coordinate = _coordinate;
-@synthesize title = _title;
-@synthesize subtitle = _subtitle;
-@synthesize markerType = _markerType;
-@synthesize ID = _ID;
-
 + (id)annotationWithCoordinate:(CLLocationCoordinate2D)coordinate {
     return [[[self class] alloc] initWithCoordinate:coordinate];
 }
