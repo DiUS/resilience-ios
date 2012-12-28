@@ -13,7 +13,7 @@ TESTFLIGHT_TEAM_TOKEN = ''
 MAIN_TARGET                = Xcode.workspace(:Resilience).project(:Resilience).target(:Resilience)
 KIWI_TARGET                = Xcode.workspace(:Resilience).project(:Resilience).target(:KiwiUnitTest)
 PODS_TARGET                = Xcode.workspace(:Resilience).project(:Pods).target(:Pods)
-PODS_KIWI_TARGET                = Xcode.workspace(:Resilience).project(:Pods).target('Pods-KiwiUnitTest')
+PODS_KIWI_TARGET           = Xcode.workspace(:Resilience).project(:Pods).target('Pods-KiwiUnitTest')
 
 #
 # BEGIN RAKEFILE
