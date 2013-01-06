@@ -7,6 +7,7 @@ pod 'DCIntrospect'
 pod 'AFNetworking'
 pod 'AFHTTPRequestOperationLogger'
 pod 'SDWebImage'
+pod 'ISO8601DateFormatter'
 
 
 target :KiwiUnitTest, :exclusive => true do

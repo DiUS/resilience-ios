@@ -4,6 +4,7 @@ PODS:
   - AFNetworking (>= 0.9.0)
 - AFNetworking (1.0.1)
 - DCIntrospect (0.0.2)
+- ISO8601DateFormatter (0.6)
 - Kiwi (1.1.1)
 - SDWebImage (2.7):
   - SDWebImage/Main (= 2.7)
@@ -14,16 +15,18 @@ DEPENDENCIES:
 - AFHTTPRequestOperationLogger
 - AFNetworking
 - DCIntrospect
+- ISO8601DateFormatter
 - Kiwi
 - SDWebImage
 - TestFlightSDK
 
 SPEC CHECKSUMS:
   AFHTTPRequestOperationLogger: ed62e8c2c4c307c3f4b530c2a18464747aab5977
-  AFNetworking: 4c11f857c9a18d65f4257c90a1e74ac49f0ac422
+  AFNetworking: 0bce3ae41023e080e96b8a2e0d07c94709f72a81
   DCIntrospect: 2f5cab0b58b170459ebcb200f59042306fcb0c0d
-  SDWebImage: 6be78ee398d329bdd22c85a0e11ee41bd1f52066
-  SDWebImage/Main: 6be78ee398d329bdd22c85a0e11ee41bd1f52066
+  ISO8601DateFormatter: dc05a2481edf49668d85d3ff8c466c32eb544780
+  SDWebImage: c3306b8c68f3569f5c676d585ad77393255887dd
+  SDWebImage/Main: c3306b8c68f3569f5c676d585ad77393255887dd
   TestFlightSDK: 964167fdbf681a26e4452d087b779cafcba756ae
   Kiwi: 06407ae4d33a33310aed1202113d002eda1d56eb
 

@@ -8,10 +8,12 @@
 #import "IssueViewController.h"
 #import "IncidentCategory.h"
 #import "IncidentCategory+Image.h"
+#import "Open311Client.h"
 
 @interface IssueListViewController ()
 
 @property (nonatomic, strong) NSArray *incidents;
+@property (nonatomic, strong) NSArray *serviceRequests;
 
 @end
 
@@ -27,6 +29,17 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+  [[Open311Client sharedClient] fetchServiceRequests:^(NSArray *serviceRequests) {
+    self.serviceRequests = serviceRequests;
+  } failure:^(NSError *error) {
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Whoa...!"
+                                                      message:[error localizedDescription]
+                                                     delegate:nil cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    [message show];
+  }];
+
+
   [[ParseClient sharedClient] fetchIncidents:^(NSArray *incidents) {
     self.incidents = incidents;
     [self.tableView reloadData];

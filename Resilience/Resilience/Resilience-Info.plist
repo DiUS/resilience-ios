@@ -21,11 +21,13 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>Daryls-MacBook-Pro-2.local-SNAPSHOT</string>
-  <key>ServerURL</key>
-  <string>https://${SERVER_URL}</string>
+	<string>192-168-1-108.tpgi.com.au-SNAPSHOT</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>ServerURL</key>
+	<string>https://${SERVER_URL}</string>
+  <key>Open311ServerURL</key>
+  <string>http://${OPEN311_SERVER_URL}</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
