@@ -46,7 +46,7 @@
 
 - (void)fetchServiceRequests:(ServiceRequestSuccessBlock)success failure:(Open311FailureBlock)failure {
 //  NSDictionary *parameters = @{ @"start_date" : nil, @"end_date" : nil, @"status": @"open" };
-  [self getPath:@"requests.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
+  [self getPath:@"requests" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
 
     NSLog(@"Service Requests: %@", jsonResponse);
     NSMutableArray *serviceRequests = [[NSMutableArray alloc] init];
@@ -63,9 +63,9 @@
       serviceRequest.phone = [rawRequest valueForKey:@"phone"];
       serviceRequest.requestDescription = [rawRequest valueForKey:@"description"];
       serviceRequest.mediaUrl = [NSURL URLWithString:[rawRequest valueForKey:@"media_url"]];
-      serviceRequest.requestedDate = [[Open311Client dateFormatter] dateFromString:[rawRequest valueForKey:@"requested_datetime"]];
-      serviceRequest.updatedDate = [[Open311Client dateFormatter] dateFromString:[rawRequest valueForKey:@"updated_datetime"]];
-      serviceRequest.expectedDate = [[Open311Client dateFormatter] dateFromString:[rawRequest valueForKey:@"expected_datetime"]];
+      serviceRequest.requestedDate = [self dateFromString:[rawRequest valueForKey:@"requested_datetime"]];
+      serviceRequest.updatedDate = [self dateFromString:[rawRequest valueForKey:@"updated_datetime"]];
+      serviceRequest.expectedDate = [self dateFromString:[rawRequest valueForKey:@"expected_datetime"]];
       [serviceRequests addObject:serviceRequest];
     }
 
@@ -74,6 +74,13 @@
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     failure(error);
   }];
+}
+
+- (NSDate *)dateFromString:(NSString *)date {
+  if(date)
+    return [[Open311Client dateFormatter] dateFromString:date];
+  else
+    return nil;
 }
 
 @end
