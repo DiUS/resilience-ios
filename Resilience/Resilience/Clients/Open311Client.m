@@ -46,7 +46,7 @@
 
 - (void)fetchServiceRequests:(ServiceRequestSuccessBlock)success failure:(Open311FailureBlock)failure {
 //  NSDictionary *parameters = @{ @"start_date" : nil, @"end_date" : nil, @"status": @"open" };
-  [self getPath:@"requests" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
+  [self getPath:@"requests.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
 
     NSLog(@"Service Requests: %@", jsonResponse);
     NSMutableArray *serviceRequests = [[NSMutableArray alloc] init];
