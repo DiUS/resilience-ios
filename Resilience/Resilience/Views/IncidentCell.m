@@ -1,6 +1,7 @@
 #import "IncidentCell.h"
 #import "UIColor+Resilience.h"
 
+
 @implementation IncidentCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -25,23 +26,40 @@
     self.locationLabel.textColor = [UIColor defaultTextColor];
     self.locationLabel.font = [self.locationLabel.font fontWithSize:12.];
 
-    self.contentView.backgroundColor = [UIColor defaultCellBackgroundColor];
-    self.accessoryView.backgroundColor = [UIColor defaultCellBackgroundColor];
+    self.contentView.backgroundColor = [UIColor defaultBackgroundColor];
+    self.accessoryView.backgroundColor = [UIColor defaultBackgroundColor];
 
     UIView* myBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    myBackgroundView.backgroundColor = [UIColor defaultCellBackgroundColor];
+    myBackgroundView.backgroundColor = [UIColor defaultBackgroundColor];
     self.backgroundView = myBackgroundView;
-      
+
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.timeLabel];
     [self.contentView addSubview:self.locationLabel];
     [self.contentView addSubview:self.photoImageView];
+
+//    self.containerForContraints.translatesAutoresizingMaskIntoConstraints = NO;
+//    self.photoImageView.translatesAutoresizingMaskIntoConstraints = NO;
+//    self.nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+//    self.timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+//    self.locationLabel.translatesAutoresizingMaskIntoConstraints = NO;
+//
+//    NSDictionary *views = NSDictionaryOfVariableBindings(_photoImageView, _nameLabel, _timeLabel, _locationLabel);
+//    [self.containerForContraints addConstraints:[NSLayoutConstraint
+//            constraintsWithVisualFormat:@"|-[_photoImageView(==70)]-[_nameLabel]-|"
+//                                options:NSLayoutFormatAlignAllTop
+//                                metrics:nil views:views]];
+//
+//    [self.containerForContraints addConstraints:[NSLayoutConstraint
+//            constraintsWithVisualFormat:@"V:|-[_photoImageView(==70)]-|"
+//                                options:NSLayoutFormatAlignAllLeft
+//                                metrics:nil views:views]];
+//    [self.containerForContraints addConstraints:[NSLayoutConstraint
+//            constraintsWithVisualFormat:@"V:|-[_nameLabel]-[_timeLabel]-[_locationLabel]-|"
+//                                options:NSLayoutFormatAlignAllLeft
+//                                metrics:nil views:views]];
   }
   return self;
-}
-
-- (void)layoutSubviews {
-  [super layoutSubviews];
 }
 
 @end

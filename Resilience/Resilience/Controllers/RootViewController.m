@@ -22,7 +22,6 @@
 
 - (void)viewDidLoad {
   UIButton *addIssueButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//  self.view.translatesAutoresizingMaskIntoConstraints = NO;
   addIssueButton.frame = CGRectMake(0, 0, 55, 51);
   UIImage *buttonImage = [UIImage imageNamed:@"AddButton"];
   [addIssueButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
@@ -62,20 +61,19 @@
   [self.tabBar addSubview:self.listButton];
   [self.view addSubview:self.tabBar];
 
-//  NSDictionary *views = NSDictionaryOfVariableBindings(self.tabBar, self.mapButton, self.listButton); //shitty
-  NSDictionary *views = @{ @"tabBar": self.tabBar, @"mapButton": self.mapButton, @"listButton": self.listButton};
+  NSDictionary *views = NSDictionaryOfVariableBindings(_tabBar, _mapButton, _listButton);
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|[tabBar]|"
+          constraintsWithVisualFormat:@"|[_tabBar]|"
                               options:NSLayoutFormatAlignAllLeft
                               metrics:nil
                                 views:views]];
   [self.tabBar addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|[listButton(==mapButton)]-[mapButton]|"
+          constraintsWithVisualFormat:@"|[_listButton(==_mapButton)]-[_mapButton]|"
                               options:NSLayoutFormatAlignAllBottom
                               metrics:nil
                                 views:views]];
   [self.tabBar addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[listButton(==mapButton)]|"
+          constraintsWithVisualFormat:@"V:|[_listButton(==_mapButton)]|"
                               options:NSLayoutFormatAlignAllBottom
                               metrics:nil
                                 views:views]];
@@ -123,12 +121,12 @@
   [self addChildViewController:secondController];
   [self.view addSubview:viewToAdd];
 
-  NSDictionary *views = @{ @"viewToAdd": viewToAdd, @"tabBar": self.tabBar};
+  NSDictionary *views = NSDictionaryOfVariableBindings(viewToAdd, _tabBar);
   if(self.containerConstraints)
     [self.view removeConstraints:self.containerConstraints];
 
   self.containerConstraints = [NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[viewToAdd][tabBar(==60)]|"
+          constraintsWithVisualFormat:@"V:|[viewToAdd][_tabBar(==60)]|"
                               options:0
                               metrics:nil
                                 views:views];

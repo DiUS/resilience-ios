@@ -3,6 +3,7 @@
 #import "ParseClient.h"
 #import "Incident.h"
 #import "UITextField+Resilience.h"
+#import "UIColor+Resilience.h"
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
@@ -21,7 +22,7 @@
 
 - (id)init {
   if (self = [super init]) {
-    self.view.backgroundColor = [UIColor colorWithRed:245. green:245. blue:245. alpha:1];
+    self.view.backgroundColor = [UIColor defaultBackgroundColor];
   }
   return self;
 }
@@ -34,21 +35,35 @@
   self.cameraButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
   [self.cameraButton setTitle:@"Add photo" forState:UIControlStateNormal];
   [self.cameraButton addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
-
-  self.cameraButton.frame = CGRectMake(10, 10, 100, 100);
+  self.cameraButton.translatesAutoresizingMaskIntoConstraints = NO;
 
   self.nameTextField = [UITextField styledTextField];
-  self.nameTextField.frame = CGRectMake(120, 30, 190, 30);
   self.nameTextField.placeholder = @"Incident description";
+  self.nameTextField.backgroundColor = [UIColor whiteColor];
   [self.nameTextField addTarget:self action:@selector(enableDoneButton) forControlEvents:UIControlEventEditingChanged];
+  self.nameTextField.translatesAutoresizingMaskIntoConstraints = NO;
 
   [self.view addSubview:self.cameraButton];
   [self.view addSubview:self.nameTextField];
+  self.view.translatesAutoresizingMaskIntoConstraints = NO;
 
   self.locationManager = [[CLLocationManager alloc] init];
   self.locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
   self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters; // 100 m
   [self.locationManager startUpdatingLocation];
+
+  NSDictionary *views = NSDictionaryOfVariableBindings(_cameraButton, _nameTextField);
+  [self.view addConstraints:[NSLayoutConstraint
+          constraintsWithVisualFormat:@"|-[_cameraButton(==100)]-[_nameTextField]-|"
+                              options:NSLayoutFormatAlignAllCenterY
+                              metrics:nil
+                                views:views]];
+  [self.view addConstraints:[NSLayoutConstraint
+          constraintsWithVisualFormat:@"V:|-[_cameraButton(==100)]-|"
+                              options:0
+                              metrics:nil
+                                views:views]];
+
 }
 
 - (void)saveIssueAndDismiss {

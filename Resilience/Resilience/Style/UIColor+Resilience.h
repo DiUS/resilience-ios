@@ -3,6 +3,6 @@
 
 @interface UIColor (Resilience)
 + (UIColor *)defaultTextColor;
-+ (UIColor *)defaultCellBackgroundColor;
++ (UIColor *)defaultBackgroundColor;
 
 @end
