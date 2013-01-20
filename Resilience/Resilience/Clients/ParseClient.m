@@ -42,8 +42,7 @@
   [client setDefaultHeader:@"X-Parse-REST-API-Key" value:@"eOBxve3CJq7QBms7BRwKPK3g1hwBH4ccfqpKgvVt"];
 }
 
-- (void)fetchIncidents:(IncidentSuccessBlock)success failure:(ClientFailureBlock)failure
-{
+- (void)fetchIncidents:(IncidentSuccessBlock)success failure:(ClientFailureBlock)failure {
   [self getPath:@"1/classes/incident" parameters:@{@"order" : @"-createdAt"} success:^(AFHTTPRequestOperation *operation, id JSON) {
 
     NSLog(@"Incidents: %@", JSON);

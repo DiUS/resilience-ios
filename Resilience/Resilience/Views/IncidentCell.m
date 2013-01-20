@@ -1,7 +1,6 @@
 #import "IncidentCell.h"
 #import "UIColor+Resilience.h"
 
-
 @implementation IncidentCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -54,7 +53,7 @@
                                 options:NSLayoutFormatAlignAllLeft
                                 metrics:nil views:views]];
     [self.contentView addConstraints:[NSLayoutConstraint
-            constraintsWithVisualFormat:@"V:|-5-[_nameLabel][_timeLabel][_locationLabel]-5-|"
+            constraintsWithVisualFormat:@"V:|-5@900-[_nameLabel][_timeLabel][_locationLabel]-5@900-|"
                                 options:NSLayoutFormatAlignAllLeft
                                 metrics:nil views:views]];
   }

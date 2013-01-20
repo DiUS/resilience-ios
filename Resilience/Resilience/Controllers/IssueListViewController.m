@@ -29,18 +29,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  [[Open311Client sharedClient] fetchServiceRequests:^(NSArray *serviceRequests) {
-    self.serviceRequests = serviceRequests;
-  } failure:^(NSError *error) {
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Whoa...!"
-                                                      message:[error localizedDescription]
-                                                     delegate:nil cancelButtonTitle:@"OK"
-                                            otherButtonTitles:nil];
-    [message show];
-  }];
 
-
-  [[ParseClient sharedClient] fetchIncidents:^(NSArray *incidents) {
+//  [[ParseClient sharedClient] fetchIncidents:^(NSArray *incidents) {
+  [[Open311Client sharedClient] fetchIncidents:^(NSArray *incidents) {
     self.incidents = incidents;
     [self.tableView reloadData];
   } failure:^(NSError *error) {

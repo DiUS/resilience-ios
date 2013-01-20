@@ -3,6 +3,7 @@
 #import "AFNetworking.h"
 #import "ServiceRequest.h"
 #import "ISO8601DateFormatter.h"
+#import "IncidentAdapter.h"
 
 
 @implementation Open311Client
@@ -44,6 +45,19 @@
   return self;
 }
 
+- (void)fetchIncidents:(IncidentAdapterSuccessBlock)success failure:(Open311FailureBlock)failure
+{
+  [self fetchServiceRequests:^(NSArray *serviceRequests) {
+    NSMutableArray *incidents = [[NSMutableArray alloc] init];
+    // TODO: reactive cocoa for getting requests and services together?
+    for (ServiceRequest *request in serviceRequests) {
+      [incidents addObject:[[IncidentAdapter alloc] initWithServiceRequest:request andService:nil]];
+    }
+
+    success(incidents);
+  } failure:failure];
+}
+
 - (void)fetchServiceRequests:(ServiceRequestSuccessBlock)success failure:(Open311FailureBlock)failure {
 //  NSDictionary *parameters = @{ @"start_date" : nil, @"end_date" : nil, @"status": @"open" };
   [self getPath:@"requests.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
@@ -52,6 +66,14 @@
     NSMutableArray *serviceRequests = [[NSMutableArray alloc] init];
     for (NSDictionary * rawRequest in jsonResponse) {
       ServiceRequest *serviceRequest = [[ServiceRequest alloc] init];
+      serviceRequest.servicRequestId = [rawRequest valueForKey:@"service_request_id"];
+      serviceRequest.status = [rawRequest valueForKey:@"status"];;
+      serviceRequest.statusNotes = [rawRequest valueForKey:@"status_notes"];;
+      serviceRequest.serviceName = [rawRequest valueForKey:@"service_name"];;
+      serviceRequest.serviceCode = [rawRequest valueForKey:@"service_code"];;
+      serviceRequest.description = [rawRequest valueForKey:@"description"];;
+      serviceRequest.agencyResponsible = [rawRequest valueForKey:@"agency_responsible"];
+      serviceRequest.serviceNotice = [rawRequest valueForKey:@"service_notice"];
       serviceRequest.location = [[CLLocation alloc] initWithLatitude:[[rawRequest valueForKey:@"lat"] doubleValue] longitude:[[rawRequest valueForKey:@"long"] doubleValue]];
       serviceRequest.addressString = [rawRequest valueForKey:@"address_string"];
       serviceRequest.addressId = [rawRequest valueForKey:@"address_id"];

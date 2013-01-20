@@ -5,6 +5,14 @@
 
 @interface ServiceRequest : NSObject
 
+@property (nonatomic, strong) NSString *servicRequestId;
+@property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSString *statusNotes;
+@property (nonatomic, strong) NSString *serviceName;
+@property (nonatomic, strong) NSString *serviceCode;
+@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *agencyResponsible;
+@property (nonatomic, strong) NSString *serviceNotice;
 @property (nonatomic, strong) CLLocation *location;
 @property (nonatomic, strong) NSString *addressString;
 @property (nonatomic, strong) NSString *addressId;
