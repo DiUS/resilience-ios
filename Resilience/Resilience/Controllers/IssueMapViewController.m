@@ -5,6 +5,7 @@
 #import "Incident.h"
 #import "IncidentCategory.h"
 #import "IncidentCategory+Waypoint.h"
+#import "Open311Client.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface IssueMapViewController ()
@@ -22,8 +23,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   // Display the incident markers
-  [[ParseClient sharedClient] fetchIncidents:^(NSArray *incidents) {
-    self.incidents = incidents;
+//  [[ParseClient sharedClient] fetchIncidents:^(NSArray *incidents) {
+  [[Open311Client sharedClient] fetchIncidents:^(NSArray *incidents) {
+
+      self.incidents = incidents;
     for (unsigned int i=0; i<[self.incidents count]; i++) {
       Incident *incident = [self.incidents objectAtIndex:i];
       CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;

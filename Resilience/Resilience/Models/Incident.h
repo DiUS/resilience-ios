@@ -17,7 +17,4 @@
 - (id)initWithName:(NSString *)name andLocation:(CLLocation *)location andCategory:(NSString *)category andDate:(NSDate *)updatedDate andID:(NSString *)id;
 - (NSString *)updatedDateAsString;
 
-//        private Impact scale;
-//        private Point point;
-
 @end
