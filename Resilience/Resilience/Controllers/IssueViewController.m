@@ -9,22 +9,17 @@
 
 @implementation IssueViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-    [self components];
-  }
-  return self;
-}
-
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  [self style];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self data];
+}
+
+- (void)viewDidLoad {
+  [self style];
+}
+
+- (void)loadView {
+  [self components];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +34,7 @@
 }
 
 - (void)data {
-  self.navigationItem.title = self.incident.name;
+
   NSLog(@"%@", self.incident.imageUrl);
   if (self.incident.imageUrl) {
     [self.imageView setImageWithURL:[NSURL URLWithString:self.incident.imageUrl]];
@@ -49,9 +44,12 @@
 }
 
 - (void)components {
+  self.view = [[UIView alloc] initWithFrame:CGRectZero];
+
   self.imageView = [[UIImageView alloc] initWithImage:nil];
   [self.view addSubview:self.imageView];
 
+  self.navigationItem.title = @"Issue Details";
   self.imageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
   self.imageLabel.textAlignment = NSTextAlignmentCenter;
   self.imageLabel.backgroundColor = [UIColor clearColor];
@@ -59,7 +57,11 @@
   self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
   self.imageLabel.translatesAutoresizingMaskIntoConstraints = NO;
   self.view.translatesAutoresizingMaskIntoConstraints = NO;
+}
 
+
+- (void)updateViewConstraints {
+  [super updateViewConstraints];
   NSDictionary *views = NSDictionaryOfVariableBindings(_imageView, _imageLabel);
   [self.view addConstraints:[NSLayoutConstraint
           constraintsWithVisualFormat:@"|-[_imageLabel]-|"
@@ -75,4 +77,5 @@
                               options:0
                               metrics:nil views:views]];
 }
+
 @end
