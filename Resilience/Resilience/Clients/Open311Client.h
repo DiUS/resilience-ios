@@ -6,6 +6,7 @@
 + (Open311Client *)sharedClient;
 
 typedef void (^ServiceRequestSuccessBlock)(NSArray *serviceRequests);
+typedef void (^ServicesSuccessBlock)(NSArray *services);
 typedef void (^IncidentAdapterSuccessBlock)(NSArray *notifications);
 typedef void (^Open311FailureBlock)(NSError *error);
 

@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		1A86D59268EF4D8C8A67442B /* libPods-KiwiUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */; };
 		2DC18079D372B6042178CF88 /* IncidentCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC187887B871227C6EE0E65 /* IncidentCategory.m */; };
+		2DC18151574C53C67F546947 /* NSDictionary+TypedAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */; };
 		2DC18258FD9DDF558C3C3F91 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D5AE40EEA58FF035E16 /* RootViewController.m */; };
+		2DC184AB509191A152B1DDDD /* NSDictionary+TypedAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */; };
 		2DC184B255539A1743B9A2D9 /* IncidentAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181A7E525EF4C93715683 /* IncidentAdapter.m */; };
 		2DC184F50FA121D494252633 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1807D58B75EBE487FA664 /* ParseClient.m */; };
 		2DC184F89978579B4AFDE88D /* Open311Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC182961AE33B44B1F26C47 /* Open311Client.m */; };
@@ -110,6 +112,7 @@
 		2DC182961AE33B44B1F26C47 /* Open311Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Open311Client.m; sourceTree = "<group>"; };
 		2DC1829AE9232AA0438442E9 /* ServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceRequest.h; sourceTree = "<group>"; };
 		2DC1834ADA9D6FA0D8F84BD6 /* Incident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Incident.h; sourceTree = "<group>"; };
+		2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TypedAccess.m"; sourceTree = "<group>"; };
 		2DC1869B49911D90A70B893B /* IncidentAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncidentAdapter.h; path = IncidentAdapter.h; sourceTree = "<group>"; };
 		2DC186B3B33F3F312A621DE4 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
 		2DC18752B9B2297998D7B088 /* IncidentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentCell.h; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 		2DC18B61E739350DB1EF95B7 /* IncidentCategory+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IncidentCategory+Image.m"; sourceTree = "<group>"; };
 		2DC18C19C222D79F56128B9F /* IncidentCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentCategory.h; sourceTree = "<group>"; };
 		2DC18C74E4CAEA46175AF113 /* IncidentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentCell.m; sourceTree = "<group>"; };
+		2DC18D2852962671387D4560 /* NSDictionary+TypedAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TypedAccess.h"; sourceTree = "<group>"; };
 		2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIncidentViewController.m; sourceTree = "<group>"; };
 		2DC18D5AE40EEA58FF035E16 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2DC18E4EE87A9F37816EE348 /* UIColor+Resilience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Resilience.m"; sourceTree = "<group>"; };
@@ -270,6 +274,15 @@
 				2DC18EF0D95254C2410ACED5 /* Open311Client.h */,
 			);
 			path = Clients;
+			sourceTree = "<group>";
+		};
+		2DC18A71FD5F1E0A12334DBF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */,
+				2DC18D2852962671387D4560 /* NSDictionary+TypedAccess.h */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		2DC18CD5D5E91A5CBC3C5A98 /* Style */ = {
@@ -484,6 +497,7 @@
 				2DC1816390D85C804900DC13 /* Clients */,
 				2DC18CD5D5E91A5CBC3C5A98 /* Style */,
 				2DC18F9745EB4C28FE5E7E15 /* Views */,
+				2DC18A71FD5F1E0A12334DBF /* Categories */,
 			);
 			path = Resilience;
 			sourceTree = "<group>";
@@ -688,6 +702,7 @@
 				2DC18FCD4B4D89F22A613BA4 /* Service.m in Sources */,
 				2DC189A31ED17A5245C3ED39 /* ServiceRequest.m in Sources */,
 				2DC184B255539A1743B9A2D9 /* IncidentAdapter.m in Sources */,
+				2DC18151574C53C67F546947 /* NSDictionary+TypedAccess.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +732,7 @@
 				2DC18E40A15187A376822547 /* Service.m in Sources */,
 				2DC1860B8A3CD2D1915D8D26 /* ServiceRequest.m in Sources */,
 				2DC18ABF28E735DB4374AE13 /* IncidentAdapter.m in Sources */,
+				2DC184AB509191A152B1DDDD /* NSDictionary+TypedAccess.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
