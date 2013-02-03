@@ -32,7 +32,7 @@
       CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;
       WaypointAnnotation *pointAnnotation = [WaypointAnnotation annotationWithCoordinate:pointCoordinate];
       pointAnnotation.title = incident.name;
-      pointAnnotation.subtitle = [incident updatedDateAsString];
+      pointAnnotation.subtitle = [incident createdDateAsString];
       pointAnnotation.ID = incident.id;
       pointAnnotation.category = incident.category;
       [self.mapView addAnnotation:pointAnnotation];

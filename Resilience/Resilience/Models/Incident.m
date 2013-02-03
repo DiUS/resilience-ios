@@ -16,10 +16,10 @@
   return self;
 }
 
-- (NSString *)updatedDateAsString {
+- (NSString *)createdDateAsString {
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"H:mm d-MMM-yyyy"];
-  NSString *startTime = [dateFormatter stringFromDate:self.updatedDate];
+  NSString *startTime = [dateFormatter stringFromDate:self.createdDate];
   return startTime;
 }
 

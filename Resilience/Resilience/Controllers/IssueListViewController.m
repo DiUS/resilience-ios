@@ -66,7 +66,7 @@
   cell.nameLabel.text = incident.name;
   cell.locationLabel.text = [NSString stringWithFormat:@"near: %f, %f", incident.location.coordinate.longitude, incident.location.coordinate.latitude];
 
-  cell.timeLabel.text = [NSString stringWithFormat:@"Reported on %@", [incident updatedDateAsString]];
+  cell.timeLabel.text = [NSString stringWithFormat:@"Reported on %@", [incident createdDateAsString]];
   cell.photoImageView.image = [incident.category imageForCategory];
   return cell;
 }
