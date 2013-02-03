@@ -16,10 +16,12 @@
 		2DC184F50FA121D494252633 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1807D58B75EBE487FA664 /* ParseClient.m */; };
 		2DC184F89978579B4AFDE88D /* Open311Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC182961AE33B44B1F26C47 /* Open311Client.m */; };
 		2DC185A36255E00E25B9F5EC /* IncidentCategory+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B61E739350DB1EF95B7 /* IncidentCategory+Image.m */; };
+		2DC185E2592D12EF67205391 /* CategorySelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181E10712D729176D1716 /* CategorySelectionController.m */; };
 		2DC1860B8A3CD2D1915D8D26 /* ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181D85F53DBF8F6CC5BAB /* ServiceRequest.m */; };
 		2DC1866F633CC10299DCD224 /* Open311Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC182961AE33B44B1F26C47 /* Open311Client.m */; };
 		2DC186DF5FE3CFA047FE1EFA /* IncidentCategory+Waypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18E792BE1EAAFEF6B225A /* IncidentCategory+Waypoint.m */; };
 		2DC187F17BC56D25002EA972 /* UITextField+Resilience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B2D4F1831DEEC671AFB /* UITextField+Resilience.m */; };
+		2DC18845B38FA0078F93B08E /* IncidentCategoryAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C18E1AA39C62074DD60 /* IncidentCategoryAdapter.m */; };
 		2DC18959D9F57F94AF1540A4 /* Incident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F94C37BC75BD6209AA1 /* Incident.m */; };
 		2DC189A31ED17A5245C3ED39 /* ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181D85F53DBF8F6CC5BAB /* ServiceRequest.m */; };
 		2DC18A2B60EAB74BA3A4B91F /* IncidentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C74E4CAEA46175AF113 /* IncidentCell.m */; };
@@ -108,6 +110,7 @@
 		2DC181A7E525EF4C93715683 /* IncidentAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncidentAdapter.m; path = IncidentAdapter.m; sourceTree = "<group>"; };
 		2DC181D85F53DBF8F6CC5BAB /* ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceRequest.m; sourceTree = "<group>"; };
 		2DC181D862EA2D5C45DCA61B /* IncidentCategory+Waypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IncidentCategory+Waypoint.h"; sourceTree = "<group>"; };
+		2DC181E10712D729176D1716 /* CategorySelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySelectionController.m; sourceTree = "<group>"; };
 		2DC18287279BE2ABF06DC268 /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
 		2DC182961AE33B44B1F26C47 /* Open311Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Open311Client.m; sourceTree = "<group>"; };
 		2DC1829AE9232AA0438442E9 /* ServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceRequest.h; sourceTree = "<group>"; };
@@ -119,9 +122,12 @@
 		2DC187887B871227C6EE0E65 /* IncidentCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentCategory.m; sourceTree = "<group>"; };
 		2DC187DD8349A574AC332C2E /* IncidentCategory+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IncidentCategory+Image.h"; sourceTree = "<group>"; };
 		2DC188C66B7EEA2E54A8F67C /* UITextField+Resilience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Resilience.h"; sourceTree = "<group>"; };
+		2DC189518C821F06001CF033 /* CategorySelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategorySelectionController.h; sourceTree = "<group>"; };
 		2DC18A578BD40877F95077DD /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
 		2DC18B2D4F1831DEEC671AFB /* UITextField+Resilience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Resilience.m"; sourceTree = "<group>"; };
 		2DC18B61E739350DB1EF95B7 /* IncidentCategory+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IncidentCategory+Image.m"; sourceTree = "<group>"; };
+		2DC18BDBABBD97CD0047C8ED /* IncidentCategoryAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentCategoryAdapter.h; sourceTree = "<group>"; };
+		2DC18C18E1AA39C62074DD60 /* IncidentCategoryAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentCategoryAdapter.m; sourceTree = "<group>"; };
 		2DC18C19C222D79F56128B9F /* IncidentCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentCategory.h; sourceTree = "<group>"; };
 		2DC18C74E4CAEA46175AF113 /* IncidentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentCell.m; sourceTree = "<group>"; };
 		2DC18D2852962671387D4560 /* NSDictionary+TypedAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TypedAccess.h"; sourceTree = "<group>"; };
@@ -261,6 +267,10 @@
 				2DC18A578BD40877F95077DD /* Service.h */,
 				2DC181D85F53DBF8F6CC5BAB /* ServiceRequest.m */,
 				2DC1829AE9232AA0438442E9 /* ServiceRequest.h */,
+				2DC1869B49911D90A70B893B /* IncidentAdapter.h */,
+				2DC181A7E525EF4C93715683 /* IncidentAdapter.m */,
+				2DC18C18E1AA39C62074DD60 /* IncidentCategoryAdapter.m */,
+				2DC18BDBABBD97CD0047C8ED /* IncidentCategoryAdapter.h */,
 			);
 			path = Open311;
 			sourceTree = "<group>";
@@ -308,8 +318,6 @@
 				2DC187887B871227C6EE0E65 /* IncidentCategory.m */,
 				2DC18C19C222D79F56128B9F /* IncidentCategory.h */,
 				2DC180A6D47F231B383CE15B /* Open311 */,
-				2DC1869B49911D90A70B893B /* IncidentAdapter.h */,
-				2DC181A7E525EF4C93715683 /* IncidentAdapter.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -368,6 +376,8 @@
 				2DC18F9380670437838A556E /* AddIncidentViewController.h */,
 				8927C79B166ADDC500D501B5 /* IssueViewController.h */,
 				8927C79C166ADDC500D501B5 /* IssueViewController.m */,
+				2DC181E10712D729176D1716 /* CategorySelectionController.m */,
+				2DC189518C821F06001CF033 /* CategorySelectionController.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -733,6 +743,8 @@
 				2DC1860B8A3CD2D1915D8D26 /* ServiceRequest.m in Sources */,
 				2DC18ABF28E735DB4374AE13 /* IncidentAdapter.m in Sources */,
 				2DC184AB509191A152B1DDDD /* NSDictionary+TypedAccess.m in Sources */,
+				2DC185E2592D12EF67205391 /* CategorySelectionController.m in Sources */,
+				2DC18845B38FA0078F93B08E /* IncidentCategoryAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

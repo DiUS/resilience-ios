@@ -5,6 +5,7 @@
 #import "IncidentAdapter.h"
 #import "Service.h"
 #import "NSDictionary+TypedAccess.h"
+#import "IncidentCategoryAdapter.h"
 
 
 @implementation Open311Client
@@ -36,8 +37,7 @@
   return self;
 }
 
-- (void)fetchIncidents:(IncidentAdapterSuccessBlock)success failure:(Open311FailureBlock)failure
-{
+- (void)fetchIncidents:(IncidentAdapterSuccessBlock)success failure:(Open311FailureBlock)failure {
   [self fetchServices:^(NSArray *services) {
 
   } failure:failure];
@@ -92,15 +92,26 @@
   }];
 }
 
+- (void)fetchCategories:(CategoriesSuccessBlock)success failure:(Open311FailureBlock)failure {
+  [self fetchServices:^(NSArray *services) {
+    NSMutableArray *categories = [[NSMutableArray alloc] init];
+    // TODO: reactive cocoa for getting requests and services together?
+    for (Service *service in services) {
+      [categories addObject:[[IncidentCategoryAdapter alloc] initWithService:service]];
+    }
+    success(categories);
+  } failure:failure];
+}
+
 - (void)fetchServices:(ServicesSuccessBlock)success failure:(Open311FailureBlock)failure {
   [self getPath:@"services.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
     NSLog(@"Services: %@", jsonResponse);
     NSMutableArray *services = [[NSMutableArray alloc] init];
     for (NSDictionary * rawService in jsonResponse) {
       Service *serviceRequest = [[Service alloc] init];
-      serviceRequest.code = [rawService stringValueForKeyPath:@"code"];
-      serviceRequest.name = [rawService valueForKey:@"name"];
-      serviceRequest.serviceDescription = [rawService valueForKey:@"service_description"];
+      serviceRequest.code = [rawService stringValueForKeyPath:@"service_code"];
+      serviceRequest.name = [rawService valueForKey:@"service_name"];
+      serviceRequest.serviceDescription = [rawService valueForKey:@"description"];
       serviceRequest.metadata = [rawService boolValueForKeyPath:@"metadata"];
       serviceRequest.type = [rawService valueForKey:@"type"];
       serviceRequest.keywords = [rawService valueForKey:@"keywords"];

@@ -1,5 +1,8 @@
 
 @interface IncidentCategory : NSObject
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *code;
+
 + (IncidentCategory *)categoryFromString:(NSString *)category;
 
 - (NSString *)categoryName;
