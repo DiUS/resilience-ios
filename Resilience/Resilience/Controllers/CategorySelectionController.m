@@ -6,6 +6,7 @@
 @interface CategorySelectionController()
 
 @property (nonatomic, strong) NSArray *categories;
+@property (nonatomic, strong) NSIndexPath *selectedIndex;
 
 @end
 
@@ -31,7 +32,7 @@
 }
 
 -(void)categorySelected:(id)sender {
-  
+  [self.delegate categorySelectionController:self didSelectCategory:self.categories[(NSUInteger)self.selectedIndex.row]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,10 +54,14 @@
 #pragma mark - UITableViewDelegate Methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  if (self.selectedIndex) {
+    UITableViewCell *previousCell = [tableView cellForRowAtIndexPath:self.selectedIndex];
+    previousCell.accessoryType = UITableViewCellAccessoryNone;
+  }
 
   UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
   cell.accessoryType = UITableViewCellAccessoryCheckmark;
+  self.selectedIndex = indexPath;
 }
 
 @end

@@ -5,6 +5,8 @@
 #import "UITextField+Resilience.h"
 #import "UIColor+Resilience.h"
 #import "CategorySelectionController.h"
+#import "IncidentCategory.h"
+#import "Open311Client.h"
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -12,12 +14,10 @@
 @property (nonatomic, strong) UIImagePickerController *imgPicker;
 @property (nonatomic, strong) UIImage *photo;
 @property (nonatomic, strong) UITextField *nameTextField;
-@property (nonatomic, strong) UITextField *categoryTextField;
-@property (nonatomic, strong) UITextField *subcategoryTextField;
-@property (nonatomic, strong) UITextField *notesTextField;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) UITableView *detailsTableView;
 @property (nonatomic, strong) CategorySelectionController *categorySelectionController;
+@property (nonatomic, strong) IncidentCategory *category;
 
 @end
 
@@ -70,6 +70,7 @@
 
 
   self.categorySelectionController = [[CategorySelectionController alloc] init];
+  self.categorySelectionController.delegate = self;
 
   self.locationManager = [[CLLocationManager alloc] init];
   self.locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
@@ -77,12 +78,22 @@
 }
 
 - (void)saveIssueAndDismiss {
-  [[ParseClient sharedClient] updloadImage:self.photo andIncident:[
-          [Incident alloc] initWithName:self.nameTextField.text
-                            andLocation:self.locationManager.location
-                            andCategory:@"Water" andDate:[NSDate date] andID:nil]];
+//  [[ParseClient sharedClient] updloadImage:self.photo andIncident:[
+//          [Incident alloc] initWithName:self.nameTextField.text
+//                            andLocation:self.locationManager.location
+//                            andCategory:@"Water" andDate:[NSDate date] andID:nil]];
 
-  [self dismissViewControllerAnimated:YES completion:nil];
+  Incident *incident = [[Incident alloc] initWithName:self.nameTextField.text
+                                          andLocation:self.locationManager.location
+                                          andCategory:self.category andDate:[NSDate date] andID:nil];
+  [[Open311Client sharedClient] createIncident:incident success:^(Incident *updatedIncident) {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"BAM!" message:@"Incident reported" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
+    [alertView show];
+    [self dismissViewControllerAnimated:YES completion:nil];
+  } failure:^(NSError *error) {
+
+  }];
+
 }
 
 - (void)dismissAddIssue {
@@ -167,9 +178,9 @@
       break;
     }
     case 1: {
-      tableViewCell.detailTextLabel.text = @"Category";
-      tableViewCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
       tableViewCell.textLabel.text = @"Category";
+      tableViewCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+      tableViewCell.detailTextLabel.text = self.category ? self.category.name : @"Select category";
       break;
     }
   }
@@ -183,6 +194,13 @@
   if(indexPath.row == 1) {
     [self.navigationController pushViewController:self.categorySelectionController animated:YES];
   }
+}
+
+#pragma mark - CategorySelectionDelegate methods
+- (void)categorySelectionController:(CategorySelectionController *)controller didSelectCategory:(IncidentCategory *)category {
+  self.category = category;
+  [self.detailsTableView reloadData];
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
