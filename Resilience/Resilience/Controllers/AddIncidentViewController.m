@@ -18,6 +18,8 @@
 @property (nonatomic, strong) UITableView *detailsTableView;
 @property (nonatomic, strong) CategorySelectionController *categorySelectionController;
 @property (nonatomic, strong) IncidentCategory *category;
+@property (nonatomic, strong) UIBarButtonItem *nextButton;
+@property (nonatomic, strong) UIBarButtonItem *saveButton;
 
 @end
 
@@ -37,7 +39,9 @@
 - (void)loadView {
   self.view = [[UIView alloc] initWithFrame:CGRectZero];
   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(dismissAddIssue)];
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveIssueAndDismiss)];
+  self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(progressToIssueDetails)];
+  self.saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveIssueAndDismiss)];
+  self.navigationItem.rightBarButtonItem = self.nextButton;
   self.navigationItem.rightBarButtonItem.enabled = NO;
 
   self.cameraButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -77,12 +81,13 @@
   self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters; // 100 m
 }
 
-- (void)saveIssueAndDismiss {
-//  [[ParseClient sharedClient] updloadImage:self.photo andIncident:[
-//          [Incident alloc] initWithName:self.nameTextField.text
-//                            andLocation:self.locationManager.location
-//                            andCategory:@"Water" andDate:[NSDate date] andID:nil]];
+- (void)progressToIssueDetails {
+  [self.navigationController pushViewController:self.categorySelectionController animated:YES];
+  self.navigationItem.rightBarButtonItem = self.nextButton;
 
+}
+
+- (void)saveIssueAndDismiss {
   Incident *incident = [[Incident alloc] initWithName:self.nameTextField.text
                                           andLocation:self.locationManager.location
                                           andCategory:self.category andDate:[NSDate date] andID:nil];
@@ -138,7 +143,7 @@
 }
 
 - (BOOL)isValid {
-  if (self.photo != nil && self.nameTextField.text.length > 0) {
+  if (self.photo != nil) {
     return YES;
   }
   return NO;
