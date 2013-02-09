@@ -1,8 +1,8 @@
 
 #import <Foundation/Foundation.h>
-#import "CategorySelectionController.h"
+#import "DetailSelectionController.h"
 
-@interface AddIncidentViewController : UIViewController <CategorySelectionDelegate>
+@interface AddIncidentViewController : UIViewController <DetailSelectionDelegate>
 
 
 @end

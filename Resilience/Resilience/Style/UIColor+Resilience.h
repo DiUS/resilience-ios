@@ -5,4 +5,7 @@
 + (UIColor *)defaultTextColor;
 + (UIColor *)defaultBackgroundColor;
 
++ (UIColor *)lightGreyTextColor;
+
+
 @end
