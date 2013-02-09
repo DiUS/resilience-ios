@@ -124,7 +124,9 @@
       self.imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
       break;
   }
-  [self presentViewController:self.imgPicker animated:YES completion:nil];
+  if (buttonIndex < 2) {
+    [self presentViewController:self.imgPicker animated:YES completion:nil];
+  }
 }
 
 - (void)enableDoneButton {
