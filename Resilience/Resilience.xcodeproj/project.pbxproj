@@ -80,6 +80,7 @@
 		A1DDA5771668DDFE003A21C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */; };
 		A1DDA5A21669C45F003A21C0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */; };
 		A1DDA5A41669C591003A21C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */; };
+		CD85230F3A9597F63A355DA2 /* IncidentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8522CE4F2E9C3C569F5F72 /* IncidentHeader.m */; };
 		FB1EA1221669E2F7002B93EF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1EA1211669E2F6002B93EF /* MapKit.framework */; };
 		FB1EA1271669E38D002B93EF /* WaypointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1EA1261669E38D002B93EF /* WaypointAnnotation.m */; };
 		FB1EA1341669E39B002B93EF /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1EA12A1669E39B002B93EF /* Annotation.m */; };
@@ -195,6 +196,8 @@
 		A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C1FC1857335340F486B2BB90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD85202179858C509A5811DC /* IncidentHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentHeader.h; sourceTree = "<group>"; };
+		CD8522CE4F2E9C3C569F5F72 /* IncidentHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentHeader.m; sourceTree = "<group>"; };
 		DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KiwiUnitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1EA1211669E2F6002B93EF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FB1EA1251669E38D002B93EF /* WaypointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaypointAnnotation.h; sourceTree = "<group>"; };
@@ -327,6 +330,8 @@
 			children = (
 				2DC18752B9B2297998D7B088 /* IncidentCell.h */,
 				2DC18C74E4CAEA46175AF113 /* IncidentCell.m */,
+				CD8522CE4F2E9C3C569F5F72 /* IncidentHeader.m */,
+				CD85202179858C509A5811DC /* IncidentHeader.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -745,6 +750,7 @@
 				2DC184AB509191A152B1DDDD /* NSDictionary+TypedAccess.m in Sources */,
 				2DC185E2592D12EF67205391 /* CategorySelectionController.m in Sources */,
 				2DC18845B38FA0078F93B08E /* IncidentCategoryAdapter.m in Sources */,
+				CD85230F3A9597F63A355DA2 /* IncidentHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
