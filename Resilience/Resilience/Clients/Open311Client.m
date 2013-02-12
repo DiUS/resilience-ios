@@ -6,6 +6,8 @@
 #import "Service.h"
 #import "NSDictionary+TypedAccess.h"
 #import "IncidentCategoryAdapter.h"
+#import "Incident.h"
+#import "Incident+Open311.h"
 
 
 @implementation Open311Client
@@ -31,13 +33,13 @@
   }
 
   [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-  self.parameterEncoding = AFJSONParameterEncoding;
+  self.parameterEncoding = AFFormURLParameterEncoding;
   [self setDefaultHeader:@"Accept" value:@"application/json"];
   [self setDefaultHeader:@"Content-Type" value:@"application/json"];
   return self;
 }
 
-- (void)fetchIncidents:(IncidentAdapterSuccessBlock)success failure:(Open311FailureBlock)failure {
+- (void)fetchIncidents:(IncidentSuccessBlock)success failure:(Open311FailureBlock)failure {
   [self fetchServices:^(NSArray *services) {
 
   } failure:failure];
@@ -120,6 +122,17 @@
     }
     success(services);
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
+}
+
+- (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(Open311FailureBlock)failure {
+  [self postPath:@"requests.json" parameters:[incident asDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@"Incident created successfully %@", responseObject);
+    incident.id = responseObject[0][@"service_request_id"];
+    success(incident);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@"Error creating a service request");
     failure(error);
   }];
 }

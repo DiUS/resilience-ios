@@ -1,9 +1,8 @@
 
 #import <Foundation/Foundation.h>
+#import "DetailSelectionController.h"
 
-@interface AddIncidentViewController : UIViewController
-
-
+@interface AddIncidentViewController : UIViewController <DetailSelectionDelegate>
 
 
 @end

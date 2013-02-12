@@ -1,15 +1,15 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
+#import "Client.h"
 
 @class Incident;
 
 @interface ParseClient : AFHTTPClient
 + (ParseClient *)sharedClient;
 
-typedef void (^IncidentSuccessBlock)(NSArray *notifications);
-typedef void (^ClientFailureBlock)(NSError *error);
+typedef void (^ParseClientFailureBlock)(NSError *error);
 
-- (void)fetchIncidents:(IncidentSuccessBlock)success failure:(ClientFailureBlock)failure;
+- (void)fetchIncidents:(IncidentSuccessBlock)success failure:(ParseClientFailureBlock)failure;
 
 - (void)updloadImage:(UIImage *)image andIncident:(Incident *)incident;
 

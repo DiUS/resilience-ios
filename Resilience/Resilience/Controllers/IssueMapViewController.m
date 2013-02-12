@@ -119,7 +119,7 @@
   region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.1;
   
   // Add a little extra space on the sides
-  region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.1;
+//  region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.1;
   
   region = [mapView regionThatFits:region];
   [mapView setRegion:region animated:YES];

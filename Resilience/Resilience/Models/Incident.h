@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) CLLocation *location;
 
-- (id)initWithName:(NSString *)name andLocation:(CLLocation *)location andCategory:(NSString *)category andDate:(NSDate *)updatedDate andID:(NSString *)id;
+- (id)initWithName:(NSString *)name andLocation:(CLLocation *)location andCategory:(IncidentCategory *)category andDate:(NSDate *)updatedDate andID:(NSString *)id;
 - (NSString *)createdDateAsString;
 
 @end
