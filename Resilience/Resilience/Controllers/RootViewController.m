@@ -61,6 +61,23 @@
   [self.tabBar addSubview:self.listButton];
   [self.view addSubview:self.tabBar];
 
+  [self showListView];
+  self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)viewDidLayoutSubviews {
+  CAGradientLayer *gradient = [CAGradientLayer layer];
+  gradient.frame = self.tabBar.bounds;
+  UIColor *colorTop = [UIColor colorWithRed:(239.f/255.f) green:(239.f/255.f) blue:(239.f/255.f) alpha:1];
+  UIColor *colorBot = [UIColor colorWithRed:(162.f/255.f) green:(162.f/255.f) blue:(162.f/255.f) alpha:1];
+  gradient.colors = [NSArray arrayWithObjects:(id)[colorTop CGColor], (id)[colorBot CGColor], nil];
+  gradient.masksToBounds = YES;
+  [[self.tabBar layer] insertSublayer:gradient atIndex:0];
+}
+
+- (void)updateViewConstraints {
+  [super updateViewConstraints];
+
   NSDictionary *views = NSDictionaryOfVariableBindings(_tabBar, _mapButton, _listButton);
   [self.view addConstraints:[NSLayoutConstraint
           constraintsWithVisualFormat:@"|[_tabBar]|"
@@ -77,18 +94,6 @@
                               options:NSLayoutFormatAlignAllBottom
                               metrics:nil
                                 views:views]];
-  [self showListView];
-  self.view.backgroundColor = [UIColor whiteColor];
-}
-
-- (void)viewDidLayoutSubviews {
-  CAGradientLayer *gradient = [CAGradientLayer layer];
-  gradient.frame = self.tabBar.bounds;
-  UIColor *colorTop = [UIColor colorWithRed:(239.f/255.f) green:(239.f/255.f) blue:(239.f/255.f) alpha:1];
-  UIColor *colorBot = [UIColor colorWithRed:(162.f/255.f) green:(162.f/255.f) blue:(162.f/255.f) alpha:1];
-  gradient.colors = [NSArray arrayWithObjects:(id)[colorTop CGColor], (id)[colorBot CGColor], nil];
-  gradient.masksToBounds = YES;
-  [[self.tabBar layer] insertSublayer:gradient atIndex:0];
 }
 
 - (void) addIssue {

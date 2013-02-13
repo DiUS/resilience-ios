@@ -56,6 +56,7 @@
   self.addPhotoLabel.translatesAutoresizingMaskIntoConstraints = NO;
   [self.cameraButton addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
   self.cameraButton.translatesAutoresizingMaskIntoConstraints = NO;
+  self.view.translatesAutoresizingMaskIntoConstraints = NO;
 
   [self.view addSubview:self.cameraButton];
   [self.cameraButton addSubview:self.cameraImageView];
@@ -141,33 +142,44 @@
 - (void)updateViewConstraints {
   [super updateViewConstraints];
   NSDictionary *views = NSDictionaryOfVariableBindings(_cameraButton);
+
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|-[_cameraButton]-|"
+          constraintsWithVisualFormat:@"|[_cameraButton]|"
                               options:0
                               metrics:nil
                                 views:views]];
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|-[_cameraButton]-|"
-                              options:NSLayoutFormatAlignAllLeft
+          constraintsWithVisualFormat:@"V:|[_cameraButton]|"
+                              options:0
                               metrics:nil
                                 views:views]];
 
   NSDictionary *cameraViews = NSDictionaryOfVariableBindings(_addPhotoLabel, _cameraImageView);
   [self.cameraButton addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|-[_cameraImageView(==128)]-[_addPhotoLabel(==30)]"
+          constraintsWithVisualFormat:@"V:|-(>=20)-[_cameraImageView]-[_addPhotoLabel]-(>=20)-|"
                               options:NSLayoutFormatAlignAllCenterX
                               metrics:nil
                                 views:cameraViews]];
+
   [self.cameraButton addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|[_cameraImageView(==200)]|"
+          constraintsWithVisualFormat:@"|-(>=20)-[_cameraImageView]-(>=20)-|"
                               options:0
                               metrics:nil
                                 views:cameraViews]];
-  [self.cameraButton addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"[_addPhotoLabel]"
-                              options:0
-                              metrics:nil
-                                views:cameraViews]];
+
+  [NSLayoutConstraint constraintWithItem:self.cameraImageView
+                               attribute:NSLayoutAttributeCenterX
+                               relatedBy:NSLayoutRelationEqual
+                                  toItem:self.cameraButton
+                               attribute:NSLayoutAttributeCenterX
+                              multiplier:1.f constant:0.f];
+
+  [NSLayoutConstraint constraintWithItem:self.cameraImageView
+                               attribute:NSLayoutAttributeCenterY
+                               relatedBy:NSLayoutRelationEqual
+                                  toItem:self.cameraButton
+                               attribute:NSLayoutAttributeCenterY
+                              multiplier:1.f constant:0.f];
 
 }
 
