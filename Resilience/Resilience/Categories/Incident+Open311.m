@@ -14,7 +14,7 @@
 //     @"last_name": profile.lastName,
 //     @"phone": profile.phone,
      @"description": self.name,
-     @"media_url": [[NSURL URLWithString:@"http://www.imagesummit.com/WMD/image_summit_photographic_fine_art_gallery/Earth/product%20images/broken_fence.jpg" relativeToURL:nil] absoluteString]
+     @"media_url": [[NSURL URLWithString:self.imageUrl relativeToURL:nil] absoluteString]
 //     @"attribute[WHISPAWN]": @"anything"
   };
 }

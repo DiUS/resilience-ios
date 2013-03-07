@@ -1,4 +1,3 @@
-
 #import "AddIncidentViewController.h"
 #import "ParseClient.h"
 #import "Incident.h"
@@ -7,6 +6,7 @@
 #import "DetailSelectionController.h"
 #import "IncidentCategory.h"
 #import "Open311Client.h"
+#import "Cloudinary/Cloudinary.h"
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
@@ -79,7 +79,10 @@
 - (void)saveIssueAndDismiss {
   Incident *incident = [[Incident alloc] initWithName:self.name
                                           andLocation:self.locationManager.location
-                                          andCategory:self.category andDate:[NSDate date] andID:nil];
+                                          andCategory:self.category
+                                              andDate:[NSDate date]
+                                                andID:nil
+                                             andImage:self.photo];
   [[Open311Client sharedClient] createIncident:incident success:^(Incident *updatedIncident) {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"BAM!" message:@"Incident reported" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
     [alertView show];
@@ -105,6 +108,7 @@
   self.cameraImageView.hidden = YES;
   [self.imgPicker dismissViewControllerAnimated:YES completion:nil];
   [self enableDoneButton];
+
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

@@ -8,7 +8,7 @@ pod 'AFNetworking'
 pod 'AFHTTPRequestOperationLogger'
 pod 'SDWebImage'
 pod 'ISO8601DateFormatter'
-
+pod 'Cloudinary'
 
 target :KiwiUnitTest, :exclusive => true do
   pod 'Kiwi'

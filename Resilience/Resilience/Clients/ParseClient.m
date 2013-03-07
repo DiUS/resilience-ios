@@ -57,7 +57,7 @@
       NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
       [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"];
       NSDate *date = [dateFormatter dateFromString:[incident objectForKey:@"updatedAt"]];
-      Incident *newIncident = [[Incident alloc] initWithName:[incident objectForKey:@"name"] andLocation:location andCategory:[incident objectForKey:@"category"] andDate:date andID:[incident objectForKey:@"objectId"]];
+      Incident *newIncident = [[Incident alloc] initWithName:[incident objectForKey:@"name"] andLocation:location andCategory:[incident objectForKey:@"category"] andDate:date andID:[incident objectForKey:@"objectId"] andImage:nil];
       newIncident.imageUrl = incident[@"photo"][@"url"];
       [incidents addObject:newIncident];
     }
