@@ -1,9 +1,10 @@
 #import "IncidentHeader.h"
 #import "IssueViewController.h"
 #import "UIColor+Resilience.h"
+#import "WaypointAnnotation.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <MapKit/MapKit.h>
+
 
 @interface IssueViewController ()
 @property(nonatomic, strong) UIImageView *imageView;
@@ -31,6 +32,14 @@
   // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - delegate methods
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
+  MKAnnotationView *annotationView = [views objectAtIndex:0];
+  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(annotationView.annotation.coordinate, 250, 250);
+  [mapView setRegion:region];
+}
+
+
 #pragma mark - Private Methods
 
 - (void)style {
@@ -44,8 +53,12 @@
   }
 
   [self.headerView populateWithIncident:self.incident];
+  WaypointAnnotation *annotation = [WaypointAnnotation annotationWithCoordinate:self.incident.location.coordinate];
+  annotation.title = self.incident.name;
+  annotation.subtitle = [self.incident createdDateAsString];
+  annotation.ID = self.incident.id;
+  [self.issueMap addAnnotation:annotation];
 
-//  self.imageLabel.text = [NSString stringWithFormat:@"%f, %f", self.incident.location.coordinate.longitude, self.incident.location.coordinate.latitude];
 }
 
 - (void)components {
@@ -61,6 +74,8 @@
   self.navigationItem.title = @"Issue Details";
 
   self.issueMap = [[MKMapView alloc] initWithFrame:CGRectZero];
+  self.issueMap.delegate = self;
+  self.issueMap.scrollEnabled = NO;
   [self.view addSubview:self.issueMap];
 
   self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
