@@ -21,6 +21,7 @@
   if (self) {
     self.title = @"Details";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(categorySelected:)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
   }
   return self;
 }
@@ -30,7 +31,7 @@
   self.nameTextField = [UITextField styledTextField];
   self.nameTextField.placeholder = @"Incident description";
   self.nameTextField.borderStyle = UITextBorderStyleNone;
-  self.nameTextField.textColor = [UIColor blackColor];
+  self.nameTextField.textColor = [UIColor lightGreyTextColor];
   self.nameTextField.font = [UIFont systemFontOfSize:16.0];
   self.nameTextField.backgroundColor = [UIColor clearColor];
   self.nameTextField.keyboardType = UIKeyboardTypeDefault;   // use the default type input method (entire keyboard)
@@ -63,7 +64,8 @@
   if (indexPath.section == 0) {
     UITableViewCell *tableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     tableViewCell.textLabel.text = @"Name";
-    self.nameTextField.frame = CGRectMake(100,15,150,20);
+    self.nameTextField.frame = CGRectMake(75,5,230,30);
+    self.nameTextField.textColor = [UIColor lightGreyTextColor];
     [tableViewCell.contentView addSubview:self.nameTextField];
     return tableViewCell;
   }
@@ -77,6 +79,21 @@
   IncidentCategory *category = self.categories[(NSUInteger)indexPath.row];
   cell.detailTextLabel.text = category.name;
   return cell;
+}
+
+- (void)enableDoneButton {
+  if ([self isValid]) {
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+  } else{
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+  }
+}
+
+- (BOOL)isValid {
+  if ((self.nameTextField.text && ![self.nameTextField.text isEqualToString:@""]) && self.selectedIndex ) {
+    return YES;
+  }
+  return NO;
 }
 
 #pragma mark - UITableViewDataSource
@@ -102,6 +119,9 @@
 #pragma mark - UITableViewDelegate Methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  if(indexPath.section == 0) {
+    [self.nameTextField becomeFirstResponder];
+  }
   if (indexPath.section == 1) {
     if (self.selectedIndex) {
       UITableViewCell *previousCell = [tableView cellForRowAtIndexPath:self.selectedIndex];
@@ -113,9 +133,11 @@
     self.selectedIndex = indexPath;
     [self.nameTextField resignFirstResponder];
   }
+  [self enableDoneButton];
 }
 
 - (void)textFieldFinished:(id)sender {
+  [self enableDoneButton];
   [sender resignFirstResponder];
 }
 

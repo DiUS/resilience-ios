@@ -18,7 +18,6 @@
 @property (nonatomic, strong) DetailSelectionController *detailSelectionController;
 @property (nonatomic, strong) IncidentCategory *category;
 @property (nonatomic, strong) UIBarButtonItem *nextButton;
-@property (nonatomic, strong) UIBarButtonItem *saveButton;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) UIImageView *cameraImageView;
 @property (nonatomic, strong) UILabel *addPhotoLabel;
@@ -40,9 +39,8 @@
 
 - (void)loadView {
   self.view = [[UIView alloc] initWithFrame:CGRectZero];
-  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(dismissAddIssue)];
-  self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(progressToIssueDetails)];
-  self.saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(saveIssueAndDismiss)];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissAddIssue)];
+  self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(progressToIssueDetails)];
   self.navigationItem.rightBarButtonItem = self.nextButton;
   self.navigationItem.rightBarButtonItem.enabled = NO;
 
@@ -72,7 +70,6 @@
 }
 
 - (void)progressToIssueDetails {
-  self.navigationItem.rightBarButtonItem = self.saveButton;
   [self.navigationController pushViewController:self.detailSelectionController animated:YES];
 
 }
@@ -86,8 +83,6 @@
                                              andImage:self.photo];
   [self.navigationController.view showLoading];
   [[Open311Client sharedClient] createIncident:incident success:^(Incident *updatedIncident) {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"BAM!" message:@"Incident reported" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
-    [alertView show];
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController.view hideLoading];
   } failure:^(NSError *error) {
