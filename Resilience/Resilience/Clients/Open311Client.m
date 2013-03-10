@@ -6,15 +6,11 @@
 #import "Service.h"
 #import "NSDictionary+TypedAccess.h"
 #import "IncidentCategoryAdapter.h"
-#import "Incident.h"
 #import "Incident+Open311.h"
 #import "CLUploader.h"
+#import "CloudinaryClient.h"
 
 @interface Open311Client() <CLUploaderDelegate>
-
-@property (nonatomic, strong) Incident *incidentToUpload;
-@property (nonatomic, copy) IncidentCreateSuccessBlock uploadSuccessBlock;
-@property (nonatomic, copy) Open311FailureBlock uploadFailureBlock;
 
 @end
 
@@ -134,43 +130,18 @@
   }];
 }
 
-- (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(Open311FailureBlock)failure {
-  // TODO: pull this wackiness into a different object.
-
-  CLCloudinary *cloudinary = [[CLCloudinary alloc] init];
-  [cloudinary.config setValue:@"resilience" forKey:@"cloud_name"];
-  [cloudinary.config setValue:@"345754584192129" forKey:@"api_key"];
-  [cloudinary.config setValue:@"EOqrfFTaj1vNv_3BTTUAWCQgGUc" forKey:@"api_secret"];
-
-  CLUploader* uploader = [[CLUploader alloc] init:cloudinary delegate:self];
-  [uploader upload:UIImageJPEGRepresentation(incident.image, 0.75f) options:@{}];
-  self.incidentToUpload = incident;
-  self.uploadSuccessBlock = success;
-  self.uploadFailureBlock = failure;
-}
-
-#pragma mark - CLUploaderDelegate
-- (void) uploaderSuccess:(NSDictionary*)result context:(id)context {
-  NSString* publicId = [result valueForKey:@"public_id"];
-  NSLog(@"Upload success. Public ID=%@, Full result=%@", publicId, result);
-  self.incidentToUpload.imageUrl = [result valueForKey:@"url"];
-  [self postPath:@"requests.json" parameters:[self.incidentToUpload asDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    NSLog(@"Incident created successfully %@", responseObject);
-    self.incidentToUpload.id = responseObject[0][@"service_request_id"];
-    self.uploadSuccessBlock(self.incidentToUpload);
-  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    NSLog(@"Error creating a service request");
-    self.uploadFailureBlock(error);
-  }];
-}
-
-- (void) uploaderError:(NSString*)result code:(int) code context:(id)context {
-  NSLog(@"Upload error: %@, %d", result, code);
-  self.uploadFailureBlock([NSError errorWithDomain:@"upload" code:code userInfo:nil]);
-}
-
-- (void) uploaderProgress:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite context:(id)context {
-  NSLog(@"Upload progress: %d/%d (+%d)", totalBytesWritten, totalBytesExpectedToWrite, bytesWritten);
+- (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(FailureBlock)failure {
+  [CloudinaryClient updloadImage:incident.image success:^(NSString *uploadUrl) {
+    incident.imageUrl = uploadUrl;
+    [self postPath:@"requests.json" parameters:[incident asDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+      NSLog(@"Incident created successfully %@", responseObject);
+      incident.id = responseObject[0][@"service_request_id"];
+      success(incident);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+      NSLog(@"Error creating a service request");
+      failure(error);
+    }];
+  } failure:failure];
 }
 
 @end

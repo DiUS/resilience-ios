@@ -8,6 +8,7 @@ typedef void (^ServiceRequestSuccessBlock)(NSArray *serviceRequests);
 typedef void (^ServicesSuccessBlock)(NSArray *services);
 typedef void (^CategoriesSuccessBlock)(NSArray *categories);
 typedef void (^IncidentCreateSuccessBlock)(Incident *incident);
+typedef void (^FailureBlock)(NSError *error);
 
 @interface Client : NSObject
 @end

@@ -1,9 +1,8 @@
 #import "AppDelegate.h"
-#import "IssueMapViewController.h"
-#import "IssueListViewController.h"
 #import "RootViewController.h"
 #import "DCIntrospect.h"
 #import "AFHTTPRequestOperationLogger.h"
+#import "UIColor+Resilience.h"
 
 @implementation AppDelegate
 
@@ -17,6 +16,11 @@
 
   UIImage *navBarImage = [UIImage imageNamed:@"TitleBar"];
   [[UINavigationBar appearance] setBackgroundImage:[navBarImage resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)] forBarMetrics:UIBarMetricsDefault];
+
+  NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary: [[UINavigationBar appearance] titleTextAttributes]];
+  [titleBarAttributes setValue:[UIColor lightGreyTextColor] forKey:UITextAttributeTextColor];
+  [titleBarAttributes setValue:[UIColor clearColor] forKey:UITextAttributeTextShadowColor];
+  [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
 
   self.window.rootViewController = navigationController;
 

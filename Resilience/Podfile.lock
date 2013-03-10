@@ -1,18 +1,18 @@
 
 PODS:
-- AFHTTPRequestOperationLogger (0.9.0):
+- AFHTTPRequestOperationLogger (0.10.0):
   - AFNetworking (>= 0.9.0)
-- AFNetworking (1.0.1)
+- AFNetworking (1.1.0)
 - Cloudinary (1.0.1):
   - SBJson (~> 3.2)
 - DCIntrospect (0.0.2)
 - ISO8601DateFormatter (0.6)
-- Kiwi (1.1.1)
+- Kiwi (2.0.5)
 - SBJson (3.2)
-- SDWebImage (2.7):
-  - SDWebImage/Main (= 2.7)
-- SDWebImage/Main (2.7)
-- TestFlightSDK (1.2.beta2)
+- SDWebImage (3.1):
+  - SDWebImage/Main (= 3.1)
+- SDWebImage/Main (3.1)
+- TestFlightSDK (1.2.4.beta)
 
 DEPENDENCIES:
 - AFHTTPRequestOperationLogger
@@ -25,15 +25,15 @@ DEPENDENCIES:
 - TestFlightSDK
 
 SPEC CHECKSUMS:
-  AFHTTPRequestOperationLogger: ed62e8c2c4c307c3f4b530c2a18464747aab5977
-  AFNetworking: 0bce3ae41023e080e96b8a2e0d07c94709f72a81
+  AFHTTPRequestOperationLogger: 1d65fa5d905211c8981a11091eae8c98b410eb19
+  AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
   Cloudinary: 0351d6b06726c3cf238d0d8a76327a478898b6eb
   DCIntrospect: 2f5cab0b58b170459ebcb200f59042306fcb0c0d
   ISO8601DateFormatter: dc05a2481edf49668d85d3ff8c466c32eb544780
   SBJson: 4971016670e7b3fa04a36d4e72ab0fb1ad3a9f69
-  SDWebImage: c3306b8c68f3569f5c676d585ad77393255887dd
-  SDWebImage/Main: c3306b8c68f3569f5c676d585ad77393255887dd
-  TestFlightSDK: 964167fdbf681a26e4452d087b779cafcba756ae
-  Kiwi: ab0fa8d13b97dca05915e31df9b2d888d74ab717
+  SDWebImage: 9e70e5dd0c69d1a043180cd2c5e1d0cd1e4ebcd7
+  SDWebImage/Main: 9e70e5dd0c69d1a043180cd2c5e1d0cd1e4ebcd7
+  TestFlightSDK: aeec97fd81096753d53b942f030a443520a087f4
+  Kiwi: 89ade77eb49c889178cb2779e02514a7b9b9449e
 
 COCOAPODS: 0.16.0

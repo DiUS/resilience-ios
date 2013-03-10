@@ -3,6 +3,7 @@
 #import "Open311Client.h"
 #import "IncidentCategory.h"
 #import "UITextField+Resilience.h"
+#import "UIColor+Resilience.h"
 
 @interface DetailSelectionController ()
 
@@ -18,7 +19,7 @@
 - (id)init {
   self = [super initWithStyle:UITableViewStyleGrouped];
   if (self) {
-    self.title = @"Category";
+    self.title = @"Details";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(categorySelected:)];
   }
   return self;
@@ -36,6 +37,12 @@
   self.nameTextField.returnKeyType = UIReturnKeyDone;
   self.nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;  // has a clear 'x' button to the right
   self.nameTextField.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.nameTextField addTarget:self
+                     action:@selector(textFieldFinished:)
+           forControlEvents:UIControlEventEditingDidEndOnExit];
+
+  self.tableView.backgroundView = nil;
+  self.view.backgroundColor = [UIColor defaultBackgroundColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -72,6 +79,8 @@
   return cell;
 }
 
+#pragma mark - UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return 2;
 }
@@ -81,6 +90,13 @@
     return 1;
   }
   return (NSInteger)[self.categories count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+  if (section == 1) {
+    return @"Category";
+  }
+  return nil;
 }
 
 #pragma mark - UITableViewDelegate Methods
@@ -97,6 +113,10 @@
     self.selectedIndex = indexPath;
     [self.nameTextField resignFirstResponder];
   }
+}
+
+- (void)textFieldFinished:(id)sender {
+  [sender resignFirstResponder];
 }
 
 @end
