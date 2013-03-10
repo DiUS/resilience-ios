@@ -7,6 +7,7 @@
 #import "IncidentCategory.h"
 #import "Open311Client.h"
 #import "Cloudinary/Cloudinary.h"
+#import "UIView+WSLoading.h"
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
@@ -83,12 +84,14 @@
                                               andDate:[NSDate date]
                                                 andID:nil
                                              andImage:self.photo];
+  [self.navigationController.view showLoading];
   [[Open311Client sharedClient] createIncident:incident success:^(Incident *updatedIncident) {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"BAM!" message:@"Incident reported" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
     [alertView show];
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController.view hideLoading];
   } failure:^(NSError *error) {
-
+    [self.navigationController.view hideLoading];
   }];
 }
 

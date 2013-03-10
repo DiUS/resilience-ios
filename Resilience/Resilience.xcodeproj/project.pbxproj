@@ -25,6 +25,7 @@
 		2DC18845B38FA0078F93B08E /* IncidentCategoryAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C18E1AA39C62074DD60 /* IncidentCategoryAdapter.m */; };
 		2DC188ABEDD3F4558E87E71E /* CloudinaryClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1878A146A6C5AC412BEF9 /* CloudinaryClient.m */; };
 		2DC188C57E041B99387D5A5A /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D290BA8F5FC680BE957 /* Client.m */; };
+		2DC1894F3557894829DE53B3 /* UIView+WSLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18FD9FA6AA3804B32FDF7 /* UIView+WSLoading.m */; };
 		2DC18959D9F57F94AF1540A4 /* Incident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F94C37BC75BD6209AA1 /* Incident.m */; };
 		2DC189A31ED17A5245C3ED39 /* ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181D85F53DBF8F6CC5BAB /* ServiceRequest.m */; };
 		2DC18A2B60EAB74BA3A4B91F /* IncidentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C74E4CAEA46175AF113 /* IncidentCell.m */; };
@@ -91,6 +92,7 @@
 		2DC1829AE9232AA0438442E9 /* ServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceRequest.h; sourceTree = "<group>"; };
 		2DC1834ADA9D6FA0D8F84BD6 /* Incident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Incident.h; sourceTree = "<group>"; };
 		2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TypedAccess.m"; sourceTree = "<group>"; };
+		2DC1863F09FFD1B8EF7B47F0 /* UIView+WSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WSLoading.h"; sourceTree = "<group>"; };
 		2DC1869B49911D90A70B893B /* IncidentAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentAdapter.h; sourceTree = "<group>"; };
 		2DC186B3B33F3F312A621DE4 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
 		2DC18752B9B2297998D7B088 /* IncidentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentCell.h; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		2DC18F9380670437838A556E /* AddIncidentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIncidentViewController.h; sourceTree = "<group>"; };
 		2DC18F94C37BC75BD6209AA1 /* Incident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Incident.m; sourceTree = "<group>"; };
 		2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		2DC18FD9FA6AA3804B32FDF7 /* UIView+WSLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WSLoading.m"; sourceTree = "<group>"; };
 		4FC03149DC7F41B78235D0EC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		8927C79B166ADDC500D501B5 /* IssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueViewController.h; sourceTree = "<group>"; };
 		8927C79C166ADDC500D501B5 /* IssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueViewController.m; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 				2DC18D2852962671387D4560 /* NSDictionary+TypedAccess.h */,
 				2DC1887E0454BA205B53AC49 /* Incident+Open311.m */,
 				2DC18C42F63533543B3AB8E1 /* Incident+Open311.h */,
+				2DC18FD9FA6AA3804B32FDF7 /* UIView+WSLoading.m */,
+				2DC1863F09FFD1B8EF7B47F0 /* UIView+WSLoading.h */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -641,6 +646,7 @@
 				2DC18B32746F47D13E88E493 /* Incident+Open311.m in Sources */,
 				2DC18B1FF67341F20CFD8C43 /* Client.m in Sources */,
 				2DC188ABEDD3F4558E87E71E /* CloudinaryClient.m in Sources */,
+				2DC1894F3557894829DE53B3 /* UIView+WSLoading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
