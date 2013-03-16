@@ -48,7 +48,7 @@
 
 - (void)data {
   if (self.incident.imageUrl) {
-    [self.imageView setImageWithURL:[self.incident imageUrlForSize:CGSizeMake(70.f, 70.f)]];
+    [self.imageView setImageWithURL:[self.incident imageUrlForSize:CGSizeMake(120.f, 185.f)]];
   }
 
   [self.headerView populateWithIncident:self.incident];
