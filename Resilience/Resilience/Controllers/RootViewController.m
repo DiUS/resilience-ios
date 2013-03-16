@@ -5,11 +5,13 @@
 #import "IssueMapViewController.h"
 #import "AddIncidentViewController.h"
 #import "UIColor+Resilience.h"
+#import "ProfileViewController.h"
 
 @interface RootViewController()
 
 @property (nonatomic, strong) UIButton *mapButton;
 @property (nonatomic, strong) UIButton *listButton;
+@property (nonatomic, strong) UIButton *settingsButton;
 @property (nonatomic, strong) UIView *tabBar;
 @property (nonatomic, strong) IssueListViewController *issueListViewController;
 @property (nonatomic, strong) IssueMapViewController *issueMapViewController;
@@ -52,6 +54,12 @@
   self.mapButton.backgroundColor = [UIColor clearColor];
 //  [self.mapButton setImage:[UIImage imageNamed:@"TabBar-IssueMapSelected"] forState:UIControlStateSelected];
 
+  self.settingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  self.settingsButton.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.settingsButton setTitle:@"Settings" forState:UIControlStateNormal];
+  [self.settingsButton setTitleColor:[UIColor defaultTextColor] forState:UIControlStateNormal];
+  [self.settingsButton addTarget:self action:@selector(showProfile) forControlEvents:UIControlEventTouchUpInside];
+
   self.issueListViewController = [[IssueListViewController alloc] init];
   self.issueListViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
   self.issueMapViewController = [[IssueMapViewController alloc] init];
@@ -59,6 +67,7 @@
 
   [self.tabBar addSubview:self.mapButton];
   [self.tabBar addSubview:self.listButton];
+  [self.tabBar addSubview:self.settingsButton];
   [self.view addSubview:self.tabBar];
 
   [self showListView];
@@ -78,14 +87,14 @@
 - (void)updateViewConstraints {
   [super updateViewConstraints];
 
-  NSDictionary *views = NSDictionaryOfVariableBindings(_tabBar, _mapButton, _listButton);
+  NSDictionary *views = NSDictionaryOfVariableBindings(_tabBar, _mapButton, _listButton, _settingsButton);
   [self.view addConstraints:[NSLayoutConstraint
           constraintsWithVisualFormat:@"|[_tabBar]|"
                               options:NSLayoutFormatAlignAllLeft
                               metrics:nil
                                 views:views]];
   [self.tabBar addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|[_listButton(==_mapButton)]-[_mapButton]|"
+          constraintsWithVisualFormat:@"|[_listButton(==_mapButton)]-[_mapButton]-[_settingsButton(==_mapButton)]|"
                               options:NSLayoutFormatAlignAllBottom
                               metrics:nil
                                 views:views]];
@@ -94,6 +103,15 @@
                               options:NSLayoutFormatAlignAllBottom
                               metrics:nil
                                 views:views]];
+}
+
+- (void)showProfile {
+  ProfileViewController *profileViewController = [[ProfileViewController alloc] init];
+
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:profileViewController];
+  navController.modalTransitionStyle = profileViewController.modalTransitionStyle;
+
+  [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void) addIssue {
