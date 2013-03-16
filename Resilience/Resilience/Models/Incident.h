@@ -19,4 +19,6 @@
 
 - (NSString *)createdDateAsString;
 
+- (NSURL *)imageUrlForSize:(CGSize)size;
+
 @end

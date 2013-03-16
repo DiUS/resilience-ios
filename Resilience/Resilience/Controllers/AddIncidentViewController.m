@@ -8,6 +8,7 @@
 #import "Open311Client.h"
 #import "Cloudinary/Cloudinary.h"
 #import "UIView+WSLoading.h"
+#import "UIImage+FixRotation.h"
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
@@ -100,10 +101,14 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-  self.photo = [info objectForKey:UIImagePickerControllerOriginalImage];
-  [self.cameraButton setImage:self.photo forState:UIControlStateNormal];
+
+  NSString *metaDataInfoKey = [info valueForKey:UIImagePickerControllerEditedImage] ? UIImagePickerControllerEditedImage : UIImagePickerControllerOriginalImage;
+  self.photo = [[info objectForKey:metaDataInfoKey] fixOrientation];
+  [self.cameraImageView setContentMode: UIViewContentModeScaleAspectFit];
+  self.cameraImageView.image = self.photo;
   self.addPhotoLabel.hidden = YES;
-  self.cameraImageView.hidden = YES;
+//  self.cameraImageView.hidden = YES;
+  [self.view setNeedsUpdateConstraints];
   [self.imgPicker dismissViewControllerAnimated:YES completion:nil];
   [self enableDoneButton];
 
@@ -164,24 +169,24 @@
                                 views:cameraViews]];
 
   [self.cameraButton addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|-(>=20)-[_cameraImageView]-(>=20)-|"
+          constraintsWithVisualFormat:@"|[_cameraImageView]|"
                               options:0
                               metrics:nil
                                 views:cameraViews]];
 
-  [NSLayoutConstraint constraintWithItem:self.cameraImageView
-                               attribute:NSLayoutAttributeCenterX
-                               relatedBy:NSLayoutRelationEqual
-                                  toItem:self.cameraButton
-                               attribute:NSLayoutAttributeCenterX
-                              multiplier:1.f constant:0.f];
-
-  [NSLayoutConstraint constraintWithItem:self.cameraImageView
-                               attribute:NSLayoutAttributeCenterY
-                               relatedBy:NSLayoutRelationEqual
-                                  toItem:self.cameraButton
-                               attribute:NSLayoutAttributeCenterY
-                              multiplier:1.f constant:0.f];
+//  [NSLayoutConstraint constraintWithItem:self.cameraImageView
+//                               attribute:NSLayoutAttributeCenterX
+//                               relatedBy:NSLayoutRelationEqual
+//                                  toItem:self.cameraButton
+//                               attribute:NSLayoutAttributeCenterX
+//                              multiplier:1.f constant:0.f];
+//
+//  [NSLayoutConstraint constraintWithItem:self.cameraImageView
+//                               attribute:NSLayoutAttributeCenterY
+//                               relatedBy:NSLayoutRelationEqual
+//                                  toItem:self.cameraButton
+//                               attribute:NSLayoutAttributeCenterY
+//                              multiplier:1.f constant:0.f];
 
 }
 

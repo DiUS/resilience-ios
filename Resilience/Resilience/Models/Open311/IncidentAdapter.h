@@ -11,5 +11,4 @@
 
 - (id)initWithServiceRequest:(ServiceRequest *)serviceReqest andService:(Service *)service;
 
-
 @end

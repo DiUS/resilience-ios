@@ -24,4 +24,8 @@
   return startTime;
 }
 
+- (NSURL *)imageUrlForSize:(CGSize)size {
+  return [NSURL URLWithString:self.imageUrl];
+}
+
 @end

@@ -3,6 +3,7 @@
 #import "ServiceRequest.h"
 #import "Service.h"
 #import "IncidentCategory.h"
+#import "CloudinaryClient.h"
 
 @implementation IncidentAdapter
 
@@ -46,6 +47,10 @@
 
 - (NSString *)imageUrl {
   return self.serviceRequest.mediaUrl.absoluteString;
+}
+
+- (NSURL *)imageUrlForSize:(CGSize)size {
+  return [[CloudinaryClient sharedClient] imageURLForResource:self.serviceRequest.mediaUrl.absoluteString size:size];
 }
 
 - (CLLocation *)location {

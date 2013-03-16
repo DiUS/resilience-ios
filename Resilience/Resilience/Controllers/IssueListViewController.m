@@ -9,6 +9,7 @@
 #import "IncidentCategory.h"
 #import "IncidentCategory+Image.h"
 #import "Open311Client.h"
+#import "CloudinaryClient.h"
 
 @interface IssueListViewController ()
 
@@ -67,7 +68,7 @@
   cell.locationLabel.text = [NSString stringWithFormat:@"near: %f, %f", incident.location.coordinate.longitude, incident.location.coordinate.latitude];
 
   cell.timeLabel.text = [NSString stringWithFormat:@"Reported on %@", [incident createdDateAsString]];
-  [cell.photoImageView setImageWithURL:[NSURL URLWithString:incident.imageUrl]];
+  [cell.photoImageView setImageWithURL:[incident imageUrlForSize:CGSizeMake(70.f, 70.f)]];
   return cell;
 }
 
