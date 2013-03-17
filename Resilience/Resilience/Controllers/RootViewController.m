@@ -1,6 +1,4 @@
-#import <QuartzCore/QuartzCore.h>
 #import "RootViewController.h"
-//#import "UIBarButtonItem+BlocksKit.h"
 #import "IssueListViewController.h"
 #import "IssueMapViewController.h"
 #import "AddIncidentViewController.h"
@@ -9,12 +7,9 @@
 
 @interface RootViewController()
 
-@property (nonatomic, strong) UIButton *mapButton;
-@property (nonatomic, strong) UIButton *listButton;
-@property (nonatomic, strong) UIButton *settingsButton;
-@property (nonatomic, strong) UIView *tabBar;
 @property (nonatomic, strong) IssueListViewController *issueListViewController;
 @property (nonatomic, strong) IssueMapViewController *issueMapViewController;
+@property (nonatomic, strong) UISegmentedControl *toggleSegmentedControl;
 @property (nonatomic, strong) NSArray *containerConstraints;
 
 @end
@@ -22,87 +17,55 @@
 
 @implementation RootViewController
 
-- (void)viewDidLoad {
+- (void)loadView {
+  [super loadView];
   UIButton *addIssueButton = [UIButton buttonWithType:UIButtonTypeCustom];
   addIssueButton.frame = CGRectMake(0, 0, 55, 51);
   UIImage *buttonImage = [UIImage imageNamed:@"AddButton"];
   [addIssueButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-  UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:addIssueButton];
-  self.navigationItem.rightBarButtonItem = item;
   [addIssueButton addTarget:self action:@selector(addIssue) forControlEvents:UIControlEventTouchUpInside];
 
-  self.tabBar = [[UIView alloc] initWithFrame:CGRectZero];
-  self.tabBar.translatesAutoresizingMaskIntoConstraints = NO;
-
-  self.listButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  self.listButton.accessibilityIdentifier = @"listButton";
-  self.listButton.translatesAutoresizingMaskIntoConstraints = NO;
-  [self.listButton setTitle:@" List" forState:UIControlStateNormal];
-  [self.listButton setTitleColor:[UIColor colorWithRed:(89.f/255.f) green:(89.f/255.f) blue:(89.f/255.f) alpha:1] forState:UIControlStateNormal];
-  [self.listButton addTarget:self action:@selector(showListView) forControlEvents:UIControlEventTouchUpInside];
-  [self.listButton setImage:[UIImage imageNamed:@"TabBar-IssueList"] forState:UIControlStateNormal];
-  self.listButton.backgroundColor = [UIColor clearColor];
-//  [self.listButton setImage:[UIImage imageNamed:@"TabBar-IssueListSelected"] forState:UIControlStateSelected];
-
-  self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  self.mapButton.accessibilityIdentifier = @"mapButton";
-  self.mapButton.translatesAutoresizingMaskIntoConstraints = NO;
-  [self.mapButton setTitle:@" Map" forState:UIControlStateNormal];
-  [self.mapButton setTitleColor:[UIColor defaultTextColor] forState:UIControlStateNormal];
-  [self.mapButton addTarget:self action:@selector(showMapView) forControlEvents:UIControlEventTouchUpInside];
-  [self.mapButton setImage:[UIImage imageNamed:@"TabBar-IssueMap"] forState:UIControlStateNormal];
-  self.mapButton.backgroundColor = [UIColor clearColor];
-//  [self.mapButton setImage:[UIImage imageNamed:@"TabBar-IssueMapSelected"] forState:UIControlStateSelected];
-
-  self.settingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  self.settingsButton.translatesAutoresizingMaskIntoConstraints = NO;
-  [self.settingsButton setTitle:@"Settings" forState:UIControlStateNormal];
-  [self.settingsButton setTitleColor:[UIColor defaultTextColor] forState:UIControlStateNormal];
-  [self.settingsButton addTarget:self action:@selector(showProfile) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:addIssueButton];
+  self.navigationItem.rightBarButtonItem = item;
+  self.toggleSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[ [UIImage imageNamed:@"Assets/TabBar-IssueList"],  [UIImage imageNamed:@"Assets/TabBar-IssueMap"] ]];
+  self.toggleSegmentedControl.segmentedControlStyle = UISegmentedControlStylePlain;
+  self.toggleSegmentedControl.selectedSegmentIndex = 0;
+  [self.toggleSegmentedControl addTarget:self action:@selector(toggleView) forControlEvents:UIControlEventValueChanged];
+  [self.navigationController.navigationBar addSubview:self.toggleSegmentedControl];
 
   self.issueListViewController = [[IssueListViewController alloc] init];
   self.issueListViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
   self.issueMapViewController = [[IssueMapViewController alloc] init];
   self.issueMapViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
 
-  [self.tabBar addSubview:self.mapButton];
-  [self.tabBar addSubview:self.listButton];
-  [self.tabBar addSubview:self.settingsButton];
-  [self.view addSubview:self.tabBar];
+  UIBarButtonItem *profileItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/SettingsIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
+//  UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"SettingsIcon" style:UIBarButtonItemStyleBordered target:self action:@selector(showProfile)];
+  UIBarButtonItem *feedbackbuttonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/FeedbackIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
+  UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+  [self setToolbarItems:@[feedbackbuttonItem, flexibleSpace, profileItem]];
+}
 
+- (void)viewDidLoad {
   [self showListView];
   self.view.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  self.navigationController.toolbarHidden = NO;
+  self.toggleSegmentedControl.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+//  self.navigationController.toolbarHidden = YES;
+  self.toggleSegmentedControl.hidden = YES;
+}
+
 - (void)viewDidLayoutSubviews {
-  CAGradientLayer *gradient = [CAGradientLayer layer];
-  gradient.frame = self.tabBar.bounds;
-  UIColor *colorTop = [UIColor colorWithRed:(239.f/255.f) green:(239.f/255.f) blue:(239.f/255.f) alpha:1];
-  UIColor *colorBot = [UIColor colorWithRed:(162.f/255.f) green:(162.f/255.f) blue:(162.f/255.f) alpha:1];
-  gradient.colors = [NSArray arrayWithObjects:(id)[colorTop CGColor], (id)[colorBot CGColor], nil];
-  gradient.masksToBounds = YES;
-  [[self.tabBar layer] insertSublayer:gradient atIndex:0];
+
 }
 
 - (void)updateViewConstraints {
   [super updateViewConstraints];
-
-  NSDictionary *views = NSDictionaryOfVariableBindings(_tabBar, _mapButton, _listButton, _settingsButton);
-  [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|[_tabBar]|"
-                              options:NSLayoutFormatAlignAllLeft
-                              metrics:nil
-                                views:views]];
-  [self.tabBar addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|[_listButton(==_mapButton)]-[_mapButton]-[_settingsButton(==_mapButton)]|"
-                              options:NSLayoutFormatAlignAllBottom
-                              metrics:nil
-                                views:views]];
-  [self.tabBar addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_listButton(==_mapButton)]|"
-                              options:NSLayoutFormatAlignAllBottom
-                              metrics:nil
-                                views:views]];
 }
 
 - (void)showProfile {
@@ -123,16 +86,19 @@
   [self presentViewController:navController animated:YES completion:nil];
 }
 
+- (void)toggleView {
+  if(self.toggleSegmentedControl.selectedSegmentIndex == 0) {
+    [self showListView];
+  } else {
+    [self showMapView];
+  }
+}
 - (void) showListView {
   [self swapView:self.issueMapViewController with:self.issueListViewController];
-  self.listButton.selected = YES;
-  self.mapButton.selected = NO;
 }
 
 - (void) showMapView {
   [self swapView:self.issueListViewController with:self.issueMapViewController];
-  self.listButton.selected = NO;
-  self.mapButton.selected = YES;
 }
 
 - (void)swapView:(UIViewController *)firstController with:(UIViewController *)secondController {
@@ -144,12 +110,12 @@
   [self addChildViewController:secondController];
   [self.view addSubview:viewToAdd];
 
-  NSDictionary *views = NSDictionaryOfVariableBindings(viewToAdd, _tabBar);
+  NSDictionary *views = NSDictionaryOfVariableBindings(viewToAdd);
   if(self.containerConstraints)
     [self.view removeConstraints:self.containerConstraints];
 
   self.containerConstraints = [NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[viewToAdd][_tabBar(==60)]|"
+          constraintsWithVisualFormat:@"V:|[viewToAdd]|"
                               options:0
                               metrics:nil
                                 views:views];
