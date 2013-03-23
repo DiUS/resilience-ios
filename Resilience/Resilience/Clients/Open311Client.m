@@ -9,6 +9,7 @@
 #import "Incident+Open311.h"
 #import "CLUploader.h"
 #import "CloudinaryClient.h"
+#import "Profile.h"
 
 @interface Open311Client() <CLUploaderDelegate>
 
@@ -133,7 +134,7 @@
 - (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(FailureBlock)failure {
   [CloudinaryClient updloadImage:incident.image success:^(NSString *uploadUrl) {
     incident.imageUrl = uploadUrl;
-    [self postPath:@"requests.json" parameters:[incident asDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self postPath:@"requests.json" parameters:[incident asDictionary:[Profile loadProfile]] success:^(AFHTTPRequestOperation *operation, id responseObject) {
       NSLog(@"Incident created successfully %@", responseObject);
       incident.id = responseObject[0][@"service_request_id"];
       success(incident);
