@@ -18,11 +18,13 @@
 		2DC184F50FA121D494252633 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1807D58B75EBE487FA664 /* ParseClient.m */; };
 		2DC184F89978579B4AFDE88D /* Open311Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC182961AE33B44B1F26C47 /* Open311Client.m */; };
 		2DC1855A00FAA51B59693059 /* UITextField+Form.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC183FFFCA19910EDB72F02 /* UITextField+Form.m */; };
+		2DC1859CDD588300762758C1 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC183CAED282CEFF60E7417 /* Profile.m */; };
 		2DC185A36255E00E25B9F5EC /* IncidentCategory+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B61E739350DB1EF95B7 /* IncidentCategory+Image.m */; };
 		2DC185E2592D12EF67205391 /* DetailSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181E10712D729176D1716 /* DetailSelectionController.m */; };
 		2DC1860B8A3CD2D1915D8D26 /* ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181D85F53DBF8F6CC5BAB /* ServiceRequest.m */; };
 		2DC1866F633CC10299DCD224 /* Open311Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC182961AE33B44B1F26C47 /* Open311Client.m */; };
 		2DC186DF5FE3CFA047FE1EFA /* IncidentCategory+Waypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18E792BE1EAAFEF6B225A /* IncidentCategory+Waypoint.m */; };
+		2DC186FD5177739C9EA79A08 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC183CAED282CEFF60E7417 /* Profile.m */; };
 		2DC187F17BC56D25002EA972 /* UITextField+Resilience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B2D4F1831DEEC671AFB /* UITextField+Resilience.m */; };
 		2DC18845B38FA0078F93B08E /* IncidentCategoryAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C18E1AA39C62074DD60 /* IncidentCategoryAdapter.m */; };
 		2DC188ABEDD3F4558E87E71E /* CloudinaryClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1878A146A6C5AC412BEF9 /* CloudinaryClient.m */; };
@@ -96,6 +98,7 @@
 		2DC182961AE33B44B1F26C47 /* Open311Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Open311Client.m; sourceTree = "<group>"; };
 		2DC1829AE9232AA0438442E9 /* ServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceRequest.h; sourceTree = "<group>"; };
 		2DC1834ADA9D6FA0D8F84BD6 /* Incident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Incident.h; sourceTree = "<group>"; };
+		2DC183CAED282CEFF60E7417 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		2DC183FFFCA19910EDB72F02 /* UITextField+Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Form.m"; sourceTree = "<group>"; };
 		2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TypedAccess.m"; sourceTree = "<group>"; };
 		2DC1854AC052D9377A08D33C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -112,6 +115,7 @@
 		2DC188C66B7EEA2E54A8F67C /* UITextField+Resilience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Resilience.h"; sourceTree = "<group>"; };
 		2DC189518C821F06001CF033 /* DetailSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSelectionController.h; sourceTree = "<group>"; };
 		2DC18A578BD40877F95077DD /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
+		2DC18B103369EC9756A14976 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixRotation.m"; sourceTree = "<group>"; };
 		2DC18B2D4F1831DEEC671AFB /* UITextField+Resilience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Resilience.m"; sourceTree = "<group>"; };
 		2DC18B61E739350DB1EF95B7 /* IncidentCategory+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IncidentCategory+Image.m"; sourceTree = "<group>"; };
@@ -299,6 +303,8 @@
 				2DC187887B871227C6EE0E65 /* IncidentCategory.m */,
 				2DC18C19C222D79F56128B9F /* IncidentCategory.h */,
 				2DC180A6D47F231B383CE15B /* Open311 */,
+				2DC183CAED282CEFF60E7417 /* Profile.m */,
+				2DC18B103369EC9756A14976 /* Profile.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -630,6 +636,7 @@
 				2DC18151574C53C67F546947 /* NSDictionary+TypedAccess.m in Sources */,
 				2DC18051B6EE4E2AAE5D31AC /* Incident+Open311.m in Sources */,
 				2DC188C57E041B99387D5A5A /* Client.m in Sources */,
+				2DC1859CDD588300762758C1 /* Profile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +678,7 @@
 				2DC184B82CA6CB57037A1515 /* ProfileViewController.m in Sources */,
 				2DC1855A00FAA51B59693059 /* UITextField+Form.m in Sources */,
 				2DC18BACA06B30EC5B56EE43 /* UITableViewCell+Form.m in Sources */,
+				2DC186FD5177739C9EA79A08 /* Profile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

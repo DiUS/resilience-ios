@@ -1,8 +1,8 @@
-
 #import "ProfileViewController.h"
 #import "UITextField+Form.h"
 #import "UIColor+Resilience.h"
 #import "UITableViewCell+Form.h"
+#import "Profile.h"
 
 @interface ProfileViewController()
 
@@ -10,6 +10,7 @@
 @property (nonatomic, strong) UITextField *lastNameTextField;
 @property (nonatomic, strong) UITextField *phoneNumberTextField;
 @property (nonatomic, strong) UITextField *emailTextField;
+@property (nonatomic, strong) Profile *profile;
 
 @end
 
@@ -31,15 +32,25 @@
   self.lastNameTextField = [UITextField formTextField:@"Last Name"];
   self.phoneNumberTextField = [UITextField numberFormTextField:@"Phone"];
   self.emailTextField = [UITextField emailFormTextField:@"Email"];
-//  [self.nameTextField addTarget:self
-//                         action:@selector(textFieldFinished:)
-//               forControlEvents:UIControlEventEditingDidEndOnExit];
 
+  self.profile = [Profile loadProfile];
   self.tableView.backgroundView = nil;
   self.view.backgroundColor = [UIColor defaultBackgroundColor];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  self.firstNameTextField.text = self.profile.firstName;
+  self.lastNameTextField.text = self.profile.lastName;
+  self.emailTextField.text = self.profile.email;
+  self.phoneNumberTextField.text = self.profile.phone;
+}
+
 - (void)save:(id)save {
+  self.profile.firstName = self.firstNameTextField.text;
+  self.profile.lastName = self.lastNameTextField.text;
+  self.profile.email = self.emailTextField.text;
+  self.profile.phone = self.phoneNumberTextField.text;
+  [self.profile save];
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
