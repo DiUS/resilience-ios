@@ -10,7 +10,7 @@
 
 + (UIColor *)defaultBackgroundColor
 {
-    return [UIColor colorWithRed:(233.0f/255.0f) green:(233.0f/255.0f) blue:(233.0f/255.0f) alpha:1];
+    return [UIColor colorWithRed:(239.0f/255.0f) green:(239.0f/255.0f) blue:(239.0f/255.0f) alpha:1];
 }
 
 + (UIColor *)lightGreyTextColor

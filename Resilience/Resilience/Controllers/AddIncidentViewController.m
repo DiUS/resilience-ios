@@ -48,6 +48,7 @@
   self.cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
   self.cameraImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Assets/uploadPhoto"]];
   self.cameraImageView.translatesAutoresizingMaskIntoConstraints = NO;
+  [self.cameraImageView setContentMode: UIViewContentModeScaleAspectFit];
   self.addPhotoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
   self.addPhotoLabel.text = @"Add photo";
   self.addPhotoLabel.font = [UIFont boldSystemFontOfSize:20.];
@@ -55,7 +56,6 @@
   self.addPhotoLabel.backgroundColor = [UIColor clearColor];
   self.addPhotoLabel.translatesAutoresizingMaskIntoConstraints = NO;
   [self.cameraButton addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
-  self.cameraButton.translatesAutoresizingMaskIntoConstraints = NO;
   self.view.translatesAutoresizingMaskIntoConstraints = NO;
 
   [self.view addSubview:self.cameraButton];
@@ -68,6 +68,10 @@
   self.locationManager = [[CLLocationManager alloc] init];
   self.locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
   self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters; // 100 m
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  self.cameraButton.frame = self.view.frame;
 }
 
 - (void)progressToIssueDetails {
@@ -104,7 +108,6 @@
 
   NSString *metaDataInfoKey = [info valueForKey:UIImagePickerControllerEditedImage] ? UIImagePickerControllerEditedImage : UIImagePickerControllerOriginalImage;
   self.photo = [[info objectForKey:metaDataInfoKey] fixOrientation];
-  [self.cameraImageView setContentMode: UIViewContentModeScaleAspectFit];
   self.cameraImageView.image = self.photo;
   self.addPhotoLabel.hidden = YES;
 //  self.cameraImageView.hidden = YES;
@@ -148,46 +151,33 @@
 
 - (void)updateViewConstraints {
   [super updateViewConstraints];
-  NSDictionary *views = NSDictionaryOfVariableBindings(_cameraButton);
-
-  [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|[_cameraButton]|"
-                              options:0
-                              metrics:nil
-                                views:views]];
-  [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_cameraButton]|"
-                              options:0
-                              metrics:nil
-                                views:views]];
-
   NSDictionary *cameraViews = NSDictionaryOfVariableBindings(_addPhotoLabel, _cameraImageView);
   [self.cameraButton addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|-(>=20)-[_cameraImageView]-[_addPhotoLabel]-(>=20)-|"
+          constraintsWithVisualFormat:@"V:|-(>=0)-[_cameraImageView]-[_addPhotoLabel]-(>=0)-|"
                               options:NSLayoutFormatAlignAllCenterX
                               metrics:nil
                                 views:cameraViews]];
 
   [self.cameraButton addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|[_cameraImageView]|"
+          constraintsWithVisualFormat:@"|[_cameraImageView(<=320)]|"
                               options:0
                               metrics:nil
                                 views:cameraViews]];
 
-//  [NSLayoutConstraint constraintWithItem:self.cameraImageView
-//                               attribute:NSLayoutAttributeCenterX
-//                               relatedBy:NSLayoutRelationEqual
-//                                  toItem:self.cameraButton
-//                               attribute:NSLayoutAttributeCenterX
-//                              multiplier:1.f constant:0.f];
-//
-//  [NSLayoutConstraint constraintWithItem:self.cameraImageView
-//                               attribute:NSLayoutAttributeCenterY
-//                               relatedBy:NSLayoutRelationEqual
-//                                  toItem:self.cameraButton
-//                               attribute:NSLayoutAttributeCenterY
-//                              multiplier:1.f constant:0.f];
+  NSLayoutConstraint *centreXConstraint = [NSLayoutConstraint constraintWithItem:self.cameraImageView
+                               attribute:NSLayoutAttributeCenterX
+                               relatedBy:NSLayoutRelationEqual
+                                  toItem:self.cameraButton
+                               attribute:NSLayoutAttributeCenterX
+                              multiplier:1.f constant:0.f];
 
+  NSLayoutConstraint *centreYConstraint = [NSLayoutConstraint constraintWithItem:self.cameraImageView
+                               attribute:NSLayoutAttributeCenterY
+                               relatedBy:NSLayoutRelationEqual
+                                  toItem:self.cameraButton
+                               attribute:NSLayoutAttributeCenterY
+                              multiplier:1.f constant:0.f];
+  [self.cameraButton addConstraints:@[centreXConstraint, centreYConstraint]];
 }
 
 #pragma mark - CategorySelectionDelegate methods
