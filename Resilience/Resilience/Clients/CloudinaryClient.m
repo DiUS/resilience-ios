@@ -35,11 +35,10 @@
   return self;
 }
 
-+ (void)updloadImage:(UIImage *)image success:(UploadSuccessBlock)success failure:(FailureBlock)failure {
-  CloudinaryClient *client = [[CloudinaryClient alloc] init];
-  [client.uploader upload:UIImageJPEGRepresentation(image, 0.50f) options:@{}];
-  client.uploadSuccessBlock = success;
-  client.uploadFailureBlock = failure;
+- (void)updloadImage:(UIImage *)image success:(UploadSuccessBlock)success failure:(FailureBlock)failure {
+  self.uploadSuccessBlock = success;
+  self.uploadFailureBlock = failure;
+  [self.uploader upload:UIImageJPEGRepresentation(image, 0.50f) options:@{}];
 }
 
 #pragma mark - CLUploaderDelegate

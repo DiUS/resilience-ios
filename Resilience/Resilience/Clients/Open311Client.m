@@ -10,8 +10,12 @@
 #import "CLUploader.h"
 #import "CloudinaryClient.h"
 #import "Profile.h"
+#import "ResilientUploader.h"
 
 @interface Open311Client() <CLUploaderDelegate>
+
+@property (nonatomic, strong) ResilientUploader *uploader;
+@property (nonatomic, strong) CloudinaryClient *cloudinaryClient;
 
 @end
 
@@ -32,15 +36,15 @@
 }
 
 - (id)initWithBaseURL:(NSURL *)url {
-  self = [super initWithBaseURL:url];
-  if (!self) {
-    return nil;
-  }
+  if (self = [super initWithBaseURL:url]) {
+    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    self.parameterEncoding = AFFormURLParameterEncoding;
+    [self setDefaultHeader:@"Accept" value:@"application/json"];
+    [self setDefaultHeader:@"Content-Type" value:@"application/json"];
+    self.uploader = [[ResilientUploader alloc] initWithClient:self];
+    self.cloudinaryClient = [[CloudinaryClient alloc] init];
 
-  [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-  self.parameterEncoding = AFFormURLParameterEncoding;
-  [self setDefaultHeader:@"Accept" value:@"application/json"];
-  [self setDefaultHeader:@"Content-Type" value:@"application/json"];
+  }
   return self;
 }
 
@@ -132,17 +136,25 @@
 }
 
 - (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(FailureBlock)failure {
-  [CloudinaryClient updloadImage:incident.image success:^(NSString *uploadUrl) {
-    incident.imageUrl = uploadUrl;
-    [self postPath:@"requests.json" parameters:[incident asDictionary:[Profile loadProfile]] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-      NSLog(@"Incident created successfully %@", responseObject);
-      incident.id = responseObject[0][@"service_request_id"];
-      success(incident);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-      NSLog(@"Error creating a service request");
-      failure(error);
-    }];
-  } failure:failure];
+  __weak Incident *blockIncident = incident;
+  __weak id uploadClient = self.cloudinaryClient;
+//  [self.uploader uploadWithBlock:^{
+    [uploadClient updloadImage:blockIncident.image success:^(NSString *uploadUrl) {
+      blockIncident.imageUrl = uploadUrl;
+      [self postPath:@"requests.json" parameters:[blockIncident asDictionary:[Profile loadProfile]] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Incident created successfully %@", responseObject);
+        blockIncident.id = responseObject[0][@"service_request_id"];
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          success(blockIncident);
+//        }];
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error creating a service request");
+//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+          failure(error);
+//        }];
+      }];
+    } failure:failure];
+//  }];
 }
 
 @end
