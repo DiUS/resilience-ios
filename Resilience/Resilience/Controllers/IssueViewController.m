@@ -2,9 +2,7 @@
 #import "IssueViewController.h"
 #import "UIColor+Resilience.h"
 #import "WaypointAnnotation.h"
-
-#import <SDWebImage/UIImageView+WebCache.h>
-
+#import "UIImageView+AFNetworking.h"
 
 @interface IssueViewController ()
 @property(nonatomic, strong) UIImageView *imageView;

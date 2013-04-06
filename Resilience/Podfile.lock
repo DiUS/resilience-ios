@@ -2,17 +2,22 @@
 PODS:
 - AFHTTPRequestOperationLogger (0.10.0):
   - AFNetworking (>= 0.9.0)
-- AFNetworking (1.1.0)
-- Cloudinary (1.0.1):
+- AFNetworking (1.2.0)
+- Cloudinary (1.0.2):
   - SBJson (~> 3.2)
 - DCIntrospect (0.0.2)
 - ISO8601DateFormatter (0.6)
-- Kiwi (2.0.5)
+- Kiwi (2.0.6)
+- Mantle (1.0):
+  - libextobjc/EXTKeyPathCoding
+  - libextobjc/EXTScope
 - SBJson (3.2)
-- SDWebImage (3.1):
-  - SDWebImage/Main (= 3.1)
-- SDWebImage/Main (3.1)
-- TestFlightSDK (1.2.4.beta)
+- TestFlightSDK (1.3.0.beta2)
+- libextobjc/EXTKeyPathCoding (0.2.5):
+  - libextobjc/RuntimeExtensions
+- libextobjc/EXTScope (0.2.5):
+  - libextobjc/RuntimeExtensions
+- libextobjc/RuntimeExtensions (0.2.5)
 
 DEPENDENCIES:
 - AFHTTPRequestOperationLogger
@@ -21,19 +26,21 @@ DEPENDENCIES:
 - DCIntrospect
 - ISO8601DateFormatter
 - Kiwi
-- SDWebImage
+- Mantle
 - TestFlightSDK
 
 SPEC CHECKSUMS:
-  AFHTTPRequestOperationLogger: 1d65fa5d905211c8981a11091eae8c98b410eb19
-  AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
-  Cloudinary: 0351d6b06726c3cf238d0d8a76327a478898b6eb
+  AFHTTPRequestOperationLogger: 34ba125cb9eeb77a3b67aaaca105720ba3a0798c
+  AFNetworking: 3cbae45f61a9f995cdbd56bd571223910d7f4e44
+  Cloudinary: 16168b297cab66eac1a07e3e5301adf6429a486d
   DCIntrospect: 2f5cab0b58b170459ebcb200f59042306fcb0c0d
   ISO8601DateFormatter: dc05a2481edf49668d85d3ff8c466c32eb544780
+  Mantle: aa9860e40cc365a094ef60fec46848fee7b03ca7
   SBJson: 4971016670e7b3fa04a36d4e72ab0fb1ad3a9f69
-  SDWebImage: 9e70e5dd0c69d1a043180cd2c5e1d0cd1e4ebcd7
-  SDWebImage/Main: 9e70e5dd0c69d1a043180cd2c5e1d0cd1e4ebcd7
-  TestFlightSDK: aeec97fd81096753d53b942f030a443520a087f4
-  Kiwi: 89ade77eb49c889178cb2779e02514a7b9b9449e
+  TestFlightSDK: 359dbd5b9b363a9e35351bb71cc9dfd8ca6c8c36
+  libextobjc/EXTKeyPathCoding: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
+  libextobjc/EXTScope: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
+  libextobjc/RuntimeExtensions: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
+  Kiwi: 56082a80f942de4d10423d8d8a599ab30cf50228
 
 COCOAPODS: 0.16.0
