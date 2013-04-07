@@ -1,8 +1,9 @@
 #import "Profile.h"
 #import "NSDictionary+TypedAccess.h"
+#import "DataStore.h"
 
-#define kProfileKey @"Profile"
-#define kProfileFile @"Resilience.plist"
+#define kDataStoreKey @"database"
+#define kDataFile @"Resilience.plist"
 
 @implementation Profile
 
@@ -34,35 +35,15 @@
 
 
 + (Profile *)loadProfile {
-  NSString *dataPath = [[Profile getPrivateDocsDir] stringByAppendingPathComponent:kProfileFile];
-  NSData *codedData = [[NSData alloc] initWithContentsOfFile:dataPath];
-  if (codedData == nil) return [[Profile alloc] init];
-
-  NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
-  Profile *profile = [unarchiver decodeObjectForKey:kProfileKey];
-  [unarchiver finishDecoding];
+  Profile *profile = [DataStore loadObjectForKey:@"profile"];
+  if(!profile) {
+    return [[Profile alloc] init];
+  }
   return profile;
-
 }
 
 - (void)save {
-  NSString *dataPath = [[Profile getPrivateDocsDir] stringByAppendingPathComponent:kProfileFile];
-  NSMutableData *data = [[NSMutableData alloc] init];
-  NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-  [archiver encodeObject:self forKey:kProfileKey];
-  [archiver finishEncoding];
-  [data writeToFile:dataPath atomically:YES];
-}
-
-+ (NSString *)getPrivateDocsDir {
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-  NSString *documentsDirectory = [paths objectAtIndex:0];
-  documentsDirectory = [documentsDirectory stringByAppendingPathComponent:@"Private Documents"];
-
-  NSError *error;
-  [[NSFileManager defaultManager] createDirectoryAtPath:documentsDirectory withIntermediateDirectories:YES attributes:nil error:&error];
-
-  return documentsDirectory;
+  [DataStore saveObject:self forKey:@"profile"];
 }
 
 @end

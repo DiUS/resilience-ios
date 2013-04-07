@@ -3,6 +3,7 @@
 @class Service;
 
 @interface IncidentCategoryAdapter : IncidentCategory
+
 - (id)initWithService:(Service *)service;
 
 @end

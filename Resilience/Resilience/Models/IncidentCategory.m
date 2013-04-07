@@ -1,62 +1,23 @@
+#import "MTLModel.h"
 #import "IncidentCategory.h"
-
-static NSString *const WIND = @"Wind";
-static NSString *const AIR = @"Air";
-static NSString *const FIRE = @"Fire";
-static NSString *const WATER = @"Water";
-
+#import "DataStore.h"
 
 
 @implementation IncidentCategory
 
-+ (IncidentCategory *)categoryFromString:(NSString*)category {
-
-  if([category isEqualToString:WIND]) {
-    return [[Wind alloc] init];
-  } else if([category isEqualToString:FIRE]) {
-    return [[Fire alloc] init];
-  } else if([category isEqualToString:WATER]) {
-    return [[Water alloc] init];
-  } else if([category isEqualToString:AIR]) {
-    return [[Air alloc] init];
-  }
-  return nil;
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+  return @{
+          @"name": @"name",
+          @"code": @"code"
+  };
 }
 
-- (NSString *)categoryName {
-  return @"";
++ (NSArray *)loadCategories {
+  return [DataStore loadObjectForKey:@"categories"];
 }
 
-@end
-
-@implementation Wind
-
-- (NSString *)categoryName {
-  return WIND;
-}
-
-@end
-
-@implementation Fire
-
-- (NSString *)categoryName {
-  return FIRE;
-}
-
-@end
-
-@implementation Water
-
-- (NSString *)categoryName {
-  return WATER;
-}
-
-@end
-
-@implementation Air
-
-- (NSString *)categoryName {
-  return AIR;
++ (void)saveCategories:(NSArray *)categories {
+  [DataStore saveObject:categories forKey:@"categories"];
 }
 
 @end

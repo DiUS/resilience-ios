@@ -4,17 +4,12 @@
 #import "ParseClient.h"
 #import "IncidentCell.h"
 #import "AFNetworking.h"
-#import "UIImageView+AFNetworking.h"
 #import "IssueViewController.h"
-#import "IncidentCategory.h"
-#import "IncidentCategory+Image.h"
 #import "Open311Client.h"
-#import "CloudinaryClient.h"
 
 @interface IssueListViewController ()
 
 @property (nonatomic, strong) NSArray *incidents;
-@property (nonatomic, strong) NSArray *serviceRequests;
 
 @end
 

@@ -1,22 +1,12 @@
+#import "MTLModel+NSCoding.h"
+#import "MTLJSONAdapter.h"
 
-@interface IncidentCategory : NSObject
+@interface IncidentCategory : MTLModel <MTLJSONSerializing>
+
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *code;
 
-+ (IncidentCategory *)categoryFromString:(NSString *)category;
++ (NSArray *)loadCategories;
 
-- (NSString *)categoryName;
-
-@end
-
-@interface Wind : IncidentCategory
-@end
-
-@interface Fire : IncidentCategory
-@end
-
-@interface Water : IncidentCategory
-@end
-
-@interface Air : IncidentCategory
++ (void)saveCategories:(NSArray *)categories;
 @end

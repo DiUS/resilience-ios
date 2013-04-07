@@ -110,8 +110,17 @@
     for (Service *service in services) {
       [categories addObject:[[IncidentCategoryAdapter alloc] initWithService:service]];
     }
+    [IncidentCategory saveCategories:categories]; // TODO: do this on another thread!
     success(categories);
-  } failure:failure];
+  } failure:^(NSError *error) {
+    NSArray *categories = [IncidentCategory loadCategories];
+    if(categories) {
+      NSLog(@"Could not get categories, falling back to persisted ones");
+      success(categories);
+    } else {
+      failure(error);
+    }
+  }];
 }
 
 - (void)fetchServices:(ServicesSuccessBlock)success failure:(Open311FailureBlock)failure {
