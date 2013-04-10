@@ -10,6 +10,7 @@
 @property (nonatomic, strong) UITextField *lastNameTextField;
 @property (nonatomic, strong) UITextField *phoneNumberTextField;
 @property (nonatomic, strong) UITextField *emailTextField;
+@property (nonatomic, weak) UITextField *currentTextField;
 @property (nonatomic, strong) Profile *profile;
 
 @end
@@ -35,7 +36,7 @@
 
   self.profile = [Profile loadProfile];
   self.tableView.backgroundView = nil;
-  self.view.backgroundColor = [UIColor defaultBackgroundColor];
+  self.tableView.backgroundColor = [UIColor defaultBackgroundColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -55,17 +56,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  UITableViewCell *cell;
   switch (indexPath.row) {
     case 0:
-      return [UITableViewCell cellWithName:@"Name" andField:self.firstNameTextField];
+      cell = [UITableViewCell cellWithName:@"Name" andField:self.firstNameTextField];
+      break;
     case 1:
-      return [UITableViewCell cellWithName:@"Last Name" andField:self.lastNameTextField];
+      cell = [UITableViewCell cellWithName:@"Last Name" andField:self.lastNameTextField];
+      break;
     case 2:
-      return [UITableViewCell cellWithName:@"Phone" andField:self.phoneNumberTextField];
+      cell = [UITableViewCell cellWithName:@"Phone" andField:self.phoneNumberTextField];
+      break;
     case 3:
-      return [UITableViewCell cellWithName:@"Email" andField:self.emailTextField];
+      cell = [UITableViewCell cellWithName:@"Email" andField:self.emailTextField];
+      break;
   }
-  return nil;
+  cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -74,6 +81,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   return 4;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  switch (indexPath.row) {
+    case 0:
+      [self.firstNameTextField becomeFirstResponder];
+      break;
+    case 1:
+      [self.lastNameTextField becomeFirstResponder];
+      break;
+    case 2:
+      [self.phoneNumberTextField becomeFirstResponder];
+      break;
+    case 3:
+      [self.emailTextField becomeFirstResponder];
+      break;
+  }
 }
 
 @end
