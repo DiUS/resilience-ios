@@ -7,7 +7,6 @@
 
   if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
     self.photoImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
 
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -15,15 +14,15 @@
     self.nameLabel.textColor = [UIColor blackColor];
     self.nameLabel.font = [self.nameLabel.font fontWithSize:16.];
 
+    self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.descriptionLabel.backgroundColor = [UIColor clearColor];
+    self.descriptionLabel.textColor = [UIColor defaultTextColor];
+    self.descriptionLabel.font = [self.descriptionLabel.font fontWithSize:14.];
+
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.timeLabel.backgroundColor = [UIColor clearColor];
     self.timeLabel.textColor = [UIColor defaultTextColor];
-    self.timeLabel.font = [self.timeLabel.font fontWithSize:14.];
-
-    self.locationLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.locationLabel.backgroundColor = [UIColor clearColor];
-    self.locationLabel.textColor = [UIColor defaultTextColor];
-    self.locationLabel.font = [self.locationLabel.font fontWithSize:12.];
+    self.timeLabel.font = [self.timeLabel.font fontWithSize:12.];
 
     self.contentView.backgroundColor = [UIColor defaultBackgroundColor];
     self.accessoryView.backgroundColor = [UIColor defaultBackgroundColor];
@@ -34,16 +33,16 @@
 
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.timeLabel];
-    [self.contentView addSubview:self.locationLabel];
+    [self.contentView addSubview:self.descriptionLabel];
     [self.contentView addSubview:self.photoImageView];
 
 //    self.containerForContraints.translatesAutoresizingMaskIntoConstraints = NO;
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.locationLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
 
-    NSDictionary *views = NSDictionaryOfVariableBindings(_photoImageView, _nameLabel, _timeLabel, _locationLabel);
+    NSDictionary *views = NSDictionaryOfVariableBindings(_photoImageView, _nameLabel, _timeLabel, _descriptionLabel);
     [self.contentView addConstraints:[NSLayoutConstraint
             constraintsWithVisualFormat:@"|[_photoImageView(==70@900)]-[_nameLabel]-|"
                                 options:NSLayoutFormatAlignAllTop
@@ -53,7 +52,7 @@
                                 options:NSLayoutFormatAlignAllLeft
                                 metrics:nil views:views]];
     [self.contentView addConstraints:[NSLayoutConstraint
-            constraintsWithVisualFormat:@"V:|-5@900-[_nameLabel][_timeLabel][_locationLabel]-5@900-|"
+            constraintsWithVisualFormat:@"V:|-5@900-[_nameLabel][_descriptionLabel][_timeLabel]-5@900-|"
                                 options:NSLayoutFormatAlignAllLeft
                                 metrics:nil views:views]];
   }

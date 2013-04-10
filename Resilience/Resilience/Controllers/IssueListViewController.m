@@ -107,7 +107,7 @@
     cell = [[IncidentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 
   cell.nameLabel.text = incident.name;
-  cell.locationLabel.text = [NSString stringWithFormat:@"near: %f, %f", incident.location.coordinate.longitude, incident.location.coordinate.latitude];
+  cell.descriptionLabel.text = [NSString stringWithFormat:@"%@", incident.description];
 
   cell.timeLabel.text = [NSString stringWithFormat:@"Reported on %@", [incident createdDateAsString]];
   [cell.photoImageView setImageWithURL:[incident imageUrlForSize:CGSizeMake(70.f, 70.f)]];

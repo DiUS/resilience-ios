@@ -61,4 +61,8 @@
   return self.serviceRequest.address;
 }
 
+- (NSString *)description {
+  return self.serviceRequest.description;
+}
+
 @end
