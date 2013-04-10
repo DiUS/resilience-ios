@@ -80,7 +80,7 @@
       serviceRequest.agencyResponsible = [rawRequest stringValueForKeyPath:@"agency_responsible"];
       serviceRequest.serviceNotice = [rawRequest stringValueForKeyPath:@"service_notice"];
       serviceRequest.location = [[CLLocation alloc] initWithLatitude:[rawRequest doubleValueForKeyPath:@"lat"] longitude:[rawRequest doubleValueForKeyPath:@"long"]];
-      serviceRequest.addressString = [rawRequest stringValueForKeyPath:@"address_string"];
+      serviceRequest.address = [rawRequest stringValueForKeyPath:@"address"];
       serviceRequest.addressId = [rawRequest stringValueForKeyPath:@"address_id"];
       serviceRequest.email = [rawRequest stringValueForKeyPath:@"email"];
       serviceRequest.deviceId = [rawRequest stringValueForKeyPath:@"device_id"];
@@ -128,15 +128,15 @@
     NSLog(@"Services: %@", jsonResponse);
     NSMutableArray *services = [[NSMutableArray alloc] init];
     for (NSDictionary * rawService in jsonResponse) {
-      Service *serviceRequest = [[Service alloc] init];
-      serviceRequest.code = [rawService stringValueForKeyPath:@"service_code"];
-      serviceRequest.name = [rawService valueForKey:@"service_name"];
-      serviceRequest.serviceDescription = [rawService valueForKey:@"description"];
-      serviceRequest.metadata = [rawService boolValueForKeyPath:@"metadata"];
-      serviceRequest.type = [rawService valueForKey:@"type"];
-      serviceRequest.keywords = [rawService valueForKey:@"keywords"];
-      serviceRequest.group = [rawService valueForKey:@"group"];
-      [services addObject:serviceRequest];
+      Service *service = [[Service alloc] init];
+      service.code = [rawService stringValueForKeyPath:@"service_code"];
+      service.name = [rawService valueForKey:@"service_name"];
+      service.serviceDescription = [rawService valueForKey:@"description"];
+      service.metadata = [rawService boolValueForKeyPath:@"metadata"];
+      service.type = [rawService valueForKey:@"type"];
+      service.keywords = [rawService valueForKey:@"keywords"];
+      service.group = [rawService valueForKey:@"group"];
+      [services addObject:service];
     }
     success(services);
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -145,16 +145,16 @@
 }
 
 - (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(FailureBlock)failure {
-  __weak Incident *blockIncident = incident;
+//  __weak Incident *blockIncident = incident;
   __weak id uploadClient = self.cloudinaryClient;
 //  [self.uploader uploadWithBlock:^{
-    [uploadClient updloadImage:blockIncident.image success:^(NSString *uploadUrl) {
-      blockIncident.imageUrl = uploadUrl;
-      [self postPath:@"requests.json" parameters:[blockIncident asDictionary:[Profile loadProfile]] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [uploadClient updloadImage:incident.image success:^(NSString *uploadUrl) {
+      incident.imageUrl = uploadUrl;
+      [self postPath:@"requests.json" parameters:[incident asDictionary:[Profile loadProfile]] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Incident created successfully %@", responseObject);
-        blockIncident.id = responseObject[0][@"service_request_id"];
+        incident.id = responseObject[0][@"service_request_id"];
 //        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-          success(blockIncident);
+          success(incident);
 //        }];
       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error creating a service request");

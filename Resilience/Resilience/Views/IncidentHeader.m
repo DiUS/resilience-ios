@@ -30,7 +30,7 @@
 - (void)populateWithIncident:(Incident *)incident {
   self.issueHeading.text = incident.name;
   self.reportedTime.text = [incident createdDateAsString];
-  self.issueLocation.text = @"Blah Street";
+  self.issueLocation.text = incident.address;
 }
 
 - (CGSize)intrinsicContentSize {

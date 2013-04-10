@@ -57,4 +57,8 @@
   return self.serviceRequest.location;
 }
 
+- (NSString *)address {
+  return self.serviceRequest.address;
+}
+
 @end
