@@ -39,8 +39,11 @@
   self.issueMapViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
 
   UIBarButtonItem *profileItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/SettingsIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
+  profileItem.tintColor = [UIColor orangeColor];
 //  UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"SettingsIcon" style:UIBarButtonItemStyleBordered target:self action:@selector(showProfile)];
   UIBarButtonItem *feedbackbuttonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/FeedbackIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
+  feedbackbuttonItem.tintColor = [UIColor orangeColor];
+  
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
   [self setToolbarItems:@[feedbackbuttonItem, flexibleSpace, profileItem]];
 }
