@@ -21,7 +21,7 @@
   [super loadView];
   UIButton *addIssueButton = [UIButton buttonWithType:UIButtonTypeCustom];
   addIssueButton.frame = CGRectMake(0, 0, 55, 51);
-  UIImage *buttonImage = [UIImage imageNamed:@"AddButton"];
+  UIImage *buttonImage = [UIImage imageNamed:@"Assets/AddButton"];
   [addIssueButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
   [addIssueButton addTarget:self action:@selector(addIssue) forControlEvents:UIControlEventTouchUpInside];
 
