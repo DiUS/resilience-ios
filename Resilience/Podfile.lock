@@ -37,7 +37,7 @@ SPEC CHECKSUMS:
   ISO8601DateFormatter: dc05a2481edf49668d85d3ff8c466c32eb544780
   Mantle: aa9860e40cc365a094ef60fec46848fee7b03ca7
   SBJson: 4971016670e7b3fa04a36d4e72ab0fb1ad3a9f69
-  TestFlightSDK: 359dbd5b9b363a9e35351bb71cc9dfd8ca6c8c36
+  TestFlightSDK: 185b9bfd710bfb85ce5f57bcb89651330081090f
   libextobjc/EXTKeyPathCoding: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
   libextobjc/EXTScope: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
   libextobjc/RuntimeExtensions: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
