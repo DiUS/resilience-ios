@@ -92,6 +92,8 @@
     [self.navigationController.view hideLoading];
   } failure:^(NSError *error) {
     [self.navigationController.view hideLoading];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
   }];
 }
 
