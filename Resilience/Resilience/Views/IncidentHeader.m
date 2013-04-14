@@ -12,19 +12,23 @@
 - (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    self.issueHeading = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.issueHeading.translatesAutoresizingMaskIntoConstraints = NO;
+    self.issueHeading = [self labelWithDefaultAttributes];
     [self addSubview:self.issueHeading];
 
-    self.reportedTime = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.reportedTime.translatesAutoresizingMaskIntoConstraints = NO;
+    self.reportedTime = [self labelWithDefaultAttributes];
     [self addSubview:self.reportedTime];
 
-    self.issueLocation = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.issueLocation.translatesAutoresizingMaskIntoConstraints = NO;
+    self.issueLocation = [self labelWithDefaultAttributes];
     [self addSubview:self.issueLocation];
   }
   return self;
+}
+
+- (UILabel *)labelWithDefaultAttributes {
+  UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+  label.translatesAutoresizingMaskIntoConstraints = NO;
+  label.backgroundColor = [UIColor clearColor];
+  return label;
 }
 
 - (void)populateWithIncident:(Incident *)incident {
@@ -48,12 +52,12 @@
   [super updateConstraints];
   NSDictionary *views = NSDictionaryOfVariableBindings(_issueHeading, _reportedTime, _issueLocation);
   [self addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|-20-[_issueHeading]-10-[_reportedTime]-10-[_issueLocation]-10-|"
+          constraintsWithVisualFormat:@"V:|-[_issueHeading]-[_reportedTime]-[_issueLocation]-|"
                               options:0
                               metrics:nil views:views]];
 
   [self addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"H:|-100-[_issueHeading]"
+          constraintsWithVisualFormat:@"H:|-[_issueHeading]"
                               options:0
                               metrics:nil views:views]];
 

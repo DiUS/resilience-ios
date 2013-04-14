@@ -3,22 +3,25 @@
 #import "UIColor+Resilience.h"
 #import "WaypointAnnotation.h"
 #import "UIImageView+AFNetworking.h"
+#import "IncidentFooter.h"
 
 @interface IssueViewController ()
 @property(nonatomic, strong) UIImageView *imageView;
 @property(nonatomic, strong) MKMapView *issueMap;
 @property(nonatomic, strong) IncidentHeader *headerView;
+@property(nonatomic, strong) IncidentFooter *footerView;
 @end
 
 @implementation IssueViewController
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  [self style];
   [self data];
 }
 
 - (void)viewDidLoad {
-  [self style];
+  [super viewDidLoad];
 }
 
 - (void)loadView {
@@ -50,6 +53,8 @@
   }
 
   [self.headerView populateWithIncident:self.incident];
+  [self.footerView populateWithIncident:self.incident];
+
   WaypointAnnotation *annotation = [WaypointAnnotation annotationWithCoordinate:self.incident.location.coordinate];
   annotation.title = self.incident.name;
   annotation.subtitle = [self.incident createdDateAsString];
@@ -62,11 +67,13 @@
   self.view = [[UIView alloc] initWithFrame:CGRectZero];
 
   self.imageView = [[UIImageView alloc] initWithImage:nil];
-  self.imageView.contentMode = UIViewContentModeScaleToFill;
+  self.imageView.contentMode = UIViewContentModeScaleAspectFit;
   [self.view addSubview:self.imageView];
 
   self.headerView = [[IncidentHeader alloc] initWithFrame:CGRectZero];
   [self.view addSubview:self.headerView];
+  self.footerView = [[IncidentFooter alloc] initWithFrame:CGRectZero];
+  [self.view addSubview:self.footerView];
 
   self.navigationItem.title = @"Issue Details";
 
@@ -78,6 +85,7 @@
   self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
   self.issueMap.translatesAutoresizingMaskIntoConstraints = NO;
   self.headerView.translatesAutoresizingMaskIntoConstraints = NO;
+  self.footerView.translatesAutoresizingMaskIntoConstraints = NO;
   self.view.translatesAutoresizingMaskIntoConstraints = NO;
 
 }
@@ -85,14 +93,14 @@
 
 - (void)updateViewConstraints {
   [super updateViewConstraints];
-  NSDictionary *views = NSDictionaryOfVariableBindings(_imageView, _issueMap, _headerView);
+  NSDictionary *views = NSDictionaryOfVariableBindings(_imageView, _issueMap, _headerView, _footerView);
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_headerView]-[_imageView(185)]|"
+          constraintsWithVisualFormat:@"V:|[_headerView]-[_imageView(>=185)]-[_footerView(>=60@900)]|"
                               options:0
                               metrics:nil views:views]];
 
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_headerView]-[_issueMap(185)]"
+          constraintsWithVisualFormat:@"V:|[_headerView]-[_issueMap(>=185)]-[_footerView(>=60@900)]|"
                               options:0
                               metrics:nil views:views]];
 
@@ -102,9 +110,17 @@
                               metrics:nil views:views]];
 
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"H:|-32-[_imageView(120)]-32-[_issueMap(120)]-32-|"
+          constraintsWithVisualFormat:@"H:|[_footerView]|"
                               options:0
                               metrics:nil views:views]];
+
+  [self.view addConstraints:[NSLayoutConstraint
+          constraintsWithVisualFormat:@"H:|-[_imageView(130)]-20-[_issueMap(130)]-|"
+                              options:0
+                              metrics:nil views:views]];
+
+//  [self.footerView setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisVertical];
+//  [self.footerView setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
 }
 
 @end

@@ -21,11 +21,11 @@
 		2DC184F89978579B4AFDE88D /* Open311Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC182961AE33B44B1F26C47 /* Open311Client.m */; };
 		2DC1855A00FAA51B59693059 /* UITextField+Form.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC183FFFCA19910EDB72F02 /* UITextField+Form.m */; };
 		2DC1859CDD588300762758C1 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC183CAED282CEFF60E7417 /* Profile.m */; };
-		2DC185E2592D12EF67205391 /* DetailSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181E10712D729176D1716 /* DetailSelectionController.m */; };
 		2DC1860B8A3CD2D1915D8D26 /* ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181D85F53DBF8F6CC5BAB /* ServiceRequest.m */; };
 		2DC1866F633CC10299DCD224 /* Open311Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC182961AE33B44B1F26C47 /* Open311Client.m */; };
 		2DC186DF5FE3CFA047FE1EFA /* IncidentCategory+Waypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18E792BE1EAAFEF6B225A /* IncidentCategory+Waypoint.m */; };
 		2DC186FD5177739C9EA79A08 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC183CAED282CEFF60E7417 /* Profile.m */; };
+		2DC187093F64DFD4B46EC12D /* AddIncidentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC180F4C030BF445539152A /* AddIncidentViewController.m */; };
 		2DC187F17BC56D25002EA972 /* UITextField+Resilience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B2D4F1831DEEC671AFB /* UITextField+Resilience.m */; };
 		2DC18845B38FA0078F93B08E /* IncidentCategoryAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C18E1AA39C62074DD60 /* IncidentCategoryAdapter.m */; };
 		2DC188ABEDD3F4558E87E71E /* CloudinaryClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1878A146A6C5AC412BEF9 /* CloudinaryClient.m */; };
@@ -33,15 +33,16 @@
 		2DC1894DABAFE5245A7CC37A /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18FB1A3F46270905E24CD /* DataStore.m */; };
 		2DC1894F3557894829DE53B3 /* UIView+WSLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18FD9FA6AA3804B32FDF7 /* UIView+WSLoading.m */; };
 		2DC18959D9F57F94AF1540A4 /* Incident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F94C37BC75BD6209AA1 /* Incident.m */; };
+		2DC1898D6DB2CA74F8C0F974 /* DetailSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC182A591A90D5D1E2DC23E /* DetailSelectionController.m */; };
 		2DC189A31ED17A5245C3ED39 /* ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181D85F53DBF8F6CC5BAB /* ServiceRequest.m */; };
 		2DC18A2B60EAB74BA3A4B91F /* IncidentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C74E4CAEA46175AF113 /* IncidentCell.m */; };
 		2DC18A2CC04FE515FE102763 /* UIImage+FixRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */; };
 		2DC18AA55CFBAFBE51A44570 /* ResilientUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18DC3A352C814191BB654 /* ResilientUploader.m */; };
+		2DC18ABCE849713F0216B4C7 /* IncidentFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC186CE858398FA277F07DB /* IncidentFooter.m */; };
 		2DC18ABF28E735DB4374AE13 /* IncidentAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181A7E525EF4C93715683 /* IncidentAdapter.m */; };
 		2DC18B1FF67341F20CFD8C43 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D290BA8F5FC680BE957 /* Client.m */; };
 		2DC18B32746F47D13E88E493 /* Incident+Open311.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1887E0454BA205B53AC49 /* Incident+Open311.m */; };
 		2DC18BACA06B30EC5B56EE43 /* UITableViewCell+Form.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181A1CC07036C5C3F01E5 /* UITableViewCell+Form.m */; };
-		2DC18E1F69BEE156C4E9ADE3 /* AddIncidentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */; };
 		2DC18E40A15187A376822547 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18287279BE2ABF06DC268 /* Service.m */; };
 		2DC18E45DB4B195DF781B617 /* UIColor+Resilience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18E4EE87A9F37816EE348 /* UIColor+Resilience.m */; };
 		2DC18FCD4B4D89F22A613BA4 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18287279BE2ABF06DC268 /* Service.m */; };
@@ -92,25 +93,28 @@
 
 /* Begin PBXFileReference section */
 		2DC1807D58B75EBE487FA664 /* ParseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClient.m; sourceTree = "<group>"; };
+		2DC180F4C030BF445539152A /* AddIncidentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIncidentViewController.m; sourceTree = "<group>"; };
 		2DC181A0AFCCA91F98A2E406 /* UIColor+Resilience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Resilience.h"; sourceTree = "<group>"; };
 		2DC181A1CC07036C5C3F01E5 /* UITableViewCell+Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Form.m"; sourceTree = "<group>"; };
 		2DC181A7E525EF4C93715683 /* IncidentAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentAdapter.m; sourceTree = "<group>"; };
 		2DC181D85F53DBF8F6CC5BAB /* ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceRequest.m; sourceTree = "<group>"; };
 		2DC181D862EA2D5C45DCA61B /* IncidentCategory+Waypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IncidentCategory+Waypoint.h"; sourceTree = "<group>"; };
-		2DC181E10712D729176D1716 /* DetailSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSelectionController.m; sourceTree = "<group>"; };
 		2DC182557B186570BC2F6089 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
 		2DC18287279BE2ABF06DC268 /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
 		2DC182961AE33B44B1F26C47 /* Open311Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Open311Client.m; sourceTree = "<group>"; };
 		2DC1829AE9232AA0438442E9 /* ServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceRequest.h; sourceTree = "<group>"; };
+		2DC182A591A90D5D1E2DC23E /* DetailSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSelectionController.m; sourceTree = "<group>"; };
 		2DC182B43BC8CD4C6589D912 /* ResilientUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResilientUploader.h; sourceTree = "<group>"; };
 		2DC1834ADA9D6FA0D8F84BD6 /* Incident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Incident.h; sourceTree = "<group>"; };
 		2DC183CAED282CEFF60E7417 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		2DC183FFFCA19910EDB72F02 /* UITextField+Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Form.m"; sourceTree = "<group>"; };
 		2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TypedAccess.m"; sourceTree = "<group>"; };
+		2DC1844EBF31DB2E53DBC64E /* AddIncidentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIncidentViewController.h; sourceTree = "<group>"; };
 		2DC1854AC052D9377A08D33C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		2DC1863F09FFD1B8EF7B47F0 /* UIView+WSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WSLoading.h"; sourceTree = "<group>"; };
 		2DC1869B49911D90A70B893B /* IncidentAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentAdapter.h; sourceTree = "<group>"; };
 		2DC186B3B33F3F312A621DE4 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
+		2DC186CE858398FA277F07DB /* IncidentFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentFooter.m; sourceTree = "<group>"; };
 		2DC18752B9B2297998D7B088 /* IncidentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentCell.h; sourceTree = "<group>"; };
 		2DC18773D6E5D470213C2381 /* UITextField+Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Form.h"; sourceTree = "<group>"; };
 		2DC187887B871227C6EE0E65 /* IncidentCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentCategory.m; sourceTree = "<group>"; };
@@ -118,7 +122,7 @@
 		2DC187ED05926DE77CFFBBAA /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		2DC1887E0454BA205B53AC49 /* Incident+Open311.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Incident+Open311.m"; sourceTree = "<group>"; };
 		2DC188C66B7EEA2E54A8F67C /* UITextField+Resilience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Resilience.h"; sourceTree = "<group>"; };
-		2DC189518C821F06001CF033 /* DetailSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSelectionController.h; sourceTree = "<group>"; };
+		2DC189041E4FE85122DD30AE /* DetailSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSelectionController.h; sourceTree = "<group>"; };
 		2DC18A578BD40877F95077DD /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
 		2DC18B103369EC9756A14976 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixRotation.m"; sourceTree = "<group>"; };
@@ -131,16 +135,15 @@
 		2DC18CCFEC8BC10AC7D19BF3 /* UITableViewCell+Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Form.h"; sourceTree = "<group>"; };
 		2DC18D2852962671387D4560 /* NSDictionary+TypedAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TypedAccess.h"; sourceTree = "<group>"; };
 		2DC18D290BA8F5FC680BE957 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
-		2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIncidentViewController.m; sourceTree = "<group>"; };
 		2DC18D5AE40EEA58FF035E16 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2DC18DC3A352C814191BB654 /* ResilientUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResilientUploader.m; sourceTree = "<group>"; };
 		2DC18E414813D609BCBF724D /* UIImage+FixRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixRotation.h"; sourceTree = "<group>"; };
 		2DC18E4EE87A9F37816EE348 /* UIColor+Resilience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Resilience.m"; sourceTree = "<group>"; };
 		2DC18E792BE1EAAFEF6B225A /* IncidentCategory+Waypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IncidentCategory+Waypoint.m"; sourceTree = "<group>"; };
 		2DC18EB9CCFE7F386E5E4612 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
+		2DC18EBFA16CF53440FBA3CD /* IncidentFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentFooter.h; sourceTree = "<group>"; };
 		2DC18EF0D95254C2410ACED5 /* Open311Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Open311Client.h; sourceTree = "<group>"; };
 		2DC18F0060D3E4B6ADDAFD72 /* CloudinaryClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudinaryClient.h; sourceTree = "<group>"; };
-		2DC18F9380670437838A556E /* AddIncidentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIncidentViewController.h; sourceTree = "<group>"; };
 		2DC18F94C37BC75BD6209AA1 /* Incident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Incident.m; sourceTree = "<group>"; };
 		2DC18FB1A3F46270905E24CD /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
 		2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -270,6 +273,17 @@
 			path = Clients;
 			sourceTree = "<group>";
 		};
+		2DC18488437AEE482DE309CB /* AddIncident */ = {
+			isa = PBXGroup;
+			children = (
+				2DC1844EBF31DB2E53DBC64E /* AddIncidentViewController.h */,
+				2DC180F4C030BF445539152A /* AddIncidentViewController.m */,
+				2DC189041E4FE85122DD30AE /* DetailSelectionController.h */,
+				2DC182A591A90D5D1E2DC23E /* DetailSelectionController.m */,
+			);
+			path = AddIncident;
+			sourceTree = "<group>";
+		};
 		2DC18A71FD5F1E0A12334DBF /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +339,8 @@
 				2DC18C74E4CAEA46175AF113 /* IncidentCell.m */,
 				CD8522CE4F2E9C3C569F5F72 /* IncidentHeader.m */,
 				CD85202179858C509A5811DC /* IncidentHeader.h */,
+				2DC186CE858398FA277F07DB /* IncidentFooter.m */,
+				2DC18EBFA16CF53440FBA3CD /* IncidentFooter.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -370,14 +386,11 @@
 				A1DDA47C16661980003A21C0 /* IssueListViewController.m */,
 				2DC18D5AE40EEA58FF035E16 /* RootViewController.m */,
 				2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */,
-				2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */,
-				2DC18F9380670437838A556E /* AddIncidentViewController.h */,
 				8927C79B166ADDC500D501B5 /* IssueViewController.h */,
 				8927C79C166ADDC500D501B5 /* IssueViewController.m */,
-				2DC181E10712D729176D1716 /* DetailSelectionController.m */,
-				2DC189518C821F06001CF033 /* DetailSelectionController.h */,
 				2DC187ED05926DE77CFFBBAA /* ProfileViewController.m */,
 				2DC1854AC052D9377A08D33C /* ProfileViewController.h */,
+				2DC18488437AEE482DE309CB /* AddIncident */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -664,7 +677,6 @@
 				2DC18258FD9DDF558C3C3F91 /* RootViewController.m in Sources */,
 				2DC18959D9F57F94AF1540A4 /* Incident.m in Sources */,
 				2DC184F50FA121D494252633 /* ParseClient.m in Sources */,
-				2DC18E1F69BEE156C4E9ADE3 /* AddIncidentViewController.m in Sources */,
 				FB1EA1271669E38D002B93EF /* WaypointAnnotation.m in Sources */,
 				FB1EA1341669E39B002B93EF /* Annotation.m in Sources */,
 				FB1EA13C1669E39B002B93EF /* ZSPinAnnotation.m in Sources */,
@@ -679,7 +691,6 @@
 				2DC1860B8A3CD2D1915D8D26 /* ServiceRequest.m in Sources */,
 				2DC18ABF28E735DB4374AE13 /* IncidentAdapter.m in Sources */,
 				2DC184AB509191A152B1DDDD /* NSDictionary+TypedAccess.m in Sources */,
-				2DC185E2592D12EF67205391 /* DetailSelectionController.m in Sources */,
 				2DC18845B38FA0078F93B08E /* IncidentCategoryAdapter.m in Sources */,
 				CD85230F3A9597F63A355DA2 /* IncidentHeader.m in Sources */,
 				2DC18B32746F47D13E88E493 /* Incident+Open311.m in Sources */,
@@ -693,6 +704,9 @@
 				2DC186FD5177739C9EA79A08 /* Profile.m in Sources */,
 				2DC18AA55CFBAFBE51A44570 /* ResilientUploader.m in Sources */,
 				2DC180B1DB8B35BA05C5BEB0 /* DataStore.m in Sources */,
+				2DC187093F64DFD4B46EC12D /* AddIncidentViewController.m in Sources */,
+				2DC1898D6DB2CA74F8C0F974 /* DetailSelectionController.m in Sources */,
+				2DC18ABCE849713F0216B4C7 /* IncidentFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -69,7 +69,6 @@
 }
 
 - (void)loadIssues {
-  [self.errorView removeFromSuperview];
   [[Open311Client sharedClient] fetchIncidents:^(NSArray *incidents) {
     self.incidents = incidents;
     [self.tableView reloadData];
@@ -110,7 +109,7 @@
   cell.descriptionLabel.text = [NSString stringWithFormat:@"%@", incident.description];
 
   cell.timeLabel.text = [NSString stringWithFormat:@"Reported on %@", [incident createdDateAsString]];
-  [cell.photoImageView setImageWithURL:[incident imageUrlForSize:CGSizeMake(70.f, 70.f)]];
+  [cell.photoImageView setImageWithURL:[incident imageUrlForSize:CGSizeMake(140.f, 140.f)]];
   return cell;
 }
 
