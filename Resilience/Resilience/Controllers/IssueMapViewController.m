@@ -1,19 +1,16 @@
 #import "IssueMapViewController.h"
 #import "WaypointAnnotation.h"
-#import "ZSPinAnnotation.h"
 #import "ParseClient.h"
 #import "Incident.h"
-#import "IncidentCategory.h"
 #import "IncidentCategory+Waypoint.h"
 #import "Open311Client.h"
-#import <CoreLocation/CoreLocation.h>
 
-@interface IssueMapViewController ()
+@interface IssueMapViewController () <MKMapViewDelegate>
 
-@property (nonatomic, strong) NSArray *incidents;
 @property (nonatomic, retain) MKMapView *mapView;
 
-- (void)zoomToFitMapAnnotations:(MKMapView *)mapView;
+@property (nonatomic, strong) UIView *errorView;
+@property (nonatomic, strong) UILabel *errorLabel;
 
 @end
 
@@ -23,12 +20,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   // Display the incident markers
+  [self.errorView removeFromSuperview];
 //  [[ParseClient sharedClient] fetchIncidents:^(NSArray *incidents) {
   [[Open311Client sharedClient] fetchIncidents:^(NSArray *incidents) {
 
-      self.incidents = incidents;
-    for (unsigned int i=0; i<[self.incidents count]; i++) {
-      Incident *incident = [self.incidents objectAtIndex:i];
+    for (Incident * incident in incidents) {
       CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;
       WaypointAnnotation *pointAnnotation = [WaypointAnnotation annotationWithCoordinate:pointCoordinate];
       pointAnnotation.title = incident.name;
@@ -37,14 +33,8 @@
       pointAnnotation.category = incident.category;
       [self.mapView addAnnotation:pointAnnotation];
     }
-    // Zoom to fit everything we found
-    [self zoomToFitMapAnnotations:self.mapView];
   } failure:^(NSError *error) {
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Whoa...!"
-                                                      message:[error localizedDescription]
-                                                     delegate:nil cancelButtonTitle:@"OK"
-                                            otherButtonTitles:nil];
-    [message show];
+    [self showErrorView:@"Error loading issues"];
   }];
 }
 
@@ -55,11 +45,26 @@
   self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
   [self.view addSubview:self.mapView];
   self.mapView.delegate = self;
+
+  self.errorView = [[UIView alloc] initWithFrame:CGRectMake(
+          0,
+          0,
+          self.view.frame.size.width,
+          30)];
+  UIColor *black = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
+  self.errorView.backgroundColor = black;
+  self.errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.errorView.frame.size.width - 40, self.errorView.frame.size.height)];
+  self.errorLabel.text = @"Error loading issues...";
+  self.errorLabel.textColor = [UIColor whiteColor];
+  self.errorLabel.backgroundColor = [UIColor clearColor];
+  [self.errorView addSubview:self.errorLabel];
+  self.mapView.showsUserLocation = YES;
+//  self.mapView.userTrackingMode = YES;
+  self.mapView.delegate = self;
 }
 
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
-  
   self.mapView.frame = self.view.frame;
 }
 
@@ -68,6 +73,16 @@
   // Dispose of any resources that can be recreated.
 }
 
+- (void)showErrorView:(NSString *)error {
+  self.errorLabel.text = error;
+  [self.view addSubview:self.errorView];
+  self.errorView.alpha = 0.0f;
+  [UIView animateWithDuration:0.9
+                   animations:^{
+                     self.errorView.alpha = 1.0f;
+                   }
+                   completion:nil];
+}
 
 #pragma mark - Map delegate
 
@@ -84,7 +99,7 @@
     }
     view.image = [waypoint.category annotationImage];
     [view setCanShowCallout:YES];
-    [view setAnimatesDrop:NO];
+    [view setAnimatesDrop:YES];
   }
   return view;
 }
@@ -95,33 +110,16 @@
 //  [self.navigationController pushViewController:self.detailsThemes animated:YES];
 }
 
-- (void)zoomToFitMapAnnotations:(MKMapView *)mapView {
-  if ([mapView.annotations count] == 0) return;
-  
-  CLLocationCoordinate2D topLeftCoord;
-  topLeftCoord.latitude = -90;
-  topLeftCoord.longitude = 180;
-  
-  CLLocationCoordinate2D bottomRightCoord;
-  bottomRightCoord.latitude = 90;
-  bottomRightCoord.longitude = -180;
-  
-  for(id<MKAnnotation> annotation in mapView.annotations) {
-    topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude);
-    topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude);
-    bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude);
-    bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude);
-  }
-  
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
   MKCoordinateRegion region;
-  region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5;
-  region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5;
-  region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.1;
-  
-  // Add a little extra space on the sides
-//  region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.1;
-  
-  region = [mapView regionThatFits:region];
+  MKCoordinateSpan span;
+  span.latitudeDelta = 0.5;
+  span.longitudeDelta = 0.5;
+  CLLocationCoordinate2D location;
+  location.latitude = userLocation.coordinate.latitude;
+  location.longitude = userLocation.coordinate.longitude;
+  region.span = span;
+  region.center = location;
   [mapView setRegion:region animated:YES];
 }
 
