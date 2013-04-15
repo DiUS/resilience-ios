@@ -86,7 +86,6 @@
   self.issueMap.translatesAutoresizingMaskIntoConstraints = NO;
   self.headerView.translatesAutoresizingMaskIntoConstraints = NO;
   self.footerView.translatesAutoresizingMaskIntoConstraints = NO;
-  self.view.translatesAutoresizingMaskIntoConstraints = NO;
 
 }
 
@@ -95,12 +94,12 @@
   [super updateViewConstraints];
   NSDictionary *views = NSDictionaryOfVariableBindings(_imageView, _issueMap, _headerView, _footerView);
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_headerView]-[_imageView(>=185)]-[_footerView(>=60@900)]|"
+          constraintsWithVisualFormat:@"V:|[_headerView]-[_imageView(>=185)]-[_footerView]|"
                               options:0
                               metrics:nil views:views]];
 
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_headerView]-[_issueMap(>=185)]-[_footerView(>=60@900)]|"
+          constraintsWithVisualFormat:@"V:|[_headerView]-[_issueMap(>=185)]-[_footerView]|"
                               options:0
                               metrics:nil views:views]];
 
@@ -115,12 +114,10 @@
                               metrics:nil views:views]];
 
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"H:|-[_imageView(130)]-20-[_issueMap(130)]-|"
+          constraintsWithVisualFormat:@"H:|-[_imageView]-20-[_issueMap(==_imageView)]-|"
                               options:0
                               metrics:nil views:views]];
 
-//  [self.footerView setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisVertical];
-//  [self.footerView setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
 }
 
 @end
