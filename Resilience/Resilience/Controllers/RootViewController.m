@@ -45,10 +45,6 @@
   [self showMapView];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [self.navigationController setNavigationBarHidden:YES animated:NO];
-}
-
 - (void)viewDidLayoutSubviews {
   self.header.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), 64.0);
 }
@@ -102,12 +98,12 @@
     [self.view removeConstraints:self.containerConstraints];
 
   self.containerConstraints = [NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[viewToAdd]|"
+          constraintsWithVisualFormat:@"V:|-44-[viewToAdd]|"
                               options:0
                               metrics:nil
                                 views:views];
   self.containerConstraints = [self.containerConstraints arrayByAddingObjectsFromArray:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"H:|[viewToAdd]|" //Add gap to let avoid disappering behind 
+          constraintsWithVisualFormat:@"H:|[viewToAdd]|"
                               options:NSLayoutFormatAlignAllLeft
                               metrics:nil
                                 views:views]];
@@ -119,6 +115,18 @@
   } completion:^(BOOL finished) {
     [secondController didMoveToParentViewController:self];
   }];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated {
+
+  if ([viewController isKindOfClass:[RootViewController class]]) {
+    [viewController.navigationController setNavigationBarHidden:YES animated:NO];
+  } else {
+    [viewController.navigationController setNavigationBarHidden:NO animated:NO];
+  }
+  
 }
 
 @end
