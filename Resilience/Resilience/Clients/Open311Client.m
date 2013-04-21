@@ -65,9 +65,7 @@
 }
 
 - (void)fetchServiceRequests:(ServiceRequestSuccessBlock)success failure:(Open311FailureBlock)failure {
-//  NSDictionary *parameters = @{ @"start_date" : nil, @"end_date" : nil, @"status": @"open" };
   [self getPath:@"requests.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
-    NSLog(@"Service Requests: %@", jsonResponse);
     NSMutableArray *serviceRequests = [[NSMutableArray alloc] init];
     for (NSDictionary * rawRequest in jsonResponse) {
       ServiceRequest *serviceRequest = [[ServiceRequest alloc] init];
@@ -125,7 +123,6 @@
 
 - (void)fetchServices:(ServicesSuccessBlock)success failure:(Open311FailureBlock)failure {
   [self getPath:@"services.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
-    NSLog(@"Services: %@", jsonResponse);
     NSMutableArray *services = [[NSMutableArray alloc] init];
     for (NSDictionary * rawService in jsonResponse) {
       Service *service = [[Service alloc] init];

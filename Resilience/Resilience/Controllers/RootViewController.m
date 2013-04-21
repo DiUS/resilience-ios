@@ -27,24 +27,15 @@
   self.contentView = [[UIView alloc] init];
 
   self.header = [[RSLHeader alloc] initWithFrame:CGRectZero];
-  //TODO: hookup add button
-  //[addIssueButton addTarget:self action:@selector(addIssue) forControlEvents:UIControlEventTouchUpInside];
-  
-  //TODO: hookup other buttons
-  //  UIBarButtonItem *profileItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/SettingsIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
-  //  profileItem.tintColor = [UIColor orangeColor];
-  //  UIBarButtonItem *feedbackbuttonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/FeedbackIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
-  //  feedbackbuttonItem.tintColor = [UIColor orangeColor];
-
+  [self.header.addIssueButton addTarget:self action:@selector(addIssue) forControlEvents:UIControlEventTouchUpInside];
+  [self.header.issueListButton addTarget:self action:@selector(showListView) forControlEvents:UIControlEventTouchUpInside];
+  [self.header.issueMapButton addTarget:self action:@selector(showMapView) forControlEvents:UIControlEventTouchUpInside];
 
   self.issueListViewController = [[IssueListViewController alloc] init];
   self.issueListViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
   
   self.issueMapViewController = [[IssueMapViewController alloc] init];
   self.issueMapViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-
-  //UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-  //[self setToolbarItems:@[feedbackbuttonItem, flexibleSpace, profileItem]];
 }
 
 - (void)viewDidLoad {
@@ -55,7 +46,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  self.navigationController.toolbarHidden = YES;
+  [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -93,15 +84,19 @@
 }
 
 - (void)swapView:(UIViewController *)firstController with:(UIViewController *)secondController {
-  [firstController willMoveToParentViewController:nil];
-  [firstController removeFromParentViewController];
-  [firstController.view removeFromSuperview];
+  if (secondController.view == self.contentView)
+    return;
+
   UIView *viewToAdd = secondController.view;
   viewToAdd.alpha = 0.;
   [self addChildViewController:secondController];
-  [self.view insertSubview:viewToAdd aboveSubview:self.contentView];
+  [self.view insertSubview:viewToAdd belowSubview:self.contentView];
   self.contentView = viewToAdd; 
 
+  [firstController willMoveToParentViewController:nil];
+  [firstController removeFromParentViewController];
+  [firstController.view removeFromSuperview];
+  
   NSDictionary *views = NSDictionaryOfVariableBindings(viewToAdd);
   if(self.containerConstraints)
     [self.view removeConstraints:self.containerConstraints];
@@ -120,7 +115,7 @@
   [self.view setNeedsUpdateConstraints];
 
   [UIView animateWithDuration:.25 delay:0 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
-    viewToAdd.alpha = 0.5;
+    viewToAdd.alpha = 1.0;
   } completion:^(BOOL finished) {
     [secondController didMoveToParentViewController:self];
   }];

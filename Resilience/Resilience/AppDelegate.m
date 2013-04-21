@@ -10,7 +10,7 @@
   [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
 
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  // Override point for customization after application launch.
+  
   RootViewController *rootViewController = [[RootViewController alloc] init];
   UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
 
@@ -31,24 +31,6 @@
   [[DCIntrospect sharedIntrospector] start];
 #endif
   return YES;
-}
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-
 }
 
 @end
