@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *agencyResponsible;
 @property (nonatomic, strong) NSString *serviceNotice;
 @property (nonatomic, strong) CLLocation *location;
-@property (nonatomic, strong) NSString *addressString;
+@property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *addressId;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *deviceId;

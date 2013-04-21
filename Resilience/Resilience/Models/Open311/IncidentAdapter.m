@@ -57,4 +57,12 @@
   return self.serviceRequest.location;
 }
 
+- (NSString *)address {
+  return self.serviceRequest.address;
+}
+
+- (NSString *)description {
+  return self.serviceRequest.description;
+}
+
 @end

@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSArray *incidents;
 @property (nonatomic, strong) UIView *errorView;
+@property (nonatomic, strong) UILabel *errorLabel;
 
 @end
 
@@ -45,11 +46,11 @@
           30)];
   UIColor *black = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
   self.errorView.backgroundColor = black;
-  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.errorView.frame.size.width - 40, self.errorView.frame.size.height)];
-  label.text = @"Error loading issues...";
-  label.textColor = [UIColor whiteColor];
-  label.backgroundColor = [UIColor clearColor];
-  [self.errorView addSubview:label];
+  self.errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.errorView.frame.size.width - 40, self.errorView.frame.size.height)];
+  self.errorLabel.text = @"Error loading issues...";
+  self.errorLabel.textColor = [UIColor whiteColor];
+  self.errorLabel.backgroundColor = [UIColor clearColor];
+  [self.errorView addSubview:self.errorLabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,19 +69,26 @@
 }
 
 - (void)loadIssues {
-  [self.errorView removeFromSuperview];
   [[Open311Client sharedClient] fetchIncidents:^(NSArray *incidents) {
     self.incidents = incidents;
     [self.tableView reloadData];
+    if(incidents.count == 0) {
+      [self showErrorView:@"No issues in your area!"];
+    }
   } failure:^(NSError *error) {
-    [self.view addSubview:self.errorView];
-    self.errorView.alpha = 0.0f;
-    [UIView animateWithDuration:0.9
+    [self showErrorView:@"Error loading issues..."];
+  }];
+}
+
+- (void)showErrorView:(NSString *)error {
+  self.errorLabel.text = error;
+  [self.view addSubview:self.errorView];
+  self.errorView.alpha = 0.0f;
+  [UIView animateWithDuration:0.9
                      animations:^{
                        self.errorView.alpha = 1.0f;
                      }
                      completion:nil];
-  }];
 }
 
 
@@ -98,10 +106,10 @@
     cell = [[IncidentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 
   cell.nameLabel.text = incident.name;
-  cell.locationLabel.text = [NSString stringWithFormat:@"near: %f, %f", incident.location.coordinate.longitude, incident.location.coordinate.latitude];
+  cell.descriptionLabel.text = [NSString stringWithFormat:@"%@", incident.description];
 
   cell.timeLabel.text = [NSString stringWithFormat:@"Reported on %@", [incident createdDateAsString]];
-  [cell.photoImageView setImageWithURL:[incident imageUrlForSize:CGSizeMake(70.f, 70.f)]];
+  [cell.photoImageView setImageWithURL:[incident imageUrlForSize:CGSizeMake(140.f, 140.f)]];
   return cell;
 }
 
