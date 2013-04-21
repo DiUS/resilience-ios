@@ -362,20 +362,20 @@
 		A1DDA47816661980003A21C0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1DDA47916661980003A21C0 /* IssueMapViewController.h */,
-				A1DDA47A16661980003A21C0 /* IssueMapViewController.m */,
+				2DC18F9380670437838A556E /* AddIncidentViewController.h */,
+				2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */,
+				2DC189518C821F06001CF033 /* DetailSelectionController.h */,
+				2DC181E10712D729176D1716 /* DetailSelectionController.m */,
 				A1DDA47B16661980003A21C0 /* IssueListViewController.h */,
 				A1DDA47C16661980003A21C0 /* IssueListViewController.m */,
-				2DC18D5AE40EEA58FF035E16 /* RootViewController.m */,
-				2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */,
-				2DC18D491FE47ADF35F86F41 /* AddIncidentViewController.m */,
-				2DC18F9380670437838A556E /* AddIncidentViewController.h */,
+				A1DDA47916661980003A21C0 /* IssueMapViewController.h */,
+				A1DDA47A16661980003A21C0 /* IssueMapViewController.m */,
 				8927C79B166ADDC500D501B5 /* IssueViewController.h */,
 				8927C79C166ADDC500D501B5 /* IssueViewController.m */,
-				2DC181E10712D729176D1716 /* DetailSelectionController.m */,
-				2DC189518C821F06001CF033 /* DetailSelectionController.h */,
-				2DC187ED05926DE77CFFBBAA /* ProfileViewController.m */,
 				2DC1854AC052D9377A08D33C /* ProfileViewController.h */,
+				2DC187ED05926DE77CFFBBAA /* ProfileViewController.m */,
+				2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */,
+				2DC18D5AE40EEA58FF035E16 /* RootViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
