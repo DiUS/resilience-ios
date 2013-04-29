@@ -25,13 +25,13 @@
       [self.issueMapButton setImage:[UIImage imageNamed:@"Assets/issueMapOff"] forState:UIControlStateNormal];
       [self.issueMapButton setImage:[UIImage imageNamed:@"Assets/issueMapOn"] forState:UIControlStateSelected];
       [self.issueMapButton addTarget:self action:@selector(selectMapViewButton) forControlEvents:UIControlEventTouchUpInside];
-      self.issueMapButton.selected = YES;
       [self addSubview:self.issueMapButton];
 
       self.issueListButton = [UIButton buttonWithType:UIButtonTypeCustom];
       [self.issueListButton setImage:[UIImage imageNamed:@"Assets/issueListOff"] forState:UIControlStateNormal];
       [self.issueListButton setImage:[UIImage imageNamed:@"Assets/issueListOn"] forState:UIControlStateSelected];
       [self.issueListButton addTarget:self action:@selector(selectListViewButton) forControlEvents:UIControlEventTouchUpInside];
+      self.issueListButton.selected = YES;
       [self addSubview:self.issueListButton];
     }
     return self;

@@ -12,8 +12,6 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
   RootViewController *rootViewController = [[RootViewController alloc] init];
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
-  navigationController.delegate = rootViewController;
 
   UIImage *navBarImage = [UIImage imageNamed:@"Assets/TitleBar"];
   [[UINavigationBar appearance] setBackgroundImage:[navBarImage resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)] forBarMetrics:UIBarMetricsDefault];
@@ -24,7 +22,7 @@
   [titleBarAttributes setValue:[UIColor clearColor] forKey:UITextAttributeTextShadowColor];
   [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
 
-  self.window.rootViewController = navigationController;
+  self.window.rootViewController = rootViewController;
 
   [self.window makeKeyAndVisible];
 

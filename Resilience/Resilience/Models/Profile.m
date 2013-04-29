@@ -26,10 +26,10 @@
 
 - (id)initWithCoder:(NSCoder *)decoder {
   return [self initWithDictionary:@{
-          kProfileFirstNameKey : [decoder decodeObjectForKey:kProfileFirstNameKey] ? : @"",
-          kProfileLastNameKey : [decoder decodeObjectForKey:kProfileLastNameKey] ? : @"",
-          kProfilePhoneNameKey : [decoder decodeObjectForKey:kProfilePhoneNameKey] ? : @"",
-          kProfileEmailKey : [decoder decodeObjectForKey:kProfileEmailKey] ? : @""
+          kProfileFirstNameKey : [decoder decodeObjectForKey:kProfileFirstNameKey] ?: @"",
+          kProfileLastNameKey : [decoder decodeObjectForKey:kProfileLastNameKey] ?: @"",
+          kProfilePhoneNameKey : [decoder decodeObjectForKey:kProfilePhoneNameKey] ?: @"",
+          kProfileEmailKey : [decoder decodeObjectForKey:kProfileEmailKey] ?: @""
   }];
 }
 

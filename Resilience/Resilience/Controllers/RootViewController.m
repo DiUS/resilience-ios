@@ -12,7 +12,8 @@
 @property (nonatomic, strong) IssueMapViewController *issueMapViewController;
 
 @property (nonatomic, strong) RSLHeader *header;
-@property (nonatomic, strong) UIView *contentView; 
+@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIView *contentView;
 
 @property (nonatomic, strong) NSArray *containerConstraints;
 
@@ -36,17 +37,27 @@
   
   self.issueMapViewController = [[IssueMapViewController alloc] init];
   self.issueMapViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+
+  self.toolbar = [[UIToolbar alloc] init];
+  UIBarButtonItem *profileItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/SettingsIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
+  profileItem.tintColor = [UIColor orangeColor];
+  UIBarButtonItem *feedbackButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/FeedbackIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
+  feedbackButtonItem.tintColor = [UIColor orangeColor];
+  UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+  [self.toolbar setItems:@[feedbackButtonItem, flexibleSpace, profileItem]];
 }
 
 - (void)viewDidLoad {
   self.view.backgroundColor = [UIColor whiteColor];
   [self.view addSubview:self.contentView];
   [self.view addSubview:self.header];
-  [self showMapView];
+  [self.view addSubview:self.toolbar];
+  [self showListView];
 }
 
 - (void)viewDidLayoutSubviews {
   self.header.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), 64.0);
+  self.toolbar.frame = CGRectMake(0.0, CGRectGetHeight(self.view.frame) - 44.0, CGRectGetWidth(self.view.frame), 44.0);
 }
 
 - (void)updateViewConstraints {
@@ -117,16 +128,5 @@
   }];
 }
 
-- (void)navigationController:(UINavigationController *)navigationController
-      willShowViewController:(UIViewController *)viewController
-                    animated:(BOOL)animated {
-
-  if ([viewController isKindOfClass:[RootViewController class]]) {
-    [viewController.navigationController setNavigationBarHidden:YES animated:NO];
-  } else {
-    [viewController.navigationController setNavigationBarHidden:NO animated:NO];
-  }
-  
-}
 
 @end

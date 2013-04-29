@@ -8,7 +8,7 @@
 + (id)loadObjectForKey:(NSString *)key {
   NSString *dataPath = [[DataStore getPrivateDocsDir] stringByAppendingPathComponent:kDataFile];
   NSData *codedData = [[NSData alloc] initWithContentsOfFile:dataPath];
-  if (codedData == nil) return @[];
+  if (codedData == nil) return nil;
 
   NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
   NSDictionary *dataStore = [unarchiver decodeObjectForKey:kDataStoreKey];
