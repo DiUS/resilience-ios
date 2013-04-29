@@ -4,12 +4,16 @@
 #import "AddIncidentViewController.h"
 #import "UIColor+Resilience.h"
 #import "ProfileViewController.h"
+#import "RSLHeader.h"
 
 @interface RootViewController()
 
 @property (nonatomic, strong) IssueListViewController *issueListViewController;
 @property (nonatomic, strong) IssueMapViewController *issueMapViewController;
-@property (nonatomic, strong) UISegmentedControl *toggleSegmentedControl;
+
+@property (nonatomic, strong) RSLHeader *header;
+@property (nonatomic, strong) UIView *contentView; 
+
 @property (nonatomic, strong) NSArray *containerConstraints;
 
 @end
@@ -19,52 +23,30 @@
 
 - (void)loadView {
   [super loadView];
-  UIButton *addIssueButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  addIssueButton.frame = CGRectMake(0, 0, 55, 51);
-  UIImage *buttonImage = [UIImage imageNamed:@"Assets/AddButton"];
-  [addIssueButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-  [addIssueButton addTarget:self action:@selector(addIssue) forControlEvents:UIControlEventTouchUpInside];
 
-  UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:addIssueButton];
-  self.navigationItem.rightBarButtonItem = item;
-  self.toggleSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[ [UIImage imageNamed:@"Assets/TabBar-IssueList"],  [UIImage imageNamed:@"Assets/TabBar-IssueMap"] ]];
-  self.toggleSegmentedControl.segmentedControlStyle = UISegmentedControlStylePlain;
-  self.toggleSegmentedControl.selectedSegmentIndex = 0;
-  [self.toggleSegmentedControl addTarget:self action:@selector(toggleView) forControlEvents:UIControlEventValueChanged];
-  [self.navigationController.navigationBar addSubview:self.toggleSegmentedControl];
+  self.contentView = [[UIView alloc] init];
+
+  self.header = [[RSLHeader alloc] initWithFrame:CGRectZero];
+  [self.header.addIssueButton addTarget:self action:@selector(addIssue) forControlEvents:UIControlEventTouchUpInside];
+  [self.header.issueListButton addTarget:self action:@selector(showListView) forControlEvents:UIControlEventTouchUpInside];
+  [self.header.issueMapButton addTarget:self action:@selector(showMapView) forControlEvents:UIControlEventTouchUpInside];
 
   self.issueListViewController = [[IssueListViewController alloc] init];
   self.issueListViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+  
   self.issueMapViewController = [[IssueMapViewController alloc] init];
   self.issueMapViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
-
-  UIBarButtonItem *profileItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/SettingsIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
-  profileItem.tintColor = [UIColor orangeColor];
-//  UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"SettingsIcon" style:UIBarButtonItemStyleBordered target:self action:@selector(showProfile)];
-  UIBarButtonItem *feedbackbuttonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/FeedbackIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
-  feedbackbuttonItem.tintColor = [UIColor orangeColor];
-  
-  UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-  [self setToolbarItems:@[feedbackbuttonItem, flexibleSpace, profileItem]];
 }
 
 - (void)viewDidLoad {
-  [self showListView];
   self.view.backgroundColor = [UIColor whiteColor];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-  self.navigationController.toolbarHidden = NO;
-  self.toggleSegmentedControl.hidden = NO;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-//  self.navigationController.toolbarHidden = YES;
-  self.toggleSegmentedControl.hidden = YES;
+  [self.view addSubview:self.contentView];
+  [self.view addSubview:self.header];
+  [self showMapView];
 }
 
 - (void)viewDidLayoutSubviews {
-
+  self.header.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), 64.0);
 }
 
 - (void)updateViewConstraints {
@@ -89,13 +71,6 @@
   [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (void)toggleView {
-  if(self.toggleSegmentedControl.selectedSegmentIndex == 0) {
-    [self showListView];
-  } else {
-    [self showMapView];
-  }
-}
 - (void) showListView {
   [self swapView:self.issueMapViewController with:self.issueListViewController];
 }
@@ -105,25 +80,30 @@
 }
 
 - (void)swapView:(UIViewController *)firstController with:(UIViewController *)secondController {
-  [firstController willMoveToParentViewController:nil];
-  [firstController removeFromParentViewController];
-  [firstController.view removeFromSuperview];
+  if (secondController.view == self.contentView)
+    return;
+
   UIView *viewToAdd = secondController.view;
   viewToAdd.alpha = 0.;
   [self addChildViewController:secondController];
-  [self.view addSubview:viewToAdd];
+  [self.view insertSubview:viewToAdd belowSubview:self.contentView];
+  self.contentView = viewToAdd; 
 
+  [firstController willMoveToParentViewController:nil];
+  [firstController removeFromParentViewController];
+  [firstController.view removeFromSuperview];
+  
   NSDictionary *views = NSDictionaryOfVariableBindings(viewToAdd);
   if(self.containerConstraints)
     [self.view removeConstraints:self.containerConstraints];
 
   self.containerConstraints = [NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[viewToAdd]|"
+          constraintsWithVisualFormat:@"V:|-44-[viewToAdd]|"
                               options:0
                               metrics:nil
                                 views:views];
   self.containerConstraints = [self.containerConstraints arrayByAddingObjectsFromArray:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"|[viewToAdd]|"
+          constraintsWithVisualFormat:@"H:|[viewToAdd]|"
                               options:NSLayoutFormatAlignAllLeft
                               metrics:nil
                                 views:views]];
@@ -131,10 +111,22 @@
   [self.view setNeedsUpdateConstraints];
 
   [UIView animateWithDuration:.25 delay:0 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
-    viewToAdd.alpha = 1.;
+    viewToAdd.alpha = 1.0;
   } completion:^(BOOL finished) {
     [secondController didMoveToParentViewController:self];
   }];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated {
+
+  if ([viewController isKindOfClass:[RootViewController class]]) {
+    [viewController.navigationController setNavigationBarHidden:YES animated:NO];
+  } else {
+    [viewController.navigationController setNavigationBarHidden:NO animated:NO];
+  }
+  
 }
 
 @end

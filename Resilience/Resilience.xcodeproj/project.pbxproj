@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B6D1AA31723FEF800A17B1B /* RSLHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D1AA21723FEF800A17B1B /* RSLHeader.m */; };
 		1A86D59268EF4D8C8A67442B /* libPods-KiwiUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */; };
 		2DC18051B6EE4E2AAE5D31AC /* Incident+Open311.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1887E0454BA205B53AC49 /* Incident+Open311.m */; };
 		2DC18079D372B6042178CF88 /* IncidentCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC187887B871227C6EE0E65 /* IncidentCategory.m */; };
@@ -85,13 +86,11 @@
 		FBB1CDC715C3F3E4000D168E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDC515C3F3E4000D168E /* InfoPlist.strings */; };
 		FBB1CDC915C3F3E4000D168E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDC815C3F3E4000D168E /* main.m */; };
 		FBB1CDCD15C3F3E4000D168E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB1CDCC15C3F3E4000D168E /* AppDelegate.m */; };
-		FBB1CDD815C3F3E4000D168E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDD715C3F3E4000D168E /* first.png */; };
-		FBB1CDDA15C3F3E4000D168E /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDD915C3F3E4000D168E /* first@2x.png */; };
-		FBB1CDDF15C3F3E4000D168E /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDDE15C3F3E4000D168E /* second.png */; };
-		FBB1CDE115C3F3E4000D168E /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FBB1CDE015C3F3E4000D168E /* second@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B6D1AA11723FEF800A17B1B /* RSLHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLHeader.h; sourceTree = "<group>"; };
+		0B6D1AA21723FEF800A17B1B /* RSLHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLHeader.m; sourceTree = "<group>"; };
 		2DC1807D58B75EBE487FA664 /* ParseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClient.m; sourceTree = "<group>"; };
 		2DC180F4C030BF445539152A /* AddIncidentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIncidentViewController.m; sourceTree = "<group>"; };
 		2DC181A0AFCCA91F98A2E406 /* UIColor+Resilience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Resilience.h"; sourceTree = "<group>"; };
@@ -202,10 +201,6 @@
 		FBB1CDCA15C3F3E4000D168E /* Resilience-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Resilience-Prefix.pch"; sourceTree = "<group>"; };
 		FBB1CDCB15C3F3E4000D168E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FBB1CDCC15C3F3E4000D168E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FBB1CDD715C3F3E4000D168E /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		FBB1CDD915C3F3E4000D168E /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		FBB1CDDE15C3F3E4000D168E /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		FBB1CDE015C3F3E4000D168E /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		FBB1CDE815C3F3E4000D168E /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -337,10 +332,12 @@
 			children = (
 				2DC18752B9B2297998D7B088 /* IncidentCell.h */,
 				2DC18C74E4CAEA46175AF113 /* IncidentCell.m */,
-				CD8522CE4F2E9C3C569F5F72 /* IncidentHeader.m */,
-				CD85202179858C509A5811DC /* IncidentHeader.h */,
-				2DC186CE858398FA277F07DB /* IncidentFooter.m */,
 				2DC18EBFA16CF53440FBA3CD /* IncidentFooter.h */,
+				2DC186CE858398FA277F07DB /* IncidentFooter.m */,
+				CD85202179858C509A5811DC /* IncidentHeader.h */,
+				CD8522CE4F2E9C3C569F5F72 /* IncidentHeader.m */,
+				0B6D1AA11723FEF800A17B1B /* RSLHeader.h */,
+				0B6D1AA21723FEF800A17B1B /* RSLHeader.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -380,17 +377,17 @@
 		A1DDA47816661980003A21C0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1DDA47916661980003A21C0 /* IssueMapViewController.h */,
-				A1DDA47A16661980003A21C0 /* IssueMapViewController.m */,
+				2DC18488437AEE482DE309CB /* AddIncident */,
 				A1DDA47B16661980003A21C0 /* IssueListViewController.h */,
 				A1DDA47C16661980003A21C0 /* IssueListViewController.m */,
-				2DC18D5AE40EEA58FF035E16 /* RootViewController.m */,
-				2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */,
+				A1DDA47916661980003A21C0 /* IssueMapViewController.h */,
+				A1DDA47A16661980003A21C0 /* IssueMapViewController.m */,
 				8927C79B166ADDC500D501B5 /* IssueViewController.h */,
 				8927C79C166ADDC500D501B5 /* IssueViewController.m */,
-				2DC187ED05926DE77CFFBBAA /* ProfileViewController.m */,
 				2DC1854AC052D9377A08D33C /* ProfileViewController.h */,
-				2DC18488437AEE482DE309CB /* AddIncident */,
+				2DC187ED05926DE77CFFBBAA /* ProfileViewController.m */,
+				2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */,
+				2DC18D5AE40EEA58FF035E16 /* RootViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -468,21 +465,17 @@
 		FBB1CDC215C3F3E4000D168E /* Resilience */ = {
 			isa = PBXGroup;
 			children = (
-				A1419A1016C60DC30004FA1C /* Assets */,
-				FB1EA1241669E31F002B93EF /* Markers */,
-				A1DDA47816661980003A21C0 /* Controllers */,
 				FBB1CDCB15C3F3E4000D168E /* AppDelegate.h */,
 				FBB1CDCC15C3F3E4000D168E /* AppDelegate.m */,
-				FBB1CDD715C3F3E4000D168E /* first.png */,
-				FBB1CDD915C3F3E4000D168E /* first@2x.png */,
-				FBB1CDDE15C3F3E4000D168E /* second.png */,
-				FBB1CDE015C3F3E4000D168E /* second@2x.png */,
-				FBB1CDC315C3F3E4000D168E /* Supporting Files */,
-				2DC18D0F0EB804C787291455 /* Models */,
-				2DC1816390D85C804900DC13 /* Clients */,
-				2DC18CD5D5E91A5CBC3C5A98 /* Style */,
-				2DC18F9745EB4C28FE5E7E15 /* Views */,
+				A1419A1016C60DC30004FA1C /* Assets */,
 				2DC18A71FD5F1E0A12334DBF /* Categories */,
+				2DC1816390D85C804900DC13 /* Clients */,
+				A1DDA47816661980003A21C0 /* Controllers */,
+				FB1EA1241669E31F002B93EF /* Markers */,
+				2DC18D0F0EB804C787291455 /* Models */,
+				2DC18CD5D5E91A5CBC3C5A98 /* Style */,
+				FBB1CDC315C3F3E4000D168E /* Supporting Files */,
+				2DC18F9745EB4C28FE5E7E15 /* Views */,
 			);
 			path = Resilience;
 			sourceTree = "<group>";
@@ -580,10 +573,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBB1CDC715C3F3E4000D168E /* InfoPlist.strings in Resources */,
-				FBB1CDD815C3F3E4000D168E /* first.png in Resources */,
-				FBB1CDDA15C3F3E4000D168E /* first@2x.png in Resources */,
-				FBB1CDDF15C3F3E4000D168E /* second.png in Resources */,
-				FBB1CDE115C3F3E4000D168E /* second@2x.png in Resources */,
 				A1044B34165CD18D002DC3E1 /* config-release.xcconfig in Resources */,
 				A1044B35165CD18D002DC3E1 /* config-debug.xcconfig in Resources */,
 				A1044B36165CD18D002DC3E1 /* config-common.xcconfig in Resources */,
@@ -707,6 +696,7 @@
 				2DC187093F64DFD4B46EC12D /* AddIncidentViewController.m in Sources */,
 				2DC1898D6DB2CA74F8C0F974 /* DetailSelectionController.m in Sources */,
 				2DC18ABCE849713F0216B4C7 /* IncidentFooter.m in Sources */,
+				0B6D1AA31723FEF800A17B1B /* RSLHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
