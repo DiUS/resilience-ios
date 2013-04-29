@@ -18,32 +18,11 @@
 
 #pragma mark - view lifecycle
 
-- (void)viewWillAppear:(BOOL)animated {
-  // Display the incident markers
-  [self.errorView removeFromSuperview];
-//  [[ParseClient sharedClient] fetchIncidents:^(NSArray *incidents) {
-  [[Open311Client sharedClient] fetchIncidents:^(NSArray *incidents) {
-
-    for (Incident * incident in incidents) {
-      CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;
-      WaypointAnnotation *pointAnnotation = [WaypointAnnotation annotationWithCoordinate:pointCoordinate];
-      pointAnnotation.title = incident.name;
-      pointAnnotation.subtitle = [incident createdDateAsString];
-      pointAnnotation.ID = incident.id;
-      pointAnnotation.category = incident.category;
-      [self.mapView addAnnotation:pointAnnotation];
-    }
-  } failure:^(NSError *error) {
-    [self showErrorView:@"Error loading issues"];
-  }];
-}
-
 - (void)viewDidLoad {
   [super viewDidLoad];
-
   // Set up the map view
   self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
-  [self.view addSubview:self.mapView];
+  self.view = self.mapView;
   self.mapView.delegate = self;
 
   self.errorView = [[UIView alloc] initWithFrame:CGRectMake(
@@ -59,13 +38,29 @@
   self.errorLabel.backgroundColor = [UIColor clearColor];
   [self.errorView addSubview:self.errorLabel];
   self.mapView.showsUserLocation = YES;
-//  self.mapView.userTrackingMode = YES;
   self.mapView.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  // Display the incident markers
+  [self.errorView removeFromSuperview];
+  [[Open311Client sharedClient] fetchIncidents:^(NSArray *incidents) {
+    for (Incident * incident in incidents) {
+      CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;
+      WaypointAnnotation *pointAnnotation = [WaypointAnnotation annotationWithCoordinate:pointCoordinate];
+      pointAnnotation.title = incident.name;
+      pointAnnotation.subtitle = [incident createdDateAsString];
+      pointAnnotation.ID = incident.id;
+      pointAnnotation.category = incident.category;
+      [self.mapView addAnnotation:pointAnnotation];
+    }
+  } failure:^(NSError *error) {
+    [self showErrorView:@"Error loading issues"];
+  }];
 }
 
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
-  self.mapView.frame = self.view.frame;
 }
 
 - (void)didReceiveMemoryWarning {

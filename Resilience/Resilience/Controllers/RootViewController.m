@@ -109,7 +109,7 @@
     [self.view removeConstraints:self.containerConstraints];
 
   self.containerConstraints = [NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|-44-[viewToAdd]|"
+          constraintsWithVisualFormat:@"V:|-46-[viewToAdd]|"
                               options:0
                               metrics:nil
                                 views:views];
