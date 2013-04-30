@@ -10,12 +10,8 @@
 #import "CLUploader.h"
 #import "CloudinaryClient.h"
 #import "Profile.h"
-#import "ResilientUploader.h"
 
-@interface Open311Client() <CLUploaderDelegate>
-
-@property (nonatomic, strong) ResilientUploader *uploader;
-@property (nonatomic, strong) CloudinaryClient *cloudinaryClient;
+@interface Open311Client () <CLUploaderDelegate>
 
 @end
 
@@ -41,33 +37,26 @@
     self.parameterEncoding = AFFormURLParameterEncoding;
     [self setDefaultHeader:@"Accept" value:@"application/json"];
     [self setDefaultHeader:@"Content-Type" value:@"application/json"];
-    self.uploader = [[ResilientUploader alloc] initWithClient:self];
-    self.cloudinaryClient = [[CloudinaryClient alloc] init];
 
   }
   return self;
 }
 
 - (void)fetchIncidents:(IncidentSuccessBlock)success failure:(Open311FailureBlock)failure {
-  [self fetchServices:^(NSArray *services) {
-
-  } failure:failure];
-
   [self fetchServiceRequests:^(NSArray *serviceRequests) {
     NSMutableArray *incidents = [[NSMutableArray alloc] init];
-    // TODO: reactive cocoa for getting requests and services together?
     for (ServiceRequest *request in serviceRequests) {
-      [incidents addObject:[[IncidentAdapter alloc] initWithServiceRequest:request andService:nil]];
+      [incidents addObject:[[IncidentAdapter alloc] initWithServiceRequest:request]];
     }
 
     success(incidents);
-  } failure:failure];
+  }                  failure:failure];
 }
 
 - (void)fetchServiceRequests:(ServiceRequestSuccessBlock)success failure:(Open311FailureBlock)failure {
   [self getPath:@"requests.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
     NSMutableArray *serviceRequests = [[NSMutableArray alloc] init];
-    for (NSDictionary * rawRequest in jsonResponse) {
+    for (NSDictionary *rawRequest in jsonResponse) {
       ServiceRequest *serviceRequest = [[ServiceRequest alloc] init];
       serviceRequest.servicRequestId = [rawRequest stringValueForKeyPath:@"service_request_id"];
       serviceRequest.status = [rawRequest stringValueForKeyPath:@"status"];;
@@ -96,7 +85,7 @@
 
     success(serviceRequests);
 
-  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+  }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     failure(error);
   }];
 }
@@ -110,9 +99,9 @@
     }
     [IncidentCategory saveCategories:categories]; // TODO: do this on another thread!
     success(categories);
-  } failure:^(NSError *error) {
+  }           failure:^(NSError *error) {
     NSArray *categories = [IncidentCategory loadCategories];
-    if(categories) {
+    if (categories) {
       NSLog(@"Could not get categories, falling back to persisted ones");
       success(categories);
     } else {
@@ -124,7 +113,7 @@
 - (void)fetchServices:(ServicesSuccessBlock)success failure:(Open311FailureBlock)failure {
   [self getPath:@"services.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
     NSMutableArray *services = [[NSMutableArray alloc] init];
-    for (NSDictionary * rawService in jsonResponse) {
+    for (NSDictionary *rawService in jsonResponse) {
       Service *service = [[Service alloc] init];
       service.code = [rawService stringValueForKeyPath:@"service_code"];
       service.name = [rawService valueForKey:@"service_name"];
@@ -136,31 +125,29 @@
       [services addObject:service];
     }
     success(services);
-  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+  }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     failure(error);
   }];
 }
 
 - (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(FailureBlock)failure {
-//  __weak Incident *blockIncident = incident;
-  __weak id uploadClient = self.cloudinaryClient;
-//  [self.uploader uploadWithBlock:^{
-    [uploadClient updloadImage:incident.image success:^(NSString *uploadUrl) {
-      incident.imageUrl = uploadUrl;
-      [self postPath:@"requests.json" parameters:[incident asDictionary:[Profile loadProfile]] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Incident created successfully %@", responseObject);
-        incident.id = responseObject[0][@"service_request_id"];
-//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-          success(incident);
-//        }];
-      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error creating a service request");
-//        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-          failure(error);
-//        }];
-      }];
-    } failure:failure];
-//  }];
+  __block Incident *localIncidentInstance = [incident copy];
+  NSLog(@"******** Before bolock Uploading incident %@", localIncidentInstance.name);
+  dispatch_async(dispatch_get_main_queue(), ^{ // If this is called from an operation queue not on the main thread, then the cloudinary upload will barf
+    [[CloudinaryClient sharedClient] updloadImage:localIncidentInstance.image
+            success:^(NSString *uploadUrl) {
+              NSLog(@"******** Uploading incident %@", localIncidentInstance.name);
+              localIncidentInstance.imageUrl = [NSURL URLWithString:uploadUrl];
+              [self postPath:@"requests.json" parameters:[localIncidentInstance asDictionary:[Profile loadProfile]] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"Incident created successfully %@", responseObject);
+                localIncidentInstance.id = responseObject[0][@"service_request_id"];
+                success(localIncidentInstance);
+              }      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Error creating a service request");
+                failure(error);
+              }];
+            }                  failure:failure];
+  });
 }
 
 @end

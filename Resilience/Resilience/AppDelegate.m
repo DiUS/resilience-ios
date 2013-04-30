@@ -3,6 +3,7 @@
 #import "DCIntrospect.h"
 #import "AFHTTPRequestOperationLogger.h"
 #import "UIColor+Resilience.h"
+#import "ResilientUploader.h"
 
 @implementation AppDelegate
 
@@ -23,6 +24,8 @@
   [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
 
   self.window.rootViewController = rootViewController;
+
+  [[ResilientUploader sharedUploader] uploadUnsavedIssues];
 
   [self.window makeKeyAndVisible];
 

@@ -5,4 +5,6 @@
 + (id)loadObjectForKey:(NSString *)key;
 
 + (void)saveObject:(id)object forKey:(NSString *)key;
+
++ (NSString *)getPrivateDocsDir;
 @end

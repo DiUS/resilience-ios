@@ -7,8 +7,7 @@
 @interface IncidentAdapter : Incident
 
 @property (nonatomic, strong) ServiceRequest *serviceRequest;
-@property (nonatomic, strong) Service *service;
 
-- (id)initWithServiceRequest:(ServiceRequest *)serviceReqest andService:(Service *)service;
+- (id)initWithServiceRequest:(ServiceRequest *)serviceRequest;
 
 @end

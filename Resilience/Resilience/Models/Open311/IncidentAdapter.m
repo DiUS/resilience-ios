@@ -7,11 +7,10 @@
 
 @implementation IncidentAdapter
 
-- (id) initWithServiceRequest:(ServiceRequest *)serviceReqest andService:(Service *)service {
+- (id) initWithServiceRequest:(ServiceRequest *)serviceReqest {
   self = [super init];
   if (self) {
     self.serviceRequest = serviceReqest;
-    self.service = service;
   }
   return self;
 }

@@ -1,6 +1,7 @@
 
 #import "Incident.h"
 #import "IncidentCategory.h"
+#import "NSValueTransformer+MTLPredefinedTransformerAdditions.h"
 
 @implementation Incident
 
@@ -25,7 +26,21 @@
 }
 
 - (NSURL *)imageUrlForSize:(CGSize)size {
-  return [NSURL URLWithString:self.imageUrl];
+  return self.imageUrl;
+}
+
++ (NSValueTransformer *)imageUrlJSONTransformer {
+  return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+  return @{
+          @"name" : @"name",
+          @"location" : @"location",
+          @"updatedDate" : @"updatedDate",
+          @"imageUrl" : @"imageUrl",
+          @"id" : @"id"
+  };
 }
 
 @end

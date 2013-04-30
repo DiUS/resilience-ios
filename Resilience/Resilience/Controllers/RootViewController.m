@@ -45,6 +45,11 @@
   feedbackButtonItem.tintColor = [UIColor orangeColor];
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
   [self.toolbar setItems:@[feedbackButtonItem, flexibleSpace, profileItem]];
+
+  [[NSNotificationCenter defaultCenter] addObserverForName:@"incidentUploaded" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Uploaded!" message:@"incident uploaded" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
+  }];
 }
 
 - (void)viewDidLoad {

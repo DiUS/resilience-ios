@@ -9,6 +9,7 @@
 #import "Cloudinary/Cloudinary.h"
 #import "UIView+WSLoading.h"
 #import "UIImage+FixRotation.h"
+#import "ResilientUploader.h"
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
@@ -87,14 +88,9 @@
                                                 andID:nil
                                              andImage:self.photo];
   [self.navigationController.view showLoading];
-  [[Open311Client sharedClient] createIncident:incident success:^(Incident *updatedIncident) {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController.view hideLoading];
-  } failure:^(NSError *error) {
-    [self.navigationController.view hideLoading];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alertView show];
-  }];
+
+  [[ResilientUploader sharedUploader] saveIncident:incident];
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)dismissAddIssue {

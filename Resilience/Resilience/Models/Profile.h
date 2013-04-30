@@ -1,20 +1,18 @@
 
-#import <Foundation/Foundation.h>
-
+#import "MTLModel+NSCoding.h"
+#import "MTLJSONAdapter.h"
 
 #define kProfileFirstNameKey       @"firstName"
 #define kProfileLastNameKey        @"lastName"
 #define kProfileEmailKey           @"email"
 #define kProfilePhoneNameKey      @"mobile"
 
-@interface Profile : NSObject <NSCoding>
+@interface Profile : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *email;
-
-- (id)initWithDictionary:(NSDictionary *)values;
 
 - (void)save;
 

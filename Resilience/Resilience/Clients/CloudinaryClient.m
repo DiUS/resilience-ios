@@ -25,12 +25,11 @@
 
 - (id)init {
   if (self = [super init]) {
-    CLCloudinary *cloudinary = [[CLCloudinary alloc] init];
-    [cloudinary.config setValue:@"resilience" forKey:@"cloud_name"];
-    [cloudinary.config setValue:@"345754584192129" forKey:@"api_key"];
-    [cloudinary.config setValue:@"EOqrfFTaj1vNv_3BTTUAWCQgGUc" forKey:@"api_secret"];
-    self.cloudinary = cloudinary;
-    self.uploader = [[CLUploader alloc] init:cloudinary delegate:self];
+    self.cloudinary = [[CLCloudinary alloc] init];
+    [self.cloudinary.config setValue:@"resilience" forKey:@"cloud_name"];
+    [self.cloudinary.config setValue:@"345754584192129" forKey:@"api_key"];
+    [self.cloudinary.config setValue:@"EOqrfFTaj1vNv_3BTTUAWCQgGUc" forKey:@"api_secret"];
+    self.uploader = [[CLUploader alloc] init:self.cloudinary delegate:self];
   }
   return self;
 }

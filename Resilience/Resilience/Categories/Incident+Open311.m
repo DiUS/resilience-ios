@@ -5,6 +5,7 @@
 
 @implementation Incident (Open311)
 
+// TODO: replace with Mantle
 -(NSDictionary *)asDictionary:(Profile *)profile {
 
   return @{ @"service_code": self.category.code,
@@ -16,8 +17,7 @@
      @"phone": profile.phone ?: @"",
      @"email": profile.email ?: @"",
      @"description": self.name,
-     @"media_url": [[NSURL URLWithString:self.imageUrl relativeToURL:nil] absoluteString]
-//     @"attribute[WHISPAWN]": @"anything"
+     @"media_url": [self.imageUrl absoluteString]
   };
 }
 

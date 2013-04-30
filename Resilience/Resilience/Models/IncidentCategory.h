@@ -7,6 +7,6 @@
 @property (nonatomic, strong) NSString *code;
 
 + (NSArray *)loadCategories;
-
 + (void)saveCategories:(NSArray *)categories;
+
 @end

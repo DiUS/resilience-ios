@@ -1,9 +1,15 @@
 #import <Foundation/Foundation.h>
 
-@class AFHTTPClient;
+@class Open311Client;
+@class Incident;
 
 @interface ResilientUploader : NSObject
-- (id)initWithClient:(AFHTTPClient *)client;
++ (ResilientUploader *)sharedUploader;
 
-- (void)uploadWithBlock:(void (^)())operation;
+- (id)initWithClient:(Open311Client *)client;
+
+- (void)saveIncident:(Incident *)incident;
+
+- (void)uploadUnsavedIssues;
+
 @end
