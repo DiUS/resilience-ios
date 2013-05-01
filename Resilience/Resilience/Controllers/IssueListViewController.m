@@ -7,12 +7,12 @@
 #import "AFNetworking.h"
 #import "IssueViewController.h"
 #import "Open311Client.h"
+#import "WBErrorNoticeView.h"
+#import "WBStickyNoticeView.h"
 
 @interface IssueListViewController ()
 
 @property (nonatomic, strong) NSArray *incidents;
-@property (nonatomic, strong) UIView *errorView;
-@property (nonatomic, strong) UILabel *errorLabel;
 
 @end
 
@@ -38,19 +38,6 @@
   refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
   [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
   self.refreshControl = refresh;
-
-  self.errorView = [[UIView alloc] initWithFrame:CGRectMake(
-          0,
-          0,
-          self.view.frame.size.width,
-          30)];
-  UIColor *black = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
-  self.errorView.backgroundColor = black;
-  self.errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.errorView.frame.size.width - 40, self.errorView.frame.size.height)];
-  self.errorLabel.text = @"Error loading issues...";
-  self.errorLabel.textColor = [UIColor whiteColor];
-  self.errorLabel.backgroundColor = [UIColor clearColor];
-  [self.errorView addSubview:self.errorLabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,22 +60,17 @@
     self.incidents = incidents;
     [self.tableView reloadData];
     if(incidents.count == 0) {
-      [self showErrorView:@"No issues in your area!"];
+      WBStickyNoticeView *noticeView = [[WBStickyNoticeView alloc] initWithView:self.view title:@"No issues have been reported in your area."];
+      noticeView.alpha = 0.9;
+      [noticeView show];
     }
   } failure:^(NSError *error) {
-    [self showErrorView:@"Error loading issues..."];
+    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error loading issues."];
+    errorView.message = error.localizedDescription;
+    errorView.alpha = 0.9;
+    errorView.floating = YES;
+    [errorView show];
   }];
-}
-
-- (void)showErrorView:(NSString *)error {
-  self.errorLabel.text = error;
-  [self.view addSubview:self.errorView];
-  self.errorView.alpha = 0.0f;
-  [UIView animateWithDuration:0.9
-                     animations:^{
-                       self.errorView.alpha = 1.0f;
-                     }
-                     completion:nil];
 }
 
 

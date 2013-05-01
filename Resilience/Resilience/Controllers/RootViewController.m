@@ -5,6 +5,8 @@
 #import "UIColor+Resilience.h"
 #import "ProfileViewController.h"
 #import "RSLHeader.h"
+#import "WBNoticeView.h"
+#import "WBSuccessNoticeView.h"
 
 @interface RootViewController()
 
@@ -47,8 +49,9 @@
   [self.toolbar setItems:@[feedbackButtonItem, flexibleSpace, profileItem]];
 
   [[NSNotificationCenter defaultCenter] addObserverForName:@"incidentUploaded" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Uploaded!" message:@"incident uploaded" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alertView show];
+    WBSuccessNoticeView *successNoticeView = [[WBSuccessNoticeView alloc] initWithView:self.view title:@"Successfully reported issue."];
+    successNoticeView.alpha = 0.9;
+    [successNoticeView show];
   }];
 }
 

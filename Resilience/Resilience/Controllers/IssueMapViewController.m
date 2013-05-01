@@ -1,3 +1,4 @@
+#import <NoticeView/WBErrorNoticeView.h>
 #import "IssueMapViewController.h"
 #import "WaypointAnnotation.h"
 #import "ParseClient.h"
@@ -8,9 +9,6 @@
 @interface IssueMapViewController () <MKMapViewDelegate>
 
 @property (nonatomic, retain) MKMapView *mapView;
-
-@property (nonatomic, strong) UIView *errorView;
-@property (nonatomic, strong) UILabel *errorLabel;
 
 @end
 
@@ -25,25 +23,12 @@
   self.view = self.mapView;
   self.mapView.delegate = self;
 
-  self.errorView = [[UIView alloc] initWithFrame:CGRectMake(
-          0,
-          0,
-          self.view.frame.size.width,
-          30)];
-  UIColor *black = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
-  self.errorView.backgroundColor = black;
-  self.errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.errorView.frame.size.width - 40, self.errorView.frame.size.height)];
-  self.errorLabel.text = @"Error loading issues...";
-  self.errorLabel.textColor = [UIColor whiteColor];
-  self.errorLabel.backgroundColor = [UIColor clearColor];
-  [self.errorView addSubview:self.errorLabel];
   self.mapView.showsUserLocation = YES;
   self.mapView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   // Display the incident markers
-  [self.errorView removeFromSuperview];
   [[Open311Client sharedClient] fetchIncidents:^(NSArray *incidents) {
     for (Incident * incident in incidents) {
       CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;
@@ -55,7 +40,10 @@
       [self.mapView addAnnotation:pointAnnotation];
     }
   } failure:^(NSError *error) {
-    [self showErrorView:@"Error loading issues"];
+    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error loading issues."];
+    errorView.message = error.localizedDescription;
+    errorView.alpha = 0.9;
+    [errorView show];
   }];
 }
 
@@ -66,17 +54,6 @@
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
-}
-
-- (void)showErrorView:(NSString *)error {
-  self.errorLabel.text = error;
-  [self.view addSubview:self.errorView];
-  self.errorView.alpha = 0.0f;
-  [UIView animateWithDuration:0.9
-                   animations:^{
-                     self.errorView.alpha = 1.0f;
-                   }
-                   completion:nil];
 }
 
 #pragma mark - Map delegate
