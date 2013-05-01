@@ -7,6 +7,7 @@ pod 'AFHTTPRequestOperationLogger'
 pod 'ISO8601DateFormatter'
 pod 'Cloudinary'
 pod 'Mantle'
+pod 'NoticeView'
 
 target :KiwiUnitTest, :exclusive => true do
   pod 'Kiwi'
