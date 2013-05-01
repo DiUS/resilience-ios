@@ -10,6 +10,6 @@
 
 - (void)saveIncident:(Incident *)incident;
 
-- (void)uploadUnsavedIssues;
+- (void)uploadQueuedIncident;
 
 @end

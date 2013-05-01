@@ -5,7 +5,6 @@
 @interface CloudinaryClient()
 
 @property (nonatomic, strong) CLUploader *uploader;
-@property (nonatomic, strong) CLCloudinary *cloudinary;
 @property (nonatomic, copy) UploadSuccessBlock uploadSuccessBlock;
 @property (nonatomic, copy) FailureBlock uploadFailureBlock;
 
@@ -13,23 +12,22 @@
 
 @implementation CloudinaryClient
 
-+ (CloudinaryClient *)sharedClient {
-  static CloudinaryClient *_sharedClient = nil;
++ (CLCloudinary *)sharedCloudinary {
+  static CLCloudinary *_sharedCloudinary = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    _sharedClient = [[CloudinaryClient alloc] init];
+    _sharedCloudinary = [[CLCloudinary alloc] init];
+    [_sharedCloudinary.config setValue:@"resilience" forKey:@"cloud_name"];
+    [_sharedCloudinary.config setValue:@"345754584192129" forKey:@"api_key"];
+    [_sharedCloudinary.config setValue:@"EOqrfFTaj1vNv_3BTTUAWCQgGUc" forKey:@"api_secret"];
   });
 
-  return _sharedClient;
+  return _sharedCloudinary;
 }
 
 - (id)init {
   if (self = [super init]) {
-    self.cloudinary = [[CLCloudinary alloc] init];
-    [self.cloudinary.config setValue:@"resilience" forKey:@"cloud_name"];
-    [self.cloudinary.config setValue:@"345754584192129" forKey:@"api_key"];
-    [self.cloudinary.config setValue:@"EOqrfFTaj1vNv_3BTTUAWCQgGUc" forKey:@"api_secret"];
-    self.uploader = [[CLUploader alloc] init:self.cloudinary delegate:self];
+    self.uploader = [[CLUploader alloc] init:[CloudinaryClient sharedCloudinary] delegate:self];
   }
   return self;
 }
@@ -56,13 +54,13 @@
   NSLog(@"Upload progress: %d/%d (+%d)", totalBytesWritten, totalBytesExpectedToWrite, bytesWritten);
 }
 
-- (NSURL *)imageURLForResource:(NSString *)resource size:(CGSize)size {
++ (NSURL *)imageURLForResource:(NSString *)resource size:(CGSize)size {
   CLTransformation *transformation = [CLTransformation transformation];
   [transformation setWidthWithInt: (int)size.width];
   [transformation setHeightWithInt: (int)size.height];
   [transformation setCrop: @"fill"];
 
-  return [NSURL URLWithString:[self.cloudinary url:resource options:[NSDictionary dictionaryWithObjectsAndKeys:transformation, @"transformation", nil]]];
+  return [NSURL URLWithString:[[CloudinaryClient sharedCloudinary] url:resource options:[NSDictionary dictionaryWithObjectsAndKeys:transformation, @"transformation", nil]]];
 }
 
 @end

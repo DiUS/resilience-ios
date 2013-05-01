@@ -131,22 +131,19 @@
 }
 
 - (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(FailureBlock)failure {
-  __block Incident *localIncidentInstance = [incident copy];
-  NSLog(@"******** Before bolock Uploading incident %@", localIncidentInstance.name);
-  dispatch_async(dispatch_get_main_queue(), ^{ // If this is called from an operation queue not on the main thread, then the cloudinary upload will barf
-    [[CloudinaryClient sharedClient] updloadImage:localIncidentInstance.image
+  dispatch_async(dispatch_get_main_queue(), ^{ // Cloudinary uses NSURLConnection and doesn't work off the main thread (the thread dies before the upload finishes).
+    [[[CloudinaryClient alloc] init] updloadImage:incident.image
             success:^(NSString *uploadUrl) {
-              NSLog(@"******** Uploading incident %@", localIncidentInstance.name);
-              localIncidentInstance.imageUrl = [NSURL URLWithString:uploadUrl];
-              [self postPath:@"requests.json" parameters:[localIncidentInstance asDictionary:[Profile loadProfile]] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              incident.imageUrl = [NSURL URLWithString:uploadUrl];
+              [self postPath:@"requests.json" parameters:[incident asDictionary:[Profile loadProfile]] success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"Incident created successfully %@", responseObject);
-                localIncidentInstance.id = responseObject[0][@"service_request_id"];
-                success(localIncidentInstance);
+                incident.id = responseObject[0][@"service_request_id"];
+                success(incident);
               }      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"Error creating a service request");
                 failure(error);
               }];
-            }                  failure:failure];
+            } failure:failure];
   });
 }
 

@@ -6,8 +6,7 @@
 @implementation Incident
 
 - (id)initWithName:(NSString *)name andLocation:(CLLocation *)location andCategory:(IncidentCategory *)category andDate:(NSDate *)updatedDate andID:(NSString *)id andImage:(UIImage *)image{
-  self = [super init];
-  if (self) {
+  if (self = [super init]) {
     self.name = name;
     self.location = location;
     self.category = category;

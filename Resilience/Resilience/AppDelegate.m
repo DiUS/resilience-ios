@@ -25,7 +25,7 @@
 
   self.window.rootViewController = rootViewController;
 
-  [[ResilientUploader sharedUploader] uploadUnsavedIssues];
+  [[ResilientUploader sharedUploader] uploadQueuedIncident];
 
   [self.window makeKeyAndVisible];
 

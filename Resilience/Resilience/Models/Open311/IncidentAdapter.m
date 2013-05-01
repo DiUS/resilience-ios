@@ -49,7 +49,7 @@
 }
 
 - (NSURL *)imageUrlForSize:(CGSize)size {
-  return [[CloudinaryClient sharedClient] imageURLForResource:self.serviceRequest.mediaUrl.absoluteString size:size];
+  return [CloudinaryClient imageURLForResource:self.serviceRequest.mediaUrl.absoluteString size:size];
 }
 
 - (CLLocation *)location {
