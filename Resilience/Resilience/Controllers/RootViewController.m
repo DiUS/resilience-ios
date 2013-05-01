@@ -1,3 +1,4 @@
+#import <NoticeView/WBErrorNoticeView.h>
 #import "RootViewController.h"
 #import "IssueListViewController.h"
 #import "IssueMapViewController.h"
@@ -7,16 +8,16 @@
 #import "RSLHeader.h"
 #import "WBNoticeView.h"
 #import "WBSuccessNoticeView.h"
+#import "AppNotifications.h"
+#import "WBStickyNoticeView.h"
 
 @interface RootViewController()
 
 @property (nonatomic, strong) IssueListViewController *issueListViewController;
 @property (nonatomic, strong) IssueMapViewController *issueMapViewController;
-
 @property (nonatomic, strong) RSLHeader *header;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIView *contentView;
-
 @property (nonatomic, strong) NSArray *containerConstraints;
 
 @end
@@ -48,10 +49,17 @@
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
   [self.toolbar setItems:@[feedbackButtonItem, flexibleSpace, profileItem]];
 
-  [[NSNotificationCenter defaultCenter] addObserverForName:@"incidentUploaded" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-    WBSuccessNoticeView *successNoticeView = [[WBSuccessNoticeView alloc] initWithView:self.view title:@"Successfully reported issue."];
+  [[NSNotificationCenter defaultCenter] addObserverForName:kIncidentUploadedSuccessfully object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+    WBSuccessNoticeView *successNoticeView = [[WBSuccessNoticeView alloc] initWithView:self.view title:NSLocalizedString(@"incidentUpload:Successful:Title", @"Successfully reported incident.")];
     successNoticeView.alpha = 0.9;
     [successNoticeView show];
+    [self.issueListViewController loadIssues];
+  }];
+  [[NSNotificationCenter defaultCenter] addObserverForName:kIncidentUploadFailed object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+    WBStickyNoticeView *noticeView = [[WBStickyNoticeView alloc] initWithView:self.view title:NSLocalizedString(@"incidentUpload:Failed:Title", @"Could not upload incident at this time.")];
+    noticeView.alpha = 0.9;
+    noticeView.sticky = NO;
+    [noticeView show];
   }];
 }
 
@@ -117,7 +125,7 @@
     [self.view removeConstraints:self.containerConstraints];
 
   self.containerConstraints = [NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|-46-[viewToAdd]|"
+          constraintsWithVisualFormat:@"V:|-46-[viewToAdd]-44-|"
                               options:0
                               metrics:nil
                                 views:views];

@@ -27,10 +27,6 @@
   return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [self loadIssues];
-}
-
 - (void)viewDidLoad {
   [super viewDidLoad];
 
@@ -38,6 +34,7 @@
   refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
   [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
   self.refreshControl = refresh;
+  [self loadIssues];
 }
 
 - (void)didReceiveMemoryWarning {

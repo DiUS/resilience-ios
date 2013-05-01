@@ -2,9 +2,10 @@
 #import "Open311Client.h"
 #import "UploadIncident.h"
 #import "UploadOperation.h"
+#import "AppNotifications.h"
 
 
-@interface ResilientUploader ()
+@interface ResilientUploader () <UploadOperationProtocol>
 
 @property(nonatomic, strong) NSOperationQueue *operationQueue;
 
@@ -50,6 +51,10 @@
 
 - (void)enqueIncidentForUpload:(UploadIncident *)uploadIncident {
   UploadOperation *operation = [[UploadOperation alloc] initWithIncident:uploadIncident];
+  operation.delegate = self;
+  if(self.operationQueue.isSuspended) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kIncidentUploadFailed object:self userInfo:@{@"incident" : uploadIncident.incidentToUpload}];
+  }
   [self.operationQueue addOperation:operation];
 }
 
@@ -59,6 +64,16 @@
   for(UploadIncident *incident in queuedIncidents) {
     [self enqueIncidentForUpload:incident];
   }
+}
+
+#pragma mark - UploadOperationProtocol methods
+- (void)uploadSuccessful:(UploadOperation *)operation incident:(UploadIncident *)incident {
+  [[NSNotificationCenter defaultCenter] postNotificationName:kIncidentUploadedSuccessfully object:self userInfo:@{@"incident" : incident}];
+}
+
+- (void)uploadFailed:(UploadOperation *)operation incident:(UploadIncident *)incident {
+  [[NSNotificationCenter defaultCenter] postNotificationName:kIncidentUploadFailed object:self userInfo:@{@"incident" : incident}];
+  [self enqueIncidentForUpload:incident]; // retry the upload later.
 }
 
 @end

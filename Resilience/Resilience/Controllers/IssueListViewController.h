@@ -3,4 +3,5 @@
 
 @interface IssueListViewController : UITableViewController
 
+- (void)loadIssues;
 @end

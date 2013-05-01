@@ -41,11 +41,13 @@
 		2DC18A2B60EAB74BA3A4B91F /* IncidentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C74E4CAEA46175AF113 /* IncidentCell.m */; };
 		2DC18A2CC04FE515FE102763 /* UIImage+FixRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */; };
 		2DC18AA55CFBAFBE51A44570 /* ResilientUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18DC3A352C814191BB654 /* ResilientUploader.m */; };
+		2DC18ABBBFFDFB1A8D6F2201 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC184343388A7C7F9D95C86 /* Localizable.strings */; };
 		2DC18ABCE849713F0216B4C7 /* IncidentFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC186CE858398FA277F07DB /* IncidentFooter.m */; };
 		2DC18ABF28E735DB4374AE13 /* IncidentAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181A7E525EF4C93715683 /* IncidentAdapter.m */; };
 		2DC18B1FF67341F20CFD8C43 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D290BA8F5FC680BE957 /* Client.m */; };
 		2DC18B32746F47D13E88E493 /* Incident+Open311.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1887E0454BA205B53AC49 /* Incident+Open311.m */; };
 		2DC18BACA06B30EC5B56EE43 /* UITableViewCell+Form.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181A1CC07036C5C3F01E5 /* UITableViewCell+Form.m */; };
+		2DC18BEF125D3CD52F163951 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC184343388A7C7F9D95C86 /* Localizable.strings */; };
 		2DC18C2403FC25CBBF121D19 /* UploadIncident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F9A8991981FD2CF4BD3 /* UploadIncident.m */; };
 		2DC18D48781291EDD18769DF /* UploadIncident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F9A8991981FD2CF4BD3 /* UploadIncident.m */; };
 		2DC18E40A15187A376822547 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18287279BE2ABF06DC268 /* Service.m */; };
@@ -112,6 +114,7 @@
 		2DC1838E4041C30D656AF5C5 /* UploadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadOperation.h; sourceTree = "<group>"; };
 		2DC183CAED282CEFF60E7417 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		2DC183FFFCA19910EDB72F02 /* UITextField+Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Form.m"; sourceTree = "<group>"; };
+		2DC184343388A7C7F9D95C86 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TypedAccess.m"; sourceTree = "<group>"; };
 		2DC1844EBF31DB2E53DBC64E /* AddIncidentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIncidentViewController.h; sourceTree = "<group>"; };
 		2DC1854AC052D9377A08D33C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 		2DC18773D6E5D470213C2381 /* UITextField+Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Form.h"; sourceTree = "<group>"; };
 		2DC187887B871227C6EE0E65 /* IncidentCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentCategory.m; sourceTree = "<group>"; };
 		2DC1878A146A6C5AC412BEF9 /* CloudinaryClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudinaryClient.m; sourceTree = "<group>"; };
+		2DC187B9C5D5A0DAE4A045B1 /* AppNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppNotifications.h; sourceTree = "<group>"; };
 		2DC187ED05926DE77CFFBBAA /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		2DC1887E0454BA205B53AC49 /* Incident+Open311.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Incident+Open311.m"; sourceTree = "<group>"; };
 		2DC188C66B7EEA2E54A8F67C /* UITextField+Resilience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Resilience.h"; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 				2DC187ED05926DE77CFFBBAA /* ProfileViewController.m */,
 				2DC18FB9686DF37B1C2A7F16 /* RootViewController.h */,
 				2DC18D5AE40EEA58FF035E16 /* RootViewController.m */,
+				2DC184343388A7C7F9D95C86 /* Localizable.strings */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 				2DC18CD5D5E91A5CBC3C5A98 /* Style */,
 				FBB1CDC315C3F3E4000D168E /* Supporting Files */,
 				2DC18F9745EB4C28FE5E7E15 /* Views */,
+				2DC187B9C5D5A0DAE4A045B1 /* AppNotifications.h */,
 			);
 			path = Resilience;
 			sourceTree = "<group>";
@@ -577,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1044B1C165CCB71002DC3E1 /* InfoPlist.strings in Resources */,
+				2DC18BEF125D3CD52F163951 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +606,7 @@
 				A1419A1316C60DD20004FA1C /* Icon@2x.png in Resources */,
 				A1419A1516C60DD60004FA1C /* Icon.png in Resources */,
 				A17CE86317194D2F00AF2EA1 /* Default-568h@2x.png in Resources */,
+				2DC18ABBBFFDFB1A8D6F2201 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
