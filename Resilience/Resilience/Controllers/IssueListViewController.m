@@ -104,9 +104,14 @@
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
   Incident *incident = [self.incidents objectAtIndex:(NSUInteger) indexPath.row];
   IssueViewController *issueVC = [[IssueViewController alloc] init];
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:issueVC];
+  issueVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissDetailView:)];
   issueVC.incident = incident;
-  [self.navigationController pushViewController:issueVC animated:YES];
+  [self presentViewController:navController animated:YES completion:nil];
+}
 
+- (void)dismissDetailView:(id)sender {
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
