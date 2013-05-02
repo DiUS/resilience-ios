@@ -3,7 +3,7 @@
 
 @protocol UploadOperationProtocol <NSObject>
 - (void)uploadSuccessful:(UploadOperation *)operation incident:(UploadIncident *)incident;
-- (void)uploadFailed:(UploadOperation *)operation incident:(UploadIncident *)incident;
+- (void)uploadFailed:(UploadOperation *)operation error:(NSError *)error incident:(UploadIncident *)incident;
 @end
 
 @interface UploadOperation : NSOperation

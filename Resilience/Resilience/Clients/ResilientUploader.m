@@ -71,9 +71,12 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:kIncidentUploadedSuccessfully object:self userInfo:@{@"incident" : incident}];
 }
 
-- (void)uploadFailed:(UploadOperation *)operation incident:(UploadIncident *)incident {
+- (void)uploadFailed:(UploadOperation *)operation error:(NSError *)error incident:(UploadIncident *)incident {
   [[NSNotificationCenter defaultCenter] postNotificationName:kIncidentUploadFailed object:self userInfo:@{@"incident" : incident}];
-  [self enqueIncidentForUpload:incident]; // retry the upload later.
+  NSLog(@"Failed to upload incident '%@', description: %@", incident.incidentToUpload.name, error.localizedDescription);
+  if(self.operationQueue.isSuspended) {
+    [self enqueIncidentForUpload:incident]; // retry the upload later.
+  }
 }
 
 @end

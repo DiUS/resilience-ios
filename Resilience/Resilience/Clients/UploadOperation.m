@@ -23,7 +23,7 @@
             [self.incident removeIncident];
             [self.delegate uploadSuccessful:self incident:self.incident];
           } failure:^(NSError *error) {
-    [self.delegate uploadFailed:self incident:self.incident];
+    [self.delegate uploadFailed:self error:error incident:self.incident];
   }];
 }
 
