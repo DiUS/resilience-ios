@@ -23,6 +23,20 @@
   return textField;
 }
 
++ (UITextField *)multilineTextField:(NSString *)placeholder {
+  UITextField *textField = [UITextField styledTextField];
+  textField.placeholder = placeholder;
+  textField.borderStyle = UITextBorderStyleBezel;
+  textField.textColor = [UIColor defaultTextColor];
+  textField.font = [UIFont systemFontOfSize:16.0];
+  textField.backgroundColor = [UIColor whiteColor];
+  textField.keyboardType = UIKeyboardTypeAlphabet;
+  textField.returnKeyType = UIReturnKeyDone;
+  textField.clearButtonMode = UITextFieldViewModeWhileEditing;  // has a clear 'x' button to the right
+  textField.translatesAutoresizingMaskIntoConstraints = NO;
+  return textField;
+}
+
 + (UITextField *)emailFormTextField:(NSString *)placeholder {
   return [UITextField formTextField:placeholder keyboard:UIKeyboardTypeEmailAddress];
 }
@@ -30,5 +44,6 @@
 + (UITextField *)numberFormTextField:(NSString *)placeholder {
   return [UITextField formTextField:placeholder keyboard:UIKeyboardTypePhonePad];
 }
+
 
 @end

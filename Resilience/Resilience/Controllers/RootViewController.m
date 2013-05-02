@@ -10,6 +10,7 @@
 #import "WBSuccessNoticeView.h"
 #import "AppNotifications.h"
 #import "WBStickyNoticeView.h"
+#import "FeedbackViewController.h"
 
 @interface RootViewController()
 
@@ -44,7 +45,7 @@
   self.toolbar = [[UIToolbar alloc] init];
   UIBarButtonItem *profileItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/SettingsIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
   profileItem.tintColor = [UIColor orangeColor];
-  UIBarButtonItem *feedbackButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/FeedbackIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
+  UIBarButtonItem *feedbackButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/FeedbackIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showFeedback)];
   feedbackButtonItem.tintColor = [UIColor orangeColor];
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
   [self.toolbar setItems:@[feedbackButtonItem, flexibleSpace, profileItem]];
@@ -89,7 +90,17 @@
   [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (void) addIssue {
+- (void)showFeedback {
+  FeedbackViewController *feedbackViewController = [[FeedbackViewController alloc] init];
+
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:feedbackViewController];
+  navController.modalTransitionStyle = feedbackViewController.modalTransitionStyle;
+
+  [self presentViewController:navController animated:YES completion:nil];
+}
+
+
+- (void)addIssue {
   AddIncidentViewController *incidentViewController = [[AddIncidentViewController alloc] init];
 
   UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:incidentViewController];
@@ -98,11 +109,11 @@
   [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (void) showListView {
+- (void)showListView {
   [self swapView:self.issueMapViewController with:self.issueListViewController];
 }
 
-- (void) showMapView {
+- (void)showMapView {
   [self swapView:self.issueListViewController with:self.issueMapViewController];
 }
 

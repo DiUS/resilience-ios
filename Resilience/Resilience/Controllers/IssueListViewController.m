@@ -59,6 +59,7 @@
     if(incidents.count == 0) {
       WBStickyNoticeView *noticeView = [[WBStickyNoticeView alloc] initWithView:self.view title:@"No issues have been reported in your area."];
       noticeView.alpha = 0.9;
+      noticeView.floating = YES;
       [noticeView show];
     }
   } failure:^(NSError *error) {

@@ -53,7 +53,6 @@
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Map delegate
@@ -77,8 +76,8 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-  WaypointAnnotation *annotation = view.annotation;
-  NSLog(@"calloutAccessoryControlTapped: %@, %@", annotation.title, annotation.ID);
+//  WaypointAnnotation *annotation = view.annotation;
+//  NSLog(@"calloutAccessoryControlTapped: %@, %@", annotation.title, annotation.ID);
 //  [self.navigationController pushViewController:self.detailsThemes animated:YES];
 }
 
