@@ -18,4 +18,6 @@ typedef void (^Open311FailureBlock)(NSError *error);
 - (void)fetchCategories:(CategoriesSuccessBlock)success failure:(Open311FailureBlock)failure;
 
 - (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(Open311FailureBlock)failure;
+
+- (void)sendFeedback:(NSString *)feedback success:(FeedbackSuccessBlock)success failure:(FailureBlock)failure;
 @end

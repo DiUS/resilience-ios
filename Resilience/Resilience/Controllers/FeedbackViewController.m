@@ -1,7 +1,9 @@
-
+#import <NoticeView/WBErrorNoticeView.h>
 #import "FeedbackViewController.h"
 #import "UITextField+Form.h"
 #import "UIColor+Resilience.h"
+#import "UIView+WSLoading.h"
+#import "Open311Client.h"
 
 @interface FeedbackViewController ()
 
@@ -56,7 +58,18 @@
 }
 
 - (void)send:(id)sender {
-  [self dismissViewControllerAnimated:YES completion:nil];
+  [self.view showLoading];
+  [[Open311Client sharedClient] sendFeedback:self.contentTextField.text success:^{
+    [self.view hideLoading];
+    [self dismissViewControllerAnimated:YES completion:nil];
+  } failure:^(NSError *error) {
+    [self.view hideLoading];
+    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error sending feedback."];
+    errorView.message = error.localizedDescription;
+    errorView.alpha = 0.9;
+    errorView.floating = YES;
+    [errorView show];
+  }];
 }
 
 - (void)cancel:(id)cancel {

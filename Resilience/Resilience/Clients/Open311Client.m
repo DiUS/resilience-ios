@@ -34,7 +34,7 @@
 - (id)initWithBaseURL:(NSURL *)url {
   if (self = [super initWithBaseURL:url]) {
     [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    self.parameterEncoding = AFFormURLParameterEncoding;
+
     [self setDefaultHeader:@"Accept" value:@"application/json"];
     [self setDefaultHeader:@"Content-Type" value:@"application/json"];
 
@@ -131,6 +131,7 @@
 }
 
 - (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(FailureBlock)failure {
+  self.parameterEncoding = AFFormURLParameterEncoding;
   dispatch_async(dispatch_get_main_queue(), ^{ // Cloudinary uses NSURLConnection and doesn't work off the main thread (the thread dies before the upload finishes).
     [[[CloudinaryClient alloc] init] updloadImage:incident.image
             success:^(NSString *uploadUrl) {
@@ -145,6 +146,15 @@
               }];
             } failure:failure];
   });
+}
+
+- (void)sendFeedback:(NSString *)feedback success:(FeedbackSuccessBlock)success failure:(FailureBlock)failure {
+  self.parameterEncoding = AFJSONParameterEncoding;
+  [self postPath:@"feedback.json" parameters:@{ @"comment": feedback, @"email": [Profile loadProfile].email } success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
+    success();
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 @end
