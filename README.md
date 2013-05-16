@@ -3,14 +3,14 @@ resilience-ios
 
 Installation
 ------------
-The resilience build requires XCode 4.5+ and ruby 1.9.x with [bundler](http://gembundler.com/).
+The resilience build requires XCode 4.5+ and ruby 1.9.x with bundler.
 ````
 bundle install
-bundle exec rake setup
+cd Resilience
+pod setup
+pod install
 ````
-This will generate Resilience/Resilience.xcworkspace which you can then open in XCode / AppCode.
-
-Building artifacts
+Building
 --------
 
 ### To build:
@@ -28,3 +28,13 @@ rake debug:test
 ````
 rake debug:testflight
 ````
+XCode / AppCode
+---------------
+open the Resilience workspace: `Resilience.xcworkspace`
+
+Open311
+-------
+- no subcategories
+- category on serviceRequest?
+- adopt language? or all clients need to translate?
+- maybe have a compatible, but richer model and Open311 is a compatible API provided?

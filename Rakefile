@@ -21,11 +21,6 @@ PODS_KIWI_TARGET           = Xcode.workspace(:Resilience).project(:Pods).target(
 
 task :ci => ['adhoc:testflight', 'release:package']
 
-desc "Setup Resilience application"
-task :setup do
-  sh "cd Resilience; rm -rf Pods; pod setup; pod install"
-end
-
 CONFIGS.keys.each do |config_name|
   puts config_name
   namespace config_name.downcase do
@@ -36,7 +31,7 @@ CONFIGS.keys.each do |config_name|
     pods_builder = PODS_TARGET.config(config_name).builder
     pods_kiwi_builder = PODS_KIWI_TARGET.config(config_name).builder
     main_builder.profile   = CONFIGS[config_name]
-    main_builder.identity  = 'iPhone Developer'
+    main_builder.identity  = 'iPhone Developer: Andrew Spinks (623KBVDS5N)'
 
     desc "Clean the #{config_name} config"
     task :clean do
@@ -51,7 +46,6 @@ CONFIGS.keys.each do |config_name|
         info.version = ENV['BUILD_NUMBER']||"#{Socket.gethostname}-SNAPSHOT"
         info.save
       end
-      sh "cd Resilience; pod install"
       pods_builder.build
       main_builder.build
     end

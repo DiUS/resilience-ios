@@ -32,7 +32,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFHTTPRequestOperationLogger: 34ba125cb9eeb77a3b67aaaca105720ba3a0798c
-  AFNetworking: d1ba5908b233189e424e101721acef7905b58efb
+  AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
   Cloudinary: 16168b297cab66eac1a07e3e5301adf6429a486d
   DCIntrospect: 2f5cab0b58b170459ebcb200f59042306fcb0c0d
   ISO8601DateFormatter: dc05a2481edf49668d85d3ff8c466c32eb544780
@@ -40,7 +40,7 @@ SPEC CHECKSUMS:
   libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
   Mantle: aa9860e40cc365a094ef60fec46848fee7b03ca7
   NoticeView: 16bb529beb669dd8f27f1dc9c63b8d006cf89ad1
-  SBJson: e60b4dc22448c2ae1e754b523a4ab53408e85c8d
+  SBJson: 4971016670e7b3fa04a36d4e72ab0fb1ad3a9f69
   TestFlightSDK: 185b9bfd710bfb85ce5f57bcb89651330081090f
 
 COCOAPODS: 0.19.1
