@@ -4,9 +4,14 @@
 #import "WaypointAnnotation.h"
 #import "UIImageView+AFNetworking.h"
 #import "IncidentFooter.h"
+#import "UIImage+Tileable.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface IssueViewController ()
+@property(nonatomic, strong) UIImageView *warnImage;
+@property(nonatomic, strong) UIView *imageViewSurround;
 @property(nonatomic, strong) UIImageView *imageView;
+@property(nonatomic, strong) UIView *issueMapSurround; 
 @property(nonatomic, strong) MKMapView *issueMap;
 @property(nonatomic, strong) IncidentHeader *headerView;
 @property(nonatomic, strong) IncidentFooter *footerView;
@@ -16,7 +21,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [self style];
   [self data];
 }
 
@@ -43,10 +47,6 @@
 
 #pragma mark - Private Methods
 
-- (void)style {
-  self.view.backgroundColor = [UIColor defaultBackgroundColor];
-}
-
 - (void)data {
   if (self.incident.imageUrl) {
     [self.imageView setImageWithURL:[self.incident imageUrlForSize:CGSizeMake(120.f, 185.f)]];
@@ -65,10 +65,25 @@
 
 - (void)components {
   self.view = [[UIView alloc] initWithFrame:CGRectZero];
+  self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Assets/BackgroundTexture"]];
+
+  UIImage *warningImage = [UIImage imageNamed:@"Assets/IncidentDetailsBackground"];
+  UIImage *resizableWarningImage = [warningImage stretchableImageWithLeftCapWidth:1 topCapHeight:1];
+  self.warnImage = [[UIImageView alloc] initWithImage:resizableWarningImage];
+  [self.view addSubview:self.warnImage];
+
+  self.imageViewSurround = [[UIView alloc] initWithFrame:CGRectZero];
+  self.imageViewSurround.backgroundColor = [UIColor whiteColor];
+  self.imageViewSurround.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+  self.imageViewSurround.layer.shadowOffset = CGSizeMake(2.0, 2.0);
+  self.imageViewSurround.layer.shadowRadius = 3.0;
+  self.imageViewSurround.layer.shadowOpacity = 1.0; 
 
   self.imageView = [[UIImageView alloc] initWithImage:nil];
-  self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-  [self.view addSubview:self.imageView];
+  self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+  self.imageView.clipsToBounds = YES;
+  [self.imageViewSurround addSubview:self.imageView];
+  [self.view addSubview:self.imageViewSurround];
 
   self.headerView = [[IncidentHeader alloc] initWithFrame:CGRectZero];
   [self.view addSubview:self.headerView];
@@ -77,29 +92,40 @@
 
   self.navigationItem.title = @"Issue Details";
 
+  self.issueMapSurround = [[UIView alloc] initWithFrame:CGRectZero];
+  self.issueMapSurround.backgroundColor = [UIColor whiteColor];
+  self.issueMapSurround.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+  self.issueMapSurround.layer.shadowRadius = 3.0;
+  self.issueMapSurround.layer.shadowOpacity = 1.0;
+  self.issueMapSurround.layer.shadowOffset = CGSizeMake(2.0, 2.0);
+  
   self.issueMap = [[MKMapView alloc] initWithFrame:CGRectZero];
   self.issueMap.delegate = self;
   self.issueMap.scrollEnabled = NO;
-  [self.view addSubview:self.issueMap];
+  
+  [self.issueMapSurround addSubview:self.issueMap];
+  [self.view addSubview:self.issueMapSurround];
 
   self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
   self.issueMap.translatesAutoresizingMaskIntoConstraints = NO;
   self.headerView.translatesAutoresizingMaskIntoConstraints = NO;
   self.footerView.translatesAutoresizingMaskIntoConstraints = NO;
-
+  self.warnImage.translatesAutoresizingMaskIntoConstraints = NO;
+  self.imageViewSurround.translatesAutoresizingMaskIntoConstraints = NO;
+  self.issueMapSurround.translatesAutoresizingMaskIntoConstraints = NO; 
 }
 
 
 - (void)updateViewConstraints {
   [super updateViewConstraints];
-  NSDictionary *views = NSDictionaryOfVariableBindings(_imageView, _issueMap, _headerView, _footerView);
+  NSDictionary *views = NSDictionaryOfVariableBindings(_imageViewSurround, _imageView, _issueMapSurround, _issueMap, _headerView, _footerView, _warnImage);
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_headerView]-[_imageView(>=185)]-[_footerView]|"
+          constraintsWithVisualFormat:@"V:|[_headerView]-[_imageViewSurround(==100)]-[_footerView]"
                               options:0
                               metrics:nil views:views]];
 
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_headerView]-[_issueMap(>=185)]-[_footerView]|"
+          constraintsWithVisualFormat:@"V:[_headerView]-[_issueMapSurround(==100)]"
                               options:0
                               metrics:nil views:views]];
 
@@ -111,13 +137,32 @@
   [self.view addConstraints:[NSLayoutConstraint
           constraintsWithVisualFormat:@"H:|[_footerView]|"
                               options:0
-                              metrics:nil views:views]];
+                             metrics:nil views:views]];
 
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"H:|-[_imageView]-20-[_issueMap(==_imageView)]-|"
+          constraintsWithVisualFormat:@"H:|-[_imageViewSurround]-20-[_issueMapSurround(==_imageViewSurround)]-|"
                               options:0
                               metrics:nil views:views]];
 
+  [self.view addConstraints:[NSLayoutConstraint
+                             constraintsWithVisualFormat:@"H:|-8-[_warnImage]-3-|"
+                             options:0
+                             metrics:nil views:views]];
+  [self.view addConstraints:[NSLayoutConstraint
+                             constraintsWithVisualFormat:@"V:|-8-[_warnImage]-3-|"
+                             options:0
+                             metrics:nil views:views]];
+
+  [self.imageViewSurround addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-3-[_imageView]-3-|"
+                                                                                 options:0 metrics:0 views:views]];
+  [self.imageViewSurround addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[_imageView]-3-|"
+                                                                                 options:0 metrics:0 views:views]];
+  [self.imageView setContentCompressionResistancePriority:UILayoutPriorityFittingSizeLevel forAxis:UILayoutConstraintAxisVertical];
+
+  [self.issueMapSurround addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-3-[_issueMap]-3-|"
+                                                                                 options:0 metrics:0 views:views]];
+  [self.issueMapSurround addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[_issueMap]-3-|"
+                                                                                 options:0 metrics:0 views:views]];
 }
 
 @end

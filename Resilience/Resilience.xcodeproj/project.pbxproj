@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B6D1AA31723FEF800A17B1B /* RSLHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D1AA21723FEF800A17B1B /* RSLHeader.m */; };
+		0B8892FA1744E26C00CB5A46 /* UIImage+Tileable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8892F91744E26C00CB5A46 /* UIImage+Tileable.m */; };
 		1A86D59268EF4D8C8A67442B /* libPods-KiwiUnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */; };
 		2DC18051B6EE4E2AAE5D31AC /* Incident+Open311.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1887E0454BA205B53AC49 /* Incident+Open311.m */; };
 		2DC18079D372B6042178CF88 /* IncidentCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC187887B871227C6EE0E65 /* IncidentCategory.m */; };
@@ -99,6 +100,8 @@
 /* Begin PBXFileReference section */
 		0B6D1AA11723FEF800A17B1B /* RSLHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSLHeader.h; sourceTree = "<group>"; };
 		0B6D1AA21723FEF800A17B1B /* RSLHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSLHeader.m; sourceTree = "<group>"; };
+		0B8892F81744E26C00CB5A46 /* UIImage+Tileable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tileable.h"; sourceTree = "<group>"; };
+		0B8892F91744E26C00CB5A46 /* UIImage+Tileable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tileable.m"; sourceTree = "<group>"; };
 		2DC1807D58B75EBE487FA664 /* ParseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseClient.m; sourceTree = "<group>"; };
 		2DC180F4C030BF445539152A /* AddIncidentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddIncidentViewController.m; sourceTree = "<group>"; };
 		2DC181A0AFCCA91F98A2E406 /* UIColor+Resilience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Resilience.h"; sourceTree = "<group>"; };
@@ -300,18 +303,20 @@
 		2DC18A71FD5F1E0A12334DBF /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */,
-				2DC18D2852962671387D4560 /* NSDictionary+TypedAccess.h */,
-				2DC1887E0454BA205B53AC49 /* Incident+Open311.m */,
 				2DC18C42F63533543B3AB8E1 /* Incident+Open311.h */,
-				2DC18FD9FA6AA3804B32FDF7 /* UIView+WSLoading.m */,
-				2DC1863F09FFD1B8EF7B47F0 /* UIView+WSLoading.h */,
-				2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */,
+				2DC1887E0454BA205B53AC49 /* Incident+Open311.m */,
+				2DC18D2852962671387D4560 /* NSDictionary+TypedAccess.h */,
+				2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */,
 				2DC18E414813D609BCBF724D /* UIImage+FixRotation.h */,
-				2DC183FFFCA19910EDB72F02 /* UITextField+Form.m */,
-				2DC18773D6E5D470213C2381 /* UITextField+Form.h */,
-				2DC181A1CC07036C5C3F01E5 /* UITableViewCell+Form.m */,
+				2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */,
+				0B8892F81744E26C00CB5A46 /* UIImage+Tileable.h */,
+				0B8892F91744E26C00CB5A46 /* UIImage+Tileable.m */,
 				2DC18CCFEC8BC10AC7D19BF3 /* UITableViewCell+Form.h */,
+				2DC181A1CC07036C5C3F01E5 /* UITableViewCell+Form.m */,
+				2DC18773D6E5D470213C2381 /* UITextField+Form.h */,
+				2DC183FFFCA19910EDB72F02 /* UITextField+Form.m */,
+				2DC1863F09FFD1B8EF7B47F0 /* UIView+WSLoading.h */,
+				2DC18FD9FA6AA3804B32FDF7 /* UIView+WSLoading.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -729,6 +734,7 @@
 				2DC1850A6363D1D4C9C537DE /* UploadOperation.m in Sources */,
 				2DC18D48781291EDD18769DF /* UploadIncident.m in Sources */,
 				2DC18EFE69CAFAAA72262874 /* FeedbackViewController.m in Sources */,
+				0B8892FA1744E26C00CB5A46 /* UIImage+Tileable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
