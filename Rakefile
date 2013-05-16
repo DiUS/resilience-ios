@@ -31,7 +31,7 @@ CONFIGS.keys.each do |config_name|
     pods_builder = PODS_TARGET.config(config_name).builder
     pods_kiwi_builder = PODS_KIWI_TARGET.config(config_name).builder
     main_builder.profile   = CONFIGS[config_name]
-    main_builder.identity  = 'iPhone Developer: Andrew Spinks (623KBVDS5N)'
+    main_builder.identity  = 'iPhone Developer'
 
     desc "Clean the #{config_name} config"
     task :clean do

@@ -10,6 +10,8 @@ cd Resilience
 pod setup
 pod install
 ````
+open the Resilience workspace: `Resilience/Resilience.xcworkspace` in XCode / AppCode
+
 Building
 --------
 
@@ -28,13 +30,4 @@ rake debug:test
 ````
 rake debug:testflight
 ````
-XCode / AppCode
----------------
-open the Resilience workspace: `Resilience.xcworkspace`
 
-Open311
--------
-- no subcategories
-- category on serviceRequest?
-- adopt language? or all clients need to translate?
-- maybe have a compatible, but richer model and Open311 is a compatible API provided?

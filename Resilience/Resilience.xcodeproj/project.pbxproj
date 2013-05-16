@@ -69,6 +69,7 @@
 		A1419A1116C60DC30004FA1C /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = A1419A1016C60DC30004FA1C /* Assets */; };
 		A1419A1316C60DD20004FA1C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1419A1216C60DD20004FA1C /* Icon@2x.png */; };
 		A1419A1516C60DD60004FA1C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A1419A1416C60DD60004FA1C /* Icon.png */; };
+		A1454BCF1744EC920088618B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1454BCE1744EC920088618B /* Security.framework */; };
 		A17CE86317194D2F00AF2EA1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A17CE86217194D2F00AF2EA1 /* Default-568h@2x.png */; };
 		A1DDA47D16661980003A21C0 /* IssueMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDA47A16661980003A21C0 /* IssueMapViewController.m */; };
 		A1DDA47E16661980003A21C0 /* IssueListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDA47C16661980003A21C0 /* IssueListViewController.m */; };
@@ -180,6 +181,7 @@
 		A1419A1016C60DC30004FA1C /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		A1419A1216C60DD20004FA1C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A1419A1416C60DD60004FA1C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A1454BCE1744EC920088618B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A17CE86217194D2F00AF2EA1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A1DDA47916661980003A21C0 /* IssueMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueMapViewController.h; sourceTree = "<group>"; };
 		A1DDA47A16661980003A21C0 /* IssueMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueMapViewController.m; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1454BCF1744EC920088618B /* Security.framework in Frameworks */,
 				8927C7B5166AE61800D501B5 /* ImageIO.framework in Frameworks */,
 				FB1EA13E1669F8D4002B93EF /* CoreLocation.framework in Frameworks */,
 				FB1EA1221669E2F7002B93EF /* MapKit.framework in Frameworks */,
@@ -446,6 +449,7 @@
 		FBB1CDAD15C3F3E4000D168E = {
 			isa = PBXGroup;
 			children = (
+				A1454BCE1744EC920088618B /* Security.framework */,
 				A17CE86217194D2F00AF2EA1 /* Default-568h@2x.png */,
 				A1419A1416C60DD60004FA1C /* Icon.png */,
 				A1419A1216C60DD20004FA1C /* Icon@2x.png */,
