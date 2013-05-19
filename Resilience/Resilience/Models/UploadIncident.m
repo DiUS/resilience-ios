@@ -15,7 +15,7 @@ static NSString *const kArchiveKey = @"upload";
   return self;
 }
 
-- (void)saveIncident {
+- (void)saveIncidentToDisk {
   NSString *dataPath = [UploadIncident filenameForId:self.fileId];
   NSMutableData *newIncident = [[NSMutableData alloc] init];
   NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:newIncident];

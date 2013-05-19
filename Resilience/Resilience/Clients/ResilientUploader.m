@@ -45,7 +45,7 @@
 
 - (void)saveIncident:(Incident *)incident {
   UploadIncident *incidentToUpload = [[UploadIncident alloc] initWithIncident:incident];
-  [incidentToUpload saveIncident];
+  [incidentToUpload saveIncidentToDisk];
   [self enqueIncidentForUpload:incidentToUpload];
 }
 
