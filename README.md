@@ -3,12 +3,10 @@ resilience-ios
 
 Installation
 ------------
-The resilience build requires XCode 4.5+ and ruby 1.9.x with bundler.
+The resilience build requires XCode 4.5+ and ruby 1.9.x with bundler (http://gembundler.com/).
 ````
 bundle install
-cd Resilience
-pod setup
-pod install
+bundel exec rake setup
 ````
 open the Resilience workspace: `Resilience/Resilience.xcworkspace` in XCode / AppCode
 
