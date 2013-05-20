@@ -42,8 +42,8 @@
   return self;
 }
 
-- (void)fetchIncidents:(IncidentSuccessBlock)success failure:(Open311FailureBlock)failure {
-  [self fetchServiceRequests:^(NSArray *serviceRequests) {
+- (void)fetchIncidents:(CLLocation *)location success:(IncidentSuccessBlock)success failure:(Open311FailureBlock)failure {
+  [self fetchServiceRequests:location success:^(NSArray *serviceRequests) {
     NSMutableArray *incidents = [[NSMutableArray alloc] init];
     for (ServiceRequest *request in serviceRequests) {
       [incidents addObject:[[IncidentAdapter alloc] initWithServiceRequest:request]];
@@ -53,8 +53,15 @@
   }                  failure:failure];
 }
 
-- (void)fetchServiceRequests:(ServiceRequestSuccessBlock)success failure:(Open311FailureBlock)failure {
-  [self getPath:@"requests.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
+- (void)fetchServiceRequests:(CLLocation *)location success:(ServiceRequestSuccessBlock)success failure:(Open311FailureBlock)failure {
+  NSDictionary *params = nil;
+  if(location) {
+    params = @{ @"lat": [NSNumber numberWithDouble:location.coordinate.latitude].stringValue,
+            @"long": [NSNumber numberWithDouble:location.coordinate.longitude].stringValue,
+            @"radius": @"50"};
+  }
+
+  [self getPath:@"requests.json" parameters:params success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
     NSMutableArray *serviceRequests = [[NSMutableArray alloc] init];
     for (NSDictionary *rawRequest in jsonResponse) {
       ServiceRequest *serviceRequest = [[ServiceRequest alloc] init];
