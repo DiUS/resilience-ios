@@ -1,5 +1,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <ReactiveCocoa.h>
 #import "IssueListViewController.h"
 #import "Incident.h"
 #import "ParseClient.h"
@@ -9,10 +10,13 @@
 #import "Open311Client.h"
 #import "WBErrorNoticeView.h"
 #import "WBStickyNoticeView.h"
+#import "LocationManager.h"
+#import "UIView+WSLoading.h"
 
 @interface IssueListViewController ()
 
 @property (nonatomic, strong) NSArray *incidents;
+@property (nonatomic, strong) RACDisposable *currentLocationDisposable;;
 
 @end
 
@@ -37,6 +41,9 @@
   [self loadIssues];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+}
+
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
 }
@@ -52,10 +59,34 @@
   [refresh endRefreshing];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+  [self.currentLocationDisposable dispose];
+}
+
 - (void)loadIssues {
-  [[Open311Client sharedClient] fetchIncidents:^(NSArray *incidents) {
+  [self.view showLoading];
+  self.currentLocationDisposable = [[[[[[[LocationManager sharedManager]
+          currentLocationSignal]
+    takeUntil:[RACSignal interval:1]]
+    takeLast:1]
+    doNext:^(id location) {
+      NSLog(@"location %@", location);
+      NSLog(@"received location: %@", location);
+      [self loadIssues:location];
+    }] doError:^(NSError *error) {
+      NSLog(@"Error getting location: %@", error);
+      [self loadIssues:nil];
+  }]
+    subscribeCompleted:^{
+    }
+  ];
+}
+
+- (void)loadIssues:(CLLocation *)location {
+  [[Open311Client sharedClient] fetchIncidents:location success:^(NSArray *incidents) {
     self.incidents = incidents;
     [self.tableView reloadData];
+    [self.view hideLoading];
     if(incidents.count == 0) {
       WBStickyNoticeView *noticeView = [[WBStickyNoticeView alloc] initWithView:self.view title:@"No issues have been reported in your area."];
       noticeView.alpha = 0.9;
@@ -63,6 +94,7 @@
       [noticeView show];
     }
   } failure:^(NSError *error) {
+    [self.view hideLoading];
     WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error loading issues."];
     errorView.message = error.localizedDescription;
     errorView.alpha = 0.9;

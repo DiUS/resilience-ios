@@ -10,7 +10,7 @@
 
 - (id)initWithIncident:(Incident *)incident;
 
-- (void)saveIncident;
+- (void)saveIncidentToDisk;
 
 - (void)removeIncident;
 

@@ -19,6 +19,7 @@
 		2DC183D83ACD5A93C2EF044B /* UploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C0C1E81CFFB95252AEC /* UploadOperation.m */; };
 		2DC184AB509191A152B1DDDD /* NSDictionary+TypedAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */; };
 		2DC184B255539A1743B9A2D9 /* IncidentAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181A7E525EF4C93715683 /* IncidentAdapter.m */; };
+		2DC184B30073F537CFE2F83D /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1836FA3ED4AC2B1042380 /* LocationManager.m */; };
 		2DC184B82CA6CB57037A1515 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC187ED05926DE77CFFBBAA /* ProfileViewController.m */; };
 		2DC184F50FA121D494252633 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1807D58B75EBE487FA664 /* ParseClient.m */; };
 		2DC184F89978579B4AFDE88D /* Open311Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC182961AE33B44B1F26C47 /* Open311Client.m */; };
@@ -70,6 +71,7 @@
 		A1419A1116C60DC30004FA1C /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = A1419A1016C60DC30004FA1C /* Assets */; };
 		A1419A1316C60DD20004FA1C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1419A1216C60DD20004FA1C /* Icon@2x.png */; };
 		A1419A1516C60DD60004FA1C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A1419A1416C60DD60004FA1C /* Icon.png */; };
+		A1454BCF1744EC920088618B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1454BCE1744EC920088618B /* Security.framework */; };
 		A17CE86317194D2F00AF2EA1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A17CE86217194D2F00AF2EA1 /* Default-568h@2x.png */; };
 		A1DDA47D16661980003A21C0 /* IssueMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDA47A16661980003A21C0 /* IssueMapViewController.m */; };
 		A1DDA47E16661980003A21C0 /* IssueListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDA47C16661980003A21C0 /* IssueListViewController.m */; };
@@ -116,6 +118,7 @@
 		2DC182A591A90D5D1E2DC23E /* DetailSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSelectionController.m; sourceTree = "<group>"; };
 		2DC182B43BC8CD4C6589D912 /* ResilientUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResilientUploader.h; sourceTree = "<group>"; };
 		2DC1834ADA9D6FA0D8F84BD6 /* Incident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Incident.h; sourceTree = "<group>"; };
+		2DC1836FA3ED4AC2B1042380 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		2DC1838E4041C30D656AF5C5 /* UploadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadOperation.h; sourceTree = "<group>"; };
 		2DC183CAED282CEFF60E7417 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		2DC183FFFCA19910EDB72F02 /* UITextField+Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Form.m"; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 		2DC188C66B7EEA2E54A8F67C /* UITextField+Resilience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Resilience.h"; sourceTree = "<group>"; };
 		2DC188D59156C3069BAA2DC5 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		2DC189041E4FE85122DD30AE /* DetailSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSelectionController.h; sourceTree = "<group>"; };
+		2DC189B035F58D9046F35D21 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		2DC18A578BD40877F95077DD /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
 		2DC18B103369EC9756A14976 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixRotation.m"; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 		A1419A1016C60DC30004FA1C /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		A1419A1216C60DD20004FA1C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A1419A1416C60DD60004FA1C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A1454BCE1744EC920088618B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A17CE86217194D2F00AF2EA1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A1DDA47916661980003A21C0 /* IssueMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueMapViewController.h; sourceTree = "<group>"; };
 		A1DDA47A16661980003A21C0 /* IssueMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueMapViewController.m; sourceTree = "<group>"; };
@@ -239,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1454BCF1744EC920088618B /* Security.framework in Frameworks */,
 				8927C7B5166AE61800D501B5 /* ImageIO.framework in Frameworks */,
 				FB1EA13E1669F8D4002B93EF /* CoreLocation.framework in Frameworks */,
 				FB1EA1221669E2F7002B93EF /* MapKit.framework in Frameworks */,
@@ -416,6 +422,8 @@
 				2DC184343388A7C7F9D95C86 /* Localizable.strings */,
 				2DC188D59156C3069BAA2DC5 /* FeedbackViewController.m */,
 				2DC18EB7ADF9ADD4C816C6CD /* FeedbackViewController.h */,
+				2DC1836FA3ED4AC2B1042380 /* LocationManager.m */,
+				2DC189B035F58D9046F35D21 /* LocationManager.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -451,6 +459,7 @@
 		FBB1CDAD15C3F3E4000D168E = {
 			isa = PBXGroup;
 			children = (
+				A1454BCE1744EC920088618B /* Security.framework */,
 				A17CE86217194D2F00AF2EA1 /* Default-568h@2x.png */,
 				A1419A1416C60DD60004FA1C /* Icon.png */,
 				A1419A1216C60DD20004FA1C /* Icon@2x.png */,
@@ -735,6 +744,7 @@
 				2DC18D48781291EDD18769DF /* UploadIncident.m in Sources */,
 				2DC18EFE69CAFAAA72262874 /* FeedbackViewController.m in Sources */,
 				0B8892FA1744E26C00CB5A46 /* UIImage+Tileable.m in Sources */,
+				2DC184B30073F537CFE2F83D /* LocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

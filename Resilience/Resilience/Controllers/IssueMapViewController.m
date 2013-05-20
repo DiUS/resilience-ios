@@ -29,7 +29,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   // Display the incident markers
-  [[Open311Client sharedClient] fetchIncidents:^(NSArray *incidents) {
+  [[Open311Client sharedClient] fetchIncidents:nil success:^(NSArray *incidents) {
     for (Incident * incident in incidents) {
       CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;
       WaypointAnnotation *pointAnnotation = [WaypointAnnotation annotationWithCoordinate:pointCoordinate];

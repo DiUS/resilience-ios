@@ -1,23 +1,20 @@
 #import "AddIncidentViewController.h"
 #import "ParseClient.h"
 #import "Incident.h"
-#import "UITextField+Resilience.h"
 #import "UIColor+Resilience.h"
-#import "DetailSelectionController.h"
 #import "IncidentCategory.h"
-#import "Open311Client.h"
-#import "Cloudinary/Cloudinary.h"
-#import "UIView+WSLoading.h"
 #import "UIImage+FixRotation.h"
 #import "ResilientUploader.h"
+#import "RACDisposable.h"
+#import "LocationManager.h"
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) UIImagePickerController *imgPicker;
 @property (nonatomic, strong) UIImage *photo;
-@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) DetailSelectionController *detailSelectionController;
+@property (nonatomic, strong) RACDisposable *currentLocationDisposable;;
 @property (nonatomic, strong) IncidentCategory *category;
 @property (nonatomic, strong) UIBarButtonItem *nextButton;
 @property (nonatomic, strong) NSString *name;
@@ -36,7 +33,6 @@
 }
 
 - (void)viewDidLoad {
-  [self.locationManager startUpdatingLocation];
 }
 
 - (void)loadView {
@@ -66,9 +62,6 @@
   self.detailSelectionController = [[DetailSelectionController alloc] init];
   self.detailSelectionController.delegate = self;
 
-  self.locationManager = [[CLLocationManager alloc] init];
-  self.locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
-  self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters; // 100 m
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,20 +70,35 @@
 
 - (void)progressToIssueDetails {
   [self.navigationController pushViewController:self.detailSelectionController animated:YES];
-
 }
 
-- (void)saveIssueAndDismiss {
+- (void)findLocationAndUploadIssue {
+  self.currentLocationDisposable = [[[[[[[LocationManager sharedManager]
+          currentLocationSignal]
+          takeUntil:[RACSignal interval:3]]
+          takeLast:1]
+          doNext:^(id location) {
+            NSLog(@"location %@", location);
+            [self queueIncidentForUpload:location];
+          }] doError:^(NSError *error) {
+            NSLog(@"Error getting location: %@", error);
+            [self queueIncidentForUpload:nil];
+          }]
+          subscribeCompleted:^{
+          }
+  ];
+
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)queueIncidentForUpload:(id)location {
   Incident *incident = [[Incident alloc] initWithName:self.name
-                                          andLocation:self.locationManager.location
+                                          andLocation:location
                                           andCategory:self.category
                                               andDate:[NSDate date]
-                                                andID:nil
-                                             andImage:self.photo];
-  [self.navigationController.view showLoading];
+                                                andID:nil andImage:self.photo];
 
   [[ResilientUploader sharedUploader] saveIncident:incident];
-  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)dismissAddIssue {
@@ -182,7 +190,7 @@
 - (void) detailSelectionController:(DetailSelectionController *)controller didSelectName:(NSString *)name andCategory:(IncidentCategory *)category {
   self.category = category;
   self.name = name;
-  [self saveIssueAndDismiss];
+  [self findLocationAndUploadIssue];
 }
 
 @end
