@@ -9,6 +9,7 @@ pod 'Cloudinary'
 pod 'Mantle'
 pod 'NoticeView'
 pod 'ReactiveCocoa'
+pod 'FDTake'
 
 target :KiwiUnitTest, :exclusive => true do
   pod 'Kiwi'

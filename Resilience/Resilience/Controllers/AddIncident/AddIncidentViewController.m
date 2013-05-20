@@ -10,8 +10,8 @@
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
+@property (nonatomic, strong) FDTakeController *takeController;
 @property (nonatomic, strong) UIButton *cameraButton;
-@property (nonatomic, strong) UIImagePickerController *imgPicker;
 @property (nonatomic, strong) UIImage *photo;
 @property (nonatomic, strong) DetailSelectionController *detailSelectionController;
 @property (nonatomic, strong) RACDisposable *currentLocationDisposable;;
@@ -106,38 +106,16 @@
 }
 
 - (void)takePhoto {
-  UIActionSheet *cameraActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Take Photo", nil),NSLocalizedString(@"Choose photo", nil), nil];
-  [cameraActionSheet showInView:self.view];
+  self.takeController = [[FDTakeController alloc] init];
+  self.takeController.viewControllerForPresentingImagePickerController = self;
+  [self.takeController takePhotoOrChooseFromLibrary];
+  self.takeController.delegate = self;
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-
-  NSString *metaDataInfoKey = [info valueForKey:UIImagePickerControllerEditedImage] ? UIImagePickerControllerEditedImage : UIImagePickerControllerOriginalImage;
-  self.photo = [[info objectForKey:metaDataInfoKey] fixOrientation];
-  self.cameraImageView.image = self.photo;
-  self.addPhotoLabel.hidden = YES;
-//  self.cameraImageView.hidden = YES;
+- (void)takeController:(FDTakeController *)controller gotPhoto:(UIImage *)photo withInfo:(NSDictionary *)info {
+  self.photo = [photo fixOrientation];
   [self.view setNeedsUpdateConstraints];
-  [self.imgPicker dismissViewControllerAnimated:YES completion:nil];
   [self enableDoneButton];
-
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-  self.imgPicker = [[UIImagePickerController alloc] init];
-  self.imgPicker.delegate = self;
-
-  switch (buttonIndex) {
-    case 0:
-      self.imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-      break;
-    case 1:
-      self.imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-      break;
-  }
-  if (buttonIndex < 2) {
-    [self presentViewController:self.imgPicker animated:YES completion:nil];
-  }
 }
 
 - (void)enableDoneButton {

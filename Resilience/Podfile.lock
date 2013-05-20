@@ -5,6 +5,7 @@ PODS:
   - Cloudinary (1.0.2):
     - SBJson (~> 3.2)
   - DCIntrospect (0.0.2)
+  - FDTake (0.0.2)
   - ISO8601DateFormatter (0.6)
   - JRSwizzle (1.0)
   - Kiwi (2.0.6)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - AFNetworking
   - Cloudinary
   - DCIntrospect
+  - FDTake
   - ISO8601DateFormatter
   - Kiwi
   - Mantle
@@ -46,9 +48,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFHTTPRequestOperationLogger: 34ba125cb9eeb77a3b67aaaca105720ba3a0798c
-  AFNetworking: 02a1b682b3c3fa39afd22e725ab8f4a65cb157b6
+  AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
   Cloudinary: 16168b297cab66eac1a07e3e5301adf6429a486d
   DCIntrospect: 2f5cab0b58b170459ebcb200f59042306fcb0c0d
+  FDTake: 8dace7a7e4d450628a22f28d045f3e289d893c7f
   ISO8601DateFormatter: dc05a2481edf49668d85d3ff8c466c32eb544780
   JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
   Kiwi: 56082a80f942de4d10423d8d8a599ab30cf50228
