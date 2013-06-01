@@ -19,7 +19,9 @@
 
 - (NSString *)createdDateAsString {
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-  [dateFormatter setDateFormat:@"H:mm d-MMM-yyyy"];
+  [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+  [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+  [dateFormatter setDoesRelativeDateFormatting:YES];
   NSString *startTime = [dateFormatter stringFromDate:self.createdDate];
   return startTime;
 }
