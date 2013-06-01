@@ -58,18 +58,22 @@
 }
 
 - (void)send:(id)sender {
-  [self.view showLoading];
-  [[Open311Client sharedClient] sendFeedback:self.contentTextField.text success:^{
-    [self.view hideLoading];
+  if (self.contentTextField.text && ![self.contentTextField.text isEqualToString:@""]) {
+    [self.view showLoading];
+    [[Open311Client sharedClient] sendFeedback:self.contentTextField.text success:^{
+      [self.view hideLoading];
+      [self dismissViewControllerAnimated:YES completion:nil];
+    } failure:^(NSError *error) {
+      [self.view hideLoading];
+      WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error sending feedback."];
+      errorView.message = error.localizedDescription;
+      errorView.alpha = 0.9;
+      errorView.floating = YES;
+      [errorView show];
+    }];
+  } else {
     [self dismissViewControllerAnimated:YES completion:nil];
-  } failure:^(NSError *error) {
-    [self.view hideLoading];
-    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error sending feedback."];
-    errorView.message = error.localizedDescription;
-    errorView.alpha = 0.9;
-    errorView.floating = YES;
-    [errorView show];
-  }];
+  }
 }
 
 - (void)cancel:(id)cancel {
