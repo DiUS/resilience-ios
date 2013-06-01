@@ -56,7 +56,9 @@
 - (void)fetchServiceRequests:(CLLocation *)location success:(ServiceRequestSuccessBlock)success failure:(Open311FailureBlock)failure {
   NSDictionary *params = nil;
   if(location) {
-    params = @{ @"lat": [NSNumber numberWithDouble:location.coordinate.latitude].stringValue,
+    params = @{
+            @"status": @"open",
+            @"lat": [NSNumber numberWithDouble:location.coordinate.latitude].stringValue,
             @"long": [NSNumber numberWithDouble:location.coordinate.longitude].stringValue,
             @"radius": @"50"};
   }
@@ -156,8 +158,18 @@
 }
 
 - (void)sendFeedback:(NSString *)feedback success:(FeedbackSuccessBlock)success failure:(FailureBlock)failure {
-  self.parameterEncoding = AFJSONParameterEncoding;
+//  self.parameterEncoding = AFJSONParameterEncoding;
   [self postPath:@"feedback.json" parameters:@{ @"comment": feedback, @"email": [Profile loadProfile].email ?: @"" } success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
+    success();
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
+}
+
+- (void)resolveIncident:(Incident *)incident success:(FeedbackSuccessBlock)success failure:(FailureBlock)failure {
+  self.parameterEncoding = AFFormURLParameterEncoding;
+  NSString *url = [NSString stringWithFormat:@"requests/%@.json", incident.id];
+  [self putPath:url parameters:@{ @"status": @"closed" } success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
     success();
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     failure(error);

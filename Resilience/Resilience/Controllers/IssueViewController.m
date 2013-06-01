@@ -5,9 +5,11 @@
 #import "UIImageView+AFNetworking.h"
 #import "IncidentFooter.h"
 #import "UIImage+Tileable.h"
+#import "Open311Client.h"
 #import <QuartzCore/QuartzCore.h>
+#import <NoticeView/WBErrorNoticeView.h>
 
-@interface IssueViewController ()
+@interface IssueViewController ()<UIAlertViewDelegate>
 @property(nonatomic, strong) UIImageView *warnImage;
 @property(nonatomic, strong) UIView *imageViewSurround;
 @property(nonatomic, strong) UIImageView *imageView;
@@ -65,6 +67,8 @@
 
 - (void)components {
   self.view = [[UIView alloc] initWithFrame:CGRectZero];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissView:)];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Resolve" style:UIBarButtonItemStylePlain target:self action:@selector(promptToResolveIncident:)];
   self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Assets/BackgroundTexture"]];
 
   UIImage *warningImage = [UIImage imageNamed:@"Assets/IncidentDetailsBackground"];
@@ -164,5 +168,35 @@
   [self.issueMapSurround addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[_issueMap]-3-|"
                                                                                  options:0 metrics:0 views:views]];
 }
+
+- (void)dismissView:(id)dismissView {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)promptToResolveIncident:(id)incidentView {
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Resolve issue" message:@"Are you sure you want to mark this issue as resolved?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+  [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+  if(buttonIndex == 1) {
+    [self resolveIncident];
+  }
+}
+
+- (void)resolveIncident {
+  [[Open311Client sharedClient] resolveIncident:self.incident success:^{
+    [self.delegate detailViewControllerDidResolveIssueAndClose:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
+  } failure:^(NSError *error) {
+    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error resolving issue."];
+    errorView.message = error.localizedDescription;
+    errorView.alpha = 0.9;
+    errorView.floating = YES;
+    [errorView show];
+  }];
+}
+
+
 
 @end

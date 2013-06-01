@@ -20,4 +20,6 @@ typedef void (^Open311FailureBlock)(NSError *error);
 - (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(Open311FailureBlock)failure;
 
 - (void)sendFeedback:(NSString *)feedback success:(FeedbackSuccessBlock)success failure:(FailureBlock)failure;
+
+- (void)resolveIncident:(Incident *)incident success:(FeedbackSuccessBlock)success failure:(FailureBlock)failure;
 @end

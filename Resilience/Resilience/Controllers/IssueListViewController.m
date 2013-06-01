@@ -13,7 +13,7 @@
 #import "LocationManager.h"
 #import "UIView+WSLoading.h"
 
-@interface IssueListViewController ()
+@interface IssueListViewController ()<IssueViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *incidents;
 @property (nonatomic, strong) RACDisposable *currentLocationDisposable;;
@@ -134,14 +134,14 @@
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
   Incident *incident = [self.incidents objectAtIndex:(NSUInteger) indexPath.row];
   IssueViewController *issueVC = [[IssueViewController alloc] init];
+  issueVC.delegate = self;
   UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:issueVC];
-  issueVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissDetailView:)];
   issueVC.incident = incident;
   [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (void)dismissDetailView:(id)sender {
-  [self dismissViewControllerAnimated:YES completion:nil];
+- (void)detailViewControllerDidResolveIssueAndClose:(IssueViewController *)detailViewController {
+  [self loadIssues];
 }
 
 @end
