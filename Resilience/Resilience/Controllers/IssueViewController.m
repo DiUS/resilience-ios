@@ -68,7 +68,7 @@
 - (void)components {
   self.view = [[UIView alloc] initWithFrame:CGRectZero];
   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissView:)];
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Resolve" style:UIBarButtonItemStylePlain target:self action:@selector(promptToResolveIncident:)];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Resolve" style:UIBarButtonItemStyleDone target:self action:@selector(promptToResolveIncident:)];
   self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Assets/BackgroundTexture"]];
 
   UIImage *warningImage = [UIImage imageNamed:@"Assets/IncidentDetailsBackground"];

@@ -1,6 +1,8 @@
 #import "IncidentCell.h"
 #import "UIColor+Resilience.h"
 
+static const float IMAGE_HEIGHT = 70.0;
+
 @implementation IncidentCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -11,8 +13,8 @@
 
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.nameLabel.backgroundColor = [UIColor clearColor];
-    self.nameLabel.textColor = [UIColor blackColor];
-    self.nameLabel.font = [self.nameLabel.font fontWithSize:16.];
+    self.nameLabel.textColor = [UIColor titleTextColor];
+    self.nameLabel.font = [UIFont boldSystemFontOfSize:16.];
 
     self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.descriptionLabel.backgroundColor = [UIColor clearColor];
@@ -36,7 +38,6 @@
     [self.contentView addSubview:self.descriptionLabel];
     [self.contentView addSubview:self.photoImageView];
 
-//    self.containerForContraints.translatesAutoresizingMaskIntoConstraints = NO;
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.timeLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -44,9 +45,18 @@
 
     NSDictionary *views = NSDictionaryOfVariableBindings(_photoImageView, _nameLabel, _timeLabel, _descriptionLabel);
     [self.contentView addConstraints:[NSLayoutConstraint
-            constraintsWithVisualFormat:@"|[_photoImageView(==70@900)]-[_nameLabel]-|"
-                                options:NSLayoutFormatAlignAllTop
+            constraintsWithVisualFormat:@"|[_photoImageView(==70@900)]-[_nameLabel]|"
+                                options:0
                                 metrics:nil views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint
+            constraintsWithVisualFormat:@"|[_photoImageView(==70@900)]-[_timeLabel]|"
+                                options:0
+                                metrics:nil views:views]];
+    [self.contentView addConstraints:[NSLayoutConstraint
+            constraintsWithVisualFormat:@"|[_photoImageView(==70@900)]-[_descriptionLabel]|"
+                                options:0
+                                metrics:nil views:views]];
+
     [self.contentView addConstraints:[NSLayoutConstraint
             constraintsWithVisualFormat:@"V:|[_photoImageView(==70@900)]|"
                                 options:NSLayoutFormatAlignAllLeft
