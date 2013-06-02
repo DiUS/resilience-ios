@@ -8,7 +8,7 @@
   UITableViewCell *tableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
   tableViewCell.textLabel.text = name;
   field.frame = CGRectMake(110,12,230,30);
-  field.textColor = [UIColor lightGreyTextColor];
+  field.textColor = [UIColor darkGreyTextColor];
   [tableViewCell.contentView addSubview:field];
   return tableViewCell;
 }

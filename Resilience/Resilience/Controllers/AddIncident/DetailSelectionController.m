@@ -31,7 +31,7 @@
   self.nameTextField = [UITextField styledTextField];
   self.nameTextField.placeholder = @"Incident description";
   self.nameTextField.borderStyle = UITextBorderStyleNone;
-  self.nameTextField.textColor = [UIColor lightGreyTextColor];
+  self.nameTextField.textColor = [UIColor darkGreyTextColor];
   self.nameTextField.font = [UIFont systemFontOfSize:16.0];
   self.nameTextField.backgroundColor = [UIColor clearColor];
   self.nameTextField.keyboardType = UIKeyboardTypeDefault;   // use the default type input method (entire keyboard)
@@ -65,7 +65,7 @@
     UITableViewCell *tableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     tableViewCell.textLabel.text = @"Name";
     self.nameTextField.frame = CGRectMake(75,5,230,30);
-    self.nameTextField.textColor = [UIColor lightGreyTextColor];
+    self.nameTextField.textColor = [UIColor darkGreyTextColor];
     [tableViewCell.contentView addSubview:self.nameTextField];
     return tableViewCell;
   }

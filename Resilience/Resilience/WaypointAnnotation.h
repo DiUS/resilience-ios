@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "IncidentCategory.h"
+#import "Incident.h"
 
 @interface WaypointAnnotation : NSObject <MKAnnotation>
 
@@ -21,5 +22,6 @@
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) NSString *ID;
 @property (nonatomic, strong) IncidentCategory *category;
+@property (nonatomic, strong) Incident *incident;
 
 @end

@@ -44,7 +44,7 @@
 		2DC18A2CC04FE515FE102763 /* UIImage+FixRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */; };
 		2DC18AA55CFBAFBE51A44570 /* ResilientUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18DC3A352C814191BB654 /* ResilientUploader.m */; };
 		2DC18ABBBFFDFB1A8D6F2201 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC184343388A7C7F9D95C86 /* Localizable.strings */; };
-		2DC18ABCE849713F0216B4C7 /* IncidentFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC186CE858398FA277F07DB /* IncidentFooter.m */; };
+		2DC18ABCE849713F0216B4C7 /* IncidentDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC186CE858398FA277F07DB /* IncidentDetails.m */; };
 		2DC18ABF28E735DB4374AE13 /* IncidentAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181A7E525EF4C93715683 /* IncidentAdapter.m */; };
 		2DC18B1FF67341F20CFD8C43 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D290BA8F5FC680BE957 /* Client.m */; };
 		2DC18B32746F47D13E88E493 /* Incident+Open311.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1887E0454BA205B53AC49 /* Incident+Open311.m */; };
@@ -78,7 +78,6 @@
 		A1DDA5771668DDFE003A21C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */; };
 		A1DDA5A21669C45F003A21C0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */; };
 		A1DDA5A41669C591003A21C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */; };
-		CD85230F3A9597F63A355DA2 /* IncidentHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8522CE4F2E9C3C569F5F72 /* IncidentHeader.m */; };
 		FB1EA1221669E2F7002B93EF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1EA1211669E2F6002B93EF /* MapKit.framework */; };
 		FB1EA1271669E38D002B93EF /* WaypointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1EA1261669E38D002B93EF /* WaypointAnnotation.m */; };
 		FB1EA1341669E39B002B93EF /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1EA12A1669E39B002B93EF /* Annotation.m */; };
@@ -129,7 +128,7 @@
 		2DC1863F09FFD1B8EF7B47F0 /* UIView+WSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WSLoading.h"; sourceTree = "<group>"; };
 		2DC1869B49911D90A70B893B /* IncidentAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentAdapter.h; sourceTree = "<group>"; };
 		2DC186B3B33F3F312A621DE4 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
-		2DC186CE858398FA277F07DB /* IncidentFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentFooter.m; sourceTree = "<group>"; };
+		2DC186CE858398FA277F07DB /* IncidentDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentDetails.m; sourceTree = "<group>"; };
 		2DC18752B9B2297998D7B088 /* IncidentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentCell.h; sourceTree = "<group>"; };
 		2DC18773D6E5D470213C2381 /* UITextField+Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Form.h"; sourceTree = "<group>"; };
 		2DC187887B871227C6EE0E65 /* IncidentCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentCategory.m; sourceTree = "<group>"; };
@@ -161,7 +160,7 @@
 		2DC18E792BE1EAAFEF6B225A /* IncidentCategory+Waypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IncidentCategory+Waypoint.m"; sourceTree = "<group>"; };
 		2DC18EB7ADF9ADD4C816C6CD /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		2DC18EB9CCFE7F386E5E4612 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
-		2DC18EBFA16CF53440FBA3CD /* IncidentFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentFooter.h; sourceTree = "<group>"; };
+		2DC18EBFA16CF53440FBA3CD /* IncidentDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentDetails.h; sourceTree = "<group>"; };
 		2DC18EF0D95254C2410ACED5 /* Open311Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Open311Client.h; sourceTree = "<group>"; };
 		2DC18F0060D3E4B6ADDAFD72 /* CloudinaryClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudinaryClient.h; sourceTree = "<group>"; };
 		2DC18F94C37BC75BD6209AA1 /* Incident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Incident.m; sourceTree = "<group>"; };
@@ -197,8 +196,6 @@
 		A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C1FC1857335340F486B2BB90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD85202179858C509A5811DC /* IncidentHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentHeader.h; sourceTree = "<group>"; };
-		CD8522CE4F2E9C3C569F5F72 /* IncidentHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentHeader.m; sourceTree = "<group>"; };
 		DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KiwiUnitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1EA1211669E2F6002B93EF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FB1EA1251669E38D002B93EF /* WaypointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaypointAnnotation.h; sourceTree = "<group>"; };
@@ -363,10 +360,8 @@
 			children = (
 				2DC18752B9B2297998D7B088 /* IncidentCell.h */,
 				2DC18C74E4CAEA46175AF113 /* IncidentCell.m */,
-				2DC18EBFA16CF53440FBA3CD /* IncidentFooter.h */,
-				2DC186CE858398FA277F07DB /* IncidentFooter.m */,
-				CD85202179858C509A5811DC /* IncidentHeader.h */,
-				CD8522CE4F2E9C3C569F5F72 /* IncidentHeader.m */,
+				2DC18EBFA16CF53440FBA3CD /* IncidentDetails.h */,
+				2DC186CE858398FA277F07DB /* IncidentDetails.m */,
 				0B6D1AA11723FEF800A17B1B /* RSLHeader.h */,
 				0B6D1AA21723FEF800A17B1B /* RSLHeader.m */,
 			);
@@ -724,7 +719,6 @@
 				2DC18ABF28E735DB4374AE13 /* IncidentAdapter.m in Sources */,
 				2DC184AB509191A152B1DDDD /* NSDictionary+TypedAccess.m in Sources */,
 				2DC18845B38FA0078F93B08E /* IncidentCategoryAdapter.m in Sources */,
-				CD85230F3A9597F63A355DA2 /* IncidentHeader.m in Sources */,
 				2DC18B32746F47D13E88E493 /* Incident+Open311.m in Sources */,
 				2DC18B1FF67341F20CFD8C43 /* Client.m in Sources */,
 				2DC188ABEDD3F4558E87E71E /* CloudinaryClient.m in Sources */,
@@ -738,7 +732,7 @@
 				2DC180B1DB8B35BA05C5BEB0 /* DataStore.m in Sources */,
 				2DC187093F64DFD4B46EC12D /* AddIncidentViewController.m in Sources */,
 				2DC1898D6DB2CA74F8C0F974 /* DetailSelectionController.m in Sources */,
-				2DC18ABCE849713F0216B4C7 /* IncidentFooter.m in Sources */,
+				2DC18ABCE849713F0216B4C7 /* IncidentDetails.m in Sources */,
 				0B6D1AA31723FEF800A17B1B /* RSLHeader.m in Sources */,
 				2DC1850A6363D1D4C9C537DE /* UploadOperation.m in Sources */,
 				2DC18D48781291EDD18769DF /* UploadIncident.m in Sources */,

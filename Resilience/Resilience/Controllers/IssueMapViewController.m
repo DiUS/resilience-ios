@@ -5,8 +5,9 @@
 #import "Incident.h"
 #import "IncidentCategory+Waypoint.h"
 #import "Open311Client.h"
+#import "IssueViewController.h"
 
-@interface IssueMapViewController () <MKMapViewDelegate>
+@interface IssueMapViewController () <MKMapViewDelegate, IssueViewControllerDelegate>
 
 @property (nonatomic, retain) MKMapView *mapView;
 
@@ -22,9 +23,7 @@
   self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
   self.view = self.mapView;
   self.mapView.delegate = self;
-
   self.mapView.showsUserLocation = YES;
-  self.mapView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -37,6 +36,7 @@
       pointAnnotation.subtitle = [incident createdDateAsString];
       pointAnnotation.ID = incident.id;
       pointAnnotation.category = incident.category;
+      pointAnnotation.incident = incident;
       [self.mapView addAnnotation:pointAnnotation];
     }
   } failure:^(NSError *error) {
@@ -76,9 +76,16 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-//  WaypointAnnotation *annotation = view.annotation;
-//  NSLog(@"calloutAccessoryControlTapped: %@, %@", annotation.title, annotation.ID);
-//  [self.navigationController pushViewController:self.detailsThemes animated:YES];
+  WaypointAnnotation *annotation = view.annotation;
+  IssueViewController *issueVC = [[IssueViewController alloc] init];
+  issueVC.delegate = self;
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:issueVC];
+  issueVC.incident = annotation.incident;
+  [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)detailViewControllerDidResolveIssueAndClose:(IssueViewController *)detailViewController {
+//  [self loadIssues];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {

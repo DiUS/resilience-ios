@@ -7,7 +7,8 @@
 + (UIColor *)defaultTextColor;
 + (UIColor *)defaultBackgroundColor;
 
++ (UIColor *)darkGreyTextColor;
+
+
 + (UIColor *)lightGreyTextColor;
-
-
 @end

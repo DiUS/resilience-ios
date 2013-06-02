@@ -1,22 +1,38 @@
-#import "IncidentHeader.h"
 #import "IssueViewController.h"
 #import "UIColor+Resilience.h"
 #import "WaypointAnnotation.h"
 #import "UIImageView+AFNetworking.h"
-#import "IncidentFooter.h"
+#import "IncidentDetails.h"
 #import "UIImage+Tileable.h"
 #import "Open311Client.h"
 #import <QuartzCore/QuartzCore.h>
 #import <NoticeView/WBErrorNoticeView.h>
+#import <CoreGraphics/CoreGraphics.h>
+
+static const float IMAGE_HEIGHT = 175.f;
+
+
+@interface SwitchView : UIView
+
+@end
+
+@implementation SwitchView
+
+- (CGSize)intrinsicContentSize {
+  return CGSizeMake(200, 20);
+}
+
+@end
 
 @interface IssueViewController ()<UIAlertViewDelegate>
 @property(nonatomic, strong) UIImageView *warnImage;
 @property(nonatomic, strong) UIView *imageViewSurround;
 @property(nonatomic, strong) UIImageView *imageView;
-@property(nonatomic, strong) UIView *issueMapSurround; 
 @property(nonatomic, strong) MKMapView *issueMap;
-@property(nonatomic, strong) IncidentHeader *headerView;
-@property(nonatomic, strong) IncidentFooter *footerView;
+@property(nonatomic, strong) IncidentDetails *footerView;
+@property(nonatomic, strong) UIButton *mapButton;
+@property(nonatomic, strong) UIButton *pictureButton;
+@property(nonatomic, strong) UIView *switchButtons;
 @end
 
 @implementation IssueViewController
@@ -42,7 +58,7 @@
 #pragma mark - delegate methods
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
   MKAnnotationView *annotationView = [views objectAtIndex:0];
-  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(annotationView.annotation.coordinate, 250, 250);
+  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(annotationView.annotation.coordinate, 5000, 5000);
   [mapView setRegion:region];
 }
 
@@ -51,10 +67,9 @@
 
 - (void)data {
   if (self.incident.imageUrl) {
-    [self.imageView setImageWithURL:[self.incident imageUrlForSize:CGSizeMake(120.f, 185.f)]];
+    [self.imageView setImageWithURL:[self.incident imageUrlForSize:CGSizeMake(self.view.bounds.size.width, IMAGE_HEIGHT)]];
   }
 
-  [self.headerView populateWithIncident:self.incident];
   [self.footerView populateWithIncident:self.incident];
 
   WaypointAnnotation *annotation = [WaypointAnnotation annotationWithCoordinate:self.incident.location.coordinate];
@@ -62,7 +77,6 @@
   annotation.subtitle = [self.incident createdDateAsString];
   annotation.ID = self.incident.id;
   [self.issueMap addAnnotation:annotation];
-
 }
 
 - (void)components {
@@ -76,67 +90,96 @@
   self.warnImage = [[UIImageView alloc] initWithImage:resizableWarningImage];
   [self.view addSubview:self.warnImage];
 
-  self.imageViewSurround = [[UIView alloc] initWithFrame:CGRectZero];
-  self.imageViewSurround.backgroundColor = [UIColor whiteColor];
-  self.imageViewSurround.layer.shadowColor = [UIColor darkGrayColor].CGColor;
-  self.imageViewSurround.layer.shadowOffset = CGSizeMake(2.0, 2.0);
-  self.imageViewSurround.layer.shadowRadius = 3.0;
-  self.imageViewSurround.layer.shadowOpacity = 1.0; 
+  self.switchButtons = [[SwitchView alloc] initWithFrame:CGRectZero];
+  [self.view addSubview:self.switchButtons];
+
+  self.mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  self.mapButton.frame = CGRectMake(0., 0., 88, 29);
+  [self.mapButton setBackgroundImage:[UIImage imageNamed:@"Assets/LeftControlDeselected"] forState:UIControlStateNormal];
+  [self.mapButton setBackgroundImage:[UIImage imageNamed:@"Assets/LeftControlSelected"] forState:UIControlStateSelected];
+  [self.mapButton addTarget:self action:@selector(selectMapView) forControlEvents:UIControlEventTouchUpInside];
+  [self.mapButton setTitle:@"Map" forState:UIControlStateNormal];
+  [self.mapButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+  [self.mapButton setTitleColor:[UIColor titleTextColor] forState:UIControlStateNormal];
+  [self.switchButtons addSubview:self.mapButton];
+
+  self.pictureButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  self.pictureButton.frame = CGRectMake(89., 0., 89, 29);
+  [self.pictureButton setBackgroundImage:[UIImage imageNamed:@"Assets/RightControlDeselected"] forState:UIControlStateNormal];
+  [self.pictureButton setBackgroundImage:[UIImage imageNamed:@"Assets/RightControlSelected"] forState:UIControlStateSelected];
+  [self.pictureButton setTitle:@"Picture" forState:UIControlStateNormal];
+  [self.pictureButton addTarget:self action:@selector(selectPictureView) forControlEvents:UIControlEventTouchUpInside];
+  [self.pictureButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+  [self.pictureButton setTitleColor:[UIColor titleTextColor] forState:UIControlStateNormal];
+  self.pictureButton.selected = YES;
+  [self.switchButtons addSubview:self.pictureButton];
 
   self.imageView = [[UIImageView alloc] initWithImage:nil];
   self.imageView.contentMode = UIViewContentModeScaleAspectFill;
   self.imageView.clipsToBounds = YES;
   [self.imageViewSurround addSubview:self.imageView];
-  [self.view addSubview:self.imageViewSurround];
+  [self.view addSubview:self.imageView];
 
-  self.headerView = [[IncidentHeader alloc] initWithFrame:CGRectZero];
-  [self.view addSubview:self.headerView];
-  self.footerView = [[IncidentFooter alloc] initWithFrame:CGRectZero];
+  self.footerView = [[IncidentDetails alloc] initWithFrame:CGRectZero];
   [self.view addSubview:self.footerView];
 
   self.navigationItem.title = @"Issue Details";
-
-  self.issueMapSurround = [[UIView alloc] initWithFrame:CGRectZero];
-  self.issueMapSurround.backgroundColor = [UIColor whiteColor];
-  self.issueMapSurround.layer.shadowColor = [UIColor darkGrayColor].CGColor;
-  self.issueMapSurround.layer.shadowRadius = 3.0;
-  self.issueMapSurround.layer.shadowOpacity = 1.0;
-  self.issueMapSurround.layer.shadowOffset = CGSizeMake(2.0, 2.0);
   
-  self.issueMap = [[MKMapView alloc] initWithFrame:CGRectZero];
+  self.issueMap = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 350, 200)];
   self.issueMap.delegate = self;
   self.issueMap.scrollEnabled = NO;
   
-  [self.issueMapSurround addSubview:self.issueMap];
-  [self.view addSubview:self.issueMapSurround];
-
   self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
   self.issueMap.translatesAutoresizingMaskIntoConstraints = NO;
-  self.headerView.translatesAutoresizingMaskIntoConstraints = NO;
   self.footerView.translatesAutoresizingMaskIntoConstraints = NO;
   self.warnImage.translatesAutoresizingMaskIntoConstraints = NO;
   self.imageViewSurround.translatesAutoresizingMaskIntoConstraints = NO;
-  self.issueMapSurround.translatesAutoresizingMaskIntoConstraints = NO; 
+  self.switchButtons.translatesAutoresizingMaskIntoConstraints = NO;
+}
+
+- (void)selectPictureView {
+  [self.issueMap removeFromSuperview];
+  [self.view addSubview:self.imageView];
+  self.pictureButton.selected = YES;
+  self.mapButton.selected = NO;
+  [self.view setNeedsUpdateConstraints];
+}
+
+- (void)selectMapView {
+  [self.imageView removeFromSuperview];
+//  self.issueMap s
+  [self.view addSubview:self.issueMap];
+  self.pictureButton.selected = NO;
+  self.mapButton.selected = YES;
+  [self.view setNeedsUpdateConstraints];
 }
 
 
 - (void)updateViewConstraints {
   [super updateViewConstraints];
-  NSDictionary *views = NSDictionaryOfVariableBindings(_imageViewSurround, _imageView, _issueMapSurround, _issueMap, _headerView, _footerView, _warnImage);
+
+  UIView *displayView = nil;
+  if (self.mapButton.selected) {
+    displayView = self.issueMap;
+  } else {
+    displayView = self.imageView;
+  }
+  NSDictionary *views = NSDictionaryOfVariableBindings(displayView, _footerView, _warnImage, _switchButtons);
+
+  NSString *verticalConstraints = [NSString stringWithFormat:@"V:|-8-[displayView(==%f)]-[_switchButtons]-[_footerView]", IMAGE_HEIGHT];
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_headerView]-[_imageViewSurround(==100)]-[_footerView]"
+          constraintsWithVisualFormat:verticalConstraints
                               options:0
                               metrics:nil views:views]];
 
-  [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:[_headerView]-[_issueMapSurround(==100)]"
-                              options:0
-                              metrics:nil views:views]];
-
-  [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"H:|[_headerView]|"
-                              options:0
-                              metrics:nil views:views]];
+  NSLayoutConstraint* cn = [NSLayoutConstraint constraintWithItem:self.switchButtons
+                                                        attribute:NSLayoutAttributeCenterX
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.view
+                                                        attribute:NSLayoutAttributeCenterX
+                                                       multiplier:1.0
+                                                         constant:0];
+  [self.view addConstraint:cn];
 
   [self.view addConstraints:[NSLayoutConstraint
           constraintsWithVisualFormat:@"H:|[_footerView]|"
@@ -144,7 +187,7 @@
                              metrics:nil views:views]];
 
   [self.view addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"H:|-[_imageViewSurround]-20-[_issueMapSurround(==_imageViewSurround)]-|"
+          constraintsWithVisualFormat:@"H:|-8-[displayView]-8-|"
                               options:0
                               metrics:nil views:views]];
 
@@ -157,16 +200,8 @@
                              options:0
                              metrics:nil views:views]];
 
-  [self.imageViewSurround addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-3-[_imageView]-3-|"
-                                                                                 options:0 metrics:0 views:views]];
-  [self.imageViewSurround addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[_imageView]-3-|"
-                                                                                 options:0 metrics:0 views:views]];
   [self.imageView setContentCompressionResistancePriority:UILayoutPriorityFittingSizeLevel forAxis:UILayoutConstraintAxisVertical];
 
-  [self.issueMapSurround addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-3-[_issueMap]-3-|"
-                                                                                 options:0 metrics:0 views:views]];
-  [self.issueMapSurround addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[_issueMap]-3-|"
-                                                                                 options:0 metrics:0 views:views]];
 }
 
 - (void)dismissView:(id)dismissView {

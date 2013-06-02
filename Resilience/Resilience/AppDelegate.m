@@ -20,7 +20,7 @@
   [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
 
   NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary: [[UINavigationBar appearance] titleTextAttributes]];
-  [titleBarAttributes setValue:[UIColor lightGreyTextColor] forKey:UITextAttributeTextColor];
+  [titleBarAttributes setValue:[UIColor darkGreyTextColor] forKey:UITextAttributeTextColor];
   [titleBarAttributes setValue:[UIColor clearColor] forKey:UITextAttributeTextShadowColor];
   [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
 

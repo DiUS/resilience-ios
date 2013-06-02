@@ -18,10 +18,14 @@
     return [UIColor colorWithRed:(239.0f/255.0f) green:(239.0f/255.0f) blue:(239.0f/255.0f) alpha:1];
 }
 
-+ (UIColor *)lightGreyTextColor
++ (UIColor *)darkGreyTextColor
 {
   return [UIColor colorWithRed:(59.0f/255.0f) green:(59.0f/255.0f) blue:(59.0f/255.0f) alpha:1];
+}
 
++ (UIColor *)lightGreyTextColor
+{
+  return [UIColor colorWithRed:(150.0f/255.0f) green:(150.0f/255.0f) blue:(150.0f/255.0f) alpha:1];
 }
 
 @end

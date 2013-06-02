@@ -13,7 +13,7 @@
   UITextField *textField = [UITextField styledTextField];
   textField.placeholder = placeholder;
   textField.borderStyle = UITextBorderStyleNone;
-  textField.textColor = [UIColor lightGreyTextColor];
+  textField.textColor = [UIColor darkGreyTextColor];
   textField.font = [UIFont systemFontOfSize:16.0];
   textField.backgroundColor = [UIColor clearColor];
   textField.keyboardType = keyboard;

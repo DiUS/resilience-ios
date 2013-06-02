@@ -49,7 +49,7 @@
   self.addPhotoLabel = [[UILabel alloc] initWithFrame:CGRectZero];
   self.addPhotoLabel.text = @"Add photo";
   self.addPhotoLabel.font = [UIFont boldSystemFontOfSize:20.];
-  self.addPhotoLabel.textColor = [UIColor lightGreyTextColor];
+  self.addPhotoLabel.textColor = [UIColor darkGreyTextColor];
   self.addPhotoLabel.backgroundColor = [UIColor clearColor];
   self.addPhotoLabel.translatesAutoresizingMaskIntoConstraints = NO;
   [self.cameraButton addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
