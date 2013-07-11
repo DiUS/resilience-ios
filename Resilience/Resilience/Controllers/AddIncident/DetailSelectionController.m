@@ -37,7 +37,7 @@
   self.nameTextField.keyboardType = UIKeyboardTypeDefault;   // use the default type input method (entire keyboard)
   self.nameTextField.returnKeyType = UIReturnKeyDone;
   self.nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;  // has a clear 'x' button to the right
-  self.nameTextField.translatesAutoresizingMaskIntoConstraints = NO;
+  self.nameTextField.textAlignment = NSTextAlignmentLeft;
   [self.nameTextField addTarget:self
                      action:@selector(textFieldFinished:)
            forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -64,7 +64,7 @@
   if (indexPath.section == 0) {
     UITableViewCell *tableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     tableViewCell.textLabel.text = @"Name";
-    self.nameTextField.frame = CGRectMake(75,5,230,30);
+    self.nameTextField.frame = CGRectMake(100,12,190,30);
     self.nameTextField.textColor = [UIColor darkGreyTextColor];
     [tableViewCell.contentView addSubview:self.nameTextField];
     return tableViewCell;
