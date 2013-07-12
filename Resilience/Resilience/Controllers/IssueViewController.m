@@ -166,7 +166,7 @@ static const float IMAGE_HEIGHT = 175.f;
   }
   NSDictionary *views = NSDictionaryOfVariableBindings(displayView, _footerView, _warnImage, _switchButtons);
 
-  NSString *verticalConstraints = [NSString stringWithFormat:@"V:|-8-[displayView(==%f)]-[_switchButtons]-[_footerView]", IMAGE_HEIGHT];
+  NSString *verticalConstraints = [NSString stringWithFormat:@"V:|-8-[displayView(==%f)]-[_switchButtons(30@1000)]-[_footerView]|", IMAGE_HEIGHT];
   [self.view addConstraints:[NSLayoutConstraint
           constraintsWithVisualFormat:verticalConstraints
                               options:0
@@ -231,7 +231,5 @@ static const float IMAGE_HEIGHT = 175.f;
     [errorView show];
   }];
 }
-
-
 
 @end

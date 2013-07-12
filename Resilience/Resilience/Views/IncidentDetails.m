@@ -53,8 +53,8 @@
   self.issueDescription.text = incident.description;
   self.issueHeading.text = incident.name;
   self.issueLocation.text = incident.address;
+  self.issueDescription.textAlignment = NSTextAlignmentLeft;
   [self.issueLocation sizeToFit];
-  [self.issueDescription sizeToFit];
   [self.issueHeading sizeToFit];
 }
 
@@ -63,7 +63,7 @@
   [super updateConstraints];
   NSDictionary *views = NSDictionaryOfVariableBindings(_issueDescription, _issueHeading, _reportedTime, _issueLocation);
   [self addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|-[_reportedTime]-[_issueHeading]-[_issueLocation]-[_issueDescription]-|"
+          constraintsWithVisualFormat:@"V:|[_reportedTime(15)]-[_issueHeading(30)]-[_issueLocation(10)]-[_issueDescription]-(>=15)-|"
                               options:0
                               metrics:nil views:views]];
 
