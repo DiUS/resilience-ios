@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/DiUS/resilience-ios.png?branch=master)](https://travis-ci.org/DiUS/resilience-ios)
+
 resilience-ios
 ==============
 
