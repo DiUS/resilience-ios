@@ -1,0 +1,5 @@
+language: objective-c
+
+install: travis/install_script.sh
+script: travis/build.sh
+after_success: travis/deploy.sh
