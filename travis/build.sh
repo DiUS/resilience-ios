@@ -1,5 +1,6 @@
-#!/bin/sh
-set -e
+#!/bin/bash
+
+pwd
 
 bundle exec rake debug:build
 bundle exec rake debug:test
