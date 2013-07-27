@@ -8,8 +8,8 @@ Bundler.require
                         :Debug    => 'Provisioning/Resilience.mobileprovision',
                         :Release  => '????.mobileprovision'
                       }
-TESTFLIGHT_API_TOKEN  = ''
-TESTFLIGHT_TEAM_TOKEN = ''
+TESTFLIGHT_API_TOKEN  = ENV['API_TOKEN']
+TESTFLIGHT_TEAM_TOKEN = ENV['TEAM_TOKEN']
 
 def main_target
   Xcode.workspace(:Resilience).project(:Resilience).target(:Resilience)
@@ -52,6 +52,15 @@ CONFIGS.keys.each do |config_name|
       @pods_kiwi_builder = pods_kiwi_target.config(config_name).builder
       @main_builder.profile   = CONFIGS[config_name]
       @main_builder.identity  = 'iPhone Developer'
+      cert_password = ENV['CERT_PASSWORD']
+      unless cert_password.empty?
+        keychain = Xcode::Keychain.temp
+        keychain.import 'Provisioning/apple.cer', ""
+        keychain.import 'Provisioning/dist.cer', ""
+        keychain.import 'Provisioning/dist.p12', cert_password
+        @main_builder.keychain = keychain
+        @main_builder.identity = keychain.identities.first
+      end
     end
 
     desc "Clean the #{config_name} config"
@@ -64,7 +73,7 @@ CONFIGS.keys.each do |config_name|
     desc "Build the #{config_name} config"
     task :build => [:clean, :update_dependencies, :__load_workspace] do
       @config.info_plist do |info|
-        info.version = ENV['BUILD_NUMBER']||"#{Socket.gethostname}-SNAPSHOT"
+        info.version = ENV['TRAVIS_BUILD_NUMBER']||"#{Socket.gethostname}-SNAPSHOT"
         info.save
       end
       @pods_builder.build

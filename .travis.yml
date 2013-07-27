@@ -1,6 +1,10 @@
 language: objective-c
-
 install: travis/install_script.sh
 before_script: travis/before_script.sh
 script: travis/build.sh
 after_success: travis/deploy.sh
+env:
+  global:
+  - secure: YyDfL+cIz+QvtUXqvRPDsuvGiEfzrTpZzACq5+ZCtkH9AEERKCftYxqOGnCqIg8GU80FN27ZPFKCIl+ETGC5RSAQYfjbzW07Y/vrwF39ipHTG+Us93LtDx8JMxDToASeLYe5GVwfgBTdnRmIeqaIMyJa/VnOwul/v0euJXsX3D4=
+  - secure: PAKe0v4r+Bq9osQCO7nsfrmy99yuJrzFz+nEut3DUmN8D44wgqjbg54ypv0/VM6v4q/2FKW62L6qMhIZ2DEeDowiK4Dpe63oh3Cj+k5EifUwurkHvAUlfEDGJJNJgc0BQ7S5d1UrFfHayxA/WxCo1CjbaZyFUnh63YWZyUI0U/o=
+  - secure: Kx+3q4/KCP5xNn9R6mUPpX6TUNpXoJpW6mMOQ3QArfJ4YB5Rt4T4MQEL3uLRfPxzysBRvmbRzY5FDjN29k4JASU3Aq/X/RDoelB73wPHo7UelXpePYMr9NC4+i2ktql5oo13x7L20qC8zUp/FHC0zdnB71FG0tDRrFL6kM8lgQc=
