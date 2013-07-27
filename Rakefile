@@ -55,8 +55,8 @@ CONFIGS.keys.each do |config_name|
       cert_password = ENV['CERT_PASSWORD']
       unless cert_password.empty?
         keychain = Xcode::Keychain.temp
-        keychain.import 'Provisioning/apple.cer', ""
         keychain.import 'Provisioning/dist.cer', ""
+        keychain.import 'Provisioning/apple.cer', ""
         keychain.import 'Provisioning/dist.p12', cert_password
         @main_builder.keychain = keychain
         @main_builder.identity = keychain.identities.first
