@@ -38,6 +38,13 @@
     [self setDefaultHeader:@"Accept" value:@"application/json"];
     [self setDefaultHeader:@"Content-Type" value:@"application/json"];
 
+    NSString *username = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"BasicAuthUsername"];
+    NSString *password = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"BasicAuthPassword"];
+    if (username.length > 0 && password.length > 0) {
+      NSLog(@"setting basic auth credientials: %@:****", username);
+      [self setAuthorizationHeaderWithUsername:username password:password];
+    }
+
   }
   return self;
 }

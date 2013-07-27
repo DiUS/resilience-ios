@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
@@ -34,15 +34,19 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>192-168-1-108.tpgi.com.au-SNAPSHOT</string>
+	<string>andy.local-SNAPSHOT</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>Open311ServerURL</key>
 	<string>http://${OPEN311_SERVER_URL}</string>
 	<key>ServerURL</key>
 	<string>https://${SERVER_URL}</string>
-	<key>UIPrerenderedIcon</key>
-	<true/>
+  <key>BasicAuthUsername</key>
+  <string>${BASIC_AUTH_USERNAME}</string>
+  <key>BasicAuthPassword</key>
+  <string>${BASIC_AUTH_PASSWORD}</string>
+  <key>UIPrerenderedIcon</key>
+  <true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
