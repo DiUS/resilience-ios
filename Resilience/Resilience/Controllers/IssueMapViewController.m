@@ -1,4 +1,6 @@
 #import <NoticeView/WBErrorNoticeView.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "IssueMapViewController.h"
 #import "WaypointAnnotation.h"
 #import "ParseClient.h"
@@ -10,7 +12,7 @@
 @interface IssueMapViewController () <MKMapViewDelegate, IssueViewControllerDelegate>
 
 @property (nonatomic, retain) MKMapView *mapView;
-
+@property (nonatomic, retain) NSMutableArray *annotations;
 @end
 
 @implementation IssueMapViewController
@@ -24,11 +26,16 @@
   self.view = self.mapView;
   self.mapView.delegate = self;
   self.mapView.showsUserLocation = YES;
+  self.annotations = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  // Display the incident markers
-  [[Open311Client sharedClient] fetchIncidents:nil success:^(NSArray *incidents) {
+}
+
+- (void)updateAnnotations:(CLLocation *)location {
+  [[Open311Client sharedClient] fetchIncidents:location success:^(NSArray *incidents) {
+    [self.mapView removeAnnotations:self.annotations];
+    [self.annotations removeAllObjects];
     for (Incident * incident in incidents) {
       CLLocationCoordinate2D pointCoordinate = incident.location.coordinate;
       WaypointAnnotation *pointAnnotation = [WaypointAnnotation annotationWithCoordinate:pointCoordinate];
@@ -37,8 +44,9 @@
       pointAnnotation.ID = incident.id;
       pointAnnotation.category = incident.category;
       pointAnnotation.incident = incident;
-      [self.mapView addAnnotation:pointAnnotation];
+      [self.annotations addObject:pointAnnotation];
     }
+    [self.mapView addAnnotations:self.annotations];
   } failure:^(NSError *error) {
     WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error loading issues."];
     errorView.message = error.localizedDescription;
@@ -85,7 +93,7 @@
 }
 
 - (void)detailViewControllerDidResolveIssueAndClose:(IssueViewController *)detailViewController {
-//  [self loadIssues];
+  [self updateAnnotations:[self getLocation:self.mapView]];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
@@ -99,6 +107,15 @@
   region.span = span;
   region.center = location;
   [mapView setRegion:region animated:YES];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+  [self updateAnnotations:[self getLocation:mapView]];
+}
+
+- (CLLocation *)getLocation:(MKMapView *)mapView {
+  CLLocation *location = [[CLLocation alloc] initWithLatitude:mapView.region.center.latitude longitude:mapView.region.center.longitude];
+  return location;
 }
 
 
