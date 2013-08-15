@@ -2,4 +2,4 @@
 set -e
 
 export LC_ALL="en_US.UTF-8"
-bundle exec rake setup
+# bundle exec rake setup
