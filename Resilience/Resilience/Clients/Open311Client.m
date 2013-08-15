@@ -165,7 +165,7 @@
 }
 
 - (void)sendFeedback:(NSString *)feedback success:(FeedbackSuccessBlock)success failure:(FailureBlock)failure {
-//  self.parameterEncoding = AFJSONParameterEncoding;
+  self.parameterEncoding = AFJSONParameterEncoding;
   [self postPath:@"feedback.json" parameters:@{ @"comment": feedback, @"email": [Profile loadProfile].email ?: @"" } success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
     success();
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
