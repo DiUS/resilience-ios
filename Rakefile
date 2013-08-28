@@ -53,7 +53,7 @@ CONFIGS.keys.each do |config_name|
       @main_builder.profile   = CONFIGS[config_name]
       @main_builder.identity  = 'iPhone Developer'
       cert_password = ENV['CERT_PASSWORD']
-      unless cert_password.empty?
+      unless cert_password.nil?
         keychain = Xcode::Keychain.temp
         keychain.import 'Provisioning/dist.cer', ""
         keychain.import 'Provisioning/apple.cer', ""
