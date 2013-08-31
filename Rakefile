@@ -5,8 +5,8 @@ Bundler.setup
 Bundler.require
 
  CONFIGS               = {
-                        :Debug    => 'Provisioning/Resilience.mobileprovision',
-                        :Release  => '????.mobileprovision'
+                        :Debug    => 'Provisioning/Resilience_Ad_Hoc.mobileprovision',
+                        :Release  => 'Provisioning/Resilience_Ad_Hoc.mobileprovision'
                       }
 TESTFLIGHT_API_TOKEN  = ENV['API_TOKEN']
 TESTFLIGHT_TEAM_TOKEN = ENV['TEAM_TOKEN']
