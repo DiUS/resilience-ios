@@ -2,5 +2,5 @@
 
 export LC_ALL="en_US.UTF-8"
 
-bundle exec rake debug:build
-bundle exec rake debug:test
+bundle exec rake build
+bundle exec rake test
