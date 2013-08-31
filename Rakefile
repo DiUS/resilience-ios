@@ -92,15 +92,14 @@ CONFIGS.keys.each do |config_name|
       @main_builder.package
     end
 
-    unless config_name==:Release
-      desc "Upload the #{config_name} config to testflight"
-      task :testflight  => [:package, :__load_workspace] do
-        response = @main_builder.testflight TESTFLIGHT_API_TOKEN, TESTFLIGHT_TEAM_TOKEN do |tf|
-          tf.notify = true
-          tf.lists  << "Internal"
-          tf.notes  = `git log -n 1`
-        end
-      end
+    desc "Upload the #{config_name} config to testflight / s3"
+    task :deploy  => [:package, :__load_workspace] do
+      @main_builder.deploy :testflight,
+        { api_token: TESTFLIGHT_API_TOKEN,
+          team_token: TESTFLIGHT_TEAM_TOKEN,
+          notes: `git log -n 1`,
+          ists: ['Internal'] }
+      @main_builder.deploy :s3, { bucket: 'resilience-ipa' }
     end
   end
 end
