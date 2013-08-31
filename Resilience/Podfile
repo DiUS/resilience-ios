@@ -9,6 +9,7 @@ pod 'Cloudinary'
 pod 'Mantle'
 pod 'NoticeView'
 pod 'ReactiveCocoa'
+pod 'GoogleAnalytics-iOS-SDK'
 
 target :KiwiUnitTest, :exclusive => true do
   pod 'Kiwi'
