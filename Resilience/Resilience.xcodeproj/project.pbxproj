@@ -78,6 +78,7 @@
 		A1DDA5771668DDFE003A21C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */; };
 		A1DDA5A21669C45F003A21C0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */; };
 		A1DDA5A41669C591003A21C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */; };
+		A1E2C6A017D18DD00078D03E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1E2C69F17D18DD00078D03E /* Settings.bundle */; };
 		FB1EA1221669E2F7002B93EF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1EA1211669E2F6002B93EF /* MapKit.framework */; };
 		FB1EA1271669E38D002B93EF /* WaypointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1EA1261669E38D002B93EF /* WaypointAnnotation.m */; };
 		FB1EA1341669E39B002B93EF /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1EA12A1669E39B002B93EF /* Annotation.m */; };
@@ -195,6 +196,7 @@
 		A1DDA5761668DDFE003A21C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A1DDA5A01669C3F9003A21C0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A1DDA5A31669C591003A21C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A1E2C69F17D18DD00078D03E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C1FC1857335340F486B2BB90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD42F235B7AD4535AB41FD22 /* libPods-KiwiUnitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KiwiUnitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1EA1211669E2F6002B93EF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -520,6 +522,7 @@
 				FBB1CDC515C3F3E4000D168E /* InfoPlist.strings */,
 				FBB1CDC815C3F3E4000D168E /* main.m */,
 				FBB1CDCA15C3F3E4000D168E /* Resilience-Prefix.pch */,
+				A1E2C69F17D18DD00078D03E /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				A1419A1516C60DD60004FA1C /* Icon.png in Resources */,
 				A17CE86317194D2F00AF2EA1 /* Default-568h@2x.png in Resources */,
 				2DC18ABBBFFDFB1A8D6F2201 /* Localizable.strings in Resources */,
+				A1E2C6A017D18DD00078D03E /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

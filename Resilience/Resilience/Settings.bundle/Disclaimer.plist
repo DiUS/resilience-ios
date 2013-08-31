@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>RHoK, as the provider of the Resilience app, does not vet those who offer their assistance via the app (“assisting parties”) and has no control over the acts or omissions of assisting parties. You acknowledge and agree that neither RHoK nor its directors, officers, agents employees or contractors (“RHoK parties”) are responsible for the acts or omissions of assisting parties. You acknowledge and agree that you may not bring any claim against any of the RHoK parties relating to the acts or omissions of assisting parties.</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string> </string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>
