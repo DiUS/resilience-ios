@@ -40,6 +40,7 @@ task :__load_workspace do
     keychain.import 'Provisioning/dist.p12', cert_password
     @main_builder.keychain = keychain
     @main_builder.identity = keychain.identities.first
+    @main_builder.identity  = 'iPhone Distribution'
   end
 end
 
