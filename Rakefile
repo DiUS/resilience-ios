@@ -75,7 +75,7 @@ task :deploy  => [:package, :__load_workspace] do
       team_token: TESTFLIGHT_TEAM_TOKEN,
       notes: `git log -n 1`,
       lists: ['Internal'] }
-  @main_builder.builder.deploy :s3,
+  @main_builder.deploy :s3,
     :bucket => "resilience-ipa",
     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],

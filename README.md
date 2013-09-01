@@ -20,14 +20,14 @@ Edit the Rakefile to change the value of 'main_builder.identity' to be the name 
 
 Then:
 ````
-rake debug:build
+rake build
 ````
 ### To run unit tests:
 ````
-rake debug:test
+rake test
 ````
-### To upload to testflight:
+### To upload to testflight / s3:
 ````
-rake debug:testflight
+rake deploy
 ````
 
