@@ -1,8 +1,6 @@
 #import "IncidentCell.h"
 #import "UIColor+Resilience.h"
 
-static const float IMAGE_HEIGHT = 70.0;
-
 @implementation IncidentCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -12,17 +10,17 @@ static const float IMAGE_HEIGHT = 70.0;
     self.photoImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
 
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.nameLabel.backgroundColor = [UIColor clearColor];
+    self.nameLabel.backgroundColor = [UIColor defaultBackgroundColor];
     self.nameLabel.textColor = [UIColor titleTextColor];
     self.nameLabel.font = [UIFont boldSystemFontOfSize:16.];
 
     self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.descriptionLabel.backgroundColor = [UIColor clearColor];
+    self.descriptionLabel.backgroundColor = [UIColor defaultBackgroundColor];
     self.descriptionLabel.textColor = [UIColor defaultTextColor];
     self.descriptionLabel.font = [self.descriptionLabel.font fontWithSize:14.];
 
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.timeLabel.backgroundColor = [UIColor clearColor];
+    self.timeLabel.backgroundColor = [UIColor defaultBackgroundColor];
     self.timeLabel.textColor = [UIColor defaultTextColor];
     self.timeLabel.font = [self.timeLabel.font fontWithSize:12.];
 
