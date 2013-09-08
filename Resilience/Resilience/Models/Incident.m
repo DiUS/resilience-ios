@@ -2,6 +2,7 @@
 #import "Incident.h"
 #import "IncidentCategory.h"
 #import "NSValueTransformer+MTLPredefinedTransformerAdditions.h"
+#import "NSDate+Formatting.h"
 
 @implementation Incident
 
@@ -18,12 +19,7 @@
 }
 
 - (NSString *)createdDateAsString {
-  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-  [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-  [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-  [dateFormatter setDoesRelativeDateFormatting:YES];
-  NSString *startTime = [dateFormatter stringFromDate:self.createdDate];
-  return startTime;
+  return [self.createdDate resilienceCreateDateAsString];
 }
 
 - (NSURL *)imageUrlForSize:(CGSize)size {
