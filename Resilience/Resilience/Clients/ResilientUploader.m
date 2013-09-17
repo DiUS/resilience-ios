@@ -59,7 +59,7 @@
 }
 
 - (void)uploadQueuedIncident {
-  NSArray *queuedIncidents = [UploadIncident loadUnsavedIssues];
+  NSArray *queuedIncidents = [UploadIncident loadUnsavedIncidents];
 
   for(UploadIncident *incident in queuedIncidents) {
     [self enqueIncidentForUpload:incident];

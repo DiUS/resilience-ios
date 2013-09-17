@@ -14,5 +14,5 @@
 
 - (void)removeIncident;
 
-+ (NSArray *)loadUnsavedIssues;
++ (NSArray *)loadUnsavedIncidents;
 @end

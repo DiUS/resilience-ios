@@ -52,7 +52,7 @@ static NSString *const kArchiveKey = @"upload";
   return [[self uploadDir] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", id]];
 }
 
-+ (NSArray *)loadUnsavedIssues {
++ (NSArray *)loadUnsavedIncidents {
   NSString *uploadDir = [self uploadDir];
   NSError *error;
   NSArray *uploads = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:uploadDir error:&error];

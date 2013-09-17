@@ -1,7 +1,7 @@
 #import <NoticeView/WBErrorNoticeView.h>
 #import "RootViewController.h"
-#import "IssueListViewController.h"
-#import "IssueMapViewController.h"
+#import "IncidentListViewController.h"
+#import "IncidentMapViewController.h"
 #import "AddIncidentViewController.h"
 #import "UIColor+Resilience.h"
 #import "ProfileViewController.h"
@@ -14,8 +14,8 @@
 
 @interface RootViewController()
 
-@property (nonatomic, strong) IssueListViewController *issueListViewController;
-@property (nonatomic, strong) IssueMapViewController *issueMapViewController;
+@property (nonatomic, strong) IncidentListViewController *incidentListViewController;
+@property (nonatomic, strong) IncidentMapViewController *incidentMapViewController;
 @property (nonatomic, strong) RSLHeader *header;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIView *contentView;
@@ -32,15 +32,15 @@
   self.contentView = [[UIView alloc] init];
 
   self.header = [[RSLHeader alloc] initWithFrame:CGRectZero];
-  [self.header.addIssueButton addTarget:self action:@selector(addIssue) forControlEvents:UIControlEventTouchUpInside];
-  [self.header.issueListButton addTarget:self action:@selector(showListView) forControlEvents:UIControlEventTouchUpInside];
-  [self.header.issueMapButton addTarget:self action:@selector(showMapView) forControlEvents:UIControlEventTouchUpInside];
+  [self.header.addIncidentButton addTarget:self action:@selector(addIncident) forControlEvents:UIControlEventTouchUpInside];
+  [self.header.incidentListButton addTarget:self action:@selector(showListView) forControlEvents:UIControlEventTouchUpInside];
+  [self.header.incidentMapButton addTarget:self action:@selector(showMapView) forControlEvents:UIControlEventTouchUpInside];
 
-  self.issueListViewController = [[IssueListViewController alloc] init];
-  self.issueListViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+  self.incidentListViewController = [[IncidentListViewController alloc] init];
+  self.incidentListViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
   
-  self.issueMapViewController = [[IssueMapViewController alloc] init];
-  self.issueMapViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+  self.incidentMapViewController = [[IncidentMapViewController alloc] init];
+  self.incidentMapViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
 
   self.toolbar = [[UIToolbar alloc] init];
   UIBarButtonItem *profileItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Assets/SettingsIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
@@ -54,7 +54,7 @@
     WBSuccessNoticeView *successNoticeView = [[WBSuccessNoticeView alloc] initWithView:self.view title:NSLocalizedString(@"incidentUpload:Successful:Title", @"Successfully reported incident.")];
     successNoticeView.alpha = 0.9;
     [successNoticeView show];
-    [self.issueListViewController loadIssues];
+    [self.incidentListViewController loadIncidents];
   }];
   [[NSNotificationCenter defaultCenter] addObserverForName:kIncidentUploadFailed object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
     WBStickyNoticeView *noticeView = [[WBStickyNoticeView alloc] initWithView:self.view title:NSLocalizedString(@"incidentUpload:Failed:Title", @"Could not upload incident at this time.")];
@@ -100,7 +100,7 @@
 }
 
 
-- (void)addIssue {
+- (void)addIncident {
   AddIncidentViewController *incidentViewController = [[AddIncidentViewController alloc] init];
 
   UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:incidentViewController];
@@ -110,11 +110,11 @@
 }
 
 - (void)showListView {
-  [self swapView:self.issueMapViewController with:self.issueListViewController];
+  [self swapView:self.incidentMapViewController with:self.incidentListViewController];
 }
 
 - (void)showMapView {
-  [self swapView:self.issueListViewController with:self.issueMapViewController];
+  [self swapView:self.incidentListViewController with:self.incidentMapViewController];
 }
 
 - (void)swapView:(UIViewController *)firstController with:(UIViewController *)secondController {

@@ -2,8 +2,8 @@
 
 @interface RSLHeader : UIView
 
-@property (nonatomic, strong) UIButton *issueMapButton;
-@property (nonatomic, strong) UIButton *issueListButton;
-@property (nonatomic, strong) UIButton *addIssueButton; 
+@property (nonatomic, strong) UIButton *incidentMapButton;
+@property (nonatomic, strong) UIButton *incidentListButton;
+@property (nonatomic, strong) UIButton *addIncidentButton;
 
 @end

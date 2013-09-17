@@ -16,55 +16,55 @@
       self.headerBackground = [[UIImageView alloc] initWithImage:resizableBackground];
       [self addSubview:self.headerBackground];
 
-      self.addIssueButton = [UIButton buttonWithType:UIButtonTypeCustom];
-      [self.addIssueButton setImage:[UIImage imageNamed:@"Assets/AddIssueButton"] forState:UIControlStateNormal];
-      [self.addIssueButton setImage:[UIImage imageNamed:@"Assets/AddIssueButtonHighlighted"] forState:UIControlStateHighlighted];
-      [self addSubview:self.addIssueButton];
+      self.addIncidentButton = [UIButton buttonWithType:UIButtonTypeCustom];
+      [self.addIncidentButton setImage:[UIImage imageNamed:@"Assets/AddIssueButton"] forState:UIControlStateNormal];
+      [self.addIncidentButton setImage:[UIImage imageNamed:@"Assets/AddIssueButtonHighlighted"] forState:UIControlStateHighlighted];
+      [self addSubview:self.addIncidentButton];
 
-      self.issueMapButton = [UIButton buttonWithType:UIButtonTypeCustom];
-      [self.issueMapButton setImage:[UIImage imageNamed:@"Assets/issueMapOff"] forState:UIControlStateNormal];
-      [self.issueMapButton setImage:[UIImage imageNamed:@"Assets/issueMapOn"] forState:UIControlStateSelected];
-      [self.issueMapButton addTarget:self action:@selector(selectMapViewButton) forControlEvents:UIControlEventTouchUpInside];
-      [self addSubview:self.issueMapButton];
+      self.incidentMapButton = [UIButton buttonWithType:UIButtonTypeCustom];
+      [self.incidentMapButton setImage:[UIImage imageNamed:@"Assets/issueMapOff"] forState:UIControlStateNormal];
+      [self.incidentMapButton setImage:[UIImage imageNamed:@"Assets/issueMapOn"] forState:UIControlStateSelected];
+      [self.incidentMapButton addTarget:self action:@selector(selectMapViewButton) forControlEvents:UIControlEventTouchUpInside];
+      [self addSubview:self.incidentMapButton];
 
-      self.issueListButton = [UIButton buttonWithType:UIButtonTypeCustom];
-      [self.issueListButton setImage:[UIImage imageNamed:@"Assets/issueListOff"] forState:UIControlStateNormal];
-      [self.issueListButton setImage:[UIImage imageNamed:@"Assets/issueListOn"] forState:UIControlStateSelected];
-      [self.issueListButton addTarget:self action:@selector(selectListViewButton) forControlEvents:UIControlEventTouchUpInside];
-      self.issueListButton.selected = YES;
-      [self addSubview:self.issueListButton];
+      self.incidentListButton = [UIButton buttonWithType:UIButtonTypeCustom];
+      [self.incidentListButton setImage:[UIImage imageNamed:@"Assets/issueListOff"] forState:UIControlStateNormal];
+      [self.incidentListButton setImage:[UIImage imageNamed:@"Assets/issueListOn"] forState:UIControlStateSelected];
+      [self.incidentListButton addTarget:self action:@selector(selectListViewButton) forControlEvents:UIControlEventTouchUpInside];
+      self.incidentListButton.selected = YES;
+      [self addSubview:self.incidentListButton];
     }
     return self;
 }
 
 - (void) selectMapViewButton {
-  self.issueMapButton.selected = YES;
-  self.issueListButton.selected = NO;
+  self.incidentMapButton.selected = YES;
+  self.incidentListButton.selected = NO;
 }
 
 - (void) selectListViewButton {
-  self.issueMapButton.selected = NO;
-  self.issueListButton.selected = YES;
+  self.incidentMapButton.selected = NO;
+  self.incidentListButton.selected = YES;
 }
 
 - (void)layoutSubviews {
   self.headerBackground.frame = self.bounds;
 
   //Layout buttons
-  self.addIssueButton.frame = CGRectMake(CGRectGetWidth(self.bounds) - (self.addIssueButton.imageView.image.size.width + 9),
+  self.addIncidentButton.frame = CGRectMake(CGRectGetWidth(self.bounds) - (self.addIncidentButton.imageView.image.size.width + 9),
                                          4.0,
-                                         self.addIssueButton.imageView.image.size.width,
-                                         self.addIssueButton.imageView.image.size.height);
+                                         self.addIncidentButton.imageView.image.size.width,
+                                         self.addIncidentButton.imageView.image.size.height);
 
-  self.issueMapButton.frame = CGRectMake((CGRectGetWidth(self.bounds) / 2) - self.issueMapButton.imageView.image.size.width,
+  self.incidentMapButton.frame = CGRectMake((CGRectGetWidth(self.bounds) / 2) - self.incidentMapButton.imageView.image.size.width,
                                          10.0,
-                                         self.issueMapButton.imageView.image.size.width,
-                                         self.issueMapButton.imageView.image.size.height);
+                                         self.incidentMapButton.imageView.image.size.width,
+                                         self.incidentMapButton.imageView.image.size.height);
 
-  self.issueListButton.frame = CGRectMake((CGRectGetWidth(self.bounds) / 2),
+  self.incidentListButton.frame = CGRectMake((CGRectGetWidth(self.bounds) / 2),
                                           10.0,
-                                          self.issueMapButton.imageView.image.size.width,
-                                          self.issueMapButton.imageView.image.size.height);
+                                          self.incidentMapButton.imageView.image.size.width,
+                                          self.incidentMapButton.imageView.image.size.height);
 }
 
 @end

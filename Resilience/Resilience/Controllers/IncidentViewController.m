@@ -1,4 +1,4 @@
-#import "IssueViewController.h"
+#import "IncidentViewController.h"
 #import "UIColor+Resilience.h"
 #import "WaypointAnnotation.h"
 #import "UIImageView+AFNetworking.h"
@@ -24,18 +24,18 @@ static const float IMAGE_HEIGHT = 175.f;
 
 @end
 
-@interface IssueViewController ()<UIAlertViewDelegate>
+@interface IncidentViewController ()<UIAlertViewDelegate>
 @property(nonatomic, strong) UIImageView *warnImage;
 @property(nonatomic, strong) UIView *imageViewSurround;
 @property(nonatomic, strong) UIImageView *imageView;
-@property(nonatomic, strong) MKMapView *issueMap;
+@property(nonatomic, strong) MKMapView *incidentMap;
 @property(nonatomic, strong) IncidentDetails *footerView;
 @property(nonatomic, strong) UIButton *mapButton;
 @property(nonatomic, strong) UIButton *pictureButton;
 @property(nonatomic, strong) UIView *switchButtons;
 @end
 
-@implementation IssueViewController
+@implementation IncidentViewController
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
@@ -76,7 +76,7 @@ static const float IMAGE_HEIGHT = 175.f;
   annotation.title = self.incident.name;
   annotation.subtitle = [self.incident createdDateAsString];
   annotation.ID = self.incident.id;
-  [self.issueMap addAnnotation:annotation];
+  [self.incidentMap addAnnotation:annotation];
 }
 
 - (void)components {
@@ -123,14 +123,14 @@ static const float IMAGE_HEIGHT = 175.f;
   self.footerView = [[IncidentDetails alloc] initWithFrame:CGRectZero];
   [self.view addSubview:self.footerView];
 
-  self.navigationItem.title = @"Issue Details";
+  self.navigationItem.title = @"Incident Details";
   
-  self.issueMap = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 350, 200)];
-  self.issueMap.delegate = self;
-  self.issueMap.scrollEnabled = NO;
+  self.incidentMap = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 350, 200)];
+  self.incidentMap.delegate = self;
+  self.incidentMap.scrollEnabled = NO;
   
   self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
-  self.issueMap.translatesAutoresizingMaskIntoConstraints = NO;
+  self.incidentMap.translatesAutoresizingMaskIntoConstraints = NO;
   self.footerView.translatesAutoresizingMaskIntoConstraints = NO;
   self.warnImage.translatesAutoresizingMaskIntoConstraints = NO;
   self.imageViewSurround.translatesAutoresizingMaskIntoConstraints = NO;
@@ -138,7 +138,7 @@ static const float IMAGE_HEIGHT = 175.f;
 }
 
 - (void)selectPictureView {
-  [self.issueMap removeFromSuperview];
+  [self.incidentMap removeFromSuperview];
   [self.view addSubview:self.imageView];
   self.pictureButton.selected = YES;
   self.mapButton.selected = NO;
@@ -148,7 +148,7 @@ static const float IMAGE_HEIGHT = 175.f;
 - (void)selectMapView {
   [self.imageView removeFromSuperview];
 //  self.issueMap s
-  [self.view addSubview:self.issueMap];
+  [self.view addSubview:self.incidentMap];
   self.pictureButton.selected = NO;
   self.mapButton.selected = YES;
   [self.view setNeedsUpdateConstraints];
@@ -160,7 +160,7 @@ static const float IMAGE_HEIGHT = 175.f;
 
   UIView *displayView = nil;
   if (self.mapButton.selected) {
-    displayView = self.issueMap;
+    displayView = self.incidentMap;
   } else {
     displayView = self.imageView;
   }
@@ -209,7 +209,7 @@ static const float IMAGE_HEIGHT = 175.f;
 }
 
 - (void)promptToResolveIncident:(id)incidentView {
-  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Resolve issue" message:@"Are you sure you want to mark this issue as resolved?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Resolve incident" message:@"Are you sure you want to mark this incident as resolved?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
   [alertView show];
 }
 
@@ -221,10 +221,10 @@ static const float IMAGE_HEIGHT = 175.f;
 
 - (void)resolveIncident {
   [[Open311Client sharedClient] resolveIncident:self.incident success:^{
-    [self.delegate detailViewControllerDidResolveIssueAndClose:self];
+    [self.delegate detailViewControllerDidResolveIncidentAndClose:self];
     [self dismissViewControllerAnimated:YES completion:nil];
   } failure:^(NSError *error) {
-    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error resolving issue."];
+    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error resolving incident."];
     errorView.message = error.localizedDescription;
     errorView.alpha = 0.9;
     errorView.floating = YES;

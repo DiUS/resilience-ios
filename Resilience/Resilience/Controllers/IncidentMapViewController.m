@@ -1,21 +1,21 @@
 #import <NoticeView/WBErrorNoticeView.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "IssueMapViewController.h"
+#import "IncidentMapViewController.h"
 #import "WaypointAnnotation.h"
 #import "ParseClient.h"
 #import "Incident.h"
 #import "IncidentCategory+Waypoint.h"
 #import "Open311Client.h"
-#import "IssueViewController.h"
+#import "IncidentViewController.h"
 
-@interface IssueMapViewController () <MKMapViewDelegate, IssueViewControllerDelegate>
+@interface IncidentMapViewController () <MKMapViewDelegate, IncidentViewControllerDelegate>
 
 @property (nonatomic, retain) MKMapView *mapView;
 @property (nonatomic, retain) NSMutableArray *annotations;
 @end
 
-@implementation IssueMapViewController
+@implementation IncidentMapViewController
 
 #pragma mark - view lifecycle
 
@@ -48,7 +48,7 @@
     }
     [self.mapView addAnnotations:self.annotations];
   } failure:^(NSError *error) {
-    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error loading issues."];
+    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error loading incidents."];
     errorView.message = error.localizedDescription;
     errorView.alpha = 0.9;
     [errorView show];
@@ -85,14 +85,14 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
   WaypointAnnotation *annotation = view.annotation;
-  IssueViewController *issueVC = [[IssueViewController alloc] init];
-  issueVC.delegate = self;
-  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:issueVC];
-  issueVC.incident = annotation.incident;
+  IncidentViewController *incidentVC = [[IncidentViewController alloc] init];
+  incidentVC.delegate = self;
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:incidentVC];
+  incidentVC.incident = annotation.incident;
   [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (void)detailViewControllerDidResolveIssueAndClose:(IssueViewController *)detailViewController {
+- (void)detailViewControllerDidResolveIncidentAndClose:(IncidentViewController *)detailViewController {
   [self updateAnnotations:[self getLocation:self.mapView]];
 }
 

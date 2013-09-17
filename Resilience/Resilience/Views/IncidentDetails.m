@@ -4,10 +4,10 @@
 #import "UIColor+Resilience.h"
 
 @interface IncidentDetails ()
-@property (nonatomic, strong) UILabel *issueDescription;
-@property (nonatomic, strong) UILabel *issueHeading;
+@property (nonatomic, strong) UILabel *incidentDescription;
+@property (nonatomic, strong) UILabel *incidentHeading;
 @property (nonatomic, strong) UILabel *reportedTime;
-@property (nonatomic, strong) UILabel *issueLocation;
+@property (nonatomic, strong) UILabel *incidentLocation;
 @end
 
 @implementation IncidentDetails
@@ -21,17 +21,17 @@
     self.reportedTime.textColor = [UIColor lightGreyTextColor];
     [self addSubview:self.reportedTime];
 
-    self.issueHeading = [self labelWithDefaultAttributes];
-    self.issueHeading.font = [UIFont boldSystemFontOfSize:16];
-    [self addSubview:self.issueHeading];
+    self.incidentHeading = [self labelWithDefaultAttributes];
+    self.incidentHeading.font = [UIFont boldSystemFontOfSize:16];
+    [self addSubview:self.incidentHeading];
 
-    self.issueLocation = [self labelWithDefaultAttributes];;
-    self.issueLocation.font = [UIFont systemFontOfSize:12];
-    [self addSubview:self.issueLocation];
+    self.incidentLocation = [self labelWithDefaultAttributes];;
+    self.incidentLocation.font = [UIFont systemFontOfSize:12];
+    [self addSubview:self.incidentLocation];
 
-    self.issueDescription = [self labelWithDefaultAttributes];
+    self.incidentDescription = [self labelWithDefaultAttributes];
 
-    [self addSubview:self.issueDescription];
+    [self addSubview:self.incidentDescription];
 
   }
   return self;
@@ -50,35 +50,35 @@
 
 - (void)populateWithIncident:(Incident *)incident {
   self.reportedTime.text = [incident createdDateAsString];
-  self.issueDescription.text = incident.description;
-  self.issueHeading.text = incident.name;
-  self.issueLocation.text = incident.address;
-  self.issueDescription.textAlignment = NSTextAlignmentLeft;
-  [self.issueLocation sizeToFit];
-  [self.issueHeading sizeToFit];
+  self.incidentDescription.text = incident.description;
+  self.incidentHeading.text = incident.name;
+  self.incidentLocation.text = incident.address;
+  self.incidentDescription.textAlignment = NSTextAlignmentLeft;
+  [self.incidentLocation sizeToFit];
+  [self.incidentHeading sizeToFit];
 }
 
 
 - (void)updateConstraints {
   [super updateConstraints];
-  NSDictionary *views = NSDictionaryOfVariableBindings(_issueDescription, _issueHeading, _reportedTime, _issueLocation);
+  NSDictionary *views = NSDictionaryOfVariableBindings(_incidentDescription, _incidentHeading, _reportedTime, _incidentLocation);
   [self addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_reportedTime(15)]-[_issueHeading(30)]-[_issueLocation(10)]-[_issueDescription]-(>=15)-|"
+          constraintsWithVisualFormat:@"V:|[_reportedTime(15)]-[_incidentHeading(30)]-[_incidentLocation(10)]-[_incidentDescription]-(>=15)-|"
                               options:0
                               metrics:nil views:views]];
 
   [self addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"H:|-[_issueLocation]-|"
+          constraintsWithVisualFormat:@"H:|-[_incidentLocation]-|"
                               options:0
                               metrics:nil views:views]];
 
 
   [self addConstraints:@[
-          [NSLayoutConstraint constraintWithItem:self.issueHeading attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.issueLocation
+          [NSLayoutConstraint constraintWithItem:self.incidentHeading attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.incidentLocation
                                        attribute:NSLayoutAttributeLeft multiplier:1 constant:0],
-          [NSLayoutConstraint constraintWithItem:self.reportedTime attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.issueLocation
+          [NSLayoutConstraint constraintWithItem:self.reportedTime attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.incidentLocation
                                        attribute:NSLayoutAttributeLeft multiplier:1 constant:0],
-          [NSLayoutConstraint constraintWithItem:self.issueDescription attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.issueLocation
+          [NSLayoutConstraint constraintWithItem:self.incidentDescription attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.incidentLocation
                                        attribute:NSLayoutAttributeLeft multiplier:1 constant:0]
   ]];
 }

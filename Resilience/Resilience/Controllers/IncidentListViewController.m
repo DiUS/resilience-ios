@@ -1,26 +1,26 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <ReactiveCocoa.h>
-#import "IssueListViewController.h"
+#import "IncidentListViewController.h"
 #import "Incident.h"
 #import "ParseClient.h"
 #import "IncidentCell.h"
 #import "AFNetworking.h"
-#import "IssueViewController.h"
+#import "IncidentViewController.h"
 #import "Open311Client.h"
 #import "WBErrorNoticeView.h"
 #import "WBStickyNoticeView.h"
 #import "LocationManager.h"
 #import "UIView+WSLoading.h"
 
-@interface IssueListViewController ()<IssueViewControllerDelegate>
+@interface IncidentListViewController ()<IncidentViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *incidents;
 @property (nonatomic, strong) RACDisposable *currentLocationDisposable;;
 
 @end
 
-@implementation IssueListViewController
+@implementation IncidentListViewController
 
 - (id)init {
   if (self = [super initWithStyle:UITableViewStylePlain]) {
@@ -38,7 +38,7 @@
   refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
   [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
   self.refreshControl = refresh;
-  [self loadIssues];
+  [self loadIncidents];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -50,7 +50,7 @@
 
 - (void)refreshView:(UIRefreshControl *)refresh {
   refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
-  [self loadIssues];
+  [self loadIncidents];
 
   NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
   [formatter setDateFormat:@"MMM d, h:mm a"];
@@ -63,7 +63,7 @@
   [self.currentLocationDisposable dispose];
 }
 
-- (void)loadIssues {
+- (void)loadIncidents {
   [self.view showLoading];
   self.currentLocationDisposable = [[[[[[[LocationManager sharedManager]
           currentLocationSignal]
@@ -72,30 +72,30 @@
     doNext:^(id location) {
       NSLog(@"location %@", location);
       NSLog(@"received location: %@", location);
-      [self loadIssues:location];
+      [self loadIncidents:location];
     }] doError:^(NSError *error) {
       NSLog(@"Error getting location: %@", error);
-      [self loadIssues:nil];
+    [self loadIncidents:nil];
   }]
     subscribeCompleted:^{
     }
   ];
 }
 
-- (void)loadIssues:(CLLocation *)location {
+- (void)loadIncidents:(CLLocation *)location {
   [[Open311Client sharedClient] fetchIncidents:location success:^(NSArray *incidents) {
     self.incidents = incidents;
     [self.tableView reloadData];
     [self.view hideLoading];
     if(incidents.count == 0) {
-      WBStickyNoticeView *noticeView = [[WBStickyNoticeView alloc] initWithView:self.view title:@"No issues have been reported in your area."];
+      WBStickyNoticeView *noticeView = [[WBStickyNoticeView alloc] initWithView:self.view title:@"No incidents have been reported in your area."];
       noticeView.alpha = 0.9;
       noticeView.floating = YES;
       [noticeView show];
     }
   } failure:^(NSError *error) {
     [self.view hideLoading];
-    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error loading issues."];
+    WBErrorNoticeView *errorView = [[WBErrorNoticeView alloc] initWithView:self.view title:@"Error loading incidents."];
     errorView.message = error.localizedDescription;
     errorView.alpha = 0.9;
     errorView.floating = YES;
@@ -112,7 +112,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   Incident *incident = [self.incidents objectAtIndex:(NSUInteger) indexPath.row];
 
-  static NSString *CellIdentifier = @"IssueCell";
+  static NSString *CellIdentifier = @"IncidentCell";
   IncidentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (!cell)
     cell = [[IncidentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -133,15 +133,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
   Incident *incident = [self.incidents objectAtIndex:(NSUInteger) indexPath.row];
-  IssueViewController *issueVC = [[IssueViewController alloc] init];
-  issueVC.delegate = self;
-  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:issueVC];
-  issueVC.incident = incident;
+  IncidentViewController *incidentVC = [[IncidentViewController alloc] init];
+  incidentVC.delegate = self;
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:incidentVC];
+  incidentVC.incident = incident;
   [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (void)detailViewControllerDidResolveIssueAndClose:(IssueViewController *)detailViewController {
-  [self loadIssues];
+- (void)detailViewControllerDidResolveIncidentAndClose:(IncidentViewController *)detailViewController {
+  [self loadIncidents];
 }
 
 @end

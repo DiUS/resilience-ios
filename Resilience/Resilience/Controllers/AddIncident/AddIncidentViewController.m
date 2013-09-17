@@ -37,8 +37,8 @@
 
 - (void)loadView {
   self.view = [[UIView alloc] initWithFrame:CGRectZero];
-  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissAddIssue)];
-  self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(progressToIssueDetails)];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissAddIncident)];
+  self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(progressToIncidentDetails)];
   self.navigationItem.rightBarButtonItem = self.nextButton;
   self.navigationItem.rightBarButtonItem.enabled = NO;
 
@@ -68,11 +68,11 @@
   self.cameraButton.frame = self.view.frame;
 }
 
-- (void)progressToIssueDetails {
+- (void)progressToIncidentDetails {
   [self.navigationController pushViewController:self.detailSelectionController animated:YES];
 }
 
-- (void)findLocationAndUploadIssue {
+- (void)findLocationAndUploadIncident {
   self.currentLocationDisposable = [[[[[[[LocationManager sharedManager]
           currentLocationSignal]
           takeUntil:[RACSignal interval:3]]
@@ -101,7 +101,7 @@
   [[ResilientUploader sharedUploader] saveIncident:incident];
 }
 
-- (void)dismissAddIssue {
+- (void)dismissAddIncident {
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -190,7 +190,7 @@
 - (void) detailSelectionController:(DetailSelectionController *)controller didSelectName:(NSString *)name andCategory:(IncidentCategory *)category {
   self.category = category;
   self.name = name;
-  [self findLocationAndUploadIssue];
+  [self findLocationAndUploadIncident];
 }
 
 @end
