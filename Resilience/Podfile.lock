@@ -60,7 +60,7 @@ SPEC CHECKSUMS:
   libextobjc: 820a79dbbbc498611e04fffd07d2d52a5588e7ac
   Mantle: f5b5cba1b112273fe3bb4433cdcf1da76203c2b4
   NoticeView: f885ce90b53dacce3b19f2d5e95c6db68fe4e45d
-  ReactiveCocoa: b680ab9b8c64a3c9956492f0702006ea541164fc
+  ReactiveCocoa: 86033375e366207afad5a5067f2dd10a1f2d8f32
   TestFlightSDK: 940906d4b2550cf397c6f2d2fcc4ebfdcd8ae858
 
 COCOAPODS: 0.23.0
