@@ -18,8 +18,8 @@
   dispatch_once(&onceToken, ^{
     _sharedCloudinary = [[CLCloudinary alloc] init];
     [_sharedCloudinary.config setValue:@"resilience" forKey:@"cloud_name"];
-    [_sharedCloudinary.config setValue:@"345754584192129" forKey:@"api_key"];
-    [_sharedCloudinary.config setValue:@"EOqrfFTaj1vNv_3BTTUAWCQgGUc" forKey:@"api_secret"];
+    [_sharedCloudinary.config setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CloudinaryApiKey"] forKey:@"api_key"];
+    [_sharedCloudinary.config setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CloudinaryApiSecret"] forKey:@"api_secret"];
   });
 
   return _sharedCloudinary;

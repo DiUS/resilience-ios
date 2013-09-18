@@ -6,6 +6,10 @@
 	<string>${BASIC_AUTH_PASSWORD}</string>
 	<key>BasicAuthUsername</key>
 	<string>${BASIC_AUTH_USERNAME}</string>
+  <key>CloudinaryApiKey</key>
+  <string>${CLOUDINARY_API_KEY}</string>
+  <key>CloudinaryApiSecret</key>
+  <string>${CLOUDINARY_API_SECRET}</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
