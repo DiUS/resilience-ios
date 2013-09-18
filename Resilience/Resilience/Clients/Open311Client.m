@@ -14,6 +14,7 @@
 
 @interface Open311Client () <CLUploaderDelegate>
 @property (nonatomic, strong) LocationManager *locationManager;
+@property (nonatomic, strong) CloudinaryClient *imageClient;
 @end
 
 @implementation Open311Client
@@ -41,6 +42,7 @@
 
     NSString *username = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"BasicAuthUsername"];
     NSString *password = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"BasicAuthPassword"];
+    self.imageClient = [[CloudinaryClient alloc] init];
     if (username.length > 0 && password.length > 0) {
       NSLog(@"setting basic auth credientials: %@:****", username);
       [self setAuthorizationHeaderWithUsername:username password:password];
@@ -163,7 +165,7 @@
 - (void)createIncident:(Incident *)incident success:(IncidentCreateSuccessBlock)success failure:(FailureBlock)failure {
   self.parameterEncoding = AFFormURLParameterEncoding;
   dispatch_async(dispatch_get_main_queue(), ^{ // Cloudinary uses NSURLConnection and doesn't work off the main thread (the thread dies before the upload finishes).
-    [[[CloudinaryClient alloc] init] updloadImage:incident.image
+    [self.imageClient updloadImage:incident.image
             success:^(NSString *uploadUrl) {
               incident.imageUrl = [NSURL URLWithString:uploadUrl];
               [self postPath:@"requests.json" parameters:[incident asDictionary:[Profile loadProfile]] success:^(AFHTTPRequestOperation *operation, id responseObject) {
