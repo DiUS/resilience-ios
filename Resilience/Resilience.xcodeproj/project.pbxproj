@@ -16,10 +16,10 @@
 		2DC180B1DB8B35BA05C5BEB0 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18FB1A3F46270905E24CD /* DataStore.m */; };
 		2DC18151574C53C67F546947 /* NSDictionary+TypedAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */; };
 		2DC18258FD9DDF558C3C3F91 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18D5AE40EEA58FF035E16 /* RootViewController.m */; };
+		2DC18396960A1A1F13B0D5CA /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC185DED80B554B3CD04077 /* LocationManager.m */; };
 		2DC183D83ACD5A93C2EF044B /* UploadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C0C1E81CFFB95252AEC /* UploadOperation.m */; };
 		2DC184AB509191A152B1DDDD /* NSDictionary+TypedAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */; };
 		2DC184B255539A1743B9A2D9 /* IncidentAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181A7E525EF4C93715683 /* IncidentAdapter.m */; };
-		2DC184B30073F537CFE2F83D /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1836FA3ED4AC2B1042380 /* LocationManager.m */; };
 		2DC184B82CA6CB57037A1515 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC187ED05926DE77CFFBBAA /* ProfileViewController.m */; };
 		2DC184F50FA121D494252633 /* ParseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1807D58B75EBE487FA664 /* ParseClient.m */; };
 		2DC184F89978579B4AFDE88D /* Open311Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC182961AE33B44B1F26C47 /* Open311Client.m */; };
@@ -54,6 +54,7 @@
 		2DC18C2403FC25CBBF121D19 /* UploadIncident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F9A8991981FD2CF4BD3 /* UploadIncident.m */; };
 		2DC18CAED52E4212CED8C1EB /* NSDate+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B8F70CF94AEC02257E3 /* NSDate+Formatting.m */; };
 		2DC18D48781291EDD18769DF /* UploadIncident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F9A8991981FD2CF4BD3 /* UploadIncident.m */; };
+		2DC18D81CBFF13AF1986940E /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC185DED80B554B3CD04077 /* LocationManager.m */; };
 		2DC18D8DA18F873DC8BB0452 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC188D59156C3069BAA2DC5 /* FeedbackViewController.m */; };
 		2DC18E40A15187A376822547 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18287279BE2ABF06DC268 /* Service.m */; };
 		2DC18E45DB4B195DF781B617 /* UIColor+Resilience.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18E4EE87A9F37816EE348 /* UIColor+Resilience.m */; };
@@ -120,7 +121,6 @@
 		2DC182A591A90D5D1E2DC23E /* DetailSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSelectionController.m; sourceTree = "<group>"; };
 		2DC182B43BC8CD4C6589D912 /* ResilientUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResilientUploader.h; sourceTree = "<group>"; };
 		2DC1834ADA9D6FA0D8F84BD6 /* Incident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Incident.h; sourceTree = "<group>"; };
-		2DC1836FA3ED4AC2B1042380 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		2DC1838E4041C30D656AF5C5 /* UploadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadOperation.h; sourceTree = "<group>"; };
 		2DC183CAED282CEFF60E7417 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		2DC183FFFCA19910EDB72F02 /* UITextField+Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Form.m"; sourceTree = "<group>"; };
@@ -128,6 +128,7 @@
 		2DC1844B98A1F503F7F98BA1 /* NSDictionary+TypedAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TypedAccess.m"; sourceTree = "<group>"; };
 		2DC1844EBF31DB2E53DBC64E /* AddIncidentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddIncidentViewController.h; sourceTree = "<group>"; };
 		2DC1854AC052D9377A08D33C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		2DC185DED80B554B3CD04077 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		2DC1863F09FFD1B8EF7B47F0 /* UIView+WSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WSLoading.h"; sourceTree = "<group>"; };
 		2DC1869B49911D90A70B893B /* IncidentAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentAdapter.h; sourceTree = "<group>"; };
 		2DC186B3B33F3F312A621DE4 /* ParseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseClient.h; sourceTree = "<group>"; };
@@ -142,9 +143,9 @@
 		2DC188C66B7EEA2E54A8F67C /* UITextField+Resilience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Resilience.h"; sourceTree = "<group>"; };
 		2DC188D59156C3069BAA2DC5 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		2DC189041E4FE85122DD30AE /* DetailSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSelectionController.h; sourceTree = "<group>"; };
-		2DC189B035F58D9046F35D21 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		2DC189E09EF58C94ABF3F1CD /* NSDate+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatting.h"; sourceTree = "<group>"; };
 		2DC18A578BD40877F95077DD /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
+		2DC18A9861A538210F60F80A /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		2DC18B103369EC9756A14976 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixRotation.m"; sourceTree = "<group>"; };
 		2DC18B2D4F1831DEEC671AFB /* UITextField+Resilience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Resilience.m"; sourceTree = "<group>"; };
@@ -425,8 +426,8 @@
 				2DC184343388A7C7F9D95C86 /* Localizable.strings */,
 				2DC188D59156C3069BAA2DC5 /* FeedbackViewController.m */,
 				2DC18EB7ADF9ADD4C816C6CD /* FeedbackViewController.h */,
-				2DC1836FA3ED4AC2B1042380 /* LocationManager.m */,
-				2DC189B035F58D9046F35D21 /* LocationManager.h */,
+				2DC18A9861A538210F60F80A /* LocationManager.h */,
+				2DC185DED80B554B3CD04077 /* LocationManager.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -701,6 +702,7 @@
 				2DC18C2403FC25CBBF121D19 /* UploadIncident.m in Sources */,
 				2DC18D8DA18F873DC8BB0452 /* FeedbackViewController.m in Sources */,
 				2DC18CAED52E4212CED8C1EB /* NSDate+Formatting.m in Sources */,
+				2DC18D81CBFF13AF1986940E /* LocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,8 +751,8 @@
 				2DC18D48781291EDD18769DF /* UploadIncident.m in Sources */,
 				2DC18EFE69CAFAAA72262874 /* FeedbackViewController.m in Sources */,
 				0B8892FA1744E26C00CB5A46 /* UIImage+Tileable.m in Sources */,
-				2DC184B30073F537CFE2F83D /* LocationManager.m in Sources */,
 				2DC1851D44C2261FA16FC26E /* NSDate+Formatting.m in Sources */,
+				2DC18396960A1A1F13B0D5CA /* LocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

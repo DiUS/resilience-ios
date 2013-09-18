@@ -11,7 +11,9 @@
 
 typedef void (^Open311FailureBlock)(NSError *error);
 
-- (void)fetchIncidents:(CLLocation *)location success:(IncidentSuccessBlock)success failure:(Open311FailureBlock)failure;
+- (void)fetchIncidentsForLocation:(CLLocation *)location success:(IncidentSuccessBlock)success failure:(Open311FailureBlock)failure;
+
+- (void)fetchIncidentsAtCurrentLocation:(IncidentSuccessBlock)success failure:(Open311FailureBlock)failure;
 
 - (void)fetchServiceRequests:(CLLocation *)location success:(ServiceRequestSuccessBlock)success failure:(Open311FailureBlock)failure;
 

@@ -10,9 +10,10 @@
 #import "CLUploader.h"
 #import "CloudinaryClient.h"
 #import "Profile.h"
+#import "LocationManager.h"
 
 @interface Open311Client () <CLUploaderDelegate>
-
+@property (nonatomic, strong) LocationManager *locationManager;
 @end
 
 @implementation Open311Client
@@ -44,19 +45,31 @@
       NSLog(@"setting basic auth credientials: %@:****", username);
       [self setAuthorizationHeaderWithUsername:username password:password];
     }
-
   }
   return self;
 }
 
-- (void)fetchIncidents:(CLLocation *)location success:(IncidentSuccessBlock)success failure:(Open311FailureBlock)failure {
-  [self fetchServiceRequests:location success:^(NSArray *serviceRequests) {
-    NSMutableArray *incidents = [[NSMutableArray alloc] init];
-    for (ServiceRequest *request in serviceRequests) {
-      [incidents addObject:[[IncidentAdapter alloc] initWithServiceRequest:request]];
-    }
+- (void)fetchIncidentsForLocation:(CLLocation *)location success:(IncidentSuccessBlock)success failure:(Open311FailureBlock)failure {
+  [self fetchAndTransformServiceRequests:location success:success failure:failure];
+}
 
-    success(incidents);
+- (void)fetchIncidentsAtCurrentLocation:(IncidentSuccessBlock)success failure:(Open311FailureBlock)failure {
+  self.locationManager = [[LocationManager alloc] init];
+  [self.locationManager findLocation:^(CLLocation *location) {
+    [self fetchAndTransformServiceRequests:location success:success failure:failure];
+  } failure:^(NSString *error) {
+    [self fetchAndTransformServiceRequests:nil success:success failure:failure];
+  }];
+}
+
+- (void)fetchAndTransformServiceRequests:(CLLocation *)location success:(ServiceRequestSuccessBlock)success failure:(Open311FailureBlock)failure {
+  [self fetchServiceRequests:location
+                     success:^(NSArray *serviceRequests) {
+                       NSMutableArray *incidents = [[NSMutableArray alloc] init];
+                       for (ServiceRequest *request in serviceRequests) {
+                         [incidents addObject:[[IncidentAdapter alloc] initWithServiceRequest:request]];
+                       }
+                       success(incidents);
   }                  failure:failure];
 }
 
@@ -70,40 +83,41 @@
             @"radius": @"50"};
   }
 
-  [self getPath:@"requests.json" parameters:params success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
-    NSMutableArray *serviceRequests = [[NSMutableArray alloc] init];
-    for (NSDictionary *rawRequest in jsonResponse) {
-      ServiceRequest *serviceRequest = [[ServiceRequest alloc] init];
-      serviceRequest.servicRequestId = [rawRequest stringValueForKeyPath:@"service_request_id"];
-      serviceRequest.status = [rawRequest stringValueForKeyPath:@"status"];;
-      serviceRequest.statusNotes = [rawRequest stringValueForKeyPath:@"status_notes"];;
-      serviceRequest.serviceName = [rawRequest stringValueForKeyPath:@"service_name"];;
-      serviceRequest.serviceCode = [rawRequest stringValueForKeyPath:@"service_code"];;
-      serviceRequest.description = [rawRequest stringValueForKeyPath:@"description"];;
-      serviceRequest.agencyResponsible = [rawRequest stringValueForKeyPath:@"agency_responsible"];
-      serviceRequest.serviceNotice = [rawRequest stringValueForKeyPath:@"service_notice"];
-      serviceRequest.location = [[CLLocation alloc] initWithLatitude:[rawRequest doubleValueForKeyPath:@"lat"] longitude:[rawRequest doubleValueForKeyPath:@"long"]];
-      serviceRequest.address = [rawRequest stringValueForKeyPath:@"address"];
-      serviceRequest.addressId = [rawRequest stringValueForKeyPath:@"address_id"];
-      serviceRequest.email = [rawRequest stringValueForKeyPath:@"email"];
-      serviceRequest.deviceId = [rawRequest stringValueForKeyPath:@"device_id"];
-      serviceRequest.accountId = [rawRequest stringValueForKeyPath:@"account_id"];
-      serviceRequest.firstName = [rawRequest stringValueForKeyPath:@"first_name"];
-      serviceRequest.lastName = [rawRequest stringValueForKeyPath:@"last_name"];
-      serviceRequest.phone = [rawRequest stringValueForKeyPath:@"phone"];
-      serviceRequest.requestDescription = [rawRequest stringValueForKeyPath:@"description"];
-      serviceRequest.mediaUrl = [rawRequest urlValueForKeyPath:@"media_url"];
-      serviceRequest.requestedDate = [rawRequest dateValueForISO8601StringKeyPath:@"requested_datetime"];
-      serviceRequest.updatedDate = [rawRequest dateValueForISO8601StringKeyPath:@"updated_datetime"];
-      serviceRequest.expectedDate = [rawRequest dateValueForISO8601StringKeyPath:@"expected_datetime"];
-      [serviceRequests addObject:serviceRequest];
-    }
-
-    success(serviceRequests);
-
-  }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    failure(error);
-  }];
+  [self getPath:@"requests.json"
+     parameters:params
+        success:^(AFHTTPRequestOperation *operation, id jsonResponse) {
+          NSMutableArray *serviceRequests = [[NSMutableArray alloc] init];
+          for (NSDictionary *rawRequest in jsonResponse) {
+            ServiceRequest *serviceRequest = [[ServiceRequest alloc] init];
+            serviceRequest.servicRequestId = [rawRequest stringValueForKeyPath:@"service_request_id"];
+            serviceRequest.status = [rawRequest stringValueForKeyPath:@"status"];;
+            serviceRequest.statusNotes = [rawRequest stringValueForKeyPath:@"status_notes"];;
+            serviceRequest.serviceName = [rawRequest stringValueForKeyPath:@"service_name"];;
+            serviceRequest.serviceCode = [rawRequest stringValueForKeyPath:@"service_code"];;
+            serviceRequest.description = [rawRequest stringValueForKeyPath:@"description"];;
+            serviceRequest.agencyResponsible = [rawRequest stringValueForKeyPath:@"agency_responsible"];
+            serviceRequest.serviceNotice = [rawRequest stringValueForKeyPath:@"service_notice"];
+            serviceRequest.location = [[CLLocation alloc] initWithLatitude:[rawRequest doubleValueForKeyPath:@"lat"] longitude:[rawRequest doubleValueForKeyPath:@"long"]];
+            serviceRequest.address = [rawRequest stringValueForKeyPath:@"address"];
+            serviceRequest.addressId = [rawRequest stringValueForKeyPath:@"address_id"];
+            serviceRequest.email = [rawRequest stringValueForKeyPath:@"email"];
+            serviceRequest.deviceId = [rawRequest stringValueForKeyPath:@"device_id"];
+            serviceRequest.accountId = [rawRequest stringValueForKeyPath:@"account_id"];
+            serviceRequest.firstName = [rawRequest stringValueForKeyPath:@"first_name"];
+            serviceRequest.lastName = [rawRequest stringValueForKeyPath:@"last_name"];
+            serviceRequest.phone = [rawRequest stringValueForKeyPath:@"phone"];
+            serviceRequest.requestDescription = [rawRequest stringValueForKeyPath:@"description"];
+            serviceRequest.mediaUrl = [rawRequest urlValueForKeyPath:@"media_url"];
+            serviceRequest.requestedDate = [rawRequest dateValueForISO8601StringKeyPath:@"requested_datetime"];
+            serviceRequest.updatedDate = [rawRequest dateValueForISO8601StringKeyPath:@"updated_datetime"];
+            serviceRequest.expectedDate = [rawRequest dateValueForISO8601StringKeyPath:@"expected_datetime"];
+            [serviceRequests addObject:serviceRequest];
+          }
+          success(serviceRequests);
+        }
+        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          failure(error);
+        }];
 }
 
 - (void)fetchCategories:(CategoriesSuccessBlock)success failure:(Open311FailureBlock)failure {

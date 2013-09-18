@@ -5,7 +5,6 @@
 #import "IncidentCategory.h"
 #import "UIImage+FixRotation.h"
 #import "ResilientUploader.h"
-#import "RACDisposable.h"
 #import "LocationManager.h"
 
 @interface AddIncidentViewController() <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
@@ -14,12 +13,12 @@
 @property (nonatomic, strong) UIImagePickerController *imgPicker;
 @property (nonatomic, strong) UIImage *photo;
 @property (nonatomic, strong) DetailSelectionController *detailSelectionController;
-@property (nonatomic, strong) RACDisposable *currentLocationDisposable;;
 @property (nonatomic, strong) IncidentCategory *category;
 @property (nonatomic, strong) UIBarButtonItem *nextButton;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) UIImageView *cameraImageView;
 @property (nonatomic, strong) UILabel *addPhotoLabel;
+@property (nonatomic, strong) LocationManager *locationManager;
 
 @end
 
@@ -68,26 +67,21 @@
   self.cameraButton.frame = self.view.frame;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+}
+
 - (void)progressToIncidentDetails {
   [self.navigationController pushViewController:self.detailSelectionController animated:YES];
 }
 
 - (void)findLocationAndUploadIncident {
-  self.currentLocationDisposable = [[[[[[[LocationManager sharedManager]
-          currentLocationSignal]
-          takeUntil:[RACSignal interval:3]]
-          takeLast:1]
-          doNext:^(id location) {
-            NSLog(@"location %@", location);
-            [self queueIncidentForUpload:location];
-          }] doError:^(NSError *error) {
-            NSLog(@"Error getting location: %@", error);
-            [self queueIncidentForUpload:nil];
-          }]
-          subscribeCompleted:^{
-          }
-  ];
-
+  self.locationManager = [[LocationManager alloc] init];
+  [self.locationManager findLocationWithHighAccuracy:^(CLLocation *location) {
+      [self queueIncidentForUpload:location];
+    } failure:^(NSString *error) {
+      [self queueIncidentForUpload:nil];
+    }];
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -96,7 +90,8 @@
                                           andLocation:location
                                           andCategory:self.category
                                               andDate:[NSDate date]
-                                                andID:nil andImage:self.photo];
+                                                andID:nil
+                                             andImage:self.photo];
 
   [[ResilientUploader sharedUploader] saveIncident:incident];
 }

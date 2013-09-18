@@ -1,6 +1,5 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreGraphics/CoreGraphics.h>
-#import <ReactiveCocoa.h>
 #import "IncidentListViewController.h"
 #import "Incident.h"
 #import "ParseClient.h"
@@ -10,13 +9,11 @@
 #import "Open311Client.h"
 #import "WBErrorNoticeView.h"
 #import "WBStickyNoticeView.h"
-#import "LocationManager.h"
 #import "UIView+WSLoading.h"
 
 @interface IncidentListViewController ()<IncidentViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *incidents;
-@property (nonatomic, strong) RACDisposable *currentLocationDisposable;;
 
 @end
 
@@ -59,31 +56,13 @@
   [refresh endRefreshing];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-  [self.currentLocationDisposable dispose];
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
 }
 
 - (void)loadIncidents {
   [self.view showLoading];
-  self.currentLocationDisposable = [[[[[[[LocationManager sharedManager]
-          currentLocationSignal]
-    takeUntil:[RACSignal interval:1]]
-    takeLast:1]
-    doNext:^(id location) {
-      NSLog(@"location %@", location);
-      NSLog(@"received location: %@", location);
-      [self loadIncidents:location];
-    }] doError:^(NSError *error) {
-      NSLog(@"Error getting location: %@", error);
-    [self loadIncidents:nil];
-  }]
-    subscribeCompleted:^{
-    }
-  ];
-}
-
-- (void)loadIncidents:(CLLocation *)location {
-  [[Open311Client sharedClient] fetchIncidents:location success:^(NSArray *incidents) {
+  [[Open311Client sharedClient] fetchIncidentsAtCurrentLocation:^(NSArray *incidents) {
     self.incidents = incidents;
     [self.tableView reloadData];
     [self.view hideLoading];

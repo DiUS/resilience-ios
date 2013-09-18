@@ -1,14 +1,14 @@
-
+#import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
-#import <ReactiveCocoa.h>
 
 @interface LocationManager : NSObject
 
-+ (LocationManager*) sharedManager;
+typedef void (^LocationSuccessBlock)(CLLocation *location);
+typedef void (^LocationFailureBlock)(NSString *error);
 
 @property (strong, nonatomic) NSString *purpose;
 
-@property (readonly, nonatomic) RACSignal *currentLocationSignal;
+- (void)findLocation:(LocationSuccessBlock)success failure:(LocationFailureBlock)failure;
 
-
+- (void)findLocationWithHighAccuracy:(LocationSuccessBlock)success failure:(LocationFailureBlock)failure;
 @end

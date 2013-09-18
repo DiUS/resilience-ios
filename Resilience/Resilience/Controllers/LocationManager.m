@@ -1,32 +1,20 @@
-
 #import "LocationManager.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface LocationManager()<CLLocationManagerDelegate>
+@interface LocationManager () <CLLocationManagerDelegate>
 
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) RACSubject *locationSubject;
-@property (readwrite, nonatomic) int numberOfLocationSubscribers;
+@property(strong, nonatomic) CLLocationManager *locationManager;
+@property(nonatomic, copy) LocationSuccessBlock successBlock;
+@property(nonatomic, copy) LocationFailureBlock failureBlock;
 
 @end
 
 @implementation LocationManager
 
-+ (LocationManager*) sharedManager {
-  static LocationManager *_locationManager;
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    _locationManager = [[LocationManager alloc] init];
-  });
-
-  return _locationManager;
-}
-
 - (id)init {
   self = [super init];
-  if(!self) return nil;
+  if (!self) return nil;
 
-  self.locationSubject = [RACReplaySubject replaySubjectWithCapacity:1];
   self.locationManager = [[CLLocationManager alloc] init];
   self.locationManager.delegate = self;
   self.locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
@@ -35,38 +23,51 @@
   return self;
 }
 
-- (RACSignal *)currentLocationSignal {
-  return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-    @synchronized(self) {
-      if(self.numberOfLocationSubscribers == 0) {
-        [self.locationManager startUpdatingLocation];
-      }
-      ++self.numberOfLocationSubscribers;
+- (void)findLocation:(LocationSuccessBlock)success failure:(LocationFailureBlock)failure {
+  [self findLocation:YES success:success failure:failure];
+}
+
+- (void)findLocationWithHighAccuracy:(LocationSuccessBlock)success failure:(LocationFailureBlock)failure {
+  [self findLocation:NO success:success failure:failure];
+}
+
+- (void)findLocation:(BOOL)useCachedValue success:(LocationSuccessBlock)success failure:(LocationFailureBlock)failure {
+  if ([CLLocationManager locationServicesEnabled]) {
+    self.successBlock = success;
+    self.failureBlock = failure;
+    if (useCachedValue) {
+      [self requestLastLocationReceived];
+    } else {
+      [self requestUpdatedLocation];
     }
+  } else {
+    failure(@"Location services disabled");
+  }
+}
 
-    [self.locationSubject subscribe:subscriber];
+- (void)requestLastLocationReceived {
+  [self.locationManager startMonitoringSignificantLocationChanges];
+  if (self.locationManager.location) { // TODO: Check timestamp?
+    self.successBlock(self.locationManager.location);
+  } else {
+    [self requestUpdatedLocation];
+  }
+}
 
-    return [RACDisposable disposableWithBlock:^{
-      @synchronized(self) {
-        --self.numberOfLocationSubscribers;
-        if(self.numberOfLocationSubscribers == 0) {
-          [self.locationManager stopUpdatingLocation];
-        }
-      }
-    }];
-  }];
+- (void)requestUpdatedLocation {
+  [self.locationManager startUpdatingLocation];
 }
 
 # pragma mark - CLLocationManagerDelegate 
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
-  NSLog(@"location update received");
-  [self.locationSubject sendNext:locations[0]];
+  [self.locationManager stopUpdatingLocation];
+  self.successBlock(locations[0]);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-  [self.locationSubject sendError:error];
+  self.failureBlock(error.localizedDescription);
 }
 
 @end

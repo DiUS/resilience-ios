@@ -33,7 +33,7 @@
 }
 
 - (void)updateAnnotations:(CLLocation *)location {
-  [[Open311Client sharedClient] fetchIncidents:location success:^(NSArray *incidents) {
+  [[Open311Client sharedClient] fetchIncidentsForLocation:location success:^(NSArray *incidents) {
     [self.mapView removeAnnotations:self.annotations];
     [self.annotations removeAllObjects];
     for (Incident * incident in incidents) {
@@ -117,6 +117,5 @@
   CLLocation *location = [[CLLocation alloc] initWithLatitude:mapView.region.center.latitude longitude:mapView.region.center.longitude];
   return location;
 }
-
 
 @end

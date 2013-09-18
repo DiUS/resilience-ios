@@ -8,7 +8,9 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+#if DEBUG
   [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
+#endif
 
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   
