@@ -46,7 +46,6 @@
 }
 
 - (void)requestLastLocationReceived {
-  [self.locationManager startMonitoringSignificantLocationChanges];
   if (self.locationManager.location) { // TODO: Check timestamp?
     self.successBlock(self.locationManager.location);
   } else {

@@ -11,8 +11,10 @@
 
 @interface IncidentMapViewController () <MKMapViewDelegate, IncidentViewControllerDelegate>
 
-@property (nonatomic, retain) MKMapView *mapView;
-@property (nonatomic, retain) NSMutableArray *annotations;
+@property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) NSMutableArray *annotations;
+@property (nonatomic, assign) BOOL hasLocation;
+
 @end
 
 @implementation IncidentMapViewController
@@ -26,7 +28,9 @@
   self.view = self.mapView;
   self.mapView.delegate = self;
   self.mapView.showsUserLocation = YES;
+  self.mapView.userTrackingMode = MKUserTrackingModeNone;
   self.annotations = [[NSMutableArray alloc] init];
+  self.hasLocation = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -97,16 +101,19 @@
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-  MKCoordinateRegion region;
-  MKCoordinateSpan span;
-  span.latitudeDelta = 0.5;
-  span.longitudeDelta = 0.5;
-  CLLocationCoordinate2D location;
-  location.latitude = userLocation.coordinate.latitude;
-  location.longitude = userLocation.coordinate.longitude;
-  region.span = span;
-  region.center = location;
-  [mapView setRegion:region animated:YES];
+  if(!self.hasLocation) {
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.5;
+    span.longitudeDelta = 0.5;
+    CLLocationCoordinate2D location;
+    location.latitude = userLocation.coordinate.latitude;
+    location.longitude = userLocation.coordinate.longitude;
+    region.span = span;
+    region.center = location;
+    self.hasLocation = YES;
+    [mapView setRegion:region animated:YES];
+  }
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
