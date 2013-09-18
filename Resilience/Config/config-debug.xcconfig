@@ -10,8 +10,7 @@ PRODUCT_DISPLAY_NAME=$(PRODUCT_NAME) Debug
 GCC_PRECOMPILE_PREFIX_HEADER = YES
 GCC_PREFIX_HEADER = Resilience/Resilience-Prefix.pch
 
-//OTHER_LDFLAGS = $(inherited) $(XCODE_TEST_LDFLAGS)
-
 SERVER_URL=api.parse.com
 OPEN311_SERVER_URL=api.resilience-app.org
 //OPEN311_SERVER_URL=localhost:9292
+

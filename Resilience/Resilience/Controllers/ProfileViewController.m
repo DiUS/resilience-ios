@@ -1,3 +1,6 @@
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "ProfileViewController.h"
 #import "UITextField+Form.h"
 #import "UIColor+Resilience.h"
@@ -12,6 +15,7 @@
 @property (nonatomic, strong) UITextField *emailTextField;
 @property (nonatomic, weak) UITextField *currentTextField;
 @property (nonatomic, strong) Profile *profile;
+@property (nonatomic, strong) id tracker;
 
 @end
 
@@ -37,13 +41,17 @@
   self.profile = [Profile loadProfile];
   self.tableView.backgroundView = nil;
   self.tableView.backgroundColor = [UIColor defaultBackgroundColor];
+  self.tracker = [[GAI sharedInstance] defaultTracker];
+  [self.tracker set:kGAIScreenName value:@"Profile"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   self.firstNameTextField.text = self.profile.firstName;
   self.lastNameTextField.text = self.profile.lastName;
   self.emailTextField.text = self.profile.email;
   self.phoneNumberTextField.text = self.profile.phone;
+  [self.tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void)save:(id)save {

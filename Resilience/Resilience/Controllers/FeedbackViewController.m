@@ -28,6 +28,7 @@
   self.headingLabel.backgroundColor = [UIColor clearColor];
   self.headingLabel.translatesAutoresizingMaskIntoConstraints = NO;
   self.view.backgroundColor = [UIColor defaultBackgroundColor];
+  self.screenName = @"Feedback";
   [self.view addSubview:self.headingLabel];
   [self.view addSubview:self.contentTextField];
 }

@@ -6,10 +6,6 @@
 	<string>${BASIC_AUTH_PASSWORD}</string>
 	<key>BasicAuthUsername</key>
 	<string>${BASIC_AUTH_USERNAME}</string>
-  <key>CloudinaryApiKey</key>
-  <string>${CLOUDINARY_API_KEY}</string>
-  <key>CloudinaryApiSecret</key>
-  <string>${CLOUDINARY_API_SECRET}</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -42,7 +38,13 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>andys-air.local-SNAPSHOT</string>
+	<string>nothing.attdns.com-SNAPSHOT</string>
+	<key>CloudinaryApiKey</key>
+	<string>${CLOUDINARY_API_KEY}</string>
+	<key>CloudinaryApiSecret</key>
+	<string>${CLOUDINARY_API_SECRET}</string>
+	<key>GATrackerId</key>
+	<string>${GA_TRACKER_ID}</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>Open311ServerURL</key>

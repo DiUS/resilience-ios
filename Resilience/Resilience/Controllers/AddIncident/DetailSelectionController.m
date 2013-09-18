@@ -4,13 +4,16 @@
 #import "IncidentCategory.h"
 #import "UITextField+Resilience.h"
 #import "UIColor+Resilience.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface DetailSelectionController ()
 
 @property (nonatomic, strong) NSArray *categories;
 @property (nonatomic, strong) NSIndexPath *selectedIndex;
 @property (nonatomic, strong) UITextField *nameTextField;
-
+@property (nonatomic, strong) id tracker;
 
 @end
 
@@ -44,10 +47,13 @@
 
   self.tableView.backgroundView = nil;
   self.view.backgroundColor = [UIColor defaultBackgroundColor];
+  self.tracker = [[GAI sharedInstance] defaultTracker];
+  [self.tracker set:kGAIScreenName value:@"Add Incident Detail"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  [self.tracker send:[[GAIDictionaryBuilder createAppView] build]];
   [[Open311Client sharedClient] fetchCategories:^(NSArray *categories) {
     self.categories = categories;
     [self.tableView reloadData];

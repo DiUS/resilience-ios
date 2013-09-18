@@ -41,4 +41,4 @@ SPEC CHECKSUMS:
   NoticeView: f885ce90b53dacce3b19f2d5e95c6db68fe4e45d
   TestFlightSDK: 940906d4b2550cf397c6f2d2fcc4ebfdcd8ae858
 
-COCOAPODS: 0.23.0
+COCOAPODS: 0.24.0

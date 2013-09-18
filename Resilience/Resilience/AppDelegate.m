@@ -4,6 +4,7 @@
 #import "AFHTTPRequestOperationLogger.h"
 #import "UIColor+Resilience.h"
 #import "ResilientUploader.h"
+#import "GAI.h"
 
 @implementation AppDelegate
 
@@ -11,6 +12,8 @@
 #if DEBUG
   [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
 #endif
+  [GAI sharedInstance].trackUncaughtExceptions = YES;
+  [[GAI sharedInstance] trackerWithTrackingId:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"GATrackerId"]];
 
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   

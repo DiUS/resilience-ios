@@ -27,6 +27,7 @@
 - (id)init {
   if (self = [super init]) {
     self.view.backgroundColor = [UIColor defaultBackgroundColor];
+    self.screenName = @"Add Incident";
   }
   return self;
 }

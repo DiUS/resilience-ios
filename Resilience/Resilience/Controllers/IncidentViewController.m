@@ -44,6 +44,7 @@ static const float IMAGE_HEIGHT = 175.f;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.screenName = @"Incident Detail";
 }
 
 - (void)loadView {

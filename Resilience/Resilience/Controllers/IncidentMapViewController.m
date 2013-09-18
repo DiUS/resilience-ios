@@ -31,6 +31,7 @@
   self.mapView.userTrackingMode = MKUserTrackingModeNone;
   self.annotations = [[NSMutableArray alloc] init];
   self.hasLocation = NO;
+  self.screenName = @"Incident map";
 }
 
 - (void)viewWillAppear:(BOOL)animated {

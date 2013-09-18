@@ -1,5 +1,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "IncidentListViewController.h"
 #import "Incident.h"
 #import "ParseClient.h"
@@ -14,6 +17,7 @@
 @interface IncidentListViewController ()<IncidentViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *incidents;
+@property (nonatomic, strong) id tracker;
 
 @end
 
@@ -35,10 +39,14 @@
   refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
   [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
   self.refreshControl = refresh;
+  self.tracker = [[GAI sharedInstance] defaultTracker];
+  [self.tracker set:kGAIScreenName value:@"Incident List"];
   [self loadIncidents];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self.tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void)didReceiveMemoryWarning {
