@@ -26,17 +26,14 @@
 
 - (id)init {
   if (self = [super init]) {
-    self.view.backgroundColor = [UIColor defaultBackgroundColor];
     self.screenName = @"Add Incident";
   }
   return self;
 }
 
-- (void)viewDidLoad {
-}
-
 - (void)loadView {
-  self.view = [[UIView alloc] initWithFrame:CGRectZero];
+  [super loadView];
+  self.view.backgroundColor = [UIColor defaultBackgroundColor];
   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissAddIncident)];
   self.nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(progressToIncidentDetails)];
   self.navigationItem.rightBarButtonItem = self.nextButton;
@@ -53,7 +50,6 @@
   self.addPhotoLabel.backgroundColor = [UIColor clearColor];
   self.addPhotoLabel.translatesAutoresizingMaskIntoConstraints = NO;
   [self.cameraButton addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
-  self.view.translatesAutoresizingMaskIntoConstraints = NO;
 
   [self.view addSubview:self.cameraButton];
   [self.cameraButton addSubview:self.cameraImageView];
@@ -137,18 +133,11 @@
 }
 
 - (void)enableDoneButton {
-  if ([self isValid]) {
-    self.navigationItem.rightBarButtonItem.enabled = YES;
-  } else{
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-  }
+  self.navigationItem.rightBarButtonItem.enabled = [self isValid];
 }
 
 - (BOOL)isValid {
-  if (self.photo != nil) {
-    return YES;
-  }
-  return NO;
+  return self.photo != nil;
 }
 
 - (void)updateViewConstraints {
