@@ -1,6 +1,5 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
-#import "DCIntrospect.h"
 #import "AFHTTPRequestOperationLogger.h"
 #import "UIColor+Resilience.h"
 #import "ResilientUploader.h"
@@ -35,9 +34,6 @@
 
   [self.window makeKeyAndVisible];
 
-#if TARGET_IPHONE_SIMULATOR
-  [[DCIntrospect sharedIntrospector] start];
-#endif
   return YES;
 }
 

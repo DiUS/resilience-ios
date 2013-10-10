@@ -3,7 +3,6 @@ PODS:
     - AFNetworking (~> 1.0)
   - AFNetworking (1.3.2)
   - Cloudinary (1.0.6)
-  - DCIntrospect (0.0.2)
   - GoogleAnalytics-iOS-SDK (3.0)
   - ISO8601DateFormatter (0.6)
   - Kiwi (2.2.1):
@@ -21,7 +20,6 @@ DEPENDENCIES:
   - AFHTTPRequestOperationLogger
   - AFNetworking (= 1.3.2)
   - Cloudinary
-  - DCIntrospect
   - GoogleAnalytics-iOS-SDK
   - ISO8601DateFormatter
   - Kiwi
@@ -33,12 +31,11 @@ SPEC CHECKSUMS:
   AFHTTPRequestOperationLogger: c6ad1f4bfd64fc9a8dbe94c8489420d195f15cb0
   AFNetworking: 7f9bcd7c287a75476cd5c61e82fd3380e93e4c54
   Cloudinary: b7cc6d3dd6d4814f1512d6fafc212d693e71a17b
-  DCIntrospect: 2f5cab0b58b170459ebcb200f59042306fcb0c0d
   GoogleAnalytics-iOS-SDK: f8d5faf4862b679667be0c270531a189572275d1
-  ISO8601DateFormatter: 077ce9d8cfba171bc1ced6cba0d2ae4aefab7619
+  ISO8601DateFormatter: 72ad8f5b4f51bd8fb317d7284c32fee5f54a6584
   Kiwi: e6524ba0eaa1b28af7af146bdee5314b32aa3edb
   Mantle: f5b5cba1b112273fe3bb4433cdcf1da76203c2b4
   NoticeView: f885ce90b53dacce3b19f2d5e95c6db68fe4e45d
   TestFlightSDK: 940906d4b2550cf397c6f2d2fcc4ebfdcd8ae858
 
-COCOAPODS: 0.24.0
+COCOAPODS: 0.26.2

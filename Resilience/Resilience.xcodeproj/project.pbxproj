@@ -75,6 +75,7 @@
 		A1419A1316C60DD20004FA1C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1419A1216C60DD20004FA1C /* Icon@2x.png */; };
 		A1419A1516C60DD60004FA1C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A1419A1416C60DD60004FA1C /* Icon.png */; };
 		A1454BCF1744EC920088618B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1454BCE1744EC920088618B /* Security.framework */; };
+		A17AA5651806338600209452 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17AA5641806338600209452 /* CFNetwork.framework */; };
 		A17CE86317194D2F00AF2EA1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A17CE86217194D2F00AF2EA1 /* Default-568h@2x.png */; };
 		A1DDA47D16661980003A21C0 /* IncidentMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDA47A16661980003A21C0 /* IncidentMapViewController.m */; };
 		A1DDA47E16661980003A21C0 /* IncidentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDA47C16661980003A21C0 /* IncidentListViewController.m */; };
@@ -193,6 +194,9 @@
 		A1419A1216C60DD20004FA1C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A1419A1416C60DD60004FA1C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A1454BCE1744EC920088618B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A17AA5621806334B00209452 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		A17AA5641806338600209452 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A17AA5681806364300209452 /* config-reveal.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "config-reveal.xcconfig"; path = "Config/config-reveal.xcconfig"; sourceTree = "<group>"; };
 		A17CE86217194D2F00AF2EA1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A1DDA47916661980003A21C0 /* IncidentMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentMapViewController.h; sourceTree = "<group>"; };
 		A1DDA47A16661980003A21C0 /* IncidentMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncidentMapViewController.m; sourceTree = "<group>"; };
@@ -248,6 +252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17AA5651806338600209452 /* CFNetwork.framework in Frameworks */,
 				A1454BCF1744EC920088618B /* Security.framework in Frameworks */,
 				8927C7B5166AE61800D501B5 /* ImageIO.framework in Frameworks */,
 				FB1EA13E1669F8D4002B93EF /* CoreLocation.framework in Frameworks */,
@@ -399,6 +404,7 @@
 		A1044B30165CCD82002DC3E1 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
+				A17AA5681806364300209452 /* config-reveal.xcconfig */,
 				A1044BA01660889B002DC3E1 /* config-test.xcconfig */,
 				A1044B31165CD18C002DC3E1 /* config-release.xcconfig */,
 				A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */,
@@ -463,7 +469,6 @@
 		FBB1CDAD15C3F3E4000D168E = {
 			isa = PBXGroup;
 			children = (
-				A1454BCE1744EC920088618B /* Security.framework */,
 				A17CE86217194D2F00AF2EA1 /* Default-568h@2x.png */,
 				A1419A1416C60DD60004FA1C /* Icon.png */,
 				A1419A1216C60DD20004FA1C /* Icon@2x.png */,
@@ -487,6 +492,9 @@
 		FBB1CDBB15C3F3E4000D168E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A17AA5641806338600209452 /* CFNetwork.framework */,
+				A17AA5621806334B00209452 /* Reveal.framework */,
+				A1454BCE1744EC920088618B /* Security.framework */,
 				8927C7B4166AE61800D501B5 /* ImageIO.framework */,
 				FB1EA13D1669F8D4002B93EF /* CoreLocation.framework */,
 				FB1EA1211669E2F6002B93EF /* MapKit.framework */,
@@ -868,8 +876,12 @@
 		};
 		FBB1CDFA15C3F3E5000D168E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1044B32165CD18C002DC3E1 /* config-debug.xcconfig */;
+			baseConfigurationReference = A17AA5681806364300209452 /* config-reveal.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/andy/Projects/dius/resilience/resilience-ios/Resilience",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
 				INFOPLIST_FILE = "Resilience/Resilience-Info.plist";
@@ -883,6 +895,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A1044B31165CD18C002DC3E1 /* config-release.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/andy/Projects/dius/resilience/resilience-ios/Resilience",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Resilience/Resilience-Prefix.pch";
 				INFOPLIST_FILE = "Resilience/Resilience-Info.plist";
