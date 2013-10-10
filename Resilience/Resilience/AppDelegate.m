@@ -18,9 +18,6 @@
   
   RootViewController *rootViewController = [[RootViewController alloc] init];
 
-  UIImage *navBarImage = [UIImage imageNamed:@"Assets/TitleBar"];
-  [[UINavigationBar appearance] setBackgroundImage:[navBarImage resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)] forBarMetrics:UIBarMetricsDefault];
-  [[UIToolbar appearance] setBackgroundImage:[navBarImage resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
   [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
 
   NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary: [[UINavigationBar appearance] titleTextAttributes]];

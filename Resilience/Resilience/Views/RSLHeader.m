@@ -12,7 +12,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-      UIImage *resizableBackground = [[UIImage imageNamed:@"Assets/TitleBarWithBump"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 1.0, 65.0, 64.0)];
+      UIImage *resizableBackground = [[UIImage imageNamed:@"Assets/TitleBarWithBump"] resizableImageWithCapInsets:UIEdgeInsetsMake(3.0, 1.0, 65.0, 64.0)];
       self.headerBackground = [[UIImageView alloc] initWithImage:resizableBackground];
       [self addSubview:self.headerBackground];
 
@@ -52,17 +52,17 @@
 
   //Layout buttons
   self.addIncidentButton.frame = CGRectMake(CGRectGetWidth(self.bounds) - (self.addIncidentButton.imageView.image.size.width + 9),
-                                         4.0,
+                                         24.0,
                                          self.addIncidentButton.imageView.image.size.width,
                                          self.addIncidentButton.imageView.image.size.height);
 
   self.incidentMapButton.frame = CGRectMake((CGRectGetWidth(self.bounds) / 2) - self.incidentMapButton.imageView.image.size.width,
-                                         10.0,
+                                         30.0,
                                          self.incidentMapButton.imageView.image.size.width,
                                          self.incidentMapButton.imageView.image.size.height);
 
   self.incidentListButton.frame = CGRectMake((CGRectGetWidth(self.bounds) / 2),
-                                          10.0,
+                                          30.0,
                                           self.incidentMapButton.imageView.image.size.width,
                                           self.incidentMapButton.imageView.image.size.height);
 }

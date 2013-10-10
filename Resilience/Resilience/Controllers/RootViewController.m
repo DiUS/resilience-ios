@@ -73,7 +73,7 @@
 }
 
 - (void)viewDidLayoutSubviews {
-  self.header.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), 64.0);
+  self.header.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), 84.0);
   self.toolbar.frame = CGRectMake(0.0, CGRectGetHeight(self.view.frame) - 44.0, CGRectGetWidth(self.view.frame), 44.0);
 }
 
@@ -136,7 +136,7 @@
     [self.view removeConstraints:self.containerConstraints];
 
   self.containerConstraints = [NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|-46-[viewToAdd]-44-|"
+          constraintsWithVisualFormat:@"V:|-64-[viewToAdd]-44-|"
                               options:0
                               metrics:nil
                                 views:views];
