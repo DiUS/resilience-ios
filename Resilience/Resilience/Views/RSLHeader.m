@@ -1,4 +1,5 @@
 #import "RSLHeader.h"
+#import "UIDevice+iOS7.h"
 
 @interface RSLHeader()
 
@@ -49,20 +50,21 @@
 
 - (void)layoutSubviews {
   self.headerBackground.frame = self.bounds;
-
   //Layout buttons
+  float statusBar = [UIDevice iOS7] ? 20. : 0.;
+
   self.addIncidentButton.frame = CGRectMake(CGRectGetWidth(self.bounds) - (self.addIncidentButton.imageView.image.size.width + 9),
-                                         24.0,
+                                         4.0 + statusBar,
                                          self.addIncidentButton.imageView.image.size.width,
                                          self.addIncidentButton.imageView.image.size.height);
 
   self.incidentMapButton.frame = CGRectMake((CGRectGetWidth(self.bounds) / 2) - self.incidentMapButton.imageView.image.size.width,
-                                         30.0,
+                                         10.0 + statusBar,
                                          self.incidentMapButton.imageView.image.size.width,
                                          self.incidentMapButton.imageView.image.size.height);
 
   self.incidentListButton.frame = CGRectMake((CGRectGetWidth(self.bounds) / 2),
-                                          30.0,
+                                          10.0 + statusBar,
                                           self.incidentMapButton.imageView.image.size.width,
                                           self.incidentMapButton.imageView.image.size.height);
 }

@@ -11,6 +11,7 @@
 #import "AppNotifications.h"
 #import "WBStickyNoticeView.h"
 #import "FeedbackViewController.h"
+#import "UIDevice+iOS7.h"
 
 @interface RootViewController()
 
@@ -73,7 +74,8 @@
 }
 
 - (void)viewDidLayoutSubviews {
-  self.header.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), 84.0);
+  float vheight = [UIDevice iOS7] ? 84. : 64.;
+  self.header.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), vheight);
   self.toolbar.frame = CGRectMake(0.0, CGRectGetHeight(self.view.frame) - 44.0, CGRectGetWidth(self.view.frame), 44.0);
 }
 
@@ -135,10 +137,11 @@
   if(self.containerConstraints)
     [self.view removeConstraints:self.containerConstraints];
 
+  NSNumber *vpadding = [UIDevice iOS7] ? @64 : @44;
   self.containerConstraints = [NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|-64-[viewToAdd]-44-|"
+          constraintsWithVisualFormat:@"V:|-vpadding-[viewToAdd]-44-|"
                               options:0
-                              metrics:nil
+                              metrics:@{ @"vpadding": vpadding }
                                 views:views];
   self.containerConstraints = [self.containerConstraints arrayByAddingObjectsFromArray:[NSLayoutConstraint
           constraintsWithVisualFormat:@"H:|[viewToAdd]|"

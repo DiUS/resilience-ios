@@ -43,6 +43,7 @@
 		2DC189A31ED17A5245C3ED39 /* ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC181D85F53DBF8F6CC5BAB /* ServiceRequest.m */; };
 		2DC18A2B60EAB74BA3A4B91F /* IncidentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18C74E4CAEA46175AF113 /* IncidentCell.m */; };
 		2DC18A2CC04FE515FE102763 /* UIImage+FixRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */; };
+		2DC18A56F0F17B0606C7E440 /* UIDevice+iOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F1A0A7FBCCEADA7E5DF /* UIDevice+iOS7.m */; };
 		2DC18AA55CFBAFBE51A44570 /* ResilientUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18DC3A352C814191BB654 /* ResilientUploader.m */; };
 		2DC18ABBBFFDFB1A8D6F2201 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC184343388A7C7F9D95C86 /* Localizable.strings */; };
 		2DC18ABCE849713F0216B4C7 /* IncidentDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC186CE858398FA277F07DB /* IncidentDetails.m */; };
@@ -54,6 +55,7 @@
 		2DC18C2403FC25CBBF121D19 /* UploadIncident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F9A8991981FD2CF4BD3 /* UploadIncident.m */; };
 		2DC18CAED52E4212CED8C1EB /* NSDate+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18B8F70CF94AEC02257E3 /* NSDate+Formatting.m */; };
 		2DC18D48781291EDD18769DF /* UploadIncident.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F9A8991981FD2CF4BD3 /* UploadIncident.m */; };
+		2DC18D4E05C91037DD06DF6F /* UIDevice+iOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18F1A0A7FBCCEADA7E5DF /* UIDevice+iOS7.m */; };
 		2DC18D81CBFF13AF1986940E /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC185DED80B554B3CD04077 /* LocationManager.m */; };
 		2DC18D8DA18F873DC8BB0452 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC188D59156C3069BAA2DC5 /* FeedbackViewController.m */; };
 		2DC18E40A15187A376822547 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC18287279BE2ABF06DC268 /* Service.m */; };
@@ -147,6 +149,7 @@
 		2DC189E09EF58C94ABF3F1CD /* NSDate+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatting.h"; sourceTree = "<group>"; };
 		2DC18A578BD40877F95077DD /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
 		2DC18A9861A538210F60F80A /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		2DC18A9CE5686AD2CCFC6117 /* UIDevice+iOS7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+iOS7.h"; sourceTree = "<group>"; };
 		2DC18B103369EC9756A14976 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		2DC18B14F523E60D70A3C5B6 /* UIImage+FixRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixRotation.m"; sourceTree = "<group>"; };
 		2DC18B2D4F1831DEEC671AFB /* UITextField+Resilience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Resilience.m"; sourceTree = "<group>"; };
@@ -170,6 +173,7 @@
 		2DC18EBFA16CF53440FBA3CD /* IncidentDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidentDetails.h; sourceTree = "<group>"; };
 		2DC18EF0D95254C2410ACED5 /* Open311Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Open311Client.h; sourceTree = "<group>"; };
 		2DC18F0060D3E4B6ADDAFD72 /* CloudinaryClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudinaryClient.h; sourceTree = "<group>"; };
+		2DC18F1A0A7FBCCEADA7E5DF /* UIDevice+iOS7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+iOS7.m"; sourceTree = "<group>"; };
 		2DC18F94C37BC75BD6209AA1 /* Incident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Incident.m; sourceTree = "<group>"; };
 		2DC18F9A8991981FD2CF4BD3 /* UploadIncident.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadIncident.m; sourceTree = "<group>"; };
 		2DC18FB1A3F46270905E24CD /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 				2DC18FD9FA6AA3804B32FDF7 /* UIView+WSLoading.m */,
 				2DC189E09EF58C94ABF3F1CD /* NSDate+Formatting.h */,
 				2DC18B8F70CF94AEC02257E3 /* NSDate+Formatting.m */,
+				2DC18F1A0A7FBCCEADA7E5DF /* UIDevice+iOS7.m */,
+				2DC18A9CE5686AD2CCFC6117 /* UIDevice+iOS7.h */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -711,6 +717,7 @@
 				2DC18D8DA18F873DC8BB0452 /* FeedbackViewController.m in Sources */,
 				2DC18CAED52E4212CED8C1EB /* NSDate+Formatting.m in Sources */,
 				2DC18D81CBFF13AF1986940E /* LocationManager.m in Sources */,
+				2DC18A56F0F17B0606C7E440 /* UIDevice+iOS7.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +768,7 @@
 				0B8892FA1744E26C00CB5A46 /* UIImage+Tileable.m in Sources */,
 				2DC1851D44C2261FA16FC26E /* NSDate+Formatting.m in Sources */,
 				2DC18396960A1A1F13B0D5CA /* LocationManager.m in Sources */,
+				2DC18D4E05C91037DD06DF6F /* UIDevice+iOS7.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
