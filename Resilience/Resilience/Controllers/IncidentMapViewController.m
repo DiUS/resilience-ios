@@ -104,14 +104,8 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
   if(!self.hasLocation) {
     MKCoordinateRegion region;
-    MKCoordinateSpan span;
-    span.latitudeDelta = 0.5;
-    span.longitudeDelta = 0.5;
-    CLLocationCoordinate2D location;
-    location.latitude = userLocation.coordinate.latitude;
-    location.longitude = userLocation.coordinate.longitude;
-    region.span = span;
-    region.center = location;
+    region.span = MKCoordinateSpanMake(0.5, 0.5);;
+    region.center =  userLocation.coordinate;
     self.hasLocation = YES;
     [mapView setRegion:region animated:YES];
   }

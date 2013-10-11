@@ -9,7 +9,7 @@
 #import <NoticeView/WBErrorNoticeView.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-static const float IMAGE_HEIGHT = 175.f;
+static const float IMAGE_HEIGHT = 120.f;
 
 
 @interface SwitchView : UIView
@@ -129,7 +129,20 @@ static const float IMAGE_HEIGHT = 175.f;
   self.incidentMap = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 350, 200)];
   self.incidentMap.delegate = self;
   self.incidentMap.scrollEnabled = NO;
-  
+  CLLocationCoordinate2D pointCoordinate = self.incident.location.coordinate;
+  WaypointAnnotation *pointAnnotation = [WaypointAnnotation annotationWithCoordinate:pointCoordinate];
+  pointAnnotation.title = self.incident.name;
+  pointAnnotation.subtitle = [self.incident createdDateAsString];
+  pointAnnotation.ID = self.incident.id;
+  pointAnnotation.category = self.incident.category;
+  pointAnnotation.incident = self.incident;
+  [self.incidentMap addAnnotation:pointAnnotation];
+  MKCoordinateRegion region;
+  region.span = MKCoordinateSpanMake(0.5, 0.5);
+  region.center = self.incident.location.coordinate;
+  [self.incidentMap setRegion:region animated:YES];
+
+
   self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
   self.incidentMap.translatesAutoresizingMaskIntoConstraints = NO;
   self.footerView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -148,7 +161,6 @@ static const float IMAGE_HEIGHT = 175.f;
 
 - (void)selectMapView {
   [self.imageView removeFromSuperview];
-//  self.issueMap s
   [self.view addSubview:self.incidentMap];
   self.pictureButton.selected = NO;
   self.mapButton.selected = YES;
@@ -160,14 +172,10 @@ static const float IMAGE_HEIGHT = 175.f;
   [super updateViewConstraints];
 
   UIView *displayView = nil;
-  if (self.mapButton.selected) {
-    displayView = self.incidentMap;
-  } else {
-    displayView = self.imageView;
-  }
+  displayView = self.mapButton.selected ? self.incidentMap : self.imageView;
   NSDictionary *views = NSDictionaryOfVariableBindings(displayView, _footerView, _warnImage, _switchButtons);
 
-  NSString *verticalConstraints = [NSString stringWithFormat:@"V:|-8-[displayView(==%f)]-[_switchButtons(30@1000)]-[_footerView]|", IMAGE_HEIGHT];
+  NSString *verticalConstraints = [NSString stringWithFormat:@"V:|-64-[displayView(==%f)]-[_switchButtons(30@1000)]-[_footerView]|", IMAGE_HEIGHT];
   [self.view addConstraints:[NSLayoutConstraint
           constraintsWithVisualFormat:verticalConstraints
                               options:0

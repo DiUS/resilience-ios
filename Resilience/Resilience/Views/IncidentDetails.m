@@ -63,7 +63,7 @@
   [super updateConstraints];
   NSDictionary *views = NSDictionaryOfVariableBindings(_incidentDescription, _incidentHeading, _reportedTime, _incidentLocation);
   [self addConstraints:[NSLayoutConstraint
-          constraintsWithVisualFormat:@"V:|[_reportedTime(15)]-[_incidentHeading(30)]-[_incidentLocation(10)]-[_incidentDescription]-(>=15)-|"
+          constraintsWithVisualFormat:@"V:|[_reportedTime(15)]-[_incidentHeading(30)]-[_incidentLocation(15)]-[_incidentDescription]-(>=15)-|"
                               options:0
                               metrics:nil views:views]];
 
