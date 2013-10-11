@@ -52,7 +52,8 @@ end
 desc "Build the "
 task :build => [:clean, :update_dependencies, :__load_workspace] do
   @main_builder.config.info_plist do |info|
-    info.version = ENV['TRAVIS_BUILD_NUMBER']||"#{Socket.gethostname}-SNAPSHOT"
+    info.version = ENV['TRAVIS_BUILD_NUMBER'] ? "1.0.#{ENV['TRAVIS_BUILD_NUMBER']}" : "#{Socket.gethostname}-SNAPSHOT"
+    info.marketing_version = info.version
     info.save
   end
   @main_builder.build
@@ -64,7 +65,7 @@ task :test => [:update_dependencies, :__load_workspace] do
 end
 
 desc "Package (.ipa & .dSYM.zip) "
-task :package => [:build, :__load_workspace] do
+task :package => [:build] do
   @main_builder.package
 end
 
