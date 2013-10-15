@@ -5,8 +5,8 @@ Bundler.setup
 Bundler.require
 
 PROVISIONING_PROFILE = 'Provisioning/Resilience_Ad_Hoc.mobileprovision'
-TESTFLIGHT_API_TOKEN  = ENV['API_TOKEN']
-TESTFLIGHT_TEAM_TOKEN = ENV['TEAM_TOKEN']
+TESTFLIGHT_API_TOKEN  = ENV['TESTFLIGHT_API_TOKEN']
+TESTFLIGHT_TEAM_TOKEN = ENV['TESTFLIGHT_TEAM_TOKEN']
 
 def scheme
   # Xcode.workspace(:Resilience).project(:Resilience).target(:Resilience)
@@ -76,9 +76,9 @@ task :deploy  => [:package, :__load_workspace] do
       team_token: TESTFLIGHT_TEAM_TOKEN,
       notes: `git log -n 1`,
       lists: ['Internal'] }
-  # @main_builder.deploy :s3,
-  #   :bucket => "resilience-ipa",
-  #   :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-  #   :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-  #   :dir => "build"
+  @main_builder.deploy :s3,
+     :bucket => ENV['AWS_S3_BUCKET'],
+     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+     :dir => "build"
 end
