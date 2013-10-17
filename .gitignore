@@ -6,7 +6,6 @@ Resilience/build/*
 !default.mode*v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
 !default.xcworkspace
 !project.xcworkspace
 xcuserdata
@@ -24,5 +23,4 @@ Resilience/.idea/*
 .DS_Store
 # Testing Temp
 xcodebuild_*.txt
-#CocoaPods
-Resilience/Pods/*
+

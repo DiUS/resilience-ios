@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>63F3D64C-5371-4767-BB3E-DB8E3EB3B584</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Resilience</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1B0D2B81-F45E-4789-B240-AB92904E30D1</key>
+		<string>ssh://github.com/DiUS/resilience-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Resilience/Resilience.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1B0D2B81-F45E-4789-B240-AB92904E30D1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/DiUS/resilience-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1B0D2B81-F45E-4789-B240-AB92904E30D1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1B0D2B81-F45E-4789-B240-AB92904E30D1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>resilience-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

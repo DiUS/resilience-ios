@@ -1,0 +1,5 @@
+#include "Pods-NoticeView.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/NoticeView" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFHTTPRequestOperationLogger" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/Cloudinary" "${PODS_ROOT}/Headers/GoogleAnalytics-iOS-SDK" "${PODS_ROOT}/Headers/ISO8601DateFormatter" "${PODS_ROOT}/Headers/Kiwi" "${PODS_ROOT}/Headers/Mantle" "${PODS_ROOT}/Headers/NoticeView" "${PODS_ROOT}/Headers/TestFlightSDK"
+OTHER_LDFLAGS = -ObjC ${PODS_NOTICEVIEW_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}
