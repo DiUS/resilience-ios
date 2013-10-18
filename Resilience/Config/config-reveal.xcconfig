@@ -1,2 +1,4 @@
 #include "config-debug.xcconfig"
-OTHER_LDFLAGS = -ObjC -lGoogleAnalyticsServices -lTestFlight -lz -framework CFNetwork -framework CoreData -framework CoreGraphics -framework Foundation -framework MobileCoreServices -framework QuartzCore -framework Security -framework SystemConfiguration -framework UIKit -weak_framework AdSupport -framework Reveal -framework CFNetwork
+
+FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)"
+OTHER_LDFLAGS = -ObjC -lGoogleAnalyticsServices -lTestFlight -lz -framework CFNetwork -framework CoreData -framework CoreGraphics -framework Foundation -framework MobileCoreServices -framework QuartzCore -framework Security -framework SystemConfiguration -framework UIKit -weak_framework AdSupport -framework Reveal
