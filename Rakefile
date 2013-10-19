@@ -18,16 +18,6 @@ end
 #
 task :ci => ['adhoc:testflight', 'release:package']
 
-desc "Setup project dependencies"
-task :setup do
-  sh 'cd Resilience; pod setup; pod install'
-end
-
-desc "Update project dependencies"
-task :update_dependencies do
-  sh 'cd Resilience; pod install'
-end
-
 task :__load_workspace do
   @main_builder = scheme.builder
   @main_builder.profile   = PROVISIONING_PROFILE
@@ -50,7 +40,7 @@ task :clean => :__load_workspace do
 end
 
 desc "Build the "
-task :build => [:clean, :update_dependencies, :__load_workspace] do
+task :build => [:clean, :__load_workspace] do
   @main_builder.config.info_plist do |info|
     info.version = ENV['TRAVIS_BUILD_NUMBER'] ? "1.0.#{ENV['TRAVIS_BUILD_NUMBER']}" : "#{Socket.gethostname}-SNAPSHOT"
     info.marketing_version = info.version
@@ -60,7 +50,7 @@ task :build => [:clean, :update_dependencies, :__load_workspace] do
 end
 
 desc "Test "
-task :test => [:update_dependencies, :__load_workspace] do
+task :test => [ :__load_workspace] do
   @main_builder.test
 end
 

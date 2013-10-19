@@ -57,4 +57,3 @@ PRODUCT_DISPLAY_NAME=$(PRODUCT_NAME)
 BUNDLE_BASE=au.com.dius
 BUNDLE_IDENTIFIER=$(BUNDLE_BASE).resilience
 GCC_PREFIX_HEADER = Resilience/Resilience-Prefix.pch
-INFOPLIST_FILE = Resilience/Resilience-Info.plist
