@@ -13,6 +13,7 @@ PODS:
   - Mantle (1.2):
     - Mantle/extobjc
   - Mantle/extobjc (1.2)
+  - Masonry (0.2.4)
   - NoticeView (3.0.7)
   - TestFlightSDK (2.0)
 
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - ISO8601DateFormatter
   - Kiwi
   - Mantle
+  - Masonry
   - NoticeView
   - TestFlightSDK
 
@@ -35,7 +37,8 @@ SPEC CHECKSUMS:
   ISO8601DateFormatter: 72ad8f5b4f51bd8fb317d7284c32fee5f54a6584
   Kiwi: e6524ba0eaa1b28af7af146bdee5314b32aa3edb
   Mantle: f5b5cba1b112273fe3bb4433cdcf1da76203c2b4
+  Masonry: 73df2f346bd1a0044dc9de969aa45aea2f8a9bd8
   NoticeView: f885ce90b53dacce3b19f2d5e95c6db68fe4e45d
   TestFlightSDK: 940906d4b2550cf397c6f2d2fcc4ebfdcd8ae858
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.27.1

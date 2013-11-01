@@ -8,12 +8,16 @@
 #import "IncidentCategory+Waypoint.h"
 #import "Open311Client.h"
 #import "IncidentViewController.h"
+#import "UIColor+Resilience.h"
+#import "View+MASAdditions.h"
+#import "UIDevice+iOS7.h"
 
 @interface IncidentMapViewController () <MKMapViewDelegate, IncidentViewControllerDelegate>
 
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *annotations;
 @property (nonatomic, assign) BOOL hasLocation;
+@property (nonatomic, strong) UIButton *refreshButton;
 
 @end
 
@@ -25,19 +29,38 @@
   [super viewDidLoad];
   // Set up the map view
   self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
-  self.view = self.mapView;
+//  self.view = self.mapView;
   self.mapView.delegate = self;
   self.mapView.showsUserLocation = YES;
   self.mapView.userTrackingMode = MKUserTrackingModeNone;
   self.annotations = [[NSMutableArray alloc] init];
   self.hasLocation = NO;
+  self.refreshButton = [UIButton buttonWithType:UIButtonTypeSystem];
+  if (![UIDevice iOS7]) {
+    self.refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.refreshButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+  }
+  [self.refreshButton setTitle:@"Search this location" forState:UIControlStateNormal];
+  [self.refreshButton setBackgroundColor:[UIColor colorWithRed:250. green:250. blue:250. alpha:1.]];
+  [self.refreshButton addTarget:self action:@selector(updateAnnotations) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:self.mapView];
+  [self.view addSubview:self.refreshButton];
   self.screenName = @"Incident map";
+
+  [self.refreshButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.left.equalTo(self.view.mas_left).with.offset(70);
+    make.bottom.equalTo(self.view.mas_bottom).with.offset(-10);
+    make.right.equalTo(self.view.mas_right).with.offset(-70);
+  }];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
+  [self updateAnnotations];
+  self.mapView.frame = CGRectMake(0., 0., self.view.frame.size.width, self.view.frame.size.height);
 }
 
-- (void)updateAnnotations:(CLLocation *)location {
+- (void)updateAnnotations {
+  CLLocation *location = [[CLLocation alloc] initWithLatitude:self.mapView.region.center.latitude longitude:self.mapView.region.center.longitude];
   [[Open311Client sharedClient] fetchIncidentsForLocation:location success:^(NSArray *incidents) {
     [self.mapView removeAnnotations:self.annotations];
     [self.annotations removeAllObjects];
@@ -98,7 +121,7 @@
 }
 
 - (void)detailViewControllerDidResolveIncidentAndClose:(IncidentViewController *)detailViewController {
-  [self updateAnnotations:[self getLocation:self.mapView]];
+  [self updateAnnotations];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
@@ -112,7 +135,7 @@
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-  [self updateAnnotations:[self getLocation:mapView]];
+//  [self updateAnnotations:[self getLocation:mapView]];
 }
 
 - (CLLocation *)getLocation:(MKMapView *)mapView {
