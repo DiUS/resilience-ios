@@ -22,18 +22,17 @@
     UIImage *navBarImage = [UIImage imageNamed:@"Assets/TitleBar"];
     [[UINavigationBar appearance] setBackgroundImage:[navBarImage resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)] forBarMetrics:UIBarMetricsDefault];
     [[UIToolbar appearance] setBackgroundImage:[navBarImage resizableImageWithCapInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-  }
-  [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
 
-  NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary:[[UINavigationBar appearance] titleTextAttributes]];
-  [titleBarAttributes setValue:[UIColor darkGreyTextColor] forKey:UITextAttributeTextColor];
-  [titleBarAttributes setValue:[UIColor clearColor] forKey:UITextAttributeTextShadowColor];
-  [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
+    NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary:[[UINavigationBar appearance] titleTextAttributes]];
+    [titleBarAttributes setValue:[UIColor darkGreyTextColor] forKey:UITextAttributeTextColor];
+    [titleBarAttributes setValue:[UIColor clearColor] forKey:UITextAttributeTextShadowColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
+    [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
+  }
 
   self.window.rootViewController = rootViewController;
 
   [[ResilientUploader sharedUploader] uploadQueuedIncident];
-
   [self.window makeKeyAndVisible];
 
   return YES;
