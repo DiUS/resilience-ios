@@ -55,8 +55,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-  [self updateAnnotations];
   self.mapView.frame = CGRectMake(0., 0., self.view.frame.size.width, self.view.frame.size.height);
+  [self updateAnnotations];
 }
 
 - (void)updateAnnotations {
